@@ -36,17 +36,18 @@ struct ContentView: View {
     @State private var firstLevelFinished = false
     @State private var numberCardsDisplayed = false
     @State private var timer0 = false
-    // @State var orientation: UIDeviceOrientation = UIDevice.current.orientation
+    @ObservedObject var names = Names()
     @State private var coins = UserDefaults.standard.integer(forKey: "coins")
     @State private var points = UserDefaults.standard.integer(forKey: "points")
+    @State private var eventName = UserDefaults.standard.string(forKey: "eventName")
+    @State private var sequenceName = UserDefaults.standard.string(forKey: "sequenceName")
+    @State private var quizName = UserDefaults.standard.string(forKey: "quizName")
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @ObservedObject var eventTiming = EventTiming()
     @ObservedObject var cardInfo = CardInfo()
     let sequence = Sequence()
-    
-    
-    
-    
+    var item: NameItem
+
     var body: some View {
         //  NavigationView {
         GeometryReader { geo in
@@ -113,82 +114,110 @@ struct ContentView: View {
                     HStack {
                         Spacer()
                         Spacer()
-                        Card(onEnded: self.cardDropped, index: 0, text: self.cardInfo.info[self.questionNumber].card0Name)
-                            .frame(width: geo.size.height/5 * 0.6
-                                , height: geo.size.height/5)
-                            .zIndex(1.0)
-                            .allowsHitTesting(false)
-                            .overlay(GeometryReader { geo2 in
-                                Color.clear
-                                    .coordinateSpace(name: "RightCard")
-                                    .onAppear{
-                                        if !(self.userAlreadyExist(coins: "coins")){
-                                            self.coins = 20
-                                            self.points = 0
-                                            UserDefaults.standard.set(self.coins, forKey: "coins")
-                                            UserDefaults.standard.set(self.points, forKey: "points")
+                        VStack{
+                            Card(onEnded: self.cardDropped, index: 0, text: self.cardInfo.info[self.questionNumber].card0Name)
+                                .frame(width: geo.size.height/5 * 0.6
+                                    , height: geo.size.height/5)
+                                
+                                .zIndex(1.0)
+                                .overlay(GeometryReader { geo2 in
+                                    Color.clear
+                                        .coordinateSpace(name: "RightCard")
+                                        .onAppear{
+                                            if !(self.userAlreadyExist(coins: "coins")){
+                                                self.coins = 20
+                                                self.points = 0
+                                                UserDefaults.standard.set(self.coins, forKey: "coins")
+                                                UserDefaults.standard.set(self.points, forKey: "points")
+                                            }
+                                            self.coins = UserDefaults.standard.integer(forKey: "coins")
+                                             self.rightCardPosition = geo2.frame(in: .named("RightCard")).midX
+                                            self.cardFrames[0] = geo2.frame(in: .global)
+                                    }
+
+                                    .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                            self.cardFrames[0] = geo2.frame(in: .global)
+                                            self.rightCardPosition = geo2.frame(in: .named("RightCard")).midX
                                         }
-                                        self.coins = UserDefaults.standard.integer(forKey: "coins")
-                                }
-                                .onAppear {
-                                    print("onAppear")
-                                    self.cardFrames[0] = geo2.frame(in: .global)
-                                    self.rightCardPosition = geo2.frame(in: .named("RightCard")).midX
-                                }
-                                .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                        self.cardFrames[0] = geo2.frame(in: .global)
-                                        self.rightCardPosition = geo2.frame(in: .named("RightCard")).midX
                                     }
-                                }
-                            })
+                                })
+                                
+                                .opacity(self.answerIsGood && self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
+                                .offset(x: self.answerIsGood && self.cardSelected   ? self.xOffset0 : -self.badAnsweOffset)
+                                .addBorder(!self.answerIsGood ? Color.white : Color.clear, cornerRadius: 10)
+                                .padding()
+                            
+                            Text(self.cardInfo.info[self.questionNumber].card0Date)
+                                .scaledFont(name: "Helvetica Neue", size: self.fonts.fontDimension)
+                                .foregroundColor(.white)
                             .opacity(self.answerIsGood && self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
-                            .offset(x: self.answerIsGood && self.cardSelected   ? self.xOffset0 : -self.badAnsweOffset)
-                            .addBorder(!self.answerIsGood ? Color.white : Color.clear, cornerRadius: 10)
+                            
+                            
+                        }
+                        .zIndex(1.0)
+ 
                         Spacer()
-                        Card(onEnded: self.cardDropped, index: 1, text:  self.cardInfo.info[self.questionNumber].card1Name)
-                            .frame(width: geo.size.height/5 * 0.6
-                                , height: geo.size.height/5)
-                            .zIndex(0.0)
-                            .coordinateSpace(name: "CenterCard")
-                            .allowsHitTesting(false).overlay(GeometryReader { geo2 in
-                                Color.clear
-                                    .onAppear {
-                                        self.cardFrames[1] = geo2.frame(in: .global)
-                                        self.centerCardPosition = geo2.frame(in: .named("CenterCard")).midX
-                                }
-                                .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                        self.cardFrames[1] = geo2.frame(in: .global)
-                                        self.centerCardPosition = geo2.frame(in: .named("CenterCard")).midX
+                        VStack {
+                            Card(onEnded: self.cardDropped, index: 1, text:  self.cardInfo.info[self.questionNumber].card1Name)
+                                .frame(width: geo.size.height/5 * 0.6
+                                    , height: geo.size.height/5)
+                                .zIndex(-1.0)
+                                .coordinateSpace(name: "CenterCard")
+                                .allowsHitTesting(false).overlay(GeometryReader { geo2 in
+                                    Color.clear
+                                        .onAppear {
+                                            
+                                            self.cardFrames[1] = geo2.frame(in: .global)
+                                            self.centerCardPosition = geo2.frame(in: .named("CenterCard")).midX
                                     }
-                                }
-                            })
-                            .offset(x: self.answerIsGood && self.cardSelected   ? 0 : self.badAnsweOffset)
-                            .padding()
+                                    .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                            self.cardFrames[1] = geo2.frame(in: .global)
+                                            self.centerCardPosition = geo2.frame(in: .named("CenterCard")).midX
+                                        }
+                                    
+                                    }
+                                })
+                                .offset(x: self.answerIsGood && self.cardSelected   ? 0 : self.badAnsweOffset)
+                                .padding()
+                            
+                            Text(self.cardInfo.info[self.questionNumber].card1Date)
+                                .scaledFont(name: "Helvetica Neue", size: self.fonts.fontDimension)
+                                .foregroundColor(.white)
+                        }
+
                         Spacer()
-                        Card(onEnded: self.cardDropped, index: 2, text:  self.cardInfo.info[self.questionNumber].card2Name)
-                            .frame(width: geo.size.height/5 * 0.6
-                                , height: geo.size.height/5)
-                            .zIndex(1.0)
-                            .coordinateSpace(name: "LeftCard")
-                            .allowsHitTesting(false).overlay(GeometryReader { geo2 in
-                                Color.clear
-                                    .onAppear {
-                                        self.cardFrames[2] = geo2.frame(in: .global)
-                                        self.leftCardPosition = geo2.frame(in: .named("LeftCard")).midX
-                                        
-                                }
-                                .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                        self.cardFrames[2] = geo2.frame(in: .global)
-                                        self.leftCardPosition = geo2.frame(in: .named("LeftCard")).midX
+                        VStack{
+                            Card(onEnded: self.cardDropped, index: 2, text:  self.cardInfo.info[self.questionNumber].card2Name)
+                                .frame(width: geo.size.height/5 * 0.6
+                                    , height: geo.size.height/5)
+                                .zIndex(1.0)
+                                .coordinateSpace(name: "LeftCard")
+                                .allowsHitTesting(false).overlay(GeometryReader { geo2 in
+                                    Color.clear
+                                        .onAppear {
+                                            self.cardFrames[2] = geo2.frame(in: .global)
+                                            self.leftCardPosition = geo2.frame(in: .named("LeftCard")).midX
+                                            
                                     }
-                                }
-                            })
-                            .opacity(self.answerIsGood && !self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
-                            .offset(x: self.answerIsGood && self.cardSelected ? self.xOffset2 : self.badAnsweOffset)
-                            .addBorder(!self.answerIsGood ? Color.white : Color.clear, cornerRadius: 10)
+                                    .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                            self.cardFrames[2] = geo2.frame(in: .global)
+                                            self.leftCardPosition = geo2.frame(in: .named("LeftCard")).midX
+                                        }
+                                    }
+                                })
+                                .opacity(self.answerIsGood && !self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
+                                .offset(x: self.answerIsGood && self.cardSelected ? self.xOffset2 : self.badAnsweOffset)
+                                .addBorder(!self.answerIsGood ? Color.white : Color.clear, cornerRadius: 10)
+                                .padding()
+                            Text(self.cardInfo.info[self.questionNumber].card2Date)
+                                .scaledFont(name: "Helvetica Neue", size: self.fonts.fontDimension)
+                                .foregroundColor(.white)
+                           .opacity(self.answerIsGood && !self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
+                        }
+
                         Spacer()
                         Spacer()
                     }
@@ -199,6 +228,7 @@ struct ContentView: View {
                                 , height: geo.size.height/5)
                             .opacity(self.trayIndex == 0 && self.answerIsGood ? 0 :  self.cardOpacity)
                             .offset(x: self.answerIsGood && self.cardSelected   ? 0.0 : self.badAnsweOffset)
+                            .zIndex(1.0)
                             .padding()
                     }
                     Spacer()
@@ -267,10 +297,22 @@ struct ContentView: View {
                 
             }
         }
+        .onAppear{
+            self.eventName = self.item.cardInfoName
+            UserDefaults.standard.set(self.eventName, forKey: "eventName")
+            self.sequenceName = self.item.sequenceName
+            UserDefaults.standard.set(self.sequenceName, forKey: "sequenceName")
+            self.quizName = self.item.quizName
+            print(self.item.quizName)
+            UserDefaults.standard.set(self.quizName, forKey: "quizName")
+        }
         .background(ColorReference.specialGreen)
         .edgesIgnoringSafeArea(.all)
         .navigationBarTitle("Earlier or Later", displayMode: .inline)
         .navigationBarHidden(self.firstLevelFinished)
+        .navigationBarBackButtonHidden(true)
+        .navigationViewStyle(StackNavigationViewStyle())
+
     }
     // Functions
     func cardDropped(location: CGPoint, trayIndex: Int, cardAnswer: String){
@@ -414,6 +456,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(item: NameItem.init(cardInfoName: "", sequenceName: "", quizName: ""))
     }
 }

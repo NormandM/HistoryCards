@@ -13,16 +13,19 @@ class QuizData:  ObservableObject{
     @Published var answers: [String]
     init() {
         var allData: [[String]]
-        let pListEvent = "InventionsQuiz"
+        let pListEvent =  UserDefaults.standard.string(forKey: "eventName")
         if let plistPath = Bundle.main.path(forResource: pListEvent, ofType: "plist"),
             let transition = NSArray(contentsOfFile: plistPath){
             allData = transition as! [[String]]
         }else{
             allData = []
         }
-        var sequence = [0, 1, 2]
+        var sequence = [Int]()
+        for n in 0...allData.count - 1{
+            sequence.append(n)
+        }
         sequence.shuffle()
-        questions = [allData[sequence[0]][0], allData[sequence[1]][0], allData[sequence[2]][0]]
-        answers = [allData[sequence[0]][1], allData[sequence[1]][1], allData[sequence[2]][1]]
+        questions = [allData[sequence[0]][1], allData[sequence[1]][1], allData[sequence[2]][1]]
+        answers = [allData[sequence[0]][0], allData[sequence[1]][0], allData[sequence[2]][0]]
     }
 }

@@ -14,6 +14,7 @@ struct SeriesInfo:  Identifiable {
     var id: Int
     var trayCardName: [String]
     var cardName: [String]
+    var cardDate: [String]
     var cardDescription: [String]
     var rightPositionCard: [String]
     init(id: Int) {
@@ -22,13 +23,16 @@ struct SeriesInfo:  Identifiable {
         let list = series.list[id]
         var arrayName = [String]()
         var arrayDescription = [String]()
+        var arrayDate = [String]()
         let shuffledList = list.shuffled()
         var arrayRightPositionCard = [String]()
         for n in 0...3{
+            arrayDate.append(Event(eventIndex: shuffledList[n]).date)
             arrayName.append(Event(eventIndex: shuffledList[n]).name)
             arrayDescription.append(Event(eventIndex: shuffledList[n]).description)
             arrayRightPositionCard.append(Event(eventIndex: list[n]).name)
         }
+        cardDate = arrayDate
         cardName = arrayName
         trayCardName = arrayName
         cardDescription = arrayDescription

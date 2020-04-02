@@ -30,9 +30,9 @@ class Info: Identifiable {
     var card0Name: String
     var card1Name: String
     var card2Name: String
-   // var card0Date: String
-  //  var card1Date: String
-  //  var card2Date: String
+    var card0Date: String
+    var card1Date: String
+    var card2Date: String
     var trayCard0Name: String
     var trayCardDescription1: String
     var trayCards: String
@@ -46,9 +46,9 @@ class Info: Identifiable {
         trayCard0Name = Event(eventIndex: sequences.trayCards[id]).name
         trayCards = Event(eventIndex: sequences.trayCards[id]).name
         trayCardDescription1 = Event(eventIndex: sequences.trayCards[id]).description
-     //   card0Date = Event(eventIndex: sequences.sequences[id][0]).date
-    //    card1Date = Event(eventIndex: sequences.sequences[id][1]).date
-    //    card2Date = Event(eventIndex: sequences.sequences[id][2]).date
+        card0Date = Event(eventIndex: sequences.sequences[id][0]).date
+        card1Date = Event(eventIndex: sequences.sequences[id][1]).date
+        card2Date = Event(eventIndex: sequences.sequences[id][2]).date
         questionNumber = String(id)
     }
 }

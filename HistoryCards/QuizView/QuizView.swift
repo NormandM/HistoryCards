@@ -26,7 +26,7 @@ struct QuizView: View {
     @State private var cardIndex = 0
     @State private var timeRemaining = 120
     @State private var quizStarted = false
-    @ObservedObject var quizData = QuizData()
+    @State private var quizData = QuizData()
     @State private var timer0 = false
     @State private var coins = UserDefaults.standard.integer(forKey: "coins")
     @State private var points = UserDefaults.standard.integer(forKey: "points")
@@ -112,6 +112,7 @@ struct QuizView: View {
                                 Text("Stay on level 3")
                                     .foregroundColor(.white)
                                 Button(action: {
+                                    self.quizData = QuizData()
                                     self.answerIsGood = false
                                     self.timer0 = false
                                     self.allCardsDropped = false
@@ -130,7 +131,7 @@ struct QuizView: View {
                                     UserDefaults.standard.set(self.coins, forKey: "coins")
                                     
                                 }){
-                                    Image("5Coin").renderingMode(.original)
+                                    Image("10Coin").renderingMode(.original)
                                         .resizable()
                                         .frame(width: geo.size.height/12
                                             , height: geo.size.height/12)

@@ -9,7 +9,7 @@
 import Foundation
 struct AllEvents {
     static var event: [EventAndSection]{
-        let pListEvent = "InventionsCardData"
+        let pListEvent = UserDefaults.standard.string(forKey: "eventName")
         var transitionArray = [[String]]()
         var eventArray = [EventAndSection]()
         if let plistPath = Bundle.main.path(forResource: pListEvent, ofType: "plist"),

@@ -16,7 +16,7 @@ struct Sequence {
         var allEvents = [[Int]]()
         var transitionBool = [Bool]()
         var transitionTrayCards = [Int]()
-        let pListEvent = "InventionsSequence"
+        let pListEvent = UserDefaults.standard.string(forKey: "sequenceName")
         if let plistPath = Bundle.main.path(forResource: pListEvent, ofType: "plist"),
             let transition = NSArray(contentsOfFile: plistPath){
             allEvents = transition as! [[Int]]

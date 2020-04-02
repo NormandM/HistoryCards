@@ -38,6 +38,8 @@ struct TimeLineView: View {
     @State private var numberToFinish = 0
     @State private var secondLevelWrong = false
     @State private var dismissView = false
+    @State private var trayCardDates = ["", "", "", ""]
+    @State private var trayCardDate = String()
     @State private var coins = UserDefaults.standard.integer(forKey: "coins")
     @State private var points = UserDefaults.standard.integer(forKey: "points")
     private let timer2 = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -172,103 +174,138 @@ struct TimeLineView: View {
 
                         HStack() {
                             Spacer()
-                            Card(onEnded: self.cardDropped, index: 0, text: self.cardText[0])
-                                .frame(width: geo.size.height/6 * 0.6
-                                    , height: geo.size.height/6)
-                                .allowsHitTesting(false)
-                                .overlay(GeometryReader { geo2 in
-                                    Color.clear
-                                        .overlay(GeometryReader { geo2 in
-                                            Color.clear
-                                                .onAppear{
-                                                    if self.dismissView {
-                                                        self.presentationMode.wrappedValue.dismiss()
-                                                    }
-                                                    self.cardFrames[0] = geo2.frame(in: .global)
-                                            }
-                                            .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                    self.cardFrames[0] = geo2.frame(in: .global)
+                            VStack{
+                                Card(onEnded: self.cardDropped, index: 0, text: self.cardText[0])
+                                    .frame(width: geo.size.height/6 * 0.6
+                                        , height: geo.size.height/6)
+                                    .allowsHitTesting(false)
+                                    .overlay(GeometryReader { geo2 in
+                                        Color.clear
+                                            .overlay(GeometryReader { geo2 in
+                                                Color.clear
+                                                    .onAppear{
+                                                        if self.dismissView {
+                                                            self.presentationMode.wrappedValue.dismiss()
+                                                        }
+                                                        self.cardFrames[0] = geo2.frame(in: .global)
                                                 }
-                                            }
-                                            
-                                        })
-                                })
-                                .opacity(self.cardWasDropped[0] ? 1.0 : 0.0)
-                                .offset(x: self.serieNumbers == 0 ? self.xOffset : 0.0)
-                                .addBorder(self.cardWasDropped[0] ? Color.clear : Color.white, cornerRadius: 10)
+                                                .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                        self.cardFrames[0] = geo2.frame(in: .global)
+                                                    }
+                                                }
+                                                
+                                            })
+                                    })
+                                    .opacity(self.cardWasDropped[0] ? 1.0 : 0.0)
+                                    .offset(x: self.serieNumbers == 0 ? self.xOffset : 0.0)
+                                    .addBorder(self.cardWasDropped[0] ? Color.clear : Color.white, cornerRadius: 10)
+                                    .padding(.leading)
+                                    .padding(.leading)
+                                Text(self.trayCardDates[0])
+                                    .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
+                                    .foregroundColor(.white)
+                                    .opacity(self.allCardsDropped ? 1.0 : 0)
                                 .padding(.leading)
-                             .padding(.leading)
+                                .padding(.leading)
+                                
+                            }
+
                             
                             Spacer()
-                            Card(onEnded: self.cardDropped, index: 1, text: self.cardText[1])
-                                .frame(width: geo.size.height/6 * 0.6
-                                    , height: geo.size.height/6)
-                                .allowsHitTesting(false)
-                                .overlay(GeometryReader { geo2 in
-                                    Color.clear
-                                        .overlay(GeometryReader { geo2 in
-                                            Color.clear
-                                                .onAppear{
-                                                    self.cardFrames[1] = geo2.frame(in: .global)
-                                            }
-                                            .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                    self.cardFrames[1] = geo2.frame(in: .global)
+                            VStack{
+                                Card(onEnded: self.cardDropped, index: 1, text: self.cardText[1])
+                                    .frame(width: geo.size.height/6 * 0.6
+                                        , height: geo.size.height/6)
+                                    .allowsHitTesting(false)
+                                    .overlay(GeometryReader { geo2 in
+                                        Color.clear
+                                            .overlay(GeometryReader { geo2 in
+                                                Color.clear
+                                                    .onAppear{
+                                                        self.cardFrames[1] = geo2.frame(in: .global)
                                                 }
-                                            }
-                                            
-                                        })
-                                })
-                                .opacity(self.cardWasDropped[1] ? 1.0 : 0.0)
-                                .offset(x: self.serieNumbers == 0 ? self.xOffset : 0.0)
-                                .addBorder(self.cardWasDropped[1] ? Color.clear : Color.white, cornerRadius: 10)
+                                                .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                        self.cardFrames[1] = geo2.frame(in: .global)
+                                                    }
+                                                }
+                                                
+                                            })
+                                    })
+                                    .opacity(self.cardWasDropped[1] ? 1.0 : 0.0)
+                                    .offset(x: self.serieNumbers == 0 ? self.xOffset : 0.0)
+                                    .addBorder(self.cardWasDropped[1] ? Color.clear : Color.white, cornerRadius: 10)
+                                Text(self.trayCardDates[1])
+                                    .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
+                                    .foregroundColor(.white)
+                                    .opacity(self.allCardsDropped ? 1.0 : 0)
+                            }
+
                             Spacer()
-                            Card(onEnded: self.cardDropped, index: 2, text: self.cardText[2])
-                                .frame(width: geo.size.height/6 * 0.6
-                                    , height: geo.size.height/6)
-                                .allowsHitTesting(false)
-                                .overlay(GeometryReader { geo2 in
-                                    Color.clear
-                                        .overlay(GeometryReader { geo2 in
-                                            Color.clear
-                                                .onAppear{
-                                                    self.cardFrames[2] = geo2.frame(in: .global)
-                                            }
-                                            .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                    self.cardFrames[2] = geo2.frame(in: .global)
+                            VStack {
+                                Card(onEnded: self.cardDropped, index: 2, text: self.cardText[2])
+                                    .frame(width: geo.size.height/6 * 0.6
+                                        , height: geo.size.height/6)
+                                    .allowsHitTesting(false)
+                                    .overlay(GeometryReader { geo2 in
+                                        Color.clear
+                                            .overlay(GeometryReader { geo2 in
+                                                Color.clear
+                                                    .onAppear{
+                                                        self.cardFrames[2] = geo2.frame(in: .global)
                                                 }
-                                            }
-                                        })
-                                })
-                                .opacity(self.cardWasDropped[2] ? 1.0 : 0.0)
-                                .offset(x: self.serieNumbers == 0 ? self.xOffset : 0.0)
-                                .addBorder(self.cardWasDropped[2] ? Color.clear : Color.white, cornerRadius: 10)
+                                                .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                        self.cardFrames[2] = geo2.frame(in: .global)
+                                                    }
+                                                }
+                                            })
+                                    })
+                                    .opacity(self.cardWasDropped[2] ? 1.0 : 0.0)
+                                    .offset(x: self.serieNumbers == 0 ? self.xOffset : 0.0)
+                                    .addBorder(self.cardWasDropped[2] ? Color.clear : Color.white, cornerRadius: 10)
+                                Text(self.trayCardDates[2])
+                                    .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
+                                    .foregroundColor(.white)
+                                    .opacity(self.allCardsDropped ? 1.0 : 0)
+                            }
+
+                            
+                            
                             Spacer()
-                            Card(onEnded: self.cardDropped, index: 3, text: self.cardText[3])
-                                .frame(width: geo.size.height/6 * 0.6
-                                    , height: geo.size.height/6)
-                                .allowsHitTesting(false)
-                                .overlay(GeometryReader { geo2 in
-                                    Color.clear
-                                        .overlay(GeometryReader { geo2 in
-                                            Color.clear
-                                                .onAppear{
-                                                    self.cardFrames[3] = geo2.frame(in: .global)
-                                            }
-                                            .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                    self.cardFrames[3] = geo2.frame(in: .global)
+                            VStack {
+                                Card(onEnded: self.cardDropped, index: 3, text: self.cardText[3])
+                                    .frame(width: geo.size.height/6 * 0.6
+                                        , height: geo.size.height/6)
+                                    .allowsHitTesting(false)
+                                    .overlay(GeometryReader { geo2 in
+                                        Color.clear
+                                            .overlay(GeometryReader { geo2 in
+                                                Color.clear
+                                                    .onAppear{
+                                                        self.cardFrames[3] = geo2.frame(in: .global)
                                                 }
-                                            }
-                                        })
-                                })
-                                .opacity(self.cardWasDropped[3] ? 1.0 : 0.0)
-                                .offset(x: self.serieNumbers == 0 ? self.xOffset : 0.0)
-                                .addBorder(self.cardWasDropped[3] ? Color.clear : Color.white, cornerRadius: 10)
+                                                .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                        self.cardFrames[3] = geo2.frame(in: .global)
+                                                    }
+                                                }
+                                            })
+                                    })
+                                    .opacity(self.cardWasDropped[3] ? 1.0 : 0.0)
+                                    .offset(x: self.serieNumbers == 0 ? self.xOffset : 0.0)
+                                    .addBorder(self.cardWasDropped[3] ? Color.clear : Color.white, cornerRadius: 10)
+                                    .padding(.trailing)
                                 .padding(.trailing)
-                            .padding(.trailing)
+                                Text(self.trayCardDates[3])
+                                    .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
+                                    .foregroundColor(.white)
+                                    .opacity(self.allCardsDropped ? 1.0 : 0)
+                                    .padding(.trailing)
+                                .padding(.trailing)
+
+                            }
                             Spacer()
                             
                         }
@@ -481,18 +518,22 @@ struct TimeLineView: View {
             switch match {
             case 0:
                 cardText[0] = trayCardText
+                trayCardDates[0] = trayCardDate
                 playSound(sound: "404015__paul-sinnett__card", type: "wav")
                 if trayCardText == questionForSeries.seriesInfo[serieNumbers].rightPositionCard[0]{cardGood[0] = true}
             case 1:
                 cardText[1] = trayCardText
+                trayCardDates[1] = trayCardDate
                 playSound(sound: "404015__paul-sinnett__card", type: "wav")
                 if trayCardText == questionForSeries.seriesInfo[serieNumbers].rightPositionCard[1]{cardGood[1] = true}
             case 2:
                 cardText[2] = trayCardText
+                trayCardDates[2] = trayCardDate
                 playSound(sound: "404015__paul-sinnett__card", type: "wav")
                 if trayCardText == questionForSeries.seriesInfo[serieNumbers].rightPositionCard[2]{cardGood[2] = true}
             case 3:
                 cardText[3] = trayCardText
+                trayCardDates[3] = trayCardDate
                 playSound(sound: "404015__paul-sinnett__card", type: "wav")
                 if trayCardText == questionForSeries.seriesInfo[serieNumbers].rightPositionCard[3]{cardGood[3] = true}
             default:
@@ -536,6 +577,7 @@ struct TimeLineView: View {
             if self.count == 1 {cardIndex = match}
             trayCardText = questionForSeries.seriesInfo[serieNumbers].trayCardName[cardIndex]
             cardDescription = questionForSeries.seriesInfo[serieNumbers].cardDescription[cardIndex]
+            trayCardDate = questionForSeries.seriesInfo[serieNumbers].cardDate[cardIndex]
             switch cardIndex {
             case 0:
                 cardIsBeingMoved[0] = true
@@ -575,10 +617,10 @@ struct TimeLineView: View {
         if answerIsGood  && !timer0 {
             self.messageAfterAnswer = "Great!"
             playSound(sound: "chime_clickbell_octave_up", type: "mp3")
-            withAnimation(.linear(duration: 3.0)) {
-                self.xOffset = 2000
+            withAnimation(Animation.linear(duration: 3.0).delay(2.0)) {
+                self.xOffset = 1000
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                 self.tryAgain = true
                 if self.serieNumbers < 1 {self.serieNumbers = self.serieNumbers + 1}
                 self.points = UserDefaults.standard.integer(forKey: "points")
@@ -605,8 +647,6 @@ struct TimeLineView: View {
                     }
                     self.timer2.upstream.connect().cancel()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
-                        
-                      //  self.answerIsGood = false
                         self.goQuizView  = true
                         self.secondLevelFinished = false
                     }

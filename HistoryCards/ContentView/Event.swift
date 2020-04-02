@@ -15,7 +15,7 @@ struct Event {
     let eventIndex: Int
     let allEvents: [[String]]
     init(eventIndex: Int) {
-        let pListEvent = "InventionsCardData"
+        let pListEvent = UserDefaults.standard.string(forKey: "eventName")
         if let plistPath = Bundle.main.path(forResource: pListEvent, ofType: "plist"),
             let transition = NSArray(contentsOfFile: plistPath){
             allEvents = transition as! [[String]]
