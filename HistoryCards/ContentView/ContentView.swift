@@ -41,11 +41,14 @@ struct ContentView: View {
     @State private var points = UserDefaults.standard.integer(forKey: "points")
     @State private var eventName = UserDefaults.standard.string(forKey: "eventName")
     @State private var sequenceName = UserDefaults.standard.string(forKey: "sequenceName")
+    @State private var dismissView = UserDefaults.standard.bool(forKey: "dismissView")
     @State private var quizName = UserDefaults.standard.string(forKey: "quizName")
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @ObservedObject var eventTiming = EventTiming()
-    @ObservedObject var cardInfo = CardInfo()
-    let sequence = Sequence()
+    @State private var eventTiming = EventTiming()
+    @State var cardInfo = CardInfo()
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var sequence = Sequence()
+
     var item: NameItem
 
     var body: some View {
@@ -156,7 +159,6 @@ struct ContentView: View {
                             
                         }
                         .zIndex(1.0)
- 
                         Spacer()
                         VStack {
                             Card(onEnded: self.cardDropped, index: 1, text:  self.cardInfo.info[self.questionNumber].card1Name)
@@ -298,13 +300,20 @@ struct ContentView: View {
             }
         }
         .onAppear{
+
             self.eventName = self.item.cardInfoName
+            self.nextViewPresent = false
             UserDefaults.standard.set(self.eventName, forKey: "eventName")
             self.sequenceName = self.item.sequenceName
             UserDefaults.standard.set(self.sequenceName, forKey: "sequenceName")
-            self.quizName = self.item.quizName
-            print(self.item.quizName)
-            UserDefaults.standard.set(self.quizName, forKey: "quizName")
+            self.sequence = Sequence()
+            self.cardInfo = CardInfo()
+            self.eventTiming = EventTiming()
+            self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
+            print("dismissView: \(self.dismissView)")
+            if self.dismissView {
+                self.presentationMode.wrappedValue.dismiss()
+            }
         }
         .background(ColorReference.specialGreen)
         .edgesIgnoringSafeArea(.all)
@@ -321,6 +330,7 @@ struct ContentView: View {
         }) {
             cardDropped = true
             switch match {
+            
             case 0:
                 if  self.eventTiming.timing[self.questionNumber].eventIsEarlier{
                     answerIsGood = true
@@ -373,7 +383,6 @@ struct ContentView: View {
         }
     }
     func cardPushed(location: CGPoint, trayIndex: Int){
-        
         self.numberCardsDisplayed = false
         self.timer0 = false
         quizStarted = true
@@ -398,8 +407,8 @@ struct ContentView: View {
                 self.xOffset0 = 0
                 self.xOffset2 = 0
                 self.percentComplete = 0
-                // if self.questionNumber == self.eventTiming.timing.count - 1 {
-                if self.questionNumber == 2 {
+              //  if self.questionNumber == self.eventTiming.timing.count - 1 {
+               if self.questionNumber == 2 {
                     withAnimation(.linear(duration: 3)){
                         self.firstLevelFinished = true
                     }
@@ -415,6 +424,9 @@ struct ContentView: View {
                         self.questionNumber = 0
                         self.cardDescription = "Cards left: \(9 - self.questionNumber)"
                         self.timer.upstream.connect().cancel()
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+                        self.dismissView = true
                     }
                 }
             }
@@ -456,6 +468,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(item: NameItem.init(cardInfoName: "", sequenceName: "", quizName: ""))
+        ContentView(item: NameItem.init(cardInfoName: "", sequenceName: ""))
     }
 }

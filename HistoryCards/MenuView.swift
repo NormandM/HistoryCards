@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-
 struct MenuView: View {
     init() {
         // this is not the same as manipulating the proxy directly
@@ -34,6 +33,7 @@ struct MenuView: View {
     }
     @State private var showContentView = false
     @ObservedObject var names = Names()
+    @State private var dismissView = false
     var body: some View {
         NavigationView {
             List {
@@ -41,21 +41,24 @@ struct MenuView: View {
                     NavigationLink(destination: ContentView(item: item)){
                         Text(item.cardInfoName)
                     }
+                    
                 }
+            }
+            .onAppear{
+                print("did appear")
+                UserDefaults.standard.set(false, forKey: "dismissView")
+                self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
+                print(self.dismissView)
             }
         }
         .navigationBarTitle("Choose a Time Line")
         .foregroundColor(.black)
         .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear(perform: loadNames)
-    }
-    func loadNames() {
-        let name1 = NameItem(cardInfoName: "Eras1", sequenceName: "SequenceEras1", quizName: "QuizEras1")
-        names.items.append(name1)
-        let name2 = NameItem(cardInfoName: "Eras2", sequenceName: "SequenceEras2", quizName: "QuizEras2")
-        names.items.append(name2)
-        print(names.items[0].cardInfoName)
-        return
+        .onAppear{
+           self.names.items = Plist.names
+
+        }
+
     }
     
 }

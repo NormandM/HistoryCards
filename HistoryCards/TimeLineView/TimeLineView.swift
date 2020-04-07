@@ -37,11 +37,11 @@ struct TimeLineView: View {
     @State private var secondLevelFinished = false
     @State private var numberToFinish = 0
     @State private var secondLevelWrong = false
-    @State private var dismissView = false
     @State private var trayCardDates = ["", "", "", ""]
     @State private var trayCardDate = String()
     @State private var coins = UserDefaults.standard.integer(forKey: "coins")
     @State private var points = UserDefaults.standard.integer(forKey: "points")
+    @State private var dismissView = UserDefaults.standard.bool(forKey: "dismissView")
     private let timer2 = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var timer0 = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -71,6 +71,8 @@ struct TimeLineView: View {
                                     .foregroundColor(.white)
                                 Button(action: {
                                     self.presentationMode.wrappedValue.dismiss()
+                                    UserDefaults.standard.set(false, forKey: "dismissView")
+                                    
                                 }){
                                     Image("0Coin").renderingMode(.original)
                                         .resizable()
@@ -184,9 +186,6 @@ struct TimeLineView: View {
                                             .overlay(GeometryReader { geo2 in
                                                 Color.clear
                                                     .onAppear{
-                                                        if self.dismissView {
-                                                            self.presentationMode.wrappedValue.dismiss()
-                                                        }
                                                         self.cardFrames[0] = geo2.frame(in: .global)
                                                 }
                                                 .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
@@ -499,6 +498,30 @@ struct TimeLineView: View {
                         }
                     }.blur(radius: self.secondLevelFinished || (self.timer0 || self.secondLevelWrong)  ?  75 : 0.0)
                         .zIndex(-0.5)
+                }.onAppear{
+                    self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
+                    if self.dismissView {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                    self.goQuizView = false
+                    self.secondLevelFinished = false
+                    self.timer0 = false
+                    self.secondLevelWrong = false
+                    self.serieNumbers = 0
+                    self.messageAfterAnswer = ""
+                    self.allCardsDropped = false
+                    self.percentComplete = 0.0
+                    self.quizStarted = false
+                    self.timeRemaining = 120
+                    for n in 0...3{
+                        self.cardWasDropped[n] = false
+                        self.trayCardDropped[n] = false
+                        self.cardIsBeingMoved[n] = false
+                        self.cardText[n] = ""
+                    }
+                    self.xOffset2 = 0
+                    self.xOffset = 0
+                    self.numberToFinish = 0
                 }
                 
             }
@@ -506,8 +529,8 @@ struct TimeLineView: View {
             .navigationBarHidden(secondLevelFinished)
             .background(ColorReference.specialGreen)
             .edgesIgnoringSafeArea(.all)
-        .navigationBarBackButtonHidden(true)
-       .navigationViewStyle(StackNavigationViewStyle())
+            .navigationBarBackButtonHidden(true)
+            .navigationViewStyle(StackNavigationViewStyle())
     }
     func cardDropped(location: CGPoint, trayIndex: Int, cardAnswer: String) {
         if let match = cardFrames.firstIndex(where: {
@@ -635,6 +658,7 @@ struct TimeLineView: View {
                     self.trayCardDropped[n] = false
                     self.cardGood[n] = false
                     self.cardText[n] = ""
+                    self.timer0 = false
                 }
                 if self.numberToFinish == 2 {
                     self.points = UserDefaults.standard.integer(forKey: "points")
@@ -651,7 +675,8 @@ struct TimeLineView: View {
                         self.secondLevelFinished = false
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
-                        self.dismissView = true
+                        UserDefaults.standard.set(true, forKey: "dismissView")
+                        self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
                     }
                 }
             }

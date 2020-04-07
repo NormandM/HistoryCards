@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<string>Dec 20, 1960</string>
+		<string>South Carolina secedes</string>
+		<string>South Carolina is the first state to secede from the United States</string>
+	</array>
+	<array>
+		<string>Feb 4, 1861</string>
+		<string>Confederate States formed</string>
+		<string>In Montgomery, Alabama the Confederate States of America is formed.</string>
+	</array>
+	<array>
+		<string>Apr 20, 1861</string>
+		<string>Robert E. Lee resigns </string>
+		<string>Robert E. Lee resigns his commission in the United States Army.</string>
+	</array>
+	<array>
+		<string>May 8, 1861</string>
+		<string>Richmond, Virginia becomes capital</string>
+		<string>Richmond, Virginia, is named the capital of the Confederate States of America.</string>
+	</array>
+	<array>
+		<string>Jul 21, 1861</string>
+		<string>First major battle</string>
+		<string> At Manassas Junction, Virginia, the first major battle of the war begins.</string>
+	</array>
+	<array>
+		<string>Nov 6, 1861</string>
+		<string>Jefferson Davis president</string>
+		<string>Jefferson Davis is elected president of the Confederate States of America.</string>
+	</array>
+	<array>
+		<string>Feb 6, 1862</string>
+		<string>US its first victory of the war,</string>
+		<string>Ulysses S. Grant gives the US its first victory of the war, by capturing Fort Henry</string>
+	</array>
+	<array>
+		<string>Apr 29, 1862</string>
+		<string>New Orleans falls to Union forces under Admiral David Farragut.</string>
+		<string>Union troops officially take possession of New Orleans, completing the occupation that had begun four days earlier.</string>
+	</array>
+	<array>
+		<string>Sep 5, 1862</string>
+		<string>Confederate forces cross the Potomac</string>
+		<string>General Robert E. Lee leads 55,000 men across the Potomac River.</string>
+	</array>
+	<array>
+		<string>Dec 13, 1862</string>
+		<string>The Battle of Fredericksburg</string>
+		<string>At the Battle of Fredericksburg, Confederates defeat the Union troops.</string>
+	</array>
+</array>
+</plist>

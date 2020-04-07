@@ -33,7 +33,7 @@ struct QuizView: View {
     @State private var thirdLevelIsWrong = false
     @State private var thirdLevelIsFinished = false
     @State private var showingQuizData = false
-    @State private var dismissView = false
+    @State private var dismissView = UserDefaults.standard.bool(forKey: "dismissView")
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
             GeometryReader { geo in
@@ -69,6 +69,7 @@ struct QuizView: View {
                             Divider()
                             Button(action: {
                                 self.presentationMode.wrappedValue.dismiss()
+                                UserDefaults.standard.set(true, forKey: "dismissView")
                                 
                             }){
                                 Text("Back to Menu")
@@ -92,11 +93,11 @@ struct QuizView: View {
                             .frame(width: geo.size.height/2.5, height: geo.size.height/2.5)
                         HStack {
                             VStack {
-                                Text("Back to level 1")
+                                Text("Back to level 2")
                                     .foregroundColor(.white)
                                 Button(action: {
-                                  self.presentationMode.wrappedValue.dismiss()
-                                self.presentationMode.wrappedValue.dismiss()
+                                    UserDefaults.standard.set(false, forKey: "dismissView")
+                                    self.presentationMode.wrappedValue.dismiss()
                                 }){
                                     Image("0Coin").renderingMode(.original)
                                         .resizable()
@@ -192,9 +193,7 @@ struct QuizView: View {
                                         Color.clear
                                             .onAppear{
                                                 self.cardFrames[1] = geo2.frame(in: .global)
-                                                if self.dismissView {
-                                                    self.presentationMode.wrappedValue.dismiss()
-                                                }
+
 
                                         }
                                         .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
@@ -420,7 +419,8 @@ struct QuizView: View {
                     self.points += 10
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                    self.dismissView = true
+                    UserDefaults.standard.set(true, forKey: "dismissView")
+                    self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
                 }
             }
         }

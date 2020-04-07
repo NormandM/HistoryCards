@@ -11,8 +11,6 @@ struct NameItem: Identifiable {
     var id = UUID()
     let cardInfoName: String
     let sequenceName: String
-    let quizName: String
-
 }
 class Names: ObservableObject, Identifiable {
     var id = UUID()

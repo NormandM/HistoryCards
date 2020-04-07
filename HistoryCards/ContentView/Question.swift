@@ -63,7 +63,7 @@ class Timing: Identifiable {
 }
 
 class CardInfo: ObservableObject {
-    @Published var info : [Info]
+    var info : [Info]
     
     init() {
         let sequence = Sequences()

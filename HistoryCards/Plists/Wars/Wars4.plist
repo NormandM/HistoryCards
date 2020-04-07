@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<string>1914 - 1918</string>
+		<string>World War I, WW1</string>
+		<string>World War I (WWI), also called the First World War or Great War, was a major war centered in Europe . It involved all of the world&apos;s great powers.</string>
+	</array>
+	<array>
+		<string>1917 - 1921</string>
+		<string>The Russian Revolution</string>
+		<string>The Russian Revolution was a pair of revolutions in Russia which dismantled the Tsarist autocracy and led to the rise of the Soviet Union. The Russian Empire collapsed with the abdication of Emperor Nicholas II.</string>
+	</array>
+	<array>
+		<string>1936 - 1939</string>
+		<string>Spanish Civil War</string>
+		<string>The Spanish Civil War was the result of complex political differences between the Republicans — supporters of the government of the day, the Second Spanish Republic</string>
+	</array>
+	<array>
+		<string>1939 - 1945</string>
+		<string>World War 2, WW2</string>
+		<string>The vast majority of the world&apos;s countries - including all the great powers - eventually formed two opposing military alliances: the Allies and the Axis.</string>
+	</array>
+	<array>
+		<string>1945 - 1953</string>
+		<string>Korean War</string>
+		<string>The conflict escalated into warfare when North Korean military  forces—supported by the Soviet Union and China—crossed the border and advanced into South Korea.The United Nations Security Council authorized the formation of the United Nations Command and the dispatch of forces to Korea.</string>
+	</array>
+	<array>
+		<string>1965 - 1973</string>
+		<string>Vietnam War</string>
+		<string>The Vietnam War was the longest and most unpopular war in which Americans ever fought. And there is no reckoning the cost. The toll in suffering, sorrow, in rancorous national turmoil can never be tabulated.</string>
+	</array>
+	<array>
+		<string>1982</string>
+		<string>Falklands Islands War, Argentina</string>
+		<string>The Argentine Invasion of the Falkland Islands on 2nd April 1982 necessitated Britain&apos;s first major naval operation since Suez. </string>
+	</array>
+	<array>
+		<string>1990 - 1991</string>
+		<string>First Gulf War, Desert Storm</string>
+		<string>The Persian Gulf War, also known as the First Gulf War was a United Nations-authorized military conflict between Iraq and a coalition force from 34 nations commissioned with expelling Iraqi forces from Kuwait.</string>
+	</array>
+	<array>
+		<string>2003</string>
+		<string>The Iraq War 2003</string>
+		<string>The Iraq War was an armed conflict in Iraq that consisted of two phases. The first was an invasion  led by the United States. It was followed by a longer phase of fighting, in which an insurgency emerged to oppose the occupying forces.</string>
+	</array>
+</array>
+</plist>

@@ -26,7 +26,6 @@ struct Card: View {
     var onEndedP: ((CGPoint,Int) -> Void)?
     var index: Int
     var text: String
-    
     var body: some View {
         ZStack {
             LinearGradient(gradient: gradient, startPoint: .topLeading, endPoint: .bottomTrailing)
