@@ -10,11 +10,12 @@ import Foundation
 struct Plist {
     
     
-    static let names: [NameItem] = [NameItem(cardInfoName: "Revolutions1", sequenceName: "SequenceRevolutions1"),
+    static let names: [NameItem] = [   NameItem(cardInfoName: "Eras1", sequenceName: "SequenceEras1"),
+                                    NameItem(cardInfoName: "Eras2", sequenceName: "SequenceEras2"),
+                                    NameItem(cardInfoName: "Revolutions1", sequenceName: "SequenceRevolutions1"),
                                     NameItem(cardInfoName: "Revolutions2", sequenceName: "SequenceRevolutions2"),
                                     NameItem(cardInfoName: "Revolutions3", sequenceName: "SequenceRevolutions3"),
-                                    NameItem(cardInfoName: "Eras1", sequenceName: "SequenceEras1"),
-                                    NameItem(cardInfoName: "Eras2", sequenceName: "SequenceEras2"),
+
                                     NameItem(cardInfoName: "Wars1", sequenceName: "SequenceWars1"),
                                     NameItem(cardInfoName: "Wars2", sequenceName: "SequenceWars2"),
                                     NameItem(cardInfoName: "Wars3", sequenceName: "SequenceWars3"),
@@ -23,7 +24,14 @@ struct Plist {
                                     NameItem(cardInfoName: "AmericanCivilWar2", sequenceName: "SequenceAmericainCivilWar2"),
                                     NameItem(cardInfoName: "AncientCivilisation1", sequenceName: "SequenceAncientCivilisation1"),
                                     NameItem(cardInfoName: "AncientCivilisation2", sequenceName: "SequenceAncientCivilisation2"),
-                                    NameItem(cardInfoName: "AncientCivilisation3", sequenceName: "SequenceAncientCivilisation3")
-    ]
-    
+                                    NameItem(cardInfoName: "AncientCivilisation3", sequenceName: "SequenceAncientCivilisation3"),
+                                    NameItem(cardInfoName: "AmericainRevolution1", sequenceName: "SequenceAmericainRevolution1"),
+                                    NameItem(cardInfoName: "AmericainRevolution2", sequenceName: "SequenceAmericainRevolution2"),
+                                    NameItem(cardInfoName: "WW1", sequenceName: "SequenceWW1"),
+                                    NameItem(cardInfoName: "WW2-1", sequenceName: "SequenceWW2-1"),
+                                    NameItem(cardInfoName: "WW2-2", sequenceName: "SequenceWW2-2"),
+                                    NameItem(cardInfoName: "SpacePioneers1", sequenceName: "SequenceSpacePioneers1"),
+                                    NameItem(cardInfoName: "SpacePioneers2", sequenceName: "SequenceSpacePioneers2"),
+                                    NameItem(cardInfoName: "SpacePioneers3", sequenceName: "SequenceSpacePioneers3")
+     ]
 }

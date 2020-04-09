@@ -93,7 +93,7 @@ struct ContentView: View {
                                         self.cardDescription = ""
                                         self.numberCardsDisplayed = true
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                                            self.cardDescription = "Cards left: \(9 - self.questionNumber)"
+                                            self.cardDescription = "Cards left: \(self.cardInfo.info.count - self.questionNumber)"
                                             
                                         }
                                 }
@@ -127,13 +127,7 @@ struct ContentView: View {
                                     Color.clear
                                         .coordinateSpace(name: "RightCard")
                                         .onAppear{
-                                            if !(self.userAlreadyExist(coins: "coins")){
-                                                self.coins = 20
-                                                self.points = 0
-                                                UserDefaults.standard.set(self.coins, forKey: "coins")
-                                                UserDefaults.standard.set(self.points, forKey: "points")
-                                            }
-                                            self.coins = UserDefaults.standard.integer(forKey: "coins")
+
                                              self.rightCardPosition = geo2.frame(in: .named("RightCard")).midX
                                             self.cardFrames[0] = geo2.frame(in: .global)
                                     }
@@ -152,7 +146,7 @@ struct ContentView: View {
                                 .padding()
                             
                             Text(self.cardInfo.info[self.questionNumber].card0Date)
-                                .scaledFont(name: "Helvetica Neue", size: self.fonts.fontDimension)
+                                .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
                                 .foregroundColor(.white)
                             .opacity(self.answerIsGood && self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
                             
@@ -185,7 +179,7 @@ struct ContentView: View {
                                 .padding()
                             
                             Text(self.cardInfo.info[self.questionNumber].card1Date)
-                                .scaledFont(name: "Helvetica Neue", size: self.fonts.fontDimension)
+                                .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
                                 .foregroundColor(.white)
                         }
 
@@ -215,7 +209,7 @@ struct ContentView: View {
                                 .addBorder(!self.answerIsGood ? Color.white : Color.clear, cornerRadius: 10)
                                 .padding()
                             Text(self.cardInfo.info[self.questionNumber].card2Date)
-                                .scaledFont(name: "Helvetica Neue", size: self.fonts.fontDimension)
+                                .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
                                 .foregroundColor(.white)
                            .opacity(self.answerIsGood && !self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
                         }
@@ -300,7 +294,7 @@ struct ContentView: View {
             }
         }
         .onAppear{
-
+            self.coins = UserDefaults.standard.integer(forKey: "coins")
             self.eventName = self.item.cardInfoName
             self.nextViewPresent = false
             UserDefaults.standard.set(self.eventName, forKey: "eventName")
@@ -407,8 +401,8 @@ struct ContentView: View {
                 self.xOffset0 = 0
                 self.xOffset2 = 0
                 self.percentComplete = 0
-              //  if self.questionNumber == self.eventTiming.timing.count - 1 {
-               if self.questionNumber == 2 {
+                if self.questionNumber == self.eventTiming.timing.count - 1 {
+              // if self.questionNumber == 2 {
                     withAnimation(.linear(duration: 3)){
                         self.firstLevelFinished = true
                     }
@@ -461,9 +455,7 @@ struct ContentView: View {
             return fonts.fontDimension
         }
     }
-    func userAlreadyExist(coins: String) -> Bool {
-        return UserDefaults.standard.object(forKey: coins) != nil
-    }
+
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<string>Oct 3, 1942</string>
+		<string>First man object in space</string>
+		<string>First man-made object to reach space: the A4-rocket from Germany</string>
+	</array>
+	<array>
+		<string>Oct 4, 1957</string>
+		<string>First orbital launch: Sputnik 1 </string>
+		<string>The first  orbital launch was of the Soviet unmanned Sputnik 1 mission</string>
+	</array>
+	<array>
+		<string>Nov 3, 1957</string>
+		<string>First dog in space</string>
+		<string>USSR launches Sputnik 2  carrying the dog Laika: the first animal in orbit</string>
+	</array>
+	<array>
+		<string>Apr 12, 1961</string>
+		<string>Yuri Gagarin becomes the first man to fly in space.</string>
+		<string>On April 12, 1961, aboard the spacecraft Vostok 1, Soviet cosmonaut Yuri Alekseyevich Gagarin becomes the first human being to travel into space. During the flight, the 27-year-old test pilot and industrial technician also became the first man to orbit the planet</string>
+	</array>
+	<array>
+		<string>May 5, 1961</string>
+		<string>Alan Shepard is the first American into space, a flight of 15 minutes.</string>
+		<string>Alan Shepard became the first American in space when the Freedom 7 spacecraft blasted off from Cape Canaveral, Florida, on May 5, 1961, aboard a Mercury-Redstone rocket.</string>
+	</array>
+	<array>
+		<string>Feb 20, 1962</string>
+		<string>First orbital flight for the USA when John Glenn  orbited Earth.</string>
+		<string>He was one of the Mercury Seven, military test pilots selected in 1959 by NASA as the nation&apos;s first astronauts and bacame the first American to orbit the Earth</string>
+	</array>
+	<array>
+		<string>Dec 14, 1962</string>
+		<string>NASA&apos;s Mariner 2 becomes the first spacecraft to fly by Venus.</string>
+		<string>Mariner 2 was the first spacecraft to successfully fly by Venus, at an altitude of 34,773 kilometers.</string>
+	</array>
+	<array>
+		<string>Jun 16, 1963</string>
+		<string>Soviet Union: Valentina Tereshkova becomes the first woman in space.</string>
+		<string>The first woman in space was a Soviet cosmonaut. Valentina Tereshkova launched with the Vostok 6 mission</string>
+	</array>
+	<array>
+		<string>Mar 18, 1965</string>
+		<string>Aleksei Leonov, becomes the first person to walk in space.</string>
+		<string>Tethered to his spaceship by a 4.8m (16ft) cable, the Russian floated above the Earth for 12 minutes.</string>
+	</array>
+</array>
+</plist>

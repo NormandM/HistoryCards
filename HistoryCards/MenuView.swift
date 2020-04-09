@@ -31,24 +31,29 @@ struct MenuView: View {
         // object for some reason and you have to leave it til the end
         UINavigationBar.appearance().tintColor = .white
     }
+    @State private var coins = UserDefaults.standard.integer(forKey: "coins")
+    @State private var points = UserDefaults.standard.integer(forKey: "points")
     @State private var showContentView = false
     @ObservedObject var names = Names()
     @State private var dismissView = false
     var body: some View {
         NavigationView {
             List {
-                ForEach(names.items) {item in
-                    NavigationLink(destination: ContentView(item: item)){
-                        Text(item.cardInfoName)
+                Section(header: Text("Eras")) {
+                    ForEach(names.items) {item in
+                        NavigationLink(destination: ContentView(item: item)){
+                            Text(item.cardInfoName)
+                        }
+                        
                     }
-                    
                 }
+
             }
             .onAppear{
                 print("did appear")
                 UserDefaults.standard.set(false, forKey: "dismissView")
                 self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
-                print(self.dismissView)
+
             }
         }
         .navigationBarTitle("Choose a Time Line")
@@ -56,10 +61,26 @@ struct MenuView: View {
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear{
            self.names.items = Plist.names
+            if !(self.userAlreadyExist(coins: "coins")){
+                self.coins = 20
+                self.points = 0
+                UserDefaults.standard.set(self.coins, forKey: "coins")
+                UserDefaults.standard.set(self.points, forKey: "points")
+                UserDefaults.standard.set("WW2-1", forKey: "eventName")
+                UserDefaults.standard.set("SequenceWW2-1", forKey: "sequenceName")
+            }
+
+
 
         }
 
     }
+    func userAlreadyExist(coins: String) -> Bool {
+        return UserDefaults.standard.object(forKey: coins) != nil
+    }
+
+    
+    
     
 }
 
