@@ -35,7 +35,6 @@ struct Sequence {
             }
         }
         sequence = allEvents
-        print(sequence)
         isEarlier = transitionBool
         trayCards = transitionTrayCards
     }

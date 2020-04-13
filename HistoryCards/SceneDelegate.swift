@@ -33,6 +33,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
+        let newAppearance = UINavigationBarAppearance()
+        newAppearance.configureWithOpaqueBackground()
+        newAppearance.backgroundColor = UIColorReference.specialGreen
+        newAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+
+        UINavigationBar.appearance().standardAppearance = newAppearance
+
+        //Other code for displaying the first scree
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -65,6 +73,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
+
 
 
 }

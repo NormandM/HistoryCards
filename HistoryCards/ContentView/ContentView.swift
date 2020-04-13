@@ -36,7 +36,6 @@ struct ContentView: View {
     @State private var firstLevelFinished = false
     @State private var numberCardsDisplayed = false
     @State private var timer0 = false
-    @ObservedObject var names = Names()
     @State private var coins = UserDefaults.standard.integer(forKey: "coins")
     @State private var points = UserDefaults.standard.integer(forKey: "points")
     @State private var eventName = UserDefaults.standard.string(forKey: "eventName")
@@ -48,11 +47,9 @@ struct ContentView: View {
     @State var cardInfo = CardInfo()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var sequence = Sequence()
-
     var item: NameItem
 
     var body: some View {
-        //  NavigationView {
         GeometryReader { geo in
             ZStack {
                 NavigationLink(destination: TimeLineView(), isActive: self.$nextViewPresent){
@@ -79,6 +76,7 @@ struct ContentView: View {
                                 .background(ColorReference.specialGray)
                                 .cornerRadius(20)
                                 .padding()
+                                .padding()
                             if self.answerIsGood && self.cardDropped{
                                 Text(self.messageAfterAnswer)
                                     .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
@@ -88,6 +86,7 @@ struct ContentView: View {
                                     .stroke( ColorReference.specialGreen, style: StrokeStyle(lineWidth: 10, lineCap: .round))
                                     .frame(width: geo.size.height/8.0, height:  geo.size.height/8.0)
                                     .animation(.easeOut(duration: 2.0))
+                            
                                     .onAppear {
                                         self.percentComplete = 1.0
                                         self.cardDescription = ""
@@ -295,10 +294,10 @@ struct ContentView: View {
         }
         .onAppear{
             self.coins = UserDefaults.standard.integer(forKey: "coins")
-            self.eventName = self.item.cardInfoName
+            self.eventName = self.item.name
             self.nextViewPresent = false
             UserDefaults.standard.set(self.eventName, forKey: "eventName")
-            self.sequenceName = self.item.sequenceName
+            self.sequenceName = self.item.sequence
             UserDefaults.standard.set(self.sequenceName, forKey: "sequenceName")
             self.sequence = Sequence()
             self.cardInfo = CardInfo()
@@ -460,6 +459,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(item: NameItem.init(cardInfoName: "", sequenceName: ""))
+        ContentView(item: NameItem.init(id: UUID(), name: "", sequence: ""))
     }
 }

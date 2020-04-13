@@ -1,0 +1,216 @@
+[
+	{
+        "id": "EF1CC5BB-4785-4D8E-AB98-5FA4E00B6A66",
+		"name": "Eras of the Universe and Man",
+        "photo": "planet-earth",
+		"items": [
+			{
+                "id": "EDCD038C-036F-4C40-826F-61C88CD84DDD",
+				"name": "Eras1",
+				"sequence": "SequenceEras1"
+			},
+			{
+                "id": "36A7CC40-18C1-48E5-BCD8-3B42D43BEAEE",
+				"name": "Eras2",
+				"sequence": "SequenceEras2"
+			}
+		]
+	},
+	{
+        "id": "3D97FAB4-50AC-40FC-9BF0-3F46BB6A92F5",
+		"name": "Ancient Civilisations",
+        "photo": "047-pillars",
+		"items": [
+			{
+                "id": "D44AAEBC-BF4F-42CD-8C37-0FEF772A5B69",
+				"name": "AncientCivilisation1",
+				"sequence": "SequenceAncientCivilisation1"
+			},
+			{
+                "id": "2BAD20C5-D007-4BBE-B074-8CF0F256A42F",
+				"name": "AncientCivilisation2",
+				"sequence": "SequenceAncientCivilisation2"
+			},
+			{
+                "id": "759527CB-1064-4082-A527-F04698F9D18F",
+                "name": "AncientCivilisation3",
+                "sequence": "SequenceAncientCivilisation2"
+			}
+		]
+	},
+	{
+        "id": "1C89DAFD-7653-4EF2-BF20-C51A159BAC43",
+		"name": "Revolutions that changed humanity",
+        "photo": "che-guevara copy",
+		"items": [
+			{
+                "id": "AB7E38EA-05A7-426A-AFF3-B3A32B3E86BF",
+                "name": "Revolutions1",
+                "sequence": "SequenceRevolutions1"
+			},
+			{
+                "id": "758ABBE3-F338-4F7C-BAC7-8D61BC1FB329",
+                "name": "Revolutions2",
+                "sequence": "SequenceRevolutions2"
+			},
+			{
+                "id": "A73E2D2D-D53A-46D4-8829-62011EEF7DA4",
+                "name": "Revolutions3",
+                "sequence": "SequenceRevolutions3"
+			}
+		]
+	},
+	{
+        "id": "CE3C67F9-79E3-46E3-B134-362A52ABFE3C",
+		"name": "Americain Revolution",
+        "photo": "AmericainRevolution",
+		"items": [
+			{
+                "id": "A4D89AF9-190E-4409-B924-AABD13DBB6A4",
+				"name": "AmericainRevolution1",
+                "sequence": "SequenceAmericainRevolution1"
+			},
+			{
+                "id": "FC201614-1418-4152-9469-087B27485D13",
+                "name": "AmericainRevolution2",
+                "sequence": "SequenceAmericainRevolution2"
+            }
+        ]
+    },
+    {
+        "id": "72a67ed4-7cf8-11ea-bc55-0242ac130003",
+        "name": "French Revolution",
+        "photo": "frenchflag",
+        "items": [
+            {
+                "id": "72a68104-7cf8-11ea-bc55-0242ac130003",
+                "name": "FrenchRevolution1",
+                "sequence": "SequenceFrenchReolution1"
+            },
+            {
+                "id": "FC201614-1418-4152-9469-087B27485D13",
+                "name": "FrenchRevolution2",
+                "sequence": "SequenceFrenchRevolution2"
+            }
+        ]
+    },
+    {
+        "id": "6f2d0e08-7b4a-11ea-bc55-0242ac130003",
+        "name": "Main wars of history",
+        "photo": "sword",
+        "items": [
+            {
+                "id": "6f2d0b7e-7b4a-11ea-bc55-0242ac130003",
+                "name": "Wars1",
+                "sequence": "SequenceWars1"
+            },
+            {
+                "id": "6f2d0f0c-7b4a-11ea-bc55-0242ac130003",
+                "name": "Wars2",
+                "sequence": "SequenceWars2"
+            },
+            {
+                "id": "6f2d0ff2-7b4a-11ea-bc55-0242ac130003",
+                "name": "Wars3",
+                "sequence": "SequenceWars3"
+            },
+            {
+                "id": "6f2d13c6-7b4a-11ea-bc55-0242ac130003",
+                "name": "Wars4",
+                "sequence": "SequenceWars4"
+            }
+        ]
+    },
+    {
+        "id": "df3685aa-7d9b-11ea-bc55-0242ac130003",
+        "name": "Napoleonic Wars",
+        "photo": "NapoleonImage",
+        "items": [
+            {
+                "id": "ecbdf0a4-7d9c-11ea-bc55-0242ac130003",
+                "name": "Napoleon's rise to power",
+                "sequence": "SequenceNapoleon1"
+            },
+            {
+                "id": "ecbdf342-7d9c-11ea-bc55-0242ac130003",
+                "name": "Napoleon's conquests",
+                "sequence": "SequenceNapoleon2"
+            },
+            {
+                "id": "ecbe47de-7d9c-11ea-bc55-0242ac130003",
+                "name": "Napoleon 100 days war",
+                "sequence": "SequenceNapoleon3"
+            }
+        ]
+    },
+    {
+        "id": "6f2d14e8-7b4a-11ea-bc55-0242ac130003",
+        "name": "Americain Civil War",
+        "photo": "civilwar",
+        "items": [
+            {
+                "id": "6f2d15c4-7b4a-11ea-bc55-0242ac130003",
+                "name": "AmericanCivilWar1",
+                "sequence": "SequenceAmericainCivilWar1"
+            },
+            {
+                "id": "6f2d1696-7b4a-11ea-bc55-0242ac130003",
+                "name": "AmericanCivilWar2",
+                "sequence": "SequenceAmericainCivilWar2"
+            }
+        ]
+    },
+    {
+        "id": "6f2d192a-7b4a-11ea-bc55-0242ac130003",
+        "name": "World War I",
+        "photo": "ww1",
+        "items": [
+            {
+                "id": "6f2d15c4-7b4a-11ea-bc55-0242ac130003",
+                "name": "WW1",
+                "sequence": "SequenceWW1"
+            }
+        ]
+    },
+    {
+        "id": "6f2d1b82-7b4a-11ea-bc55-0242ac130003",
+        "name": "World War II",
+        "photo": "helmet",
+        "items": [
+            {
+                "id": "6f2d1c68-7b4a-11ea-bc55-0242ac130003",
+                "name": "WW2-1",
+                "sequence": "SequenceWW2-1"
+            },
+            {
+                "id": "6f2d1d44-7b4a-11ea-bc55-0242ac130003",
+                "name": "WW2-2",
+                "sequence": "SequenceWW2-2"
+            }
+        ]
+    },
+    {
+        "id": "6f2d1eac-7b4a-11ea-bc55-0242ac130003",
+        "name": "Space Exploration",
+        "photo": "rocket-hi",
+        "items": [
+            {
+                "id": "6f2d1f9c-7b4a-11ea-bc55-0242ac130003",
+                "name": "SpacePioneers1",
+                "sequence": "SequenceSpacePioneers1"
+            },
+            {
+                "id": "6f2d2186-7b4a-11ea-bc55-0242ac130003",
+                "name": "SpacePioneers2",
+                "sequence": "SequenceSpacePioneers2"
+            },
+            {
+                "id": "6f2d2258-7b4a-11ea-bc55-0242ac130003",
+                "name": "SpacePioneers3",
+                "sequence": "SequenceSpacePioneers3"
+            }
+        ]
+    }
+ 
+ ]
+ 

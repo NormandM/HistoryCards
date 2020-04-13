@@ -13,14 +13,12 @@ struct QUizDataView: View {
     @State private var eventData: [EventAndSection] = AllEvents.event
 
     var body: some View {
-        //ZStack {
             NavigationView{
                 List{
                     ForEach(eventData){section in
                         Section(header: Text(section.date)){
                             ForEach(section.items){item in
                                 Text(item.name)
-                                
                                 Text(item.description)
                             }
                             //.listRowBackground(ColorReference.specialGreen)
@@ -37,7 +35,6 @@ struct QUizDataView: View {
                 .navigationBarTitle("Great Inventions")
             }
         }
-  //  }
 
 }
 struct QUizDataView_Previews: PreviewProvider {

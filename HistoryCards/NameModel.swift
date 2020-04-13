@@ -7,13 +7,27 @@
 //
 
 import Foundation
-struct NameItem: Identifiable {
-    var id = UUID()
-    let cardInfoName: String
-    let sequenceName: String
+
+struct Names: Identifiable, Codable {
+    var id: UUID
+    var name: String
+    var photo: String
+    var items = [NameItem]()
 }
-class Names: ObservableObject, Identifiable {
-    var id = UUID()
-    @Published var items = [NameItem]()
+
+struct NameItem: Identifiable, Codable, Equatable {
+    var id: UUID
+    let name: String
+    let sequence: String
 }
+
+//class Sections: Identifiable, ObservableObject {
+//    var id = UUID()
+//    @Published var sections = [SectionItem]()
+//
+//}
+//struct SectionItem: Identifiable {
+//    var id = UUID()
+//    let sectionItem: String
+//}
 

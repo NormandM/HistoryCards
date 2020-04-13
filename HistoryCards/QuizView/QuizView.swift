@@ -149,7 +149,7 @@ struct QuizView: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        Text(self.quizData.questions[0])
+                        Text(self.quizData.questions[0]).lineLimit(nil)
                             .frame(width: geo.size.width/1.5, height: geo.size.height/15, alignment: .leading)
                             .foregroundColor(.white)
 
@@ -180,7 +180,7 @@ struct QuizView: View {
     
                     HStack {
                         Spacer()
-                        Text(self.quizData.questions[1])
+                        Text(self.quizData.questions[1]).lineLimit(nil)
                             .frame(width: geo.size.width/1.5, height: geo.size.height/15, alignment: .leading)
                             .foregroundColor(.white)
                         Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed ,index: 1, text: self.cardText[1])
@@ -212,7 +212,7 @@ struct QuizView: View {
                     .padding()
                     HStack {
                         Spacer()
-                        Text(self.quizData.questions[2])
+                        Text(self.quizData.questions[2]).lineLimit(nil)
                             .frame(width: geo.size.width/1.5, height: geo.size.height/15, alignment: .leading)
                             .foregroundColor(.white)
                         Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed ,index: 2, text: self.cardText[2])
