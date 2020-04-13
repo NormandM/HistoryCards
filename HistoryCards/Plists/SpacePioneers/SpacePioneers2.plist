@@ -5,7 +5,7 @@
 	<array>
 		<string>Feb 3, 1966</string>
 		<string>USSR’s Luna 9 makes the first controlled rocket-assisted landing on the Moon.</string>
-		<string>The lander had a mass of 99 kilograms (218 lb). It used a landing bag to survive the impact speed of 22 kilometres per hour (14 mph). It was a hermetically sealed container with radio equipment, a program timing device, heat control systems, scientific apparatus, power sources, and a television system.</string>
+		<string>The lander had a mass of 99 kilograms (218 lb). It used a landing bag to survive the impact speed of 22 kilometres per hour (14 mph). </string>
 	</array>
 	<array>
 		<string>Mar 1, 1966</string>
@@ -15,12 +15,12 @@
 	<array>
 		<string> July 20, 1969</string>
 		<string>First man on the moon</string>
-		<string>Apollo 11 was the spaceflight that first landed humans on the Moon. Commander Neil Armstrong and lunar module pilot Buzz Aldrin formed the American crew that landed the Apollo Lunar Module Eagle. Armstrong became the first person to step onto the lunar surface.</string>
+		<string>Apollo 11 was the spaceflight that first landed humans on the Moon. Armstrong became the first person to step onto the lunar surface.</string>
 	</array>
 	<array>
 		<string>Dec 15, 1970</string>
 		<string>Soviet Venera 7 is first spacecraft to land on another planet (Venus).</string>
-		<string>Venera 7  was a Soviet spacecraft, part of the Venera series of probes to Venus. When it landed on the Venusian surface , it became the first spacecraft to soft land on another planet and first to transmit data from there back to Earth.</string>
+		<string>Venera 7  was a Soviet spacecraft. When it landed on the Venusian surface , it became the first spacecraft to soft land on another planet and first to transmit data from there back to Earth.</string>
 	</array>
 	<array>
 		<string>Apr 19, 1971</string>
@@ -30,7 +30,7 @@
 	<array>
 		<string>Nov 13, 1971</string>
 		<string>The American space probe, Mariner 9: first spacecraft to orbit another planet Mars</string>
-		<string>NASA's Mariner 9 beat the Soviet Mars 2—which had an 11-day head start—to Mars, becoming the first spacecraft to orbit another planet. The orbiter mapped 85% of the Martian surface and sent back more than 7,000 pictures</string>
+		<string>NASA&apos;s Mariner 9 beat the Soviet Mars 2—which had an 11-day head start—to Mars, becoming the first spacecraft to orbit another planet.</string>
 	</array>
 	<array>
 		<string>May 14, 1973</string>

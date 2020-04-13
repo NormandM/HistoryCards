@@ -8,7 +8,7 @@
 
 import Foundation
 struct Series {
-    var list = [[1,4, 6, 8], [2, 5, 7, 8]]
+    var list = [[1,4, 8], [2, 5, 7]]
 }
 struct SeriesInfo:  Identifiable {
     var id: Int
@@ -26,7 +26,7 @@ struct SeriesInfo:  Identifiable {
         var arrayDate = [String]()
         let shuffledList = list.shuffled()
         var arrayRightPositionCard = [String]()
-        for n in 0...3{
+        for n in 0...2{
             arrayDate.append(Event(eventIndex: shuffledList[n]).date)
             arrayName.append(Event(eventIndex: shuffledList[n]).name)
             arrayDescription.append(Event(eventIndex: shuffledList[n]).description)

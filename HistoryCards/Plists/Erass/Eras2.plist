@@ -2,55 +2,55 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-    <array>
-          <string>1200 BC  </string>
-          <string>IRON AGE : The Trojan War</string>
-          <string>The early period of the age is characterized by the widespread use of iron or steel. The adoption of these materials coincided with other changes in society, including differing agricultural practices, religious beliefs and artistic styles</string>
-    </array>
-    <array>
-          <string>323 BC </string>
-          <string>HELLENISTIC PERIOD : Ancient Greek</string>
-          <string>The Hellenistic period is the period of ancient Greek and eastern Mediterranean history between the death of Alexander the Great and the emergence of the Roman Empire</string>
-    </array>
-    <array>
-          <string>31 BC  </string>
-          <string>ROMAN PERIOD : Roman Emperors</string>
-          <string>The Roman Empire was the post-Republican period of the ancient Roman civilisation, characterised by an autocratic form of government, headed by an Emperor, and large territorial holdings around the Mediterranean Sea in Europe, Africa, the Middle East and Asia Minor.</string>
-    </array>
-    <array>
-          <string>330  </string>
-          <string>BYZANTINE PERIOD : Eastern Roman Empire</string>
-          <string>The Byzantine Empire was the predominantly Greek-speaking continuation of the eastern half of the Roman Empire during Late Antiquity and the Middle Ages. Its capital city was Constantinople (modern-day Istanbul</string>
-    </array>
-    <array>
-          <string>476  </string>
-          <string>MIDDLE AGES : Rise of Western Monarchies</string>
-          <string>The Middle Ages is commonly considered as having lasted from the end of the Western Roman Empire until the rise of national monarchies and the beginnings of demographic and economic renewal after the Black Death.</string>
-    </array>
-    <array>
-          <string>1350 </string>
-          <string>RENAISSANCE : Beginning of the Modern Age</string>
-          <string>The Renaissance was a cultural movement that spanned the period roughly from the 14th to the 17th century, beginning in Italy in the Late Middle Ages and later spreading to the rest of Europe</string>
-    </array>
-    <array>
-          <string>1517 </string>
-          <string>REFORMATION : Protestants vs The Catholic Church</string>
-          <string>The Protestant Reformation was the schism within Western Christianity initiated by Martin Luther, John Calvin, and other early Protestants.</string>
-    </array>
-    <array>
-          <string>1600 </string>
-          <string>ENLIGHTENMENT : The Age of Reason and Science</string>
-          <string>The Age of Enlightenment was an intellectual movement in Europe. The goal of the Enlightenment was to establish an authoritative ethics, aesthetics, and knowledge based on an &quot;enlightened&quot; rationality. </string>
-    </array>
-    <array>
-          <string>1750 </string>
-          <string>INDUSTRIAL REVOLUTION : Technological Innovations</string>
-          <string>The Industrial Revolution was a period of the 18th century marked by social and technological change in which manufacturing began to rely on steam power, fueled primarily by coal, rather than on animal labor, or on water or wind power</string>
-    </array>
-    <array>
-          <string>1900 </string>
-          <string>The Age of Globalization</string>
-          <string>The Age of Globalization saw great advances in communication and medical technology that allowed for near-instantaneous worldwide computer communication and genetic modification of life. </string>
-    </array>
+	<array>
+		<string>1200 BC  </string>
+		<string>IRON AGE : The Trojan War</string>
+		<string>The early period of the age is characterized by the widespread use of iron or steel. The adoption of these materials coincided with other changes in society, including differing agricultural practices, religious beliefs and artistic styles</string>
+	</array>
+	<array>
+		<string>323 BC </string>
+		<string>HELLENISTIC PERIOD : Ancient Greek</string>
+		<string>The Hellenistic period is the period of ancient Greek and eastern Mediterranean history between the death of Alexander the Great and the emergence of the Roman Empire</string>
+	</array>
+	<array>
+		<string>31 BC  </string>
+		<string>ROMAN PERIOD : Roman Emperors</string>
+		<string>The Roman Empire was the post-Republican period of the ancient Roman civilisation, headed by an Emperor, and large territorial holdings around the Mediterranean Sea in Europe, Africa, the Middle East and Asia Minor.</string>
+	</array>
+	<array>
+		<string>330  </string>
+		<string>BYZANTINE PERIOD : Eastern Roman Empire</string>
+		<string>The Byzantine Empire was the predominantly Greek-speaking continuation of the eastern half of the Roman Empire during Late Antiquity and the Middle Ages. Its capital city was Constantinople (modern-day Istanbul</string>
+	</array>
+	<array>
+		<string>476  </string>
+		<string>MIDDLE AGES : Rise of Western Monarchies</string>
+		<string>The Middle Ages is commonly considered as having lasted from the end of the Western Roman Empire until the rise of national monarchies and the beginnings of demographic and economic renewal after the Black Death.</string>
+	</array>
+	<array>
+		<string>1350 </string>
+		<string>RENAISSANCE : Beginning of the Modern Age</string>
+		<string>The Renaissance was a cultural movement that spanned the period roughly from the 14th to the 17th century, beginning in Italy in the Late Middle Ages and later spreading to the rest of Europe</string>
+	</array>
+	<array>
+		<string>1517 </string>
+		<string>REFORMATION : Protestants vs The Catholic Church</string>
+		<string>The Protestant Reformation was the schism within Western Christianity initiated by Martin Luther, John Calvin, and other early Protestants.</string>
+	</array>
+	<array>
+		<string>1600 </string>
+		<string>ENLIGHTENMENT : The Age of Reason and Science</string>
+		<string>The Age of Enlightenment was an intellectual movement in Europe. The goal of the Enlightenment was to establish an authoritative ethics, aesthetics, and knowledge based on an &quot;enlightened&quot; rationality. </string>
+	</array>
+	<array>
+		<string>1750 </string>
+		<string>INDUSTRIAL REVOLUTION : Technological Innovations</string>
+		<string>The Industrial Revolution was a period of the 18th century marked by social and technological change in which manufacturing began to rely on steam power, fueled primarily by coal, rather than on animal labor, or on water or wind power</string>
+	</array>
+	<array>
+		<string>1900 </string>
+		<string>The Age of Globalization</string>
+		<string>The Age of Globalization saw great advances in communication and medical technology that allowed for near-instantaneous worldwide computer communication and genetic modification of life. </string>
+	</array>
 </array>
 </plist>

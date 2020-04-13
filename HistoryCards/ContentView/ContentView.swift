@@ -401,7 +401,7 @@ struct ContentView: View {
                 self.xOffset2 = 0
                 self.percentComplete = 0
                 if self.questionNumber == self.eventTiming.timing.count - 1 {
-              // if self.questionNumber == 2 {
+             //   if self.questionNumber == 2 {
                     withAnimation(.linear(duration: 3)){
                         self.firstLevelFinished = true
                     }
@@ -451,7 +451,7 @@ struct ContentView: View {
         if tryAgain {
             return fonts.finalBigFont
         }else{
-            return fonts.fontDimension
+            return fonts.smallFontDimension
         }
     }
 
@@ -459,6 +459,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(item: NameItem.init(id: UUID(), name: "", sequence: ""))
+        ContentView(item: NameItem.init(id: UUID(uuidString: "EDCD038C-036F-4C40-826F-61C88CD84DDD")!, name: "Eras1", sequence: "SequenceEras1"))
     }
 }

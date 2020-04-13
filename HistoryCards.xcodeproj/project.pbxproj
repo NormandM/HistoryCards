@@ -947,6 +947,7 @@
 				DEVELOPMENT_TEAM = X6D769Z7F4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = HistoryCards/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -967,6 +968,7 @@
 				DEVELOPMENT_TEAM = X6D769Z7F4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = HistoryCards/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

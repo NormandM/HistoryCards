@@ -98,7 +98,7 @@ struct TimeLineView: View {
                                     self.percentComplete = 0.0
                                     self.quizStarted = false
                                     self.timeRemaining = 120
-                                    for n in 0...3{
+                                    for n in 0...2{
                                         self.cardWasDropped[n] = false
                                         self.trayCardDropped[n] = false
                                         self.cardIsBeingMoved[n] = false
@@ -172,14 +172,12 @@ struct TimeLineView: View {
                                 }
                             }
                         }
-                        .padding()
-
                         HStack() {
                             Spacer()
                             VStack{
                                 Card(onEnded: self.cardDropped, index: 0, text: self.cardText[0])
-                                    .frame(width: geo.size.height/6 * 0.6
-                                        , height: geo.size.height/6)
+                                    .frame(width: geo.size.height/5 * 0.6
+                                        , height: geo.size.height/5)
                                     .allowsHitTesting(false)
                                     .overlay(GeometryReader { geo2 in
                                         Color.clear
@@ -200,22 +198,18 @@ struct TimeLineView: View {
                                     .offset(x: self.serieNumbers == 0 ? self.xOffset : 0.0)
                                     .addBorder(self.cardWasDropped[0] ? Color.clear : Color.white, cornerRadius: 10)
                                     .padding(.leading)
-                                    .padding(.leading)
                                 Text(self.trayCardDates[0])
                                     .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
                                     .foregroundColor(.white)
                                     .opacity(self.allCardsDropped ? 1.0 : 0)
                                 .padding(.leading)
-                                .padding(.leading)
                                 
                             }
-
-                            
                             Spacer()
                             VStack{
                                 Card(onEnded: self.cardDropped, index: 1, text: self.cardText[1])
-                                    .frame(width: geo.size.height/6 * 0.6
-                                        , height: geo.size.height/6)
+                                    .frame(width: geo.size.height/5 * 0.6
+                                        , height: geo.size.height/5)
                                     .allowsHitTesting(false)
                                     .overlay(GeometryReader { geo2 in
                                         Color.clear
@@ -244,8 +238,8 @@ struct TimeLineView: View {
                             Spacer()
                             VStack {
                                 Card(onEnded: self.cardDropped, index: 2, text: self.cardText[2])
-                                    .frame(width: geo.size.height/6 * 0.6
-                                        , height: geo.size.height/6)
+                                    .frame(width: geo.size.height/5 * 0.6
+                                        , height: geo.size.height/5)
                                     .allowsHitTesting(false)
                                     .overlay(GeometryReader { geo2 in
                                         Color.clear
@@ -268,51 +262,13 @@ struct TimeLineView: View {
                                     .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
                                     .foregroundColor(.white)
                                     .opacity(self.allCardsDropped ? 1.0 : 0)
-                            }
-
-                            
-                            
-                            Spacer()
-                            VStack {
-                                Card(onEnded: self.cardDropped, index: 3, text: self.cardText[3])
-                                    .frame(width: geo.size.height/6 * 0.6
-                                        , height: geo.size.height/6)
-                                    .allowsHitTesting(false)
-                                    .overlay(GeometryReader { geo2 in
-                                        Color.clear
-                                            .overlay(GeometryReader { geo2 in
-                                                Color.clear
-                                                    .onAppear{
-                                                        self.cardFrames[3] = geo2.frame(in: .global)
-                                                }
-                                                .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                        self.cardFrames[3] = geo2.frame(in: .global)
-                                                    }
-                                                }
-                                            })
-                                    })
-                                    .opacity(self.cardWasDropped[3] ? 1.0 : 0.0)
-                                    .offset(x: self.serieNumbers == 0 ? self.xOffset : 0.0)
-                                    .addBorder(self.cardWasDropped[3] ? Color.clear : Color.white, cornerRadius: 10)
-                                    .padding(.trailing)
-                                .padding(.trailing)
-                                Text(self.trayCardDates[3])
-                                    .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
-                                    .foregroundColor(.white)
-                                    .opacity(self.allCardsDropped ? 1.0 : 0)
-                                    .padding(.trailing)
-                                .padding(.trailing)
-
+                                
                             }
                             Spacer()
-                            
                         }
-                        .padding()
-                        Spacer()
                         HStack {
                             Button(action: {
-                                 for n in 0...3{
+                                 for n in 0...2{
                                      self.cardGood[n] = false
                                      self.trayCardDropped[n] = false
                                      self.cardWasDropped[n] = false
@@ -334,13 +290,12 @@ struct TimeLineView: View {
                                  )
                              }
                         }
- 
-                       Spacer()
+                        .padding()
                         HStack {
                             Spacer()
                             Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 0, text: self.questionForSeries.seriesInfo[self.serieNumbers].trayCardName[0])
-                                .frame(width: geo.size.height/6 * 0.6
-                                    , height: geo.size.height/6)
+                                .frame(width: geo.size.height/5 * 0.6
+                                    , height: geo.size.height/5)
                                 .overlay(GeometryReader { geo2 in
                                     Color.clear
                                         .overlay(GeometryReader { geo2 in
@@ -360,11 +315,10 @@ struct TimeLineView: View {
                                 .offset(x: self.serieNumbers == 1 ? self.xOffset2 : 0)
                                 .opacity(self.trayCardDropped[0] ? 0.0 : 1.0)
                                 .padding(.leading)
-                            .padding(.leading)
                             Spacer()
                             Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 1, text: self.questionForSeries.seriesInfo[self.serieNumbers].trayCardName[1])
-                                .frame(width: geo.size.height/6 * 0.6
-                                    , height: geo.size.height/6)
+                                .frame(width: geo.size.height/5 * 0.6
+                                    , height: geo.size.height/5)
                                 .overlay(GeometryReader { geo2 in
                                     Color.clear
                                         .overlay(GeometryReader { geo2 in
@@ -386,8 +340,8 @@ struct TimeLineView: View {
                                 .opacity(self.trayCardDropped[1] ? 0.0 : 1.0)
                             Spacer()
                             Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 2, text: self.questionForSeries.seriesInfo[self.serieNumbers].trayCardName[2])
-                                .frame(width: geo.size.height/6 * 0.6
-                                    , height: geo.size.height/6)
+                                .frame(width: geo.size.height/5 * 0.6
+                                    , height: geo.size.height/5)
                                 .overlay(GeometryReader { geo2 in
                                     Color.clear
                                         .overlay(GeometryReader { geo2 in
@@ -407,35 +361,9 @@ struct TimeLineView: View {
                                 .offset(x: self.serieNumbers == 1 ? self.xOffset2 : 0)
                                 .opacity(self.trayCardDropped[2] ? 0.0 : 1.0)
                             Spacer()
-                            Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 3, text: self.questionForSeries.seriesInfo[self.serieNumbers].trayCardName[3])
-                                .frame(width: geo.size.height/6 * 0.6
-                                    , height: geo.size.height/6)
-                                .overlay(GeometryReader { geo2 in
-                                    Color.clear
-                                        .overlay(GeometryReader { geo2 in
-                                            Color.clear
-                                                .onAppear{
-                                                    self.trayCardsFrames[3] = geo2.frame(in: .global)
-                                                    
-                                            }
-                                            .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                   self.trayCardsFrames[3] = geo2.frame(in: .global)
-                                                }
-                                            }
-                                        })
-                                })
-                                .zIndex(self.cardIsBeingMoved[3] ? 1.0 : 0.5)
-                                .offset(x: self.serieNumbers == 0 ? self.xOffset : 0)
-                                .offset(x: self.serieNumbers == 1 ? self.xOffset2 : 0)
-                                .opacity(self.trayCardDropped[3] ? 0.0 : 1.0)
-                                .padding(.trailing)
-                            .padding(.trailing)
-                            Spacer()
                         
                         }
-                        .padding()
-                       
+                        Spacer()
                         Spacer()
                         ZStack{
                             Rectangle()
@@ -513,7 +441,7 @@ struct TimeLineView: View {
                     self.percentComplete = 0.0
                     self.quizStarted = false
                     self.timeRemaining = 120
-                    for n in 0...3{
+                    for n in 0...2{
                         self.cardWasDropped[n] = false
                         self.trayCardDropped[n] = false
                         self.cardIsBeingMoved[n] = false
@@ -523,7 +451,7 @@ struct TimeLineView: View {
                     self.xOffset = 0
                     self.numberToFinish = 0
                 }
-                
+                Spacer()
             }
             .navigationBarTitle("What is the right order?", displayMode: .inline)
             .navigationBarHidden(secondLevelFinished)
@@ -554,19 +482,14 @@ struct TimeLineView: View {
                 trayCardDates[2] = trayCardDate
                 playSound(sound: "404015__paul-sinnett__card", type: "wav")
                 if trayCardText == questionForSeries.seriesInfo[serieNumbers].rightPositionCard[2]{cardGood[2] = true}
-            case 3:
-                cardText[3] = trayCardText
-                trayCardDates[3] = trayCardDate
-                playSound(sound: "404015__paul-sinnett__card", type: "wav")
-                if trayCardText == questionForSeries.seriesInfo[serieNumbers].rightPositionCard[3]{cardGood[3] = true}
             default:
                 print()
             }
-            if cardText[0] != "" && cardText[1] != "" && cardText[2] != "" && cardText[3] != ""{
+            if cardText[0] != "" && cardText[1] != "" && cardText[2] != ""{
                 allCardsDropped = true
             }
             
-            if self.cardGood[0] && self.cardGood[1] && self.cardGood[2] && self.cardGood[3] && self.allCardsDropped{
+            if self.cardGood[0] && self.cardGood[1] && self.cardGood[2] && self.allCardsDropped{
                 answerIsGood = true
             }else if self.allCardsDropped{
                 answerIsGood = false
@@ -581,7 +504,7 @@ struct TimeLineView: View {
         if let match = cardFrames.firstIndex(where: {
             $0.contains(location)
         }) {
-            if match == 0 || match == 1 || match == 2 || match == 3{
+            if match == 0 || match == 1 || match == 2{
                 return .good
             }else{
                 return .bad
@@ -608,8 +531,6 @@ struct TimeLineView: View {
                 cardIsBeingMoved[1] = true
             case 2:
                 cardIsBeingMoved[2] = true
-            case 3:
-                cardIsBeingMoved[2] = true
             default:
                 print()
             }
@@ -625,11 +546,10 @@ struct TimeLineView: View {
         }else{
             cardDescription = "Serie 2 of 2"
         }
-        for n in 0...3 {
+        for n in 0...2 {
             if cardText[n] == questionForSeries.seriesInfo[serieNumbers].trayCardName[0] {self.trayCardDropped[0] = true }
             if cardText[n] == questionForSeries.seriesInfo[serieNumbers].trayCardName[1] {self.trayCardDropped[1] = true }
             if cardText[n] == questionForSeries.seriesInfo[serieNumbers].trayCardName[2] {self.trayCardDropped[2] = true }
-            if cardText[n] == questionForSeries.seriesInfo[serieNumbers].trayCardName[3] {self.trayCardDropped[3] = true }
             cardIsBeingMoved[n] = false
             self.count = 0
         }
@@ -650,7 +570,7 @@ struct TimeLineView: View {
                 self.points += 1
                 UserDefaults.standard.set(self.points, forKey: "points")
                 self.numberToFinish += 1
-                for n in 0...3 {
+                for n in 0...2 {
                     self.percentComplete = 0
                     self.allCardsDropped = false
                     self.answerIsGood = false
