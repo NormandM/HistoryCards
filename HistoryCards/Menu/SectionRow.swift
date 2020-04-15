@@ -31,7 +31,7 @@ struct SectionRow: View {
 struct SectionRow_Previews: PreviewProvider {
     var name: Names
     static var previews: some View {
-        SectionRow(name: Names(id: UUID(), name: "example", photo: "AmericainRevolution"))
+        SectionRow(name: Names.example)
     }
 }
 

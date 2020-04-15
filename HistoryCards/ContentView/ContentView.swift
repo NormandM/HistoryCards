@@ -48,7 +48,6 @@ struct ContentView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var sequence = Sequence()
     var item: NameItem
-
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -112,6 +111,7 @@ struct ContentView: View {
                             }
                         }
                     }
+                    .padding(.top)
                     Spacer()
                     HStack {
                         Spacer()
@@ -400,8 +400,8 @@ struct ContentView: View {
                 self.xOffset0 = 0
                 self.xOffset2 = 0
                 self.percentComplete = 0
-                if self.questionNumber == self.eventTiming.timing.count - 1 {
-             //   if self.questionNumber == 2 {
+               // if self.questionNumber == self.eventTiming.timing.count - 1 {
+                if self.questionNumber == 2 {
                     withAnimation(.linear(duration: 3)){
                         self.firstLevelFinished = true
                     }
@@ -459,6 +459,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(item: NameItem.init(id: UUID(uuidString: "EDCD038C-036F-4C40-826F-61C88CD84DDD")!, name: "Eras1", sequence: "SequenceEras1"))
+        ContentView( item: NameItem.example)
     }
 }

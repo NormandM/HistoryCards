@@ -172,6 +172,7 @@ struct TimeLineView: View {
                                 }
                             }
                         }
+                        .padding(.bottom)
                         HStack() {
                             Spacer()
                             VStack{
@@ -363,7 +364,6 @@ struct TimeLineView: View {
                             Spacer()
                         
                         }
-                        Spacer()
                         Spacer()
                         ZStack{
                             Rectangle()

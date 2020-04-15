@@ -19,20 +19,22 @@ struct Card: View {
     @State private var dragAmount = CGSize.zero
     @State private var dragState = DragState.unknown
     @State private var touching = false
-    @State private var gradient = Gradient(colors: [ColorReference.specialOrange, ColorReference.specialGray])
+    var gradient: Gradient? = Gradient(colors: [ColorReference.specialOrange, ColorReference.specialGray])
     var onChanged: ((CGPoint, String) -> DragState)?
     var onEnded: ((CGPoint, Int, String) -> Void)?
     var onChangedP: ((CGPoint, Int) -> ())?
     var onEndedP: ((CGPoint,Int) -> Void)?
     var index: Int
     var text: String
+    var fontColorIsWhite: Bool? = false
     var body: some View {
         ZStack {
-            LinearGradient(gradient: gradient, startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(gradient: gradient!, startPoint: .topLeading, endPoint: .bottomTrailing)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             VStack(alignment: .center) {
                 Text(text)
                     .scaledFont(name: "Helvetica Neue", size: fonts.smallFontDimension )
+                    .foregroundColor(fontColorIsWhite! ? .white : .black)
                     .padding(5)
                     .multilineTextAlignment(.center)
                     .lineLimit(nil)
