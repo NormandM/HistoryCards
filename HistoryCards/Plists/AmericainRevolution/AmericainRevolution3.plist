@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<string>Jul 10, 1778</string>
+		<string>France declares war</string>
+		<string>Louis XVI of France declares war on the Kingdom of Great Britain.</string>
+	</array>
+	<array>
+		<string>Jun 1, 1779</string>
+		<string>Benedict Arnold is court-martialed</string>
+		<string>Benedict Arnold is court-martialed for malfeasance in his treatment of government property.</string>
+	</array>
+	<array>
+		<string>Jan 5, 1781</string>
+		<string>Virginia is burned</string>
+		<string>Richmond, Virginia is burned by British naval forces led by Benedict Arnold.</string>
+	</array>
+	<array>
+		<string>Oct 19, 1781</string>
+		<string>British General Lord Cornwallis surrenders</string>
+		<string>At Yorktown, Virginia, British General Lord Cornwallis surrenders 8,000 British soldiers and seamen to a larger Franco-American force, effectively bringing an end to the American Revolution.</string>
+	</array>
+	<array>
+		<string>Feb 4, 1783</string>
+		<string>End of hostilities</string>
+		<string>The United Kingdom formally declares that it will cease hostilities with the United States of America.</string>
+	</array>
+	<array>
+		<string>Sep 3, 1783</string>
+		<string>Treaty of Paris</string>
+		<string>The war ends with the signing of the Treaty of Paris by the United States and the Kingdom of Great Britain.</string>
+	</array>
+</array>
+</plist>

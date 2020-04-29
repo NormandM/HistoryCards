@@ -3,49 +3,34 @@
 <plist version="1.0">
 <array>
 	<array>
+		<string>470 BC</string>
+		<string>Birth of Socrates</string>
+		<string>Socrates was a classical Greek Athenian philosopher. Credited as one of the founders of Western philosophy.</string>
+	</array>
+	<array>
+		<string>331 BC</string>
+		<string>Alexander the Great defeats Persia</string>
+		<string>Alexander undermanned defeat of the Persian King Darius III at the Battle of Gaugamela is seen as one of the decisive turning points of human history, unseating the Persians as the greatest power in the ancient world</string>
+	</array>
+	<array>
+		<string>221 BC</string>
+		<string>Unification of China</string>
+		<string>Qin Shi Huang unifies China beginning of Imperial rule in China which lasts until 1912.</string>
+	</array>
+	<array>
+		<string>146 BC</string>
+		<string> Roman conquest of Greece.</string>
+		<string>The Roman era of Greek history began with the Corinthian defeat in the Battle of Corinth.</string>
+	</array>
+	<array>
 		<string>49 BC</string>
 		<string> Roman Civil War</string>
-		<string> Roman Civil War between Julius Caesar and Pompey the Great.</string>
+		<string> Roman Civil War between Julius Caesar and Pompey the Great. I was one of the last politico-military conflicts in the Roman Republic before the establishment of the Roman Empire.</string>
 	</array>
 	<array>
 		<string>44 BC</string>
 		<string>Death of Julius Cesar</string>
 		<string>Julius Caesar murdered by Marcus Brutus. End of Roman Republic; beginning of Roman Empire.</string>
-	</array>
-	<array>
-		<string>76</string>
-		<string>First Olympic Games</string>
-		<string>First recorded Ancient Olympic Games.</string>
-	</array>
-	<array>
-		<string>79</string>
-		<string>Destruction of Pompei</string>
-		<string>Destruction of Pompeii by the volcano Vesuvius.</string>
-	</array>
-	<array>
-		<string>313</string>
-		<string>Edict of Milan</string>
-		<string>Edict of Milan declared that the Roman Empire would tolerate all forms of religious worship.</string>
-	</array>
-	<array>
-		<string>330</string>
-		<string>Constantinople capital of the eastern Roman Empire</string>
-		<string>Constantinople is officially named and becomes the capital of the eastern Roman Empire.</string>
-	</array>
-	<array>
-		<string>407</string>
-		<string>Visigoths invasion</string>
-		<string>Visigoths and other Germanic tribes cross into Roman-Gaul for the first time.</string>
-	</array>
-	<array>
-		<string>455</string>
-		<string>Vandals invade Rome</string>
-		<string>Vandals sack Rome, capture Sicily and Sardinia.</string>
-	</array>
-	<array>
-		<string>476</string>
-		<string>Last Western Roman Emperor</string>
-		<string>Romulus Augustus, last Western Roman Emperor is forced to abdicate by Odoacer</string>
 	</array>
 </array>
 </plist>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<string>79</string>
+		<string>Destruction of Pompei</string>
+		<string>Just after midday  fragments of ash and other volcanic debris began pouring down on Pompeii, quickly covering the city to a depth of more than 9 feet (3 metres).</string>
+	</array>
+	<array>
+		<string>313</string>
+		<string>Edict of Milan</string>
+		<string>The Edict of Milan was a letter signed by the Roman emperors Constantine and Licinius, that proclaimed religious toleration in the Roman Empire. It stopped the persecution of Christians.</string>
+	</array>
+	<array>
+		<string>330</string>
+		<string>Constantinople capital of the eastern Roman Empire</string>
+		<string>Constantinople is officially named and becomes the capital of the eastern Roman Empire.</string>
+	</array>
+	<array>
+		<string>407</string>
+		<string>Visigoths invasion</string>
+		<string>Visigoths and other Germanic tribes cross into Roman-Gaul for the first time.</string>
+	</array>
+	<array>
+		<string>455</string>
+		<string>Vandals invade Rome</string>
+		<string>Firmly established in what is now northern Tunisia and northeastern Algeria, the Vandals eventually annexed Sardinia, Corsica, and Sicily. Under Gaiseric, the Vandals invaded Italy and captured Rome</string>
+	</array>
+	<array>
+		<string>476</string>
+		<string>Last Western Roman Emperor</string>
+		<string>Romulus Augustus, the last emperor of the Western Roman Empire, is deposed by Odoacer, a German barbarian who proclaims himself king of Italy.</string>
+	</array>
+</array>
+</plist>

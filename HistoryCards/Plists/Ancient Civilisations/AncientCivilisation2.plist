@@ -3,54 +3,34 @@
 <plist version="1.0">
 <array>
 	<array>
+		<string>800 BC</string>
+		<string>Rise of Greek city-states</string>
+		<string>Greek colonies sprang up from the Mediterranean to Asia Minor, from North Africa to the coast of the Black Sea. By the end of the seventh century B.C., there were more than 1,500 independent city-state</string>
+	</array>
+	<array>
+		<string>653 BC</string>
+		<string>Rise of Persian Empire.</string>
+		<string>The Achaemenid Persian Empire first expanded under the leadership of Cyrus the Great, who utilized a strategy of religious and cultural toleration to maintain order.</string>
+	</array>
+	<array>
+		<string>563 BC</string>
+		<string>Siddhartha Gautama (Buddha), founder of Buddhism is born.</string>
+		<string>Siddhartha Gautama, the founder of Buddhism who later became known as “the Buddha,” was born into a wealthy family as a prince in present-day Nepal. </string>
+	</array>
+	<array>
 		<string>551 BC</string>
-		<string>Confucius</string>
-		<string>Confucius, founder of Confucianism, is born.</string>
+		<string>Confucius, also known as Kong Qui or K’ung Fu-tzu, was a Chinese philosopher, teacher and political figure.</string>
+		<string></string>
 	</array>
 	<array>
 		<string>539 BC</string>
 		<string>The Fall of the Babylon</string>
-		<string>The Fall of the Babylonian Empire and liberation of the Jews by Cyrus the Great.</string>
+		<string>This event saw the conquest of Babylon by the Achaemenid Empire under Cyrus the Great and marked the end of the Neo-Babylonian Empire.</string>
 	</array>
 	<array>
 		<string>508 BC</string>
 		<string>Democracy instituted at Athens</string>
 		<string>Greek democracy created at Athens was direct, rather than representative: any adult male citizen over the age of 20 could take part, and it was a duty to do so</string>
-	</array>
-	<array>
-		<string>490 BC</string>
-		<string>Battle of Marathon</string>
-		<string> Greek city-states defeat Persian invasion at Battle of Marathon</string>
-	</array>
-	<array>
-		<string>470 BC</string>
-		<string>Birth of Socrates</string>
-		<string>Socrates was a classical Greek Athenian philosopher. Credited as one of the founders of Western philosophy.</string>
-	</array>
-	<array>
-		<string>449 BC</string>
-		<string>The Greco-Persian Wars end.</string>
-		<string>The end of the Persian Wars led to the rise of Athens as the leader of the Delian League.</string>
-	</array>
-	<array>
-		<string>431 BC</string>
-		<string>The Peloponnesian war</string>
-		<string>Beginning of the Peloponnesian war between the Greek city-states</string>
-	</array>
-	<array>
-		<string>331 BC</string>
-		<string>Alexander the Great defeats Persia</string>
-		<string>Alexander the Great defeats Darius III of Persia completing his conquest of Persia.</string>
-	</array>
-	<array>
-		<string>221 BC</string>
-		<string>Unification of China</string>
-		<string>Qin Shi Huang unifies China beginning of Imperial rule in China which lasts until 1912.</string>
-	</array>
-	<array>
-		<string>146 BC</string>
-		<string> Roman conquest of Greece.</string>
-		<string>The Roman era of Greek history began with the Corinthian defeat in the Battle of Corinth.</string>
 	</array>
 </array>
 </plist>

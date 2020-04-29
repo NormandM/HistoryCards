@@ -27,46 +27,46 @@ struct FontsAndConstraintsOptions {
             smallLocalFont = 8
             localFont = 10
             bigFont = 14
-            titalFonts = 18
+            titalFonts = 22
             multiplier = 0.52
         }else if surfaceScreen > 200000 && surfaceScreen < 304600 {
             screenType = .iPhone6
              smallLocalFont = 9
             localFont = 11
             bigFont = 16
-            titalFonts = 25
+            titalFonts = 24
             multiplier = 0.55
         }else if surfaceScreen > 304600 && surfaceScreen < 350000 {
             screenType = .iPhone8Plus
             smallLocalFont = 10
             localFont = 14
             bigFont = 18
-            titalFonts = 30
+            titalFonts = 26
              multiplier = 0.55
         }else if surfaceScreen > 350000 && surfaceScreen < 700000 {
             smallLocalFont = 12
             localFont = 16
             bigFont = 20
-            titalFonts = 35
+            titalFonts = 28
             screenType = .iPhoneX
         }else if surfaceScreen > 700000 && surfaceScreen < 800000{
             smallLocalFont = 12
             localFont = 14
             bigFont = 22
-            titalFonts = 35
+            titalFonts = 30
             screenType = .iPad9
             multiplier = 0.6
         }else if surfaceScreen > 800000 && surfaceScreen < 1000000{
             smallLocalFont = 14
             localFont = 16
             bigFont = 24
-            titalFonts = 40
+            titalFonts = 32
             multiplier = 0.6
         }else if surfaceScreen > 1000000{
             smallLocalFont = 16
             localFont = 28
             bigFont = 30
-            titalFonts = 50
+            titalFonts = 38
             screenType = .iPad12
             multiplier = 0.6
         }

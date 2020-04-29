@@ -3,54 +3,34 @@
 <plist version="1.0">
 <array>
 	<array>
+		<string>Apr 29, 1862</string>
+		<string>New Orleans falls to Union forces under Admiral David Farragut.</string>
+		<string>Union troops officially take possession of New Orleans, completing the occupation that had begun four days earlier.</string>
+	</array>
+	<array>
+		<string>Sep 5, 1862</string>
+		<string>Confederate forces cross the Potomac</string>
+		<string>General Robert E. Lee leads 55,000 men across the Potomac River and they enter Maryland.</string>
+	</array>
+	<array>
 		<string>May 28, 1863</string>
 		<string>The first African American regiment</string>
-		<string>The first African American regiment, leaves Boston, to fight for the Union.</string>
+		<string>The 54th&apos;s 1,007 black soldiers and 37 white officers gathered in the Boston Common and prepared to head to the battlefields of the South.</string>
 	</array>
 	<array>
 		<string>Apr 12, 1864</string>
 		<string>Fort Pillow massacre </string>
-		<string>Fort Pillow massacre : African American soldiers who had surrendered at Fort Pillow are killed</string>
+		<string>The battle of Fort Pillow ended with a massacre of African-American Union troops and their white officers attempting to surrender, by soldiers under the command of Confederate Major General Nathan Bedford Forrest.</string>
 	</array>
 	<array>
 		<string>Sep 2, 1864</string>
 		<string>Union forces enter Atlanta</string>
-		<string>Union forces enter Atlanta, Georgia a day after the Confederate defenders flee the city.</string>
+		<string>The city fell, after a Union siege and various attempts to seize railroads and supply lines leading to Atlanta. After taking the city, Sherman&apos;s troops headed south-southeastward.</string>
 	</array>
 	<array>
 		<string>Jan 31, 1865</string>
-		<string> Lee becomes general-in-chief</string>
-		<string>Confederate General Robert E. Lee becomes general-in-chief.</string>
-	</array>
-	<array>
-		<string>Apr 1, 1865</string>
-		<string>Lee begins his final offensive</string>
-		<string>Five Forks: In Petersburg, Virginia, Confederate General Lee begins his final offensive.</string>
-	</array>
-	<array>
-		<string>Apr 3, 1865</string>
-		<string>Union forces capture Richmond</string>
-		<string>Union forces capture Richmond, Virginia, the capital of the Confederate States of America.</string>
-	</array>
-	<array>
-		<string>Apr 9, 1865</string>
-		<string>General Lee surrenders</string>
-		<string>At Appomattox, Virginia, Confederate General Lee surrenders his 28,000 troops to the Union.</string>
-	</array>
-	<array>
-		<string>Apr 14, 1865</string>
-		<string>Lincoln is shot</string>
-		<string>Abraham Lincoln is shot by John Wilkes Booth.</string>
-	</array>
-	<array>
-		<string>May 13, 1865</string>
-		<string>Last battle of the Civil War</string>
-		<string>Palmito Ranch South Texas: the last battle of the Civil War ends with a Confederate victory.</string>
-	</array>
-	<array>
-		<string>Aug 20, 1866</string>
-		<string>End of the war</string>
-		<string>President Andrew Johnson officially declares the American Civil War to be ended.</string>
+		<string>Lee becomes general-in-chief</string>
+		<string>Robert E. Lee becomes General in Chief of the Armies of the Confederate States</string>
 	</array>
 </array>
 </plist>

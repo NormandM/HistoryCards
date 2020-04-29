@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<string>Apr 1, 1865</string>
+		<string>Lee begins his final offensive</string>
+		<string>Five Forks: In Petersburg, Virginia, Confederate General Lee begins his final offensive.</string>
+	</array>
+	<array>
+		<string>Apr 3, 1865</string>
+		<string>Union forces capture Richmond</string>
+		<string>The Rebel capital of Richmond, Virginia, falls to the Union, the most significant sign that the Confederacy is nearing its final days.</string>
+	</array>
+	<array>
+		<string>Apr 9, 1865</string>
+		<string>General Lee surrenders</string>
+		<string>Robert E. Lee surrenders. In Appomattox Court House, Virginia, Confederate General Robert E. Lee surrenders his 28,000 troops to Union General Ulysses S. Grant, effectively ending the American Civil War.</string>
+	</array>
+	<array>
+		<string>Apr 14, 1865</string>
+		<string>Lincoln is shot</string>
+		<string>President Abraham Lincoln is shot in the head at Ford&apos;s Theatre in Washington, D.C. The assassin, actor John Wilkes Booth, shouted, “Sic semper tyrannis! (Ever thus to tyrants!) The South is avenged,” </string>
+	</array>
+	<array>
+		<string>May 13, 1865</string>
+		<string>Last battle of the Civil War</string>
+		<string>The Battle of Palmito Ranch is considered by some criteria as the final battle of the American Civil War. The battle is recorded as a Confederate victory.</string>
+	</array>
+	<array>
+		<string>Aug 20, 1866</string>
+		<string>End of the war</string>
+		<string>President Andrew Johnson officially declares the American Civil War to be ended.</string>
+	</array>
+</array>
+</plist>

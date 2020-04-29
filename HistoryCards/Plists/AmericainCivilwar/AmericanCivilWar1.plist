@@ -5,52 +5,32 @@
 	<array>
 		<string>Dec 20, 1960</string>
 		<string>South Carolina secedes</string>
-		<string>South Carolina is the first state to secede from the United States</string>
+		<string>South Carolina acted first, calling for a convention to secede from the Union. State by state, conventions were held, and the confederacy was formed.</string>
 	</array>
 	<array>
 		<string>Feb 4, 1861</string>
 		<string>Confederate States formed</string>
-		<string>In Montgomery, Alabama the Confederate States of America is formed.</string>
-	</array>
-	<array>
-		<string>Apr 20, 1861</string>
-		<string>Robert E. Lee resigns </string>
-		<string>Robert E. Lee resigns his commission in the United States Army.</string>
+		<string>The Confederacy was established in the Montgomery Convention in February 1861 by seven states (South Carolina, Mississippi, Alabama, Florida, Georgia, Louisiana, adding Texas in March before Lincoln&apos;s inauguration).</string>
 	</array>
 	<array>
 		<string>May 8, 1861</string>
 		<string>Richmond, Virginia becomes capital</string>
-		<string>Richmond, Virginia, is named the capital of the Confederate States of America.</string>
+		<string> The decision was made to name the City of Richmond, Virginia as the new Capital of the Confederacy. Shortly thereafter, in recognition of Virginia&apos;s strategic importance.</string>
 	</array>
 	<array>
 		<string>Jul 21, 1861</string>
 		<string>First major battle</string>
-		<string> At Manassas Junction, Virginia, the first major battle of the war begins.</string>
+		<string>The First Battle of Bull Run, also known as the Battle of Manassas, marked the first major land battle of the American Civil War. On July 21, 1861, Union and Confederate armies clashed near Manassas Junction, Virginia.</string>
 	</array>
 	<array>
 		<string>Nov 6, 1861</string>
-		<string>Jefferson Davis president</string>
-		<string>Jefferson Davis is elected president of the Confederate States of America.</string>
+		<string>Jefferson Davis becomes president</string>
+		<string> Jefferson Davis was elected president, not of the United States of America but of the Confederate States of America. He ran unopposed and was elected to serve for a six-year term. </string>
 	</array>
 	<array>
 		<string>Feb 6, 1862</string>
 		<string>US its first victory of the war,</string>
-		<string>Ulysses S. Grant gives the US its first victory of the war, by capturing Fort Henry</string>
-	</array>
-	<array>
-		<string>Apr 29, 1862</string>
-		<string>New Orleans falls to Union forces under Admiral David Farragut.</string>
-		<string>Union troops officially take possession of New Orleans, completing the occupation that had begun four days earlier.</string>
-	</array>
-	<array>
-		<string>Sep 5, 1862</string>
-		<string>Confederate forces cross the Potomac</string>
-		<string>General Robert E. Lee leads 55,000 men across the Potomac River.</string>
-	</array>
-	<array>
-		<string>Dec 13, 1862</string>
-		<string>The Battle of Fredericksburg</string>
-		<string>At the Battle of Fredericksburg, Confederates defeat the Union troops.</string>
+		<string>The Battle of Fort Henry was fought in Donelson Middle Tennessee. It was the first important victory for the Union and Brig. Gen. Ulysses S. Grant in the Western Theater.</string>
 	</array>
 </array>
 </plist>

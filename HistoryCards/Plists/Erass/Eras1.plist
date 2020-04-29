@@ -10,7 +10,7 @@
 	<array>
 		<string>4600 MYA </string>
 		<string>FORMATION OF EARTH</string>
-		<string>Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is also the largest of the Solar System&apos;s four terrestrial planets</string>
+		<string>Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is also the largest of the Solar System's four terrestrial planets</string>
 	</array>
 	<array>
 		<string>541 MYA  </string>
@@ -20,7 +20,7 @@
 	<array>
 		<string>299 MYA  </string>
 		<string>PERMIAN : Largest Mass Extinction</string>
-		<string>The Permian witnessed the diversification of the early amniotes into the ancestral groups of the mammals.  It ended with the largest mass extinction in Earth&apos;s history.</string>
+		<string>The Permian witnessed the diversification of the early amniotes into the ancestral groups of the mammals.  It ended with the largest mass extinction in Earth's history.</string>
 	</array>
 	<array>
 		<string>252 MYA  </string>
@@ -31,26 +31,6 @@
 		<string>66 MYA </string>
 		<string>CENOZOIC : Age of Mammals</string>
 		<string>The Cenozoic is also known as the Age of Mammals, because the extinction of many groups allowed mammals to greatly diversify.</string>
-	</array>
-	<array>
-		<string>5 MYA  </string>
-		<string>STONE AGE : The Human Era</string>
-		<string>The Stone Age is that ancient time period during which, humans created tools from stone (for lack of better technology). </string>
-	</array>
-	<array>
-		<string>108000 BC  </string>
-		<string>ICE AGE : Extintion of Large Mammals</string>
-		<string>Scientists consider this &quot;ice age&quot; to be merely the latest glaciation event in a much larger ice age, one that dates back over two million years and has seen multiple glaciations.</string>
-	</array>
-	<array>
-		<string>10200 BC  </string>
-		<string>NEOLITHIC : First Permanent Settlements</string>
-		<string>Traditionally considered the last part of the Stone Age, the Neolithic period  commenced with the beginning of farming, which produced the &quot;Neolithic Revolution&quot;.</string>
-	</array>
-	<array>
-		<string>3300 BC  </string>
-		<string>BRONZE AGE : First Writing</string>
-		<string>An ancient civilization is defined to be in the Bronze Age either by smelting its own copper and alloying with tin, or by trading for bronze from production areas elsewhere. </string>
 	</array>
 </array>
 </plist>

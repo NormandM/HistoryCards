@@ -31,7 +31,5 @@ class QuizData: ObservableObject {
         datesCards = [allData[sequence[0]][0], allData[sequence[1]][0], allData[sequence[2]][0]]
        
         dates.shuffle()
-         print(dates)
-        print(datesCards)
     }
 }

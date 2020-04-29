@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<string>Apr 5, 1764</string>
+		<string>Great Britain passes the Sugar Act </string>
+		<string>Great Britain passes the Sugar Act doubling the duties on foreign goods reshipped from England to the colonies</string>
+	</array>
+	<array>
+		<string>Mar 22, 1765</string>
+		<string>Great Britain passes the Stamp Act</string>
+		<string>Great Britain passes the Stamp Act, granting and applying certain stamp duties, and other duties, in the British colonies.</string>
+	</array>
+	<array>
+		<string>Mar 5, 1770</string>
+		<string>Boston Massacre</string>
+		<string>The Boston Massacre was a confrontation  in which British soldiers shot and killed several people while being harassed by a mob in Boston. </string>
+	</array>
+	<array>
+		<string>May 10, 1773</string>
+		<string>The Tea Act</string>
+		<string>The Tea Act:  Unsold tea from east India Company was to be sold in the colonies.</string>
+	</array>
+	<array>
+		<string></string>
+		<string>Boston Tea Party</string>
+		<string>The Boston Tea Party was a political and mercantile protest , the target was the Tea Act. American rebels disguised themselves as Indians and threw 342 chests of British Tea into the Boston Harbor</string>
+	</array>
+	<array>
+		<string>Apr 19, 1775</string>
+		<string>First shots fired</string>
+		<string>British troops and local militia of Massachusetts fire the first shots of the American Revolution at Lexington.</string>
+	</array>
+</array>
+</plist>

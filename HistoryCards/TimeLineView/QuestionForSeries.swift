@@ -8,7 +8,7 @@
 
 import Foundation
 struct Series {
-    var list = [[1,4, 8], [2, 5, 7]]
+    var list = [[0, 3, 5], [1, 2, 4]]
 }
 struct SeriesInfo:  Identifiable {
     var id: Int

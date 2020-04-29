@@ -69,7 +69,7 @@ class CardInfo: ObservableObject {
         let sequence = Sequences()
         let totalNumber = sequence.trayCards.count
         var arrayOfquestions = [Info]()
-        for n in 0...totalNumber - 1 {
+        for n in 0...totalNumber - 1{
             arrayOfquestions.append(Info(id: n))
         }
         self.info = arrayOfquestions
@@ -81,10 +81,22 @@ class EventTiming: ObservableObject {
         var arrayTiming = [Timing]()
         let sequence = Sequences()
         let totalNumber = sequence.trayCards.count
-        for n in 0...totalNumber - 1 {
+        for n in 0...totalNumber - 1{
             arrayTiming.append(Timing(id: n))
         }
         self.timing = arrayTiming
+    }
+}
+struct infoForSlideShow: Identifiable {
+    var id: Int
+    var date: String
+    var name: String
+    var description: String
+    init(id: Int){
+        self.id = id
+        name = Event(eventIndex: id).name
+        description = Event(eventIndex: id).description
+        date = Event(eventIndex: id).date
     }
 }
 

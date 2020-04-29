@@ -20,7 +20,7 @@
 	<array>
 		<string>Apr 12, 1961</string>
 		<string>Yuri Gagarin becomes the first man to fly in space.</string>
-		<string>On April 12, 1961, aboard the spacecraft Vostok 1, Soviet cosmonaut Yuri Alekseyevich Gagarin becomes the first human being to travel into space. </string>
+		<string>Aboard the spacecraft Vostok 1, Soviet cosmonaut Yuri Alekseyevich Gagarin becomes the first human being to travel into space. </string>
 	</array>
 	<array>
 		<string>May 5, 1961</string>
@@ -31,21 +31,6 @@
 		<string>Feb 20, 1962</string>
 		<string>First orbital flight for the USA when John Glenn  orbited Earth.</string>
 		<string>He was one of the Mercury Seven, military test pilots selected in 1959 by NASA as the nation&apos;s first astronauts and bacame the first American to orbit the Earth</string>
-	</array>
-	<array>
-		<string>Dec 14, 1962</string>
-		<string>NASA&apos;s Mariner 2 becomes the first spacecraft to fly by Venus.</string>
-		<string>Mariner 2 was the first spacecraft to successfully fly by Venus, at an altitude of 34,773 kilometers.</string>
-	</array>
-	<array>
-		<string>Jun 16, 1963</string>
-		<string>Soviet Union: Valentina Tereshkova becomes the first woman in space.</string>
-		<string>The first woman in space was a Soviet cosmonaut. Valentina Tereshkova launched with the Vostok 6 mission</string>
-	</array>
-	<array>
-		<string>Mar 18, 1965</string>
-		<string>Aleksei Leonov, becomes the first person to walk in space.</string>
-		<string>Tethered to his spaceship by a 4.8m (16ft) cable, the Russian floated above the Earth for 12 minutes.</string>
 	</array>
 </array>
 </plist>

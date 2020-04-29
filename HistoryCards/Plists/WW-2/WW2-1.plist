@@ -2,60 +2,35 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-    <array>
-          <string>1939 September 1 </string>
-          <string>WW II begins</string>
-          <string> Germany invades Poland. World War II begins. </string>
-    </array>
-    <array>
-          <string>1939 September 3 </string>
-          <string> France and Great Britain declare war on Germany. </string>
-          <string> France and Great Britain declare war on Germany. </string>
-    </array>
-    <array>
-          <string>1940 April 9 to June 9 </string>
-          <string> Germany invades and takes control of Denmark and Norway. </string>
-          <string> Germany invades and takes control of Denmark and Norway. </string>
-    </array>
-    <array>
-          <string>1940 May 10 to June 22 </string>
-          <string>Invasion of the Netherlands and Belgium</string>
-          <string> Germany uses quick strikes called blitzkrieg, meaning lightning war, to take over much of western Europe including the Netherlands, Belgium, and northern France. </string>
-    </array>
-    <array>
-          <string>1940 May 30 </string>
-          <string> Winston Churchill</string>
-          <string> Winston Churchill becomes leader of the British government. </string>
-    </array>
-    <array>
-          <string>1940 June 10 </string>
-          <string>Italy enters war</string>
-          <string> Italy enters the war as a member of the Axis powers. </string>
-    </array>
-    <array>
-          <string>1940 July 10 </string>
-          <string>Battle of Britain</string>
-          <string> Germany launches an air attack on Great Britain. These attacks last until the end of October and are known as the Battle of Britain. </string>
-    </array>
-    <array>
-          <string>1940 September 22 </string>
-          <string>The Axis Alliance</string>
-          <string> Germany, Italy, and Japan sign the Tripartite Pact creating the Axis Alliance. </string>
-    </array>
-    <array>
-          <string>1941 June 22 </string>
-          <string>Germany attacks Russia</string>
-          <string> Germany and the Axis Powers attack Russia with a huge force of over four million troops. </string>
-    </array>
-    <array>
-          <string>1941 December 7 </string>
-          <string>Pearl Harbor</string>
-          <string> The Japanese attack the US Navy in Pearl Harbor. The next day the US enters World War II on the side of the Allies. </string>
-    </array>
-    <array>
-          <string>1942 June 4 </string>
-          <string>Battle of Midway</string>
-          <string> The US Navy defeats the Japanese navy at the Battle of Midway. </string>
-    </array>
+	<array>
+		<string>1939 September 1 </string>
+		<string>WW II begins</string>
+		<string>the German army under Adolf Hitler launched an invasion of Poland that triggered the start of World War II. The battle for Poland only lasted about a month before a Nazi victory.</string>
+	</array>
+	<array>
+		<string>1939 September 3 </string>
+		<string> France and Great Britain declare war on Germany. </string>
+		<string> In response to Hitler&apos;s invasion of Poland, Britain and France, both allies of the overrun nation declare war on Germany.</string>
+	</array>
+	<array>
+		<string>May 10 th, 1939</string>
+		<string>Invasion of the Netherlands and Belgium</string>
+		<string>Germany uses quick strikes called blitzkrieg, meaning lightning war, to take over much of western Europe including the Netherlands, Belgium, and northern France. </string>
+	</array>
+	<array>
+		<string>1940 May 30 </string>
+		<string> Winston Churchill becomes leader of the British government. </string>
+		<string> King George VI appointed Churchill as prime minister and minister of defense. Churchill was to serve as prime minister of Great Britain eading the country through World War II until Germany&apos;s surrender</string>
+	</array>
+	<array>
+		<string>1940 June 10 </string>
+		<string>Italy enters war</string>
+		<string> Benito Mussolini, dictator of Italy, declares war on France and Great Britain.</string>
+	</array>
+	<array>
+		<string>1940 September 27 </string>
+		<string>The Axis Alliance is signed</string>
+		<string>The &quot;Axis powers&quot; formally took the name after the Tripartite Pact was signed by Germany, Italy, and Japan in Berlin. </string>
+	</array>
 </array>
 </plist>

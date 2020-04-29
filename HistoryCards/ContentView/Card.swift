@@ -28,22 +28,25 @@ struct Card: View {
     var text: String
     var fontColorIsWhite: Bool? = false
     var body: some View {
+        GeometryReader { geo in
         ZStack {
-            LinearGradient(gradient: gradient!, startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(gradient: self.gradient!, startPoint: .topLeading, endPoint: .bottomTrailing)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             VStack(alignment: .center) {
-                Text(text)
-                    .scaledFont(name: "Helvetica Neue", size: fonts.smallFontDimension )
-                    .foregroundColor(fontColorIsWhite! ? .white : .black)
+                Text(self.text)
                     .padding(5)
-                    .multilineTextAlignment(.center)
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0)
+                    .foregroundColor(self.fontColorIsWhite! ? .white : .black)
+                    .font(.footnote)
                     .lineLimit(nil)
+                    .layoutPriority(1)
+                    .multilineTextAlignment(.center)
+                }
             }
-        }
         .aspectRatio(0.6, contentMode: .fit)
-        .offset(dragAmount)
-        .shadow(radius: dragAmount == .zero ? 0 : 10)
-        .shadow(radius: dragAmount == .zero ? 0 : 10)
+        .offset(self.dragAmount)
+        .shadow(radius: self.dragAmount == .zero ? 0 : 10)
+        .shadow(radius: self.dragAmount == .zero ? 0 : 10)
         .gesture(
             DragGesture(minimumDistance: 0, coordinateSpace: .global)
                 .onChanged({
@@ -77,11 +80,12 @@ struct Card: View {
         )
             .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
     }
+    }
 }
 
 struct Card_Previews: PreviewProvider {
     static var previews: some View {
-        Card(index: 0, text: "")
+        Card(index: 0, text: "hello")
     }
 }
 

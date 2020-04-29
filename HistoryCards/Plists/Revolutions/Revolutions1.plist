@@ -8,34 +8,9 @@
 		<string>Some of the Protestant reformers, in particular John Calvin, encouraged the removal of religious images. It marked the start of the revolution against the Spanish forces and the Catholic church. </string>
 	</array>
 	<array>
-		<string>1524 </string>
-		<string>German Peasants&apos; War</string>
-		<string>The German Peasants&apos; War or Great Peasants&apos; Revolt (German: Deutscher Bauernkrieg) was a widespread popular revolt in the German-speaking areas of Central Europe.</string>
-	</array>
-	<array>
-		<string>1568 </string>
-		<string>Eighty Years&apos; War of Dutch Independence</string>
-		<string>The Eighty Years&apos; War or Dutch War of Independence was a revolt of the Seventeen Provinces of what are today the Netherlands, Belgium, and Luxembourg.</string>
-	</array>
-	<array>
-		<string>1688</string>
-		<string>English Glorious Revolution, William of Orange</string>
-		<string>The Glorious Revolution, also called the Revolution was the overthrow of King James II of England (James VII of Scotland) by a union of English Parliamentarians with the Dutch stadtholder William III, Prince of Orange. </string>
-	</array>
-	<array>
-		<string>1773</string>
-		<string>Boston Tea Party</string>
-		<string>The Boston Tea Party was a direct action by colonists in Boston, a town in the British colony of Massachusetts, against the British government and the monopolistic East India Company that controlled all the tea coming into the colonies.</string>
-	</array>
-	<array>
 		<string>1775 </string>
 		<string>The American Revolution, Independance from Britain</string>
 		<string>The American Revolution was a colonial revolt . The American Patriots in the Thirteen Colonies won independence from Great Britain, becoming the United States of America.</string>
-	</array>
-	<array>
-		<string>14th of July 1789</string>
-		<string>Storming of the Bastille, </string>
-		<string>While the medieval fortress and prison known as the Bastille contained only seven prisoners, its fall was the flashpoint of the French Revolution and it subsequently become an icon of the French Republic.</string>
 	</array>
 	<array>
 		<string>1789 </string>
@@ -44,8 +19,18 @@
 	</array>
 	<array>
 		<string>1797</string>
-		<string>Toussaint Louverture, Haiti Revolution 1797</string>
+		<string>Haiti Revolution</string>
 		<string>François-Dominique Toussaint Louverture was a leader of the Haitian Revolution. Born in Saint-Domingue, in a long struggle for independence Toussaint led enslaved Africans and Afro-Haitians to victory the French.</string>
+	</array>
+	<array>
+		<string>1810 - 1823</string>
+		<string>Venezuelan War of Independence</string>
+		<string>The Venezuelan War of Independence was one of the Spanish American wars of independence of the early nineteenth century, when independence movements in Latin America fought against rule by the Spanish Empire.</string>
+	</array>
+	<array>
+		<string>1821 - 1829</string>
+		<string>Greek Revolution, War of Independence</string>
+		<string>Greek Revolution was a successful war of independence waged by the Greek revolutionaries against the Ottoman Empire. </string>
 	</array>
 </array>
 </plist>

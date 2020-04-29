@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<string>Jun 14, 1775</string>
+		<string>USA army established</string>
+		<string>The United States Army is established by the Continental Congress.</string>
+	</array>
+	<array>
+		<string>Jun 15, 1775</string>
+		<string>George Washington commander-in-chief </string>
+		<string>George Washington is appointed commander-in-chief of the Continental Army.</string>
+	</array>
+	<array>
+		<string>Nov 13, 1775</string>
+		<string>Revolutionary forces capture Montreal</string>
+		<string>American Revolutionary forces capture Montreal, trying to convince the population to join the revolution.</string>
+	</array>
+	<array>
+		<string>Dec 31, 1775</string>
+		<string>Battle of Quebec</string>
+		<string>Battle of Quebec British forces repulse an attack by Continental Army generals Richard Montgomery and Benedict Arnold.</string>
+	</array>
+	<array>
+		<string>Jul 4, 1776</string>
+		<string>Declaration of Independence</string>
+		<string>The Continental Congress approves a Declaration of Independence from the Kingdom of Great Britain.</string>
+	</array>
+	<array>
+		<string>Jul 3, 1778</string>
+		<string>Wyoming Valley massacre</string>
+		<string>British forces massacre 360 men, women &amp; children in the Wyoming Valley massacre.</string>
+	</array>
+</array>
+</plist>

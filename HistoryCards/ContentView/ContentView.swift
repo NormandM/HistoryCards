@@ -41,28 +41,83 @@ struct ContentView: View {
     @State private var eventName = UserDefaults.standard.string(forKey: "eventName")
     @State private var sequenceName = UserDefaults.standard.string(forKey: "sequenceName")
     @State private var dismissView = UserDefaults.standard.bool(forKey: "dismissView")
-    @State private var quizName = UserDefaults.standard.string(forKey: "quizName")
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var startUp = true
+    @State private var seeQuizData = false
     @State private var eventTiming = EventTiming()
     @State var cardInfo = CardInfo()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var sequence = Sequence()
     var item: NameItem
+    var section: Names
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                NavigationLink(destination: TimeLineView(), isActive: self.$nextViewPresent){
+                NavigationLink(destination: TimeLineView(item: self.item, section: self.section), isActive: self.$nextViewPresent){
                     Text("")
                 }
-                Image("Pouce haut2")
-                    .resizable()
-                    .frame(width: geo.size.height/2.5, height: geo.size.height/2.5)
-                    .cornerRadius(25)
-                    .opacity(self.firstLevelFinished ? 1.0 : 0.0)
+                NavigationLink(destination: DataView(item: self.item, section: self.section), isActive: self.$seeQuizData){
+                    Text("")
+                }
+                if self.startUp{
+                    VStack {
+                        Spacer()
+                        Text("See the time line before the Quiz?")
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.white)
+                            .font(.title)
+//                            .scaledFont(name: "elvetica Neue", size: self.fonts.finalBigFont)
+                        Spacer()
+                        Button(action: {
+                            self.seeQuizData = true
+                            self.startUp = false
+                         }){
+                             Text(" Yes, let's see ! ")
+                                .font(.headline)
+                                // .scaledFont(name: "Helvetica Neue", size: self.fonts.fontDimension)
+                                 .padding()
+                                 .background(ColorReference.specialGreen)
+                                 .cornerRadius(40)
+                                 .foregroundColor(.white)
+                                 .overlay(
+                                     RoundedRectangle(cornerRadius: 40)
+                                         .stroke(Color.white, lineWidth: 2)
+                             )
+                         }
+                       
+                        .padding()
+                        Button(action: {
+                            self.seeQuizData = false
+                            self.startUp = false
+                         }){
+                             Text("No, I am ready!")
+                                .font(.headline)
+                                // .scaledFont(name: "Helvetica Neue", size: self.fonts.fontDimension)
+                                 .padding()
+                                 .background(ColorReference.specialGreen)
+                                 .cornerRadius(40)
+                                 .foregroundColor(.white)
+                                 .overlay(
+                                     RoundedRectangle(cornerRadius: 40)
+                                         .stroke(Color.white, lineWidth: 2)
+                             )
+                         }
+                    .padding()
+                    Spacer()
+                    Spacer()
+                    }
+                    
+                    
+                }else{
+                    Image("Pouce haut2")
+                        .resizable()
+                        .frame(width: geo.size.height/2.5, height: geo.size.height/2.0)
+                        .cornerRadius(25)
+                        .opacity(self.firstLevelFinished ? 1.0 : 0.0)
+                }
                 VStack() {
                     Spacer()
-                    Spacer()
-                    HStack {
+                    HStack(alignment: .top) {
                         ZStack {
                             Text(self.cardDescription)
                                 .lineLimit(100)
@@ -74,8 +129,6 @@ struct ContentView: View {
                             )
                                 .background(ColorReference.specialGray)
                                 .cornerRadius(20)
-                                .padding()
-                                .padding()
                             if self.answerIsGood && self.cardDropped{
                                 Text(self.messageAfterAnswer)
                                     .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
@@ -111,23 +164,20 @@ struct ContentView: View {
                             }
                         }
                     }
-                    .padding(.top)
-                    Spacer()
+                    .padding()
                     HStack {
-                        Spacer()
-                        Spacer()
+                       Spacer()
                         VStack{
                             Card(onEnded: self.cardDropped, index: 0, text: self.cardInfo.info[self.questionNumber].card0Name)
-                                .frame(width: geo.size.height/5 * 0.6
-                                    , height: geo.size.height/5)
+                                .frame(width: geo.size.height/4.3 * 0.6
+                                    , height: geo.size.height/4.3)
                                 
                                 .zIndex(1.0)
                                 .overlay(GeometryReader { geo2 in
                                     Color.clear
                                         .coordinateSpace(name: "RightCard")
                                         .onAppear{
-
-                                             self.rightCardPosition = geo2.frame(in: .named("RightCard")).midX
+                                            self.rightCardPosition = geo2.frame(in: .named("RightCard")).midX
                                             self.cardFrames[0] = geo2.frame(in: .global)
                                     }
 
@@ -142,21 +192,20 @@ struct ContentView: View {
                                 .opacity(self.answerIsGood && self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
                                 .offset(x: self.answerIsGood && self.cardSelected   ? self.xOffset0 : -self.badAnsweOffset)
                                 .addBorder(!self.answerIsGood ? Color.white : Color.clear, cornerRadius: 10)
-                                .padding()
+                                
                             
                             Text(self.cardInfo.info[self.questionNumber].card0Date)
-                                .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
+                                .font(.footnote)
+                               // .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
                                 .foregroundColor(.white)
                             .opacity(self.answerIsGood && self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
-                            
-                            
                         }
                         .zIndex(1.0)
                         Spacer()
                         VStack {
                             Card(onEnded: self.cardDropped, index: 1, text:  self.cardInfo.info[self.questionNumber].card1Name)
-                                .frame(width: geo.size.height/5 * 0.6
-                                    , height: geo.size.height/5)
+                                .frame(width: geo.size.height/4.3 * 0.6
+                                    , height: geo.size.height/4.3)
                                 .zIndex(-1.0)
                                 .coordinateSpace(name: "CenterCard")
                                 .allowsHitTesting(false).overlay(GeometryReader { geo2 in
@@ -175,18 +224,18 @@ struct ContentView: View {
                                     }
                                 })
                                 .offset(x: self.answerIsGood && self.cardSelected   ? 0 : self.badAnsweOffset)
-                                .padding()
                             
                             Text(self.cardInfo.info[self.questionNumber].card1Date)
-                                .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
+                                .font(.footnote)
+                               // .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
                                 .foregroundColor(.white)
                         }
 
                         Spacer()
                         VStack{
                             Card(onEnded: self.cardDropped, index: 2, text:  self.cardInfo.info[self.questionNumber].card2Name)
-                                .frame(width: geo.size.height/5 * 0.6
-                                    , height: geo.size.height/5)
+                                .frame(width: geo.size.height/4.3 * 0.6
+                                    , height: geo.size.height/4.3)
                                 .zIndex(1.0)
                                 .coordinateSpace(name: "LeftCard")
                                 .allowsHitTesting(false).overlay(GeometryReader { geo2 in
@@ -206,33 +255,32 @@ struct ContentView: View {
                                 .opacity(self.answerIsGood && !self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
                                 .offset(x: self.answerIsGood && self.cardSelected ? self.xOffset2 : self.badAnsweOffset)
                                 .addBorder(!self.answerIsGood ? Color.white : Color.clear, cornerRadius: 10)
-                                .padding()
                             Text(self.cardInfo.info[self.questionNumber].card2Date)
-                                .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
+                                .font(.footnote)
+                                //.scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
                                 .foregroundColor(.white)
                            .opacity(self.answerIsGood && !self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
                         }
-
-                        Spacer()
-                        Spacer()
+                         Spacer()
                     }
-                    Spacer()
+                    .padding(.bottom)
+                   
                     HStack {
                         Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed ,index: 0, text:  self.cardInfo.info[self.questionNumber].trayCard0Name)
-                            .frame(width: geo.size.height/5 * 0.6
-                                , height: geo.size.height/5)
+                            .frame(width: geo.size.height/4.3 * 0.6
+                                , height: geo.size.height/4.3)
                             .opacity(self.trayIndex == 0 && self.answerIsGood ? 0 :  self.cardOpacity)
                             .offset(x: self.answerIsGood && self.cardSelected   ? 0.0 : self.badAnsweOffset)
                             .zIndex(1.0)
-                            .padding()
                     }
-                    Spacer()
-                    ZStack{
+                   
+                    ZStack(alignment: .top){
                         Rectangle()
                             .fill(ColorReference.specialGray)
                             .frame(width: geo.size.width, height: geo.size.height/7
                         )
-                        HStack(alignment: .bottom){
+                        Spacer()
+                        HStack(){
                             Spacer()
                             VStack{
                                 ZStack{
@@ -251,10 +299,12 @@ struct ContentView: View {
                                             }
                                     }
                                     .background(ColorReference.specialOrange)
-                                    .scaledFont(name: "Helvetica Neue", size: self.fonts.finalBigFont)
+                                   // .scaledFont(name: "Helvetica Neue", size: self.fonts.finalBigFont)
+                                        .font(.title)
                                 }
                                 Text("Time left")
-                                    .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension )
+                                //    .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension )
+                                    .font(.footnote)
                             }
                             Spacer()
                             VStack {
@@ -268,27 +318,25 @@ struct ContentView: View {
                                 }
                                 
                                 Text("\(self.coins) coins")
-                                    .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension )
+                                 //   .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension )
+                                    .font(.footnote)
                             }
                             Spacer()
                             VStack{
-                                ZStack{
-                                    Circle()
-                                        .foregroundColor(ColorReference.specialOrange)
-                                        .frame(width: geo.size.height/12
-                                            , height: geo.size.height/12)
-                                    Text("\(self.points)")
-                                        .background(ColorReference.specialOrange)
-                                        .scaledFont(name: "Helvetica Neue", size: self.fonts.finalBigFont)
-                                }
-                                Text("Score")
-                                    .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension )
+                                Image("points2")
+                                    .resizable()
+                                    .frame(width: geo.size.height/12
+                                        , height: geo.size.height/12)
+                                Text("\(UserDefaults.standard.integer(forKey: "points")) points")
+                                  //  .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension )
+                                    .font(.footnote)
+                                    .foregroundColor(.black)
                             }
                             Spacer()
                         }
                     }
-                }.blur(radius: self.firstLevelFinished ?  75 : 0.0)
-                    .zIndex(-0.5)
+                }.blur(radius: self.firstLevelFinished || self.startUp ?  75 : 0.0)
+                .zIndex(-0.5)
                 
             }
         }
@@ -303,10 +351,13 @@ struct ContentView: View {
             self.cardInfo = CardInfo()
             self.eventTiming = EventTiming()
             self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
-            print("dismissView: \(self.dismissView)")
             if self.dismissView {
                 self.presentationMode.wrappedValue.dismiss()
             }
+//            var arrayBool = [Bool]()
+//            for item in self.section.items {
+//                arrayBool.append(item.isDone!)
+//            }
         }
         .background(ColorReference.specialGreen)
         .edgesIgnoringSafeArea(.all)
@@ -400,8 +451,8 @@ struct ContentView: View {
                 self.xOffset0 = 0
                 self.xOffset2 = 0
                 self.percentComplete = 0
-               // if self.questionNumber == self.eventTiming.timing.count - 1 {
-                if self.questionNumber == 2 {
+                if self.questionNumber == self.eventTiming.timing.count - 1{
+               // if self.questionNumber == 2 {
                     withAnimation(.linear(duration: 3)){
                         self.firstLevelFinished = true
                     }
@@ -459,6 +510,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView( item: NameItem.example)
+        ContentView( item: NameItem.example, section: Names.example)
     }
 }

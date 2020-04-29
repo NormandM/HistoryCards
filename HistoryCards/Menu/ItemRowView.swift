@@ -10,11 +10,25 @@ import SwiftUI
 
 struct ItemRowView: View {
     var item: NameItem
+    @State var isDone = false
     var body: some View {
         ZStack {
-            Text(item.name)
-                .foregroundColor(.white)
+            HStack {
+                Text(item.name!)
+                    .foregroundColor(.white)
+                
+                Image(systemName: "checkmark")
+                    .foregroundColor(isDone ? .white : .clear)
+                .padding()
+            }
+            
         }.background(ColorReference.specialGreen)
+            .onAppear{
+                print(self.isDone)
+                print(self.item.id.uuidString)
+                
+                self.isDone = UserDefaults.standard.bool(forKey: self.item.id.uuidString)
+        }
         
     }
 }

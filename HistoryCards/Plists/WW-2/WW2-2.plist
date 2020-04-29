@@ -2,70 +2,37 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-    <array>
-          <string>1942 July 10 </string>
-          <string>Invasion of Sicily</string>
-          <string> The Allies invade and take the island of Sicily. </string>
-    </array>
-    <array>
-          <string>1943 September 3 </string>
-          <string>Italy surrenders</string>
-          <string> Italy surrenders to the Allies, however Germany helps Mussolini to escape and set up a government in Northern Italy. </string>
-    </array>
-    <array>
-          <string>1944 June 6 </string>
-          <string>D-Day. Normandy invasiom</string>
-          <string>D-day and the Normandy invasion. Allied forces invade France and push back the Germans. </string>
-    </array>
-    <array>
-          <string>1944 August 25 </string>
-          <string>Paris liberated</string>
-          <string> Paris is liberated from German control. </string>
-    </array>
-    <array>
-          <string>1944 December 16 </string>
-          <string>Battle of the Bulge</string>
-          <string> The Germans launch a large attack in the Battle of the Bulge. They lose to the Allies sealing the fate of the German army. </string>
-    </array>
-    <array>
-          <string>1945 February 19 </string>
-          <string>US invades the island of Iwo Jima</string>
-          <string> US Marines invade the island of Iwo Jima. After a fierce battle they capture the island. </string>
-    </array>
-    <array>
-          <string>1945 April 12 </string>
-          <string> US President Franklin Roosevelt dies.</string>
-          <string> US President Franklin Roosevelt dies. He is succeeded by President Harry Truman. </string>
-    </array>
-    <array>
-          <string>1945 March 22 </string>
-          <string>US army crosses the Rhine River</string>
-          <string> The US Third Army under General Patton crosses the Rhine River. </string>
-    </array>
-    <array>
-          <string>1945 April 30 </string>
-          <string> Adolf Hitler commits suicide</string>
-          <string> Adolf Hitler commits suicide as he knows Germany has lost the war. </string>
-    </array>
-    <array>
-          <string>1945 May 7 </string>
-          <string> Germany surrenders</string>
-          <string> Germany surrenders to the Allies. </string>
-    </array>
-    <array>
-          <string>1945 August 6 </string>
-          <string>Atomic bomb on Hiroshima</string>
-          <string> The United States drops the Atomic Bomb on Hiroshima, Japan. The city is devastated. </string>
-    </array>
-    <array>
-          <string>1945 August 9 </string>
-          <string>Atomic bomb on Nagasaki</string>
-          <string> Another atomic bomb is dropped on Nagasaki, Japan. </string>
-    </array>
-    <array>
-          <string>1945 September 2</string>
-          <string>Japan surrenders</string>
-          <string>Japan surrenders to US General Douglass MacArthur and the Allies.</string>
-    </array>
+	<array>
+		<string>1941 June 22 </string>
+		<string>Germany attacks Russia</string>
+		<string>Germany and the Axis Powers attack Russia with a huge force of over four million troops. </string>
+	</array>
+	<array>
+		<string>1941 December 7 </string>
+		<string>Pearl Harbor</string>
+		<string>The Japanese attack the US Navy in Pearl Harbor. The next day the US enters World War II on the side of the Allies. </string>
+	</array>
+	<array>
+		<string>1942 June 4 </string>
+		<string>Battle of Midway</string>
+		<string>The US Navy defeats the Japanese navy at the Battle of Midway. </string>
+	</array>
+	<array>
+		<string>1943 September 3 </string>
+		<string>Italy surrenders</string>
+		<string>Italy surrenders to the Allies, however Germany helps Mussolini to escape and set up a government in Northern Italy. </string>
+	</array>
+	<array>
+		<string>1944 June 6 </string>
+		<string>D-Day. Normandy invasiom</string>
+		<string>Some 156,000 American, British and Canadian forces landed on five beaches along a 50-mile stretch of the heavily fortified coast of France’s Normandy and push back the Germans. </string>
+	</array>
+	<array>
+		<string>1944 August 25 </string>
+		<string>Paris liberated</string>
+		<string>After many days of fighting, Germany surrendered Paris to the Allied forces, ending four years of occupation.
+
+</string>
+	</array>
 </array>
 </plist>

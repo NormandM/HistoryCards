@@ -3,26 +3,6 @@
 <plist version="1.0">
 <array>
 	<array>
-		<string>1810 - 1823</string>
-		<string>Venezuelan War of Independence</string>
-		<string>The Venezuelan War of Independence was one of the Spanish American wars of independence of the early nineteenth century, when independence movements in Latin America fought against rule by the Spanish Empire.</string>
-	</array>
-	<array>
-		<string>1820 - 1822</string>
-		<string>Ecuadorian War of Independence</string>
-		<string>The Ecuadorian War of Independence was fought between several South American armies and Spain over control of the lands of the Royal Audience of Quito, a Spanish colonial administrative .</string>
-	</array>
-	<array>
-		<string>1821 - 1829</string>
-		<string>Greek Revolution, War of Independence</string>
-		<string>The Greek War of Independence, also known as the Greek Revolution was a successful war of independence waged by the Greek revolutionaries against the Ottoman Empire. </string>
-	</array>
-	<array>
-		<string>1830 - 1831</string>
-		<string>Belgian Revolution, Independence</string>
-		<string>The Belgian Revolution was the conflict which led to the secession of the southern provinces (mainly the former Southern Netherlands) from the United Kingdom of the Netherlands and the establishment of an independent Kingdom of Belgium.</string>
-	</array>
-	<array>
 		<string>1848</string>
 		<string>French Revolution, Second Republic</string>
 		<string>In France, sometimes known as the February Revolution  was one of a wave of revolutions in 1848 in Europe. In France the revolutionary events ended the Orleans monarchy.</string>
@@ -34,18 +14,23 @@
 	</array>
 	<array>
 		<string>1857</string>
-		<string>The Indian Rebellion of 1857</string>
+		<string>The Indian Rebellion</string>
 		<string>The Indian Rebellion began as a mutiny of sepoys of British East India Company&apos;s army  in the town of Meerut, and soon erupted into other mutinies and civilian rebellions .</string>
 	</array>
 	<array>
-		<string>1859</string>
-		<string>2nd Italian War of Independence</string>
-		<string>The Second War of Italian Independence, Franco-Austrian War, or Austro-Sardinian War was fought by Napoleon III of France and the Kingdom of Piedmont-Sardinia against the Austrian Empire in 1859.</string>
+		<string>1896</string>
+		<string>Philippine Revolution for Independence</string>
+		<string>The Philippine Revolution, also called the Tagalog War by the Spanish, was a revolution and subsequent conflict fought between the people and insurgents of the Philippines and the Kingdom of Spain.</string>
 	</array>
 	<array>
-		<string>1861 - 1946</string>
-		<string>Italian Unification, Kingdom of Italy</string>
-		<string>The Kingdom of Italy was a state founded in 1861 when King Victor Emmanuel II of Sardinia was proclaimed King of Italy. The state was founded as a result of the unification of Italy under the influence of the Kingdom of Sardinia.</string>
+		<string>1905</string>
+		<string>First Russian Revolution</string>
+		<string>The first Russian Revolution was a wave of mass political and social unrest that spread through vast areas of the Russian Empire. Some of it was directed against the government, while some was undirected. </string>
+	</array>
+	<array>
+		<string>1911</string>
+		<string>Chinese Revolution, Xinhai</string>
+		<string>The Xinhai Revolution, also known as the Chinese Revolution or the Revolution was a revolution that overthrew China&apos;s last imperial dynasty (the Qing dynasty) and established the Republic of China (ROC).</string>
 	</array>
 </array>
 </plist>

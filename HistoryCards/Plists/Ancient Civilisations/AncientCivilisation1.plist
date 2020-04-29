@@ -4,7 +4,7 @@
 <array>
 	<array>
 		<string> 3200 BC</string>
-		<string> Sumerian cuneiform writing system.</string>
+		<string>Sumerian  cuneiform writing system.</string>
 		<string>Sumerian cuneiform is the earliest known writing system. It developed from the pictographs and other symbols used to represent trade goods and livestock on clay tablets. </string>
 	</array>
 	<array>
@@ -14,13 +14,14 @@
 	</array>
 	<array>
 		<string>2600 BC</string>
-		<string>Maya culture</string>
 		<string>Emergence of Maya culture in the Yucatán Peninsula</string>
+		<string>Discoveries of Maya occupation at Cuello, Belize have been carbon dated to around 2600 BC.. Settlements were established around 1800 BC in the Soconusco region of the Pacific coast, and they were already cultivating the staple crops of the Maya.</string>
 	</array>
 	<array>
 		<string>2560 BC</string>
-		<string>Great Pyramid of Giza</string>
 		<string>King Khufu completes the Great Pyramid of Giza.</string>
+		<string>
+The Great Pyramid of Giza is the oldest monument on the list of the Seven Wonders of the Ancient World. It is also the only one left standing. </string>
 	</array>
 	<array>
 		<string>2200 BC</string>
@@ -28,34 +29,9 @@
 		<string>Stonehenge is a prehistoric monument in Wiltshire, England, two miles (3 km) west of Amesbury. It consists of a ring of standing stones, each around 13 feet (4.0 m) high, seven feet (2.1 m) wide, and weighing around 25 tons</string>
 	</array>
 	<array>
-		<string>1400 BC</string>
-		<string>Olmec civilization</string>
-		<string>Rise of the Olmec civilization Pre-Columbian Mexico.</string>
-	</array>
-	<array>
 		<string>890 BC</string>
-		<string>The Iliad and the Odyssey</string>
 		<string>Approximate date for the composition of the Iliad and the Odyssey</string>
-	</array>
-	<array>
-		<string>800 BC</string>
-		<string>Rise of Greek city-states</string>
-		<string>Greek colonies sprang up from the Mediterranean to Asia Minor, from North Africa to the coast of the Black Sea. By the end of the seventh century B.C., there were more than 1,500 independent city-state</string>
-	</array>
-	<array>
-		<string>753 BC</string>
-		<string>Founding of Rome (traditional date)</string>
-		<string>Rome is one of the oldest continuously occupied cities in Europe. In the ancient world it was successively the capital city of the Roman Kingdom, the Roman Republic and the Roman Empire, and is regarded as one of the birthplaces of Western civilization.</string>
-	</array>
-	<array>
-		<string>653 BC</string>
-		<string>Rise of Persian Empire.</string>
-		<string>The Achaemenid Persian Empire first expanded under the leadership of Cyrus the Great, who utilized a strategy of religious and cultural toleration to maintain order.</string>
-	</array>
-	<array>
-		<string>563 BC</string>
-		<string>Buddha</string>
-		<string>Siddhartha Gautama (Buddha), founder of Buddhism is born.</string>
+		<string>Homer is the legendary author of the Iliad and the Odyssey, two epic poems that are the central works of ancient Greek literature. The Iliad is set during the Trojan War, the ten-year siege of the city of Troy by a coalition of Greek kingdoms.</string>
 	</array>
 </array>
 </plist>
