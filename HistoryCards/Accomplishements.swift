@@ -166,9 +166,7 @@ struct Accomplishements {
             UserDefaults.standard.set(true, forKey: "8231498C-24CA-4CD7-94B5-AF3F1D22A8FD")
             UserDefaults.standard.set(space, forKey: "6F2D1EAC-7B4A-11EA-BC55-0242AC130003")
         default:
-            print()
-            
-            
+           print("default6")
         }
     }
 }

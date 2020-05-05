@@ -63,57 +63,93 @@ struct ContentView: View {
                     VStack {
                         Spacer()
                         Text("See the time line before the Quiz?")
+                            .padding()
+                            .lineLimit(nil)
                             .multilineTextAlignment(.center)
                             .foregroundColor(.white)
                             .font(.title)
-//                            .scaledFont(name: "elvetica Neue", size: self.fonts.finalBigFont)
                         Spacer()
                         Button(action: {
                             self.seeQuizData = true
                             self.startUp = false
-                         }){
-                             Text(" Yes, let's see ! ")
+                        }){
+                            Text(" Yes, let's see ! ")
                                 .font(.headline)
-                                // .scaledFont(name: "Helvetica Neue", size: self.fonts.fontDimension)
-                                 .padding()
-                                 .background(ColorReference.specialGreen)
-                                 .cornerRadius(40)
-                                 .foregroundColor(.white)
-                                 .overlay(
-                                     RoundedRectangle(cornerRadius: 40)
-                                         .stroke(Color.white, lineWidth: 2)
-                             )
-                         }
-                       
+                                .padding()
+                                .background(ColorReference.specialGreen)
+                                .cornerRadius(40)
+                                .foregroundColor(.white)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 40)
+                                        .stroke(Color.white, lineWidth: 2)
+                            )
+                        }
+                            
                         .padding()
                         Button(action: {
                             self.seeQuizData = false
                             self.startUp = false
-                         }){
-                             Text("No, I am ready!")
+                        }){
+                            Text("No, I am ready!")
                                 .font(.headline)
-                                // .scaledFont(name: "Helvetica Neue", size: self.fonts.fontDimension)
-                                 .padding()
-                                 .background(ColorReference.specialGreen)
-                                 .cornerRadius(40)
-                                 .foregroundColor(.white)
-                                 .overlay(
-                                     RoundedRectangle(cornerRadius: 40)
-                                         .stroke(Color.white, lineWidth: 2)
-                             )
-                         }
-                    .padding()
-                    Spacer()
-                    Spacer()
+                                .padding()
+                                .background(ColorReference.specialGreen)
+                                .cornerRadius(40)
+                                .foregroundColor(.white)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 40)
+                                        .stroke(Color.white, lineWidth: 2)
+                            )
+                        }
+                        .padding()
+                        Spacer()
+                        Spacer()
                     }
                     
                     
                 }else{
-                    Image("Pouce haut2")
-                        .resizable()
-                        .frame(width: geo.size.height/2.5, height: geo.size.height/2.0)
-                        .cornerRadius(25)
+                    ZStack() {
+                        Image("Pouce haut2")
+                            .resizable()
+                            .frame(width: geo.size.height/2.2, height: geo.size.height/2)
+                            .cornerRadius(25)
+                            .opacity(self.firstLevelFinished ? 1.0 : 0.0)
+                        VStack {
+                            Spacer()
+                            HStack(alignment: .center) {
+                                Text("+5: ")
+                                    .foregroundColor(.white)
+                                VStack {
+                                    Image("FinalCoin").renderingMode(.original)
+                                        .resizable()
+                                        .frame(width: geo.size.height/20
+                                            , height: geo.size.height/20)
+                                    Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
+                                        .font(.footnote)
+                                        .foregroundColor(.white)
+                                }
+                                
+                                Spacer()
+                                
+                                Text("+5: ")
+                                    .foregroundColor(.white)
+                                
+                                VStack{
+                                    Image("points2")
+                                        .resizable()
+                                        .frame(width: geo.size.height/22
+                                            , height: geo.size.height/22)
+                                    Text("\(UserDefaults.standard.integer(forKey: "points")) points")
+                                        .font(.footnote)
+                                        .foregroundColor(.white)
+                                    
+                                }
+                            }
+                        }
+                        .padding()
+                        .frame(width: geo.size.height/2.2, height: geo.size.height/2)
                         .opacity(self.firstLevelFinished ? 1.0 : 0.0)
+                    }
                 }
                 VStack() {
                     Spacer()
@@ -130,28 +166,43 @@ struct ContentView: View {
                                 .background(ColorReference.specialGray)
                                 .cornerRadius(20)
                             if self.answerIsGood && self.cardDropped{
+                                Text("+ 1 coin")
+                                    .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
+                                    .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialGreen : .clear)
+                                    .offset(x: -geo.size.width/3)
                                 Text(self.messageAfterAnswer)
                                     .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
                                     .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialGreen : .clear)
+                                Text("+ 1 point")
+                                    .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
+                                    .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialGreen : .clear)
+                                    .offset(x: geo.size.width/3)
                                 Ellipse()
                                     .trim(from: 0, to: self.percentComplete)
                                     .stroke( ColorReference.specialGreen, style: StrokeStyle(lineWidth: 10, lineCap: .round))
                                     .frame(width: geo.size.height/8.0, height:  geo.size.height/8.0)
                                     .animation(.easeOut(duration: 2.0))
-                            
+                                    
                                     .onAppear {
                                         self.percentComplete = 1.0
                                         self.cardDescription = ""
                                         self.numberCardsDisplayed = true
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                             self.cardDescription = "Cards left: \(self.cardInfo.info.count - self.questionNumber)"
-                                            
                                         }
                                 }
                             }else if !self.answerIsGood && self.cardDropped{
+                                Text("- 1 coin")
+                                    .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
+                                    .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialRed : .clear)
+                                    .offset(x: -geo.size.width/3)
                                 Text(self.messageAfterAnswer)
                                     .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
                                     .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialRed : .clear)
+                                Text("-\(self.questionNumber) point")
+                                    .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
+                                    .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialGreen : .clear)
+                                    .offset(x: geo.size.width/3)
                                 Ellipse()
                                     .trim(from: 0, to: self.percentComplete)
                                     .stroke( ColorReference.specialRed, style: StrokeStyle(lineWidth: 10, lineCap: .round))
@@ -166,7 +217,7 @@ struct ContentView: View {
                     }
                     .padding()
                     HStack {
-                       Spacer()
+                        Spacer()
                         VStack{
                             Card(onEnded: self.cardDropped, index: 0, text: self.cardInfo.info[self.questionNumber].card0Name)
                                 .frame(width: geo.size.height/4.3 * 0.6
@@ -180,7 +231,7 @@ struct ContentView: View {
                                             self.rightCardPosition = geo2.frame(in: .named("RightCard")).midX
                                             self.cardFrames[0] = geo2.frame(in: .global)
                                     }
-
+                                        
                                     .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                             self.cardFrames[0] = geo2.frame(in: .global)
@@ -192,13 +243,10 @@ struct ContentView: View {
                                 .opacity(self.answerIsGood && self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
                                 .offset(x: self.answerIsGood && self.cardSelected   ? self.xOffset0 : -self.badAnsweOffset)
                                 .addBorder(!self.answerIsGood ? Color.white : Color.clear, cornerRadius: 10)
-                                
-                            
                             Text(self.cardInfo.info[self.questionNumber].card0Date)
                                 .font(.footnote)
-                               // .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
                                 .foregroundColor(.white)
-                            .opacity(self.answerIsGood && self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
+                                .opacity(self.answerIsGood && self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
                         }
                         .zIndex(1.0)
                         Spacer()
@@ -220,17 +268,16 @@ struct ContentView: View {
                                             self.cardFrames[1] = geo2.frame(in: .global)
                                             self.centerCardPosition = geo2.frame(in: .named("CenterCard")).midX
                                         }
-                                    
+                                        
                                     }
                                 })
                                 .offset(x: self.answerIsGood && self.cardSelected   ? 0 : self.badAnsweOffset)
                             
                             Text(self.cardInfo.info[self.questionNumber].card1Date)
                                 .font(.footnote)
-                               // .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
                                 .foregroundColor(.white)
                         }
-
+                        
                         Spacer()
                         VStack{
                             Card(onEnded: self.cardDropped, index: 2, text:  self.cardInfo.info[self.questionNumber].card2Name)
@@ -257,14 +304,13 @@ struct ContentView: View {
                                 .addBorder(!self.answerIsGood ? Color.white : Color.clear, cornerRadius: 10)
                             Text(self.cardInfo.info[self.questionNumber].card2Date)
                                 .font(.footnote)
-                                //.scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
                                 .foregroundColor(.white)
-                           .opacity(self.answerIsGood && !self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
+                                .opacity(self.answerIsGood && !self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
                         }
-                         Spacer()
+                        Spacer()
                     }
                     .padding(.bottom)
-                   
+                    
                     HStack {
                         Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed ,index: 0, text:  self.cardInfo.info[self.questionNumber].trayCard0Name)
                             .frame(width: geo.size.height/4.3 * 0.6
@@ -273,7 +319,7 @@ struct ContentView: View {
                             .offset(x: self.answerIsGood && self.cardSelected   ? 0.0 : self.badAnsweOffset)
                             .zIndex(1.0)
                     }
-                   
+                    
                     ZStack(alignment: .top){
                         Rectangle()
                             .fill(ColorReference.specialGray)
@@ -288,8 +334,10 @@ struct ContentView: View {
                                         .foregroundColor(ColorReference.specialOrange)
                                         .frame(width: geo.size.height/12
                                             , height: geo.size.height/12)
+                                        .padding(.top)
                                     
                                     Text("\(self.timeRemaining)")
+                                        .padding(.top)
                                         .onReceive(self.timer) { _ in
                                             if self.timeRemaining  > 0 && self.quizStarted {
                                                 self.timeRemaining -= 1
@@ -299,11 +347,9 @@ struct ContentView: View {
                                             }
                                     }
                                     .background(ColorReference.specialOrange)
-                                   // .scaledFont(name: "Helvetica Neue", size: self.fonts.finalBigFont)
-                                        .font(.title)
+                                    .font(.title)
                                 }
                                 Text("Time left")
-                                //    .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension )
                                     .font(.footnote)
                             }
                             Spacer()
@@ -316,9 +362,9 @@ struct ContentView: View {
                                         .frame(width: geo.size.height/12
                                             , height: geo.size.height/12)
                                 }
+                                .padding(.top)
                                 
-                                Text("\(self.coins) coins")
-                                 //   .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension )
+                                Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
                                     .font(.footnote)
                             }
                             Spacer()
@@ -327,8 +373,8 @@ struct ContentView: View {
                                     .resizable()
                                     .frame(width: geo.size.height/12
                                         , height: geo.size.height/12)
+                                    .padding(.top)
                                 Text("\(UserDefaults.standard.integer(forKey: "points")) points")
-                                  //  .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension )
                                     .font(.footnote)
                                     .foregroundColor(.black)
                             }
@@ -336,8 +382,7 @@ struct ContentView: View {
                         }
                     }
                 }.blur(radius: self.firstLevelFinished || self.startUp ?  75 : 0.0)
-                .zIndex(-0.5)
-                
+                    .zIndex(-0.5)
             }
         }
         .onAppear{
@@ -354,10 +399,6 @@ struct ContentView: View {
             if self.dismissView {
                 self.presentationMode.wrappedValue.dismiss()
             }
-//            var arrayBool = [Bool]()
-//            for item in self.section.items {
-//                arrayBool.append(item.isDone!)
-//            }
         }
         .background(ColorReference.specialGreen)
         .edgesIgnoringSafeArea(.all)
@@ -365,7 +406,7 @@ struct ContentView: View {
         .navigationBarHidden(self.firstLevelFinished)
         .navigationBarBackButtonHidden(true)
         .navigationViewStyle(StackNavigationViewStyle())
-
+        
     }
     // Functions
     func cardDropped(location: CGPoint, trayIndex: Int, cardAnswer: String){
@@ -374,19 +415,19 @@ struct ContentView: View {
         }) {
             cardDropped = true
             switch match {
-            
+                
             case 0:
                 if  self.eventTiming.timing[self.questionNumber].eventIsEarlier{
                     answerIsGood = true
                     playSound(sound: "chime_clickbell_octave_up", type: "mp3")
-                    self.points += 1
-                    UserDefaults.standard.set(self.points, forKey: "points")
+                    addPoints(numberOfPointsToAdd: 1)
+                    addCoins(numberOfCoinsToAdd: 1)
                     withAnimation(Animation.easeInOut(duration: 2).delay(1)) {
                         self.xOffset0 = centerCardPosition - rightCardPosition
                     }
                 }else{
-                    self.coins -= 1
-                    UserDefaults.standard.set(self.coins, forKey: "coins")
+                    removePoints(numberOfPointsToRemove: self.questionNumber)
+                    removeCoins(numberOfCoinsToRemove: 1)
                     answerIsGood = false
                     playSound(sound: "Error Warning", type: "wav")
                 }
@@ -394,19 +435,19 @@ struct ContentView: View {
                 if !self.eventTiming.timing[self.questionNumber].eventIsEarlier {
                     answerIsGood = true
                     playSound(sound: "chime_clickbell_octave_up", type: "mp3")
-                    self.points += 1
-                    UserDefaults.standard.set(self.points, forKey: "points")
+                    addPoints(numberOfPointsToAdd: 1)
+                    addCoins(numberOfCoinsToAdd: 1)
                     withAnimation(Animation.easeInOut(duration: 2.0).delay(1.0)) {
                         self.xOffset2 = centerCardPosition - leftCardPosition
                     }
                 }else{
-                    self.coins -= 1
-                    UserDefaults.standard.set(self.coins, forKey: "coins")
+                    removeCoins(numberOfCoinsToRemove: 1)
+                    removePoints(numberOfPointsToRemove: questionNumber)
                     answerIsGood = false
                     playSound(sound: "Error Warning", type: "wav")
                 }
             default:
-                print("bad")
+                print("default")
             }
         }
         cardAnimation()
@@ -423,7 +464,7 @@ struct ContentView: View {
             }
         }
         else {
-            return .unknown
+            return .bad
         }
     }
     func cardPushed(location: CGPoint, trayIndex: Int){
@@ -439,6 +480,9 @@ struct ContentView: View {
         self.cardDescription = "Cards left: \(9 - self.questionNumber)"
     }
     func cardAnimation () {
+        print("card animation")
+        print("answerIsGood: \(answerIsGood)")
+        print("timer0: \(timer0)")
         self.tryAgain = true
         if answerIsGood && !timer0{
             self.messageAfterAnswer = "Great!"
@@ -447,23 +491,21 @@ struct ContentView: View {
                 self.answerIsGood = false
                 self.cardDropped = false
                 self.cardOpacity = 1.0
-                self.cardSelected = false
+                
                 self.xOffset0 = 0
                 self.xOffset2 = 0
                 self.percentComplete = 0
                 if self.questionNumber == self.eventTiming.timing.count - 1{
-               // if self.questionNumber == 2 {
                     withAnimation(.linear(duration: 3)){
                         self.firstLevelFinished = true
                     }
                     self.quizStarted = false
-                    self.coins += 2
-                    self.points += 5
-                    UserDefaults.standard.set(self.coins, forKey: "coins")
-                    UserDefaults.standard.set(self.points, forKey: "points")
+                    addCoins(numberOfCoinsToAdd: 5)
+                    addPoints(numberOfPointsToAdd: 5)
                     playSound(sound: "music_harp_gliss_up", type: "wav")
                     DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                         self.nextViewPresent = true
+                        self.cardSelected = false
                         self.firstLevelFinished = false
                         self.questionNumber = 0
                         self.cardDescription = "Cards left: \(9 - self.questionNumber)"
@@ -505,9 +547,7 @@ struct ContentView: View {
             return fonts.smallFontDimension
         }
     }
-
 }
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView( item: NameItem.example, section: Names.example)

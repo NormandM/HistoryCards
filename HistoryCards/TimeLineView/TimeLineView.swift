@@ -54,19 +54,51 @@ struct TimeLineView: View {
                 NavigationLink(destination: QuizView( item: self.item, section: self.section), isActive: self.$goQuizView){
                     Text("")
                 }
-                
                 if self.secondLevelFinished  && !self.timer0{
-                    Image("Pouce haut3")
-                        .resizable()
-                        .frame(width: geo.size.height/2.5, height: geo.size.height/2.0)
-                        .cornerRadius(25)
+                    ZStack() {
+                        Image("Pouce haut3")
+                            .resizable()
+                            .frame(width: geo.size.height/2.2, height: geo.size.height/2)
+                            .cornerRadius(25)
+                            .opacity(self.secondLevelFinished ? 1.0 : 0.0)
+                        VStack {
+                            Spacer()
+                            HStack(alignment: .center) {
+                                Text("+15: ")
+                                    .foregroundColor(.white)
+                                VStack {
+                                    Image("FinalCoin").renderingMode(.original)
+                                        .resizable()
+                                        .frame(width: geo.size.height/20
+                                            , height: geo.size.height/20)
+                                    Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
+                                        .font(.footnote)
+                                        .foregroundColor(.white)
+                                }
+                                Spacer()
+                                Text("+15: ")
+                                    .foregroundColor(.white)
+                                VStack{
+                                    Image("points2")
+                                        .resizable()
+                                        .frame(width: geo.size.height/22
+                                            , height: geo.size.height/22)
+                                    Text("\(UserDefaults.standard.integer(forKey: "points")) points")
+                                        .font(.footnote)
+                                        .foregroundColor(.white)
+                                }
+                            }
+                        }
+                        .padding()
+                        .frame(width: geo.size.height/2.2, height: geo.size.height/2)
                         .opacity(self.secondLevelFinished ? 1.0 : 0.0)
+                    }
                 }else if self.timer0 || (self.allCardsDropped && !self.answerIsGood){
                     Image("Pouce bas")
                         .resizable()
                         .cornerRadius(25)
                         .opacity(self.timer0 || (self.allCardsDropped && !self.answerIsGood) ? 1.0 : 0)
-                        .frame(width: geo.size.height/2.5, height: geo.size.height/2.0)
+                        .frame(width: geo.size.height/2.2, height: geo.size.height/2.0)
                     VStack {
                         Spacer()
                         HStack {
@@ -112,9 +144,7 @@ struct TimeLineView: View {
                                     self.xOffset2 = 0
                                     self.xOffset = 0
                                     self.numberToFinish = 0
-                                    self.coins -= 5
-                                    UserDefaults.standard.set(self.coins, forKey: "coins")
-                                    
+                                    removeCoins(numberOfCoinsToRemove: 5)
                                 }){
                                     Image("5Coin").renderingMode(.original)
                                         .resizable()
@@ -126,7 +156,7 @@ struct TimeLineView: View {
                                     .foregroundColor(.white)
                             }.padding()
                         }
-                    }.frame(width: geo.size.height/2.5, height: geo.size.height/2.0)
+                    }.frame(width: geo.size.height/2.2, height: geo.size.height/2.0)
                     
                 }
                 VStack {
@@ -144,9 +174,19 @@ struct TimeLineView: View {
                                 .background(ColorReference.specialGray)
                                 .cornerRadius(20)
                             if self.answerIsGood && self.allCardsDropped{
+                                Text("+ 2 coin")
+                                    .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
+                                    .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialGreen : .clear)
+                                    .offset(x: -geo.size.width/3)
+
                                 Text(self.messageAfterAnswer)
                                     .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
                                     .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialGreen : .clear)
+                                Text("+ 2 point")
+                                    .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
+                                    .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialGreen : .clear)
+                                    .offset(x: geo.size.width/3)
+
                                 Ellipse()
                                     .trim(from: 0, to: self.percentComplete)
                                     .stroke( ColorReference.specialGreen, style: StrokeStyle(lineWidth: 10, lineCap: .round))
@@ -204,17 +244,16 @@ struct TimeLineView: View {
                                 .offset(x: self.serieNumbers == 0 ? self.xOffset : 0.0)
                                 .addBorder(self.cardWasDropped[0] ? Color.clear : Color.white, cornerRadius: 10)
                             Text(self.trayCardDates[0])
-                                // .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
                                 .font(.footnote)
                                 .foregroundColor(.white)
-                                .opacity(self.allCardsDropped ? 1.0 : 0)
+                                .opacity(self.allCardsDropped ? 1.0 : 0.0)
                             
                         }
                         Spacer()
                         VStack{
                             Card(onEnded: self.cardDropped, index: 1, text: self.cardText[1])
-                                .frame(width: geo.size.height/4.3 * 0.6
-                                    , height: geo.size.height/4.3)
+                                .frame(width: geo.size.height/4.2 * 0.6
+                                    , height: geo.size.height/4.2)
                                 .allowsHitTesting(false)
                                 .overlay(GeometryReader { geo2 in
                                     Color.clear
@@ -235,17 +274,16 @@ struct TimeLineView: View {
                                 .offset(x: self.serieNumbers == 0 ? self.xOffset : 0.0)
                                 .addBorder(self.cardWasDropped[1] ? Color.clear : Color.white, cornerRadius: 10)
                             Text(self.trayCardDates[1])
-                                // .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
                                 .font(.footnote)
                                 .foregroundColor(.white)
-                                .opacity(self.allCardsDropped ? 1.0 : 0)
+                                .opacity(self.allCardsDropped ? 1.0 : 0.0)
                         }
                         
                         Spacer()
                         VStack {
                             Card(onEnded: self.cardDropped, index: 2, text: self.cardText[2])
-                                .frame(width: geo.size.height/4.3 * 0.6
-                                    , height: geo.size.height/4.3)
+                                .frame(width: geo.size.height/4.2 * 0.6
+                                    , height: geo.size.height/4.2)
                                 .allowsHitTesting(false)
                                 .overlay(GeometryReader { geo2 in
                                     Color.clear
@@ -265,7 +303,6 @@ struct TimeLineView: View {
                                 .offset(x: self.serieNumbers == 0 ? self.xOffset : 0.0)
                                 .addBorder(self.cardWasDropped[2] ? Color.clear : Color.white, cornerRadius: 10)
                             Text(self.trayCardDates[2])
-                                // .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
                                 .font(.footnote)
                                 .foregroundColor(.white)
                                 .opacity(self.allCardsDropped ? 1.0 : 0)
@@ -286,7 +323,6 @@ struct TimeLineView: View {
                             
                         }){
                             Text("Start Over")
-                                //  .scaledFont(name: "Helvetica Neue", size: self.fonts.fontDimension)
                                 .font(.body)
                                 .padding()
                                 .background(ColorReference.specialGreen)
@@ -296,13 +332,14 @@ struct TimeLineView: View {
                                     RoundedRectangle(cornerRadius: 40)
                                         .stroke(Color.white, lineWidth: 2)
                             )
+                            
                         }
                     }
                     HStack {
                         Spacer()
                         Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 0, text: self.questionForSeries.seriesInfo[self.serieNumbers].trayCardName[0])
-                            .frame(width: geo.size.height/4.3 * 0.6
-                                , height: geo.size.height/4.3)
+                            .frame(width: geo.size.height/4.2 * 0.6
+                                , height: geo.size.height/4.2)
                             .overlay(GeometryReader { geo2 in
                                 Color.clear
                                     .overlay(GeometryReader { geo2 in
@@ -323,8 +360,8 @@ struct TimeLineView: View {
                             .opacity(self.trayCardDropped[0] ? 0.0 : 1.0)
                         Spacer()
                         Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 1, text: self.questionForSeries.seriesInfo[self.serieNumbers].trayCardName[1])
-                            .frame(width: geo.size.height/4.3 * 0.6
-                                , height: geo.size.height/4.3)
+                            .frame(width: geo.size.height/4.2 * 0.6
+                                , height: geo.size.height/4.2)
                             .overlay(GeometryReader { geo2 in
                                 Color.clear
                                     .overlay(GeometryReader { geo2 in
@@ -346,8 +383,9 @@ struct TimeLineView: View {
                             .opacity(self.trayCardDropped[1] ? 0.0 : 1.0)
                         Spacer()
                         Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 2, text: self.questionForSeries.seriesInfo[self.serieNumbers].trayCardName[2])
-                            .frame(width: geo.size.height/4.3 * 0.6
-                                , height: geo.size.height/4.3)
+                            .frame(width: geo.size.height/4.2 * 0.6
+                                , height: geo.size.height/4.2)
+
                             .overlay(GeometryReader { geo2 in
                                 Color.clear
                                     .overlay(GeometryReader { geo2 in
@@ -392,11 +430,9 @@ struct TimeLineView: View {
                                             }
                                     }
                                     .background(ColorReference.specialOrange)
-                                        // .scaledFont(name: "Helvetica Neue", size: self.fonts.finalBigFont)
                                         .font(.title)
                                 }
                                 Text("Time left")
-                                    //.scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension )
                                     .font(.footnote)
                             }
                             Spacer()
@@ -410,8 +446,7 @@ struct TimeLineView: View {
                                             , height: geo.size.height/12)
                                 }
                                 
-                                Text("\(self.coins) coins")
-                                    // .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension )
+                                Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
                                     .font(.footnote)
                             }
                             Spacer()
@@ -427,6 +462,7 @@ struct TimeLineView: View {
                             }
                             Spacer()
                         }
+                        
                     }
                 }.blur(radius: self.secondLevelFinished || (self.timer0 || self.secondLevelWrong)  ?  75 : 0.0)
                     .zIndex(-0.5)
@@ -468,6 +504,7 @@ struct TimeLineView: View {
             $0.contains(location)
             
         }) {
+            print("match: \(match)")
             self.cardWasDropped[match] = true
             switch match {
             case 0:
@@ -486,14 +523,17 @@ struct TimeLineView: View {
                 playSound(sound: "404015__paul-sinnett__card", type: "wav")
                 if trayCardText == questionForSeries.seriesInfo[serieNumbers].rightPositionCard[2]{cardGood[2] = true}
             default:
-                print()
+                print("default2")
             }
             if cardText[0] != "" && cardText[1] != "" && cardText[2] != ""{
                 allCardsDropped = true
             }
             
             if self.cardGood[0] && self.cardGood[1] && self.cardGood[2] && self.allCardsDropped{
+                print("added")
                 answerIsGood = true
+                addCoins(numberOfCoinsToAdd: 2)
+                addPoints(numberOfPointsToAdd: 2)
             }else if self.allCardsDropped{
                 answerIsGood = false
                 withAnimation(.linear(duration: 2.0)) {
@@ -514,7 +554,7 @@ struct TimeLineView: View {
             }
         }
         else {
-            return .unknown
+            return .bad
         }
     }
     func cardPushed(location: CGPoint, trayIndex: Int){
@@ -535,7 +575,7 @@ struct TimeLineView: View {
             case 2:
                 cardIsBeingMoved[2] = true
             default:
-                print()
+                print("default3")
             }
         }
         self.timer0 = false
@@ -569,9 +609,6 @@ struct TimeLineView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                 self.tryAgain = true
                 if self.serieNumbers < 1 {self.serieNumbers = self.serieNumbers + 1}
-                self.points = UserDefaults.standard.integer(forKey: "points")
-                self.points += 1
-                UserDefaults.standard.set(self.points, forKey: "points")
                 self.numberToFinish += 1
                 for n in 0...2 {
                     self.percentComplete = 0
@@ -584,13 +621,11 @@ struct TimeLineView: View {
                     self.timer0 = false
                 }
                 if self.numberToFinish == 2 {
-                    self.points = UserDefaults.standard.integer(forKey: "points")
-                    self.points += 5
-                    UserDefaults.standard.set(self.points, forKey: "points")
+                    addCoins(numberOfCoinsToAdd: 15)
+                    addPoints(numberOfPointsToAdd: 15)
                     withAnimation(.linear(duration: 2)){
                         self.secondLevelFinished  = true
                         playSound(sound: "music_harp_gliss_up", type: "wav")
-                        
                     }
                     self.timer2.upstream.connect().cancel()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
@@ -610,6 +645,16 @@ struct TimeLineView: View {
             playSound(sound: "Error Warning", type: "wav")
             withAnimation(.linear(duration: 2)) {
                 self.badAnsweOffset = 500
+            }
+            switch numberToFinish {
+            case 0:
+                print("removing")
+                removeCoins(numberOfCoinsToRemove: 2)
+            case 1:
+                removeCoins(numberOfCoinsToRemove: 2)
+                removePoints(numberOfPointsToRemove: 2)
+            default:
+                print("default7")
             }
         }
         withAnimation(.linear(duration: 6.0)) {

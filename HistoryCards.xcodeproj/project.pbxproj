@@ -20,6 +20,8 @@
 		8E25732B243BD04100F52B99 /* AmericanCivilWar3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E25732A243BD04100F52B99 /* AmericanCivilWar3.plist */; };
 		8E257346243E429C00F52B99 /* AmericainRevolution3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E257345243E429C00F52B99 /* AmericainRevolution3.plist */; };
 		8E257356243E733500F52B99 /* WW2-3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E257355243E733500F52B99 /* WW2-3.plist */; };
+		8E2EA07C245C7D1900E826C8 /* CoinAndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2EA07B245C7D1900E826C8 /* CoinAndPoints.swift */; };
+		8E2EA07E245DF5EA00E826C8 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2EA07D245DF5EA00E826C8 /* ProgressBar.swift */; };
 		8E33752A2448C9300049467C /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3375292448C9300049467C /* DataView.swift */; };
 		8E674E3A244F858C001212B4 /* Eras1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E39244F858C001212B4 /* Eras1.plist */; };
 		8E674E3C244F8591001212B4 /* Eras2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E3B244F8591001212B4 /* Eras2.plist */; };
@@ -155,6 +157,8 @@
 		8E25732A243BD04100F52B99 /* AmericanCivilWar3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AmericanCivilWar3.plist; sourceTree = "<group>"; };
 		8E257345243E429C00F52B99 /* AmericainRevolution3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AmericainRevolution3.plist; sourceTree = "<group>"; };
 		8E257355243E733500F52B99 /* WW2-3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WW2-3.plist"; sourceTree = "<group>"; };
+		8E2EA07B245C7D1900E826C8 /* CoinAndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinAndPoints.swift; sourceTree = "<group>"; };
+		8E2EA07D245DF5EA00E826C8 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		8E3375292448C9300049467C /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
 		8E674E39244F858C001212B4 /* Eras1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Eras1.plist; sourceTree = "<group>"; };
 		8E674E3B244F8591001212B4 /* Eras2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Eras2.plist; sourceTree = "<group>"; };
@@ -415,6 +419,7 @@
 				8EDE2F4F2433CF5200588FCA /* NameModel.swift */,
 				8EDB865A244A409500C95E5E /* Accomplishements.swift */,
 				8EDB865D244B8CD400C95E5E /* UserDataInitialisation.swift */,
+				8E2EA07B245C7D1900E826C8 /* CoinAndPoints.swift */,
 				8EF6BAC42441086A00E36EE0 /* Menu */,
 				8EDE2EFE243142EC00588FCA /* ContentView */,
 				8EDE2F09243142FC00588FCA /* TimeLineView */,
@@ -485,6 +490,7 @@
 			children = (
 				8EDE2F0F2431430700588FCA /* QuizView.swift */,
 				8EDE2F102431430700588FCA /* QuizData.swift */,
+				8E2EA07D245DF5EA00E826C8 /* ProgressBar.swift */,
 			);
 			path = QuizView;
 			sourceTree = "<group>";
@@ -828,6 +834,7 @@
 				8EDE2F0C243142FC00588FCA /* QuestionForSeries.swift in Sources */,
 				8EF6BAC824410EF100E36EE0 /* SectionRow.swift in Sources */,
 				8EDE2F07243142EC00588FCA /* Seuquence.swift in Sources */,
+				8E2EA07C245C7D1900E826C8 /* CoinAndPoints.swift in Sources */,
 				8EDE2F1F2431431800588FCA /* FontsAndConstraintsOptions.swift in Sources */,
 				8EDE2ECC243141F400588FCA /* AppDelegate.swift in Sources */,
 				8EDE2F172431431000588FCA /* AllEvents.swift in Sources */,
@@ -849,6 +856,7 @@
 				8EDE2F1E2431431800588FCA /* ScaledFont.swift in Sources */,
 				8EDE2F222431431800588FCA /* ScreenDimension.swift in Sources */,
 				8EDE2F04243142EC00588FCA /* Event.swift in Sources */,
+				8E2EA07E245DF5EA00E826C8 /* ProgressBar.swift in Sources */,
 				8EF6BAC32440E25E00E36EE0 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

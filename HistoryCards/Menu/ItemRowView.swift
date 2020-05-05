@@ -24,12 +24,8 @@ struct ItemRowView: View {
             
         }.background(ColorReference.specialGreen)
             .onAppear{
-                print(self.isDone)
-                print(self.item.id.uuidString)
-                
                 self.isDone = UserDefaults.standard.bool(forKey: self.item.id.uuidString)
         }
-        
     }
 }
 
