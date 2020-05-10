@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E10DDA92465D5BA0018FC53 /* SequenceNapoleon1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E10DDA82465D5BA0018FC53 /* SequenceNapoleon1.plist */; };
+		8E10DDAB2465D5C70018FC53 /* SequenceNapoleon2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E10DDAA2465D5C70018FC53 /* SequenceNapoleon2.plist */; };
+		8E10DDAD2465D5CF0018FC53 /* SequenceNapoleon3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E10DDAC2465D5CF0018FC53 /* SequenceNapoleon3.plist */; };
+		8E10DDAF2465D7390018FC53 /* SequenceEras1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E10DDAE2465D7390018FC53 /* SequenceEras1.plist */; };
+		8E10DDB12465D7410018FC53 /* SequenceEras2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E10DDB02465D7410018FC53 /* SequenceEras2.plist */; };
+		8E10DDB32465D7490018FC53 /* SequenceEras3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E10DDB22465D7490018FC53 /* SequenceEras3.plist */; };
 		8E1439E42443AA49003B8D34 /* FrenchRevolution3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E1439E32443AA49003B8D34 /* FrenchRevolution3.plist */; };
 		8E1439EF2444BAF0003B8D34 /* Napoleon's rise to power.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E1439EE2444BAF0003B8D34 /* Napoleon's rise to power.plist */; };
 		8E1439F12444BAFA003B8D34 /* Napoleon's conquests.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E1439F02444BAFA003B8D34 /* Napoleon's conquests.plist */; };
@@ -25,9 +31,6 @@
 		8E33752A2448C9300049467C /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3375292448C9300049467C /* DataView.swift */; };
 		8E674E3A244F858C001212B4 /* Eras1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E39244F858C001212B4 /* Eras1.plist */; };
 		8E674E3C244F8591001212B4 /* Eras2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E3B244F8591001212B4 /* Eras2.plist */; };
-		8E674E40244F862F001212B4 /* SequenceEras1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E3F244F862F001212B4 /* SequenceEras1.plist */; };
-		8E674E42244F8669001212B4 /* SequenceEras2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E41244F8669001212B4 /* SequenceEras2.plist */; };
-		8E674E44244F86B0001212B4 /* SequenceEras3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E43244F86AF001212B4 /* SequenceEras3.plist */; };
 		8E674E48244F8923001212B4 /* Eras3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E47244F8923001212B4 /* Eras3.plist */; };
 		8E674E4C244F98D4001212B4 /* AncientCivilisation1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E4B244F98D4001212B4 /* AncientCivilisation1.plist */; };
 		8E674E4E244F98DA001212B4 /* AncientCivilisation2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E4D244F98DA001212B4 /* AncientCivilisation2.plist */; };
@@ -78,9 +81,6 @@
 		8E674EC22452382D001212B4 /* SequenceSpacePioneers3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EC12452382D001212B4 /* SequenceSpacePioneers3.plist */; };
 		8E674EC424523845001212B4 /* SequenceSpacePioneers4.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EC324523845001212B4 /* SequenceSpacePioneers4.plist */; };
 		8E674EC624560E51001212B4 /* Pine_Apple_Rag.ogg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EC524560E51001212B4 /* Pine_Apple_Rag.ogg.mp3 */; };
-		8EDB8655244A0A0A00C95E5E /* SequenceNapoleon1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EDB8654244A0A0A00C95E5E /* SequenceNapoleon1.plist */; };
-		8EDB8657244A2C4200C95E5E /* SequenceNapoleon2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EDB8656244A2C4100C95E5E /* SequenceNapoleon2.plist */; };
-		8EDB8659244A2DE100C95E5E /* SequenceNapoleon3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EDB8658244A2DE100C95E5E /* SequenceNapoleon3.plist */; };
 		8EDB865B244A409500C95E5E /* Accomplishements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDB865A244A409500C95E5E /* Accomplishements.swift */; };
 		8EDB865E244B8CD400C95E5E /* UserDataInitialisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDB865D244B8CD400C95E5E /* UserDataInitialisation.swift */; };
 		8EDE2ECC243141F400588FCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE2ECB243141F400588FCA /* AppDelegate.swift */; };
@@ -144,6 +144,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E10DDA82465D5BA0018FC53 /* SequenceNapoleon1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceNapoleon1.plist; sourceTree = "<group>"; };
+		8E10DDAA2465D5C70018FC53 /* SequenceNapoleon2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceNapoleon2.plist; sourceTree = "<group>"; };
+		8E10DDAC2465D5CF0018FC53 /* SequenceNapoleon3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceNapoleon3.plist; sourceTree = "<group>"; };
+		8E10DDAE2465D7390018FC53 /* SequenceEras1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceEras1.plist; sourceTree = "<group>"; };
+		8E10DDB02465D7410018FC53 /* SequenceEras2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceEras2.plist; sourceTree = "<group>"; };
+		8E10DDB22465D7490018FC53 /* SequenceEras3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceEras3.plist; sourceTree = "<group>"; };
 		8E1439E32443AA49003B8D34 /* FrenchRevolution3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FrenchRevolution3.plist; sourceTree = "<group>"; };
 		8E1439EE2444BAF0003B8D34 /* Napoleon's rise to power.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Napoleon's rise to power.plist"; sourceTree = "<group>"; };
 		8E1439F02444BAFA003B8D34 /* Napoleon's conquests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Napoleon's conquests.plist"; sourceTree = "<group>"; };
@@ -162,9 +168,6 @@
 		8E3375292448C9300049467C /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
 		8E674E39244F858C001212B4 /* Eras1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Eras1.plist; sourceTree = "<group>"; };
 		8E674E3B244F8591001212B4 /* Eras2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Eras2.plist; sourceTree = "<group>"; };
-		8E674E3F244F862F001212B4 /* SequenceEras1.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = SequenceEras1.plist; path = HistoryCards/Plists/Napoleon/SequenceEras1.plist; sourceTree = SOURCE_ROOT; };
-		8E674E41244F8669001212B4 /* SequenceEras2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = SequenceEras2.plist; path = HistoryCards/Plists/Napoleon/SequenceEras2.plist; sourceTree = SOURCE_ROOT; };
-		8E674E43244F86AF001212B4 /* SequenceEras3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = SequenceEras3.plist; path = HistoryCards/Plists/Napoleon/SequenceEras3.plist; sourceTree = SOURCE_ROOT; };
 		8E674E47244F8923001212B4 /* Eras3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Eras3.plist; sourceTree = "<group>"; };
 		8E674E4B244F98D4001212B4 /* AncientCivilisation1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AncientCivilisation1.plist; sourceTree = "<group>"; };
 		8E674E4D244F98DA001212B4 /* AncientCivilisation2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AncientCivilisation2.plist; sourceTree = "<group>"; };
@@ -215,9 +218,6 @@
 		8E674EC12452382D001212B4 /* SequenceSpacePioneers3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceSpacePioneers3.plist; sourceTree = "<group>"; };
 		8E674EC324523845001212B4 /* SequenceSpacePioneers4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceSpacePioneers4.plist; sourceTree = "<group>"; };
 		8E674EC524560E51001212B4 /* Pine_Apple_Rag.ogg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pine_Apple_Rag.ogg.mp3; sourceTree = "<group>"; };
-		8EDB8654244A0A0A00C95E5E /* SequenceNapoleon1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceNapoleon1.plist; sourceTree = "<group>"; };
-		8EDB8656244A2C4100C95E5E /* SequenceNapoleon2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceNapoleon2.plist; sourceTree = "<group>"; };
-		8EDB8658244A2DE100C95E5E /* SequenceNapoleon3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceNapoleon3.plist; sourceTree = "<group>"; };
 		8EDB865A244A409500C95E5E /* Accomplishements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accomplishements.swift; sourceTree = "<group>"; };
 		8EDB865D244B8CD400C95E5E /* UserDataInitialisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataInitialisation.swift; sourceTree = "<group>"; };
 		8EDE2EC8243141F400588FCA /* HistoryCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HistoryCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,9 +313,9 @@
 				8E1439EE2444BAF0003B8D34 /* Napoleon's rise to power.plist */,
 				8E1439F02444BAFA003B8D34 /* Napoleon's conquests.plist */,
 				8E1439F22444BB05003B8D34 /* Napoleon 100 days war.plist */,
-				8EDB8654244A0A0A00C95E5E /* SequenceNapoleon1.plist */,
-				8EDB8656244A2C4100C95E5E /* SequenceNapoleon2.plist */,
-				8EDB8658244A2DE100C95E5E /* SequenceNapoleon3.plist */,
+				8E10DDA82465D5BA0018FC53 /* SequenceNapoleon1.plist */,
+				8E10DDAA2465D5C70018FC53 /* SequenceNapoleon2.plist */,
+				8E10DDAC2465D5CF0018FC53 /* SequenceNapoleon3.plist */,
 			);
 			path = Napoleon;
 			sourceTree = "<group>";
@@ -339,9 +339,9 @@
 				8E674E39244F858C001212B4 /* Eras1.plist */,
 				8E674E3B244F8591001212B4 /* Eras2.plist */,
 				8E674E47244F8923001212B4 /* Eras3.plist */,
-				8E674E3F244F862F001212B4 /* SequenceEras1.plist */,
-				8E674E41244F8669001212B4 /* SequenceEras2.plist */,
-				8E674E43244F86AF001212B4 /* SequenceEras3.plist */,
+				8E10DDAE2465D7390018FC53 /* SequenceEras1.plist */,
+				8E10DDB02465D7410018FC53 /* SequenceEras2.plist */,
+				8E10DDB22465D7490018FC53 /* SequenceEras3.plist */,
 			);
 			path = Erass;
 			sourceTree = "<group>";
@@ -726,6 +726,7 @@
 				8E25732B243BD04100F52B99 /* AmericanCivilWar3.plist in Resources */,
 				8E674EC624560E51001212B4 /* Pine_Apple_Rag.ogg.mp3 in Resources */,
 				8EF6BAB5243FA06200E36EE0 /* SpacePioneers4.plist in Resources */,
+				8E10DDA92465D5BA0018FC53 /* SequenceNapoleon1.plist in Resources */,
 				8E674E3A244F858C001212B4 /* Eras1.plist in Resources */,
 				8E674EBE245237E3001212B4 /* SequenceSpacePioneers1.plist in Resources */,
 				8E674E4E244F98DA001212B4 /* AncientCivilisation2.plist in Resources */,
@@ -739,10 +740,11 @@
 				8EDE2F392431432800588FCA /* InventionsQuiz.plist in Resources */,
 				8E2572D6243BB99800F52B99 /* Wars5.plist in Resources */,
 				8E1439E42443AA49003B8D34 /* FrenchRevolution3.plist in Resources */,
+				8E10DDAD2465D5CF0018FC53 /* SequenceNapoleon3.plist in Resources */,
 				8E674E9C2450EBB8001212B4 /* SequenceAmericainCivilWar2.plist in Resources */,
 				8EF6BAC12440CD3100E36EE0 /* menu.json in Resources */,
-				8EDB8657244A2C4200C95E5E /* SequenceNapoleon2.plist in Resources */,
 				8EDE2F2E2431431F00588FCA /* 404015__paul-sinnett__card.wav in Resources */,
+				8E10DDAB2465D5C70018FC53 /* SequenceNapoleon2.plist in Resources */,
 				8E674E682450BEAC001212B4 /* SequenceAncientCivilisation3.plist in Resources */,
 				8E674E7E2450CE0E001212B4 /* SequenceFrenchRevolution1.plist in Resources */,
 				8E674E6E2450BFA3001212B4 /* SequenceRevolutions1.plist in Resources */,
@@ -752,8 +754,6 @@
 				8E257356243E733500F52B99 /* WW2-3.plist in Resources */,
 				8E674E8E2450DF5C001212B4 /* SequenceWars3.plist in Resources */,
 				8E674EC22452382D001212B4 /* SequenceSpacePioneers3.plist in Resources */,
-				8E674E40244F862F001212B4 /* SequenceEras1.plist in Resources */,
-				8E674E42244F8669001212B4 /* SequenceEras2.plist in Resources */,
 				8E674EA82451F7F0001212B4 /* SequenceWW1-1.plist in Resources */,
 				8EDE2EDB243141F700588FCA /* LaunchScreen.storyboard in Resources */,
 				8E674E642450BE51001212B4 /* SequenceAncientCivilisation1.plist in Resources */,
@@ -762,7 +762,6 @@
 				8E674E902450DF6D001212B4 /* SequenceWars4.plist in Resources */,
 				8EF6BAB3243FA06200E36EE0 /* SpacePioneers3.plist in Resources */,
 				8E674E7A2450CDF7001212B4 /* FrenchRevolution1.plist in Resources */,
-				8EDB8655244A0A0A00C95E5E /* SequenceNapoleon1.plist in Resources */,
 				8E674E4C244F98D4001212B4 /* AncientCivilisation1.plist in Resources */,
 				8E674E822450CE5F001212B4 /* SequenceFrenchRevolution3.plist in Resources */,
 				8E674E3C244F8591001212B4 /* Eras2.plist in Resources */,
@@ -771,19 +770,20 @@
 				8E674E882450DF08001212B4 /* Wars2.plist in Resources */,
 				8E674EC02452380E001212B4 /* SequenceSpacePioneers2.plist in Resources */,
 				8E674E52244F98EA001212B4 /* AncientCivilisation4.plist in Resources */,
+				8E10DDB12465D7410018FC53 /* SequenceEras2.plist in Resources */,
 				8E1439F12444BAFA003B8D34 /* Napoleon's conquests.plist in Resources */,
 				8E2572D4243BB99800F52B99 /* Wars4.plist in Resources */,
 				8E674E702450BFB5001212B4 /* SequenceRevolutions2.plist in Resources */,
 				8E674E602450B80E001212B4 /* AmericainRevolution2.plist in Resources */,
 				8E674EA42451F797001212B4 /* WW1-2.plist in Resources */,
 				8E674E742450C2CA001212B4 /* SequenceAmericainRevolution2.plist in Resources */,
+				8E10DDAF2465D7390018FC53 /* SequenceEras1.plist in Resources */,
 				8E674E962450EB80001212B4 /* AmericanCivilWar1.plist in Resources */,
 				8EDE2F2B2431431F00588FCA /* Incoming Text 01.wav in Resources */,
 				8E674EB024521DEB001212B4 /* WW2-2.plist in Resources */,
 				8E674E762450C2FD001212B4 /* SequenceAmericainRevolution3.plist in Resources */,
 				8E2572D5243BB99800F52B99 /* Wars3.plist in Resources */,
 				8EDE2F382431432800588FCA /* InventionsSequence.plist in Resources */,
-				8E674E44244F86B0001212B4 /* SequenceEras3.plist in Resources */,
 				8E674E982450EB86001212B4 /* AmericanCivilWar2.plist in Resources */,
 				8E674E9E2450EBC5001212B4 /* SequenceAmericainCivilWar3.plist in Resources */,
 				8E674E862450DF01001212B4 /* Wars1.plist in Resources */,
@@ -797,13 +797,13 @@
 				8E674E722450C2A1001212B4 /* SequenceAmericainRevolution1.plist in Resources */,
 				8EDE2F2C2431431F00588FCA /* music_harp_gliss_up.wav in Resources */,
 				8E674E8C2450DF4C001212B4 /* SequenceWars2.plist in Resources */,
+				8E10DDB32465D7490018FC53 /* SequenceEras3.plist in Resources */,
 				8E257346243E429C00F52B99 /* AmericainRevolution3.plist in Resources */,
 				8E674E6A2450BEC1001212B4 /* SequenceAncientCivilisation4.plist in Resources */,
 				8EDE2F3A2431432800588FCA /* InventionsCardData.plist in Resources */,
 				8E674E662450BE89001212B4 /* SequenceAncientCivilisation2.plist in Resources */,
 				8E674E6C2450BF95001212B4 /* SequenceRevolutions3.plist in Resources */,
 				8E674E48244F8923001212B4 /* Eras3.plist in Resources */,
-				8EDB8659244A2DE100C95E5E /* SequenceNapoleon3.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

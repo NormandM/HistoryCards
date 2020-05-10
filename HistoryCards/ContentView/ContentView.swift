@@ -431,6 +431,7 @@ struct ContentView: View {
                     answerIsGood = false
                     playSound(sound: "Error Warning", type: "wav")
                 }
+                cardAnimation()
             case 2:
                 if !self.eventTiming.timing[self.questionNumber].eventIsEarlier {
                     answerIsGood = true
@@ -446,11 +447,12 @@ struct ContentView: View {
                     answerIsGood = false
                     playSound(sound: "Error Warning", type: "wav")
                 }
+                cardAnimation()
             default:
                 print("default")
             }
         }
-        cardAnimation()
+        
     }
     func cardMoved(location: CGPoint, letter: String) -> DragState {
         if let match = cardFrames.firstIndex(where: {
