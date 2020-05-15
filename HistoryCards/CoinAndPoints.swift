@@ -14,11 +14,15 @@ func addCoins(numberOfCoinsToAdd: Int) {
 func addPoints(numberOfPointsToAdd: Int) {
     let points = UserDefaults.standard.integer(forKey: "points")
     UserDefaults.standard.set(points + numberOfPointsToAdd, forKey: "points")
-    print("points are beeing added")
 }
-func removeCoins(numberOfCoinsToRemove: Int){
+func removeCoins(numberOfCoinsToRemove: Int) -> Bool{
     let coins = UserDefaults.standard.integer(forKey: "coins")
     UserDefaults.standard.set(coins - numberOfCoinsToRemove, forKey: "coins")
+    if UserDefaults.standard.integer(forKey: "coins") < 0 {
+        return true
+    }else{
+        return false
+    }
 }
 func removePoints(numberOfPointsToRemove: Int){
     let points = UserDefaults.standard.integer(forKey: "points")

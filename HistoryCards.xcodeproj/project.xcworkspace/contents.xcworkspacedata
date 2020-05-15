@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:/Users/normandmartin/Desktop/IOSProjects/HistoryCards/HistoryCards/sf_distant_galaxy"
+      name = "sf_distant_galaxy">
+   </Group>
    <FileRef
-      location = "self:HistoryCards.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

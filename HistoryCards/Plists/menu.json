@@ -91,19 +91,19 @@
 		"items": [
 			{
                 "id": "A4D89AF9-190E-4409-B924-AABD13DBB6A4",
-				"name": "AmericainRevolution1",
+				"name": "Americain Revolution1",
                 "sequence": "SequenceAmericainRevolution1",
                 "isDone": false
 			},
 			{
                 "id": "FC201614-1418-4152-9469-087B27485D13",
-                "name": "AmericainRevolution2",
+                "name": "Americain Revolution2",
                 "sequence": "SequenceAmericainRevolution2",
                 "isDone": false
             },
             {
                 "id": "7A2A79EB-5816-4815-B1DD-1D250FB85419",
-                "name": "AmericainRevolution3",
+                "name": "Americain Revolution3",
                 "sequence": "SequenceAmericainRevolution3",
                 "isDone": false
             }

@@ -28,6 +28,8 @@ struct ContentView: View {
     @State private var cardDropped = false
     @State private var cardDescription = ""
     @State private var nextViewPresent = false
+    @State private var showUpLevel = false
+    @State private var showCreditManager = false
     @State private var percentComplete: CGFloat = 0.0
     @State private var tryAgain = false
     @State private var timeRemaining = 120
@@ -59,6 +61,7 @@ struct ContentView: View {
                 NavigationLink(destination: DataView(item: self.item, section: self.section), isActive: self.$seeQuizData){
                     Text("")
                 }
+                
                 if self.startUp{
                     VStack {
                         Spacer()
@@ -199,10 +202,6 @@ struct ContentView: View {
                                 Text(self.messageAfterAnswer)
                                     .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
                                     .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialRed : .clear)
-                                Text("-\(self.questionNumber) point")
-                                    .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
-                                    .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialGreen : .clear)
-                                    .offset(x: geo.size.width/3)
                                 Ellipse()
                                     .trim(from: 0, to: self.percentComplete)
                                     .stroke( ColorReference.specialRed, style: StrokeStyle(lineWidth: 10, lineCap: .round))
@@ -309,7 +308,7 @@ struct ContentView: View {
                         }
                         Spacer()
                     }
-                    .padding(.bottom)
+                    .padding()
                     
                     HStack {
                         Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed ,index: 0, text:  self.cardInfo.info[self.questionNumber].trayCard0Name)
@@ -355,7 +354,7 @@ struct ContentView: View {
                             Spacer()
                             VStack {
                                 Button(action: {
-                                    print()
+                                    self.showCreditManager = true
                                 }){
                                     Image("FinalCoin").renderingMode(.original)
                                         .resizable()
@@ -405,6 +404,13 @@ struct ContentView: View {
         .navigationBarTitle("Earlier or Later", displayMode: .inline)
         .navigationBarHidden(self.firstLevelFinished)
         .navigationBarBackButtonHidden(true)
+        .sheet(isPresented: self.$showUpLevel) {
+            LandMarkView()
+        }
+        .sheet(isPresented: self.$showCreditManager) {
+            CoinManagement()
+        }
+    
         .navigationViewStyle(StackNavigationViewStyle())
         
     }
@@ -425,9 +431,9 @@ struct ContentView: View {
                     withAnimation(Animation.easeInOut(duration: 2).delay(1)) {
                         self.xOffset0 = centerCardPosition - rightCardPosition
                     }
+                    self.showUpLevel = achievement()
                 }else{
-                    removePoints(numberOfPointsToRemove: self.questionNumber)
-                    removeCoins(numberOfCoinsToRemove: 1)
+                    showCreditManager = removeCoins(numberOfCoinsToRemove: 1)
                     answerIsGood = false
                     playSound(sound: "Error Warning", type: "wav")
                 }
@@ -441,16 +447,18 @@ struct ContentView: View {
                     withAnimation(Animation.easeInOut(duration: 2.0).delay(1.0)) {
                         self.xOffset2 = centerCardPosition - leftCardPosition
                     }
+                    self.showUpLevel = achievement()
                 }else{
-                    removeCoins(numberOfCoinsToRemove: 1)
-                    removePoints(numberOfPointsToRemove: questionNumber)
+                    showCreditManager = removeCoins(numberOfCoinsToRemove: 1)
                     answerIsGood = false
                     playSound(sound: "Error Warning", type: "wav")
                 }
+
                 cardAnimation()
             default:
                 print("default")
             }
+
         }
         
     }
@@ -482,9 +490,6 @@ struct ContentView: View {
         self.cardDescription = "Cards left: \(9 - self.questionNumber)"
     }
     func cardAnimation () {
-        print("card animation")
-        print("answerIsGood: \(answerIsGood)")
-        print("timer0: \(timer0)")
         self.tryAgain = true
         if answerIsGood && !timer0{
             self.messageAfterAnswer = "Great!"

@@ -51,11 +51,13 @@ struct MenuView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear{
+           // UserDefaults.standard.set(0, forKey: "points")
             if !(self.userAlreadyExist(coins: "coins")){
                 self.coins = 20
                 self.points = 0
                 UserDefaults.standard.set(self.coins, forKey: "coins")
                 UserDefaults.standard.set(self.points, forKey: "points")
+                UserDefaults.standard.set("Initital level", forKey: "level")
                 UserDefaults.standard.set("WW2-1", forKey: "eventName")
                 UserDefaults.standard.set("SequenceWW2-1", forKey: "sequenceName")
                 

@@ -41,6 +41,8 @@ struct QuizView: View {
     @State private var sectionIsDone = false
     @State private var sectionCount = Int()
     @State private var sectionDone = Int()
+    @State private var showUpLevel = false
+    @State private var showCreditManager = false
     var item: NameItem
     var section: Names
     @State var progressValue: Float = 0.5
@@ -256,8 +258,7 @@ struct QuizView: View {
                             Button(action: {
                                 self.quizData = QuizData()
                                 self.reset()
-                                self.coins -= 10
-                                UserDefaults.standard.set(self.coins, forKey: "coins")
+                                self.showCreditManager  = removeCoins(numberOfCoinsToRemove: 10)
                                 
                             }){
                                 Image("10Coin").renderingMode(.original)
@@ -427,6 +428,7 @@ struct QuizView: View {
                             .opacity(self.trayCardDropped[2] ? 0.0 : 1.0)
                         Spacer()
                     }
+                    .padding()
                     Spacer()
                     HStack {
                         ZStack(){
@@ -460,7 +462,7 @@ struct QuizView: View {
                                 Spacer()
                                 VStack {
                                     Button(action: {
-                                        print()
+                                        self.showCreditManager = true
                                     }){
                                         Image("FinalCoin").renderingMode(.original)
                                             .resizable()
@@ -492,8 +494,7 @@ struct QuizView: View {
             .onAppear{
                 self.progressValue = Float(Double(UserDefaults.standard.integer(forKey: "points"))/200.0)
                 if self.progressValue > 1.0 {self.progressValue = 1.0}
-                print(UserDefaults.standard.integer(forKey: "points"))
-                print(Double((UserDefaults.standard.integer(forKey: "points")))/200.0)
+
             }
         }
         .background(ColorReference.specialGreen)
@@ -502,9 +503,16 @@ struct QuizView: View {
         .navigationBarHidden(answerIsGood || (allCardsDropped && !answerIsGood) || timer0)
         .navigationBarBackButtonHidden(true)
         .onAppear{
+            self.showUpLevel = achievement()
             self.cardText[0] = self.quizData.names[0]
             self.cardText[1] = self.quizData.names[1]
             self.cardText[2] = self.quizData.names[2]
+        }
+        .sheet(isPresented: self.$showUpLevel) {
+            LandMarkView()
+        }
+        .sheet(isPresented: self.$showCreditManager) {
+            CoinManagement()
         }
     }
     
@@ -541,6 +549,7 @@ struct QuizView: View {
             }
             if self.cardGood[0] && self.cardGood[1] && self.cardGood[2] {
                 self.answerIsGood = true
+                self.showUpLevel = achievement()
                 withAnimation (.linear(duration: 2)){
                     thirdLevelIsFinished = true
                     playSound(sound: "music_harp_gliss_up", type: "wav")
@@ -557,7 +566,6 @@ struct QuizView: View {
                     sectionIsDone = array.allSatisfy({
                         $0 == true
                     })
-
                 }
             }else if allCardsDropped == true {
                 withAnimation (.linear(duration: 2)){

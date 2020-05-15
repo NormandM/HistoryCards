@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ProgressBar: View {
     @State var value: Float
+    let level = Level()
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .leading) {
@@ -21,6 +22,9 @@ struct ProgressBar: View {
                     .foregroundColor(Color(UIColorReference.specialOrange))
                     .animation(.linear)
             }.cornerRadius(45.0)
+        }
+        .onAppear{
+            self.value = Float(UserDefaults.standard.integer(forKey: "points"))/Float(self.level.nextLevelPoints)
         }
     }
 }

@@ -46,7 +46,6 @@ struct DataView: View {
                         .cornerRadius(20)
                         .padding()
                     Text(self.info.date)
-                    //.scaledFont(name: "Helvetica Neue", size: self.fonts.titalFont)
                         .font(.largeTitle)
                     .foregroundColor(.white)
                     Spacer()

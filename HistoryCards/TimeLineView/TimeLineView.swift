@@ -44,6 +44,8 @@ struct TimeLineView: View {
     @State private var dismissView = UserDefaults.standard.bool(forKey: "dismissView")
     private let timer2 = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var timer0 = false
+    @State private var showUpLevel = false
+    @State private var showCreditManager = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var questionForSeries = QuestionsForSeries()
     var item: NameItem
@@ -144,7 +146,7 @@ struct TimeLineView: View {
                                     self.xOffset2 = 0
                                     self.xOffset = 0
                                     self.numberToFinish = 0
-                                    removeCoins(numberOfCoinsToRemove: 5)
+                                    self.showCreditManager = removeCoins(numberOfCoinsToRemove: 5)
                                 }){
                                     Image("5Coin").renderingMode(.original)
                                         .resizable()
@@ -438,7 +440,7 @@ struct TimeLineView: View {
                             Spacer()
                             VStack {
                                 Button(action: {
-                                    print()
+                                    self.showCreditManager = true
                                 }){
                                     Image("FinalCoin").renderingMode(.original)
                                         .resizable()
@@ -467,6 +469,7 @@ struct TimeLineView: View {
                 }.blur(radius: self.secondLevelFinished || (self.timer0 || self.secondLevelWrong)  ?  75 : 0.0)
                     .zIndex(-0.5)
             }.onAppear{
+                self.showUpLevel = achievement()
                 self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
                 if self.dismissView {
                     self.presentationMode.wrappedValue.dismiss()
@@ -497,6 +500,12 @@ struct TimeLineView: View {
         .background(ColorReference.specialGreen)
         .edgesIgnoringSafeArea(.all)
         .navigationBarBackButtonHidden(true)
+        .sheet(isPresented: self.$showUpLevel) {
+            LandMarkView()
+        }
+        .sheet(isPresented: self.$showCreditManager) {
+            CoinManagement()
+        }
         .navigationViewStyle(StackNavigationViewStyle())
     }
     func cardDropped(location: CGPoint, trayIndex: Int, cardAnswer: String) {
@@ -530,16 +539,18 @@ struct TimeLineView: View {
             }
             
             if self.cardGood[0] && self.cardGood[1] && self.cardGood[2] && self.allCardsDropped{
-                print("added")
+
                 answerIsGood = true
                 addCoins(numberOfCoinsToAdd: 2)
                 addPoints(numberOfPointsToAdd: 2)
+                self.showUpLevel = achievement()
             }else if self.allCardsDropped{
                 answerIsGood = false
                 withAnimation(.linear(duration: 2.0)) {
                     secondLevelWrong = !answerIsGood && allCardsDropped
                 }
             }
+            
             cardAnimation()
         }
     }
@@ -610,6 +621,7 @@ struct TimeLineView: View {
                 self.tryAgain = true
                 if self.serieNumbers < 1 {self.serieNumbers = self.serieNumbers + 1}
                 self.numberToFinish += 1
+                self.answerIsGood = true
                 for n in 0...2 {
                     self.percentComplete = 0
                     self.allCardsDropped = false
@@ -648,11 +660,9 @@ struct TimeLineView: View {
             }
             switch numberToFinish {
             case 0:
-                print("removing")
-                removeCoins(numberOfCoinsToRemove: 2)
+                showCreditManager = removeCoins(numberOfCoinsToRemove: 2)
             case 1:
-                removeCoins(numberOfCoinsToRemove: 2)
-                removePoints(numberOfPointsToRemove: 2)
+                showCreditManager = removeCoins(numberOfCoinsToRemove: 2)
             default:
                 print("default7")
             }
