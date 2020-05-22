@@ -28,8 +28,8 @@ struct ContentView: View {
     @State private var cardDropped = false
     @State private var cardDescription = ""
     @State private var nextViewPresent = false
-    @State private var showUpLevel = false
-    @State private var showCreditManager = false
+    @State private var showSheet = false
+    @State private var activeSheet: ActiveSheet = .coinPurchase
     @State private var percentComplete: CGFloat = 0.0
     @State private var tryAgain = false
     @State private var timeRemaining = 120
@@ -354,7 +354,9 @@ struct ContentView: View {
                             Spacer()
                             VStack {
                                 Button(action: {
-                                    self.showCreditManager = true
+                                    self.showSheet = true
+                                    self.activeSheet = .coinPurchase
+
                                 }){
                                     Image("FinalCoin").renderingMode(.original)
                                         .resizable()
@@ -404,15 +406,14 @@ struct ContentView: View {
         .navigationBarTitle("Earlier or Later", displayMode: .inline)
         .navigationBarHidden(self.firstLevelFinished)
         .navigationBarBackButtonHidden(true)
-        .sheet(isPresented: self.$showUpLevel) {
-            LandMarkView()
+        .sheet(isPresented: self.$showSheet) {
+            if self.activeSheet == .upLevel {
+                LandMarkView()
+            }else{
+                CoinManagement()
+            }
         }
-        .sheet(isPresented: self.$showCreditManager) {
-            CoinManagement()
-        }
-    
         .navigationViewStyle(StackNavigationViewStyle())
-        
     }
     // Functions
     func cardDropped(location: CGPoint, trayIndex: Int, cardAnswer: String){
@@ -431,9 +432,10 @@ struct ContentView: View {
                     withAnimation(Animation.easeInOut(duration: 2).delay(1)) {
                         self.xOffset0 = centerCardPosition - rightCardPosition
                     }
-                    self.showUpLevel = achievement()
+
                 }else{
-                    showCreditManager = removeCoins(numberOfCoinsToRemove: 1)
+                    showSheet = removeCoins(numberOfCoinsToRemove: 1)
+                    activeSheet = .coinPurchase
                     answerIsGood = false
                     playSound(sound: "Error Warning", type: "wav")
                 }
@@ -447,9 +449,9 @@ struct ContentView: View {
                     withAnimation(Animation.easeInOut(duration: 2.0).delay(1.0)) {
                         self.xOffset2 = centerCardPosition - leftCardPosition
                     }
-                    self.showUpLevel = achievement()
                 }else{
-                    showCreditManager = removeCoins(numberOfCoinsToRemove: 1)
+                    showSheet = removeCoins(numberOfCoinsToRemove: 1)
+                    activeSheet = .coinPurchase
                     answerIsGood = false
                     playSound(sound: "Error Warning", type: "wav")
                 }
@@ -498,10 +500,11 @@ struct ContentView: View {
                 self.answerIsGood = false
                 self.cardDropped = false
                 self.cardOpacity = 1.0
-                
                 self.xOffset0 = 0
                 self.xOffset2 = 0
                 self.percentComplete = 0
+                self.showSheet = achievement()
+                self.activeSheet = .upLevel
                 if self.questionNumber == self.eventTiming.timing.count - 1{
                     withAnimation(.linear(duration: 3)){
                         self.firstLevelFinished = true
@@ -517,9 +520,6 @@ struct ContentView: View {
                         self.questionNumber = 0
                         self.cardDescription = "Cards left: \(9 - self.questionNumber)"
                         self.timer.upstream.connect().cancel()
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
-                        self.dismissView = true
                     }
                 }
             }

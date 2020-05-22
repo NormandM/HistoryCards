@@ -21,7 +21,7 @@ struct LandMarkView: View {
                             Spacer()
                             Button(action: {
                                 self.presentationMode.wrappedValue.dismiss()
-                                UserDefaults.standard.set(true, forKey: "dismissView")
+                             //   UserDefaults.standard.set(true, forKey: "dismissView")
                                 
                             }){
                                 Text("Done")
@@ -90,6 +90,7 @@ struct LandMarkView: View {
         .edgesIgnoringSafeArea(.all)
         .onAppear{
                 addCoins(numberOfCoinsToAdd: self.level.addedCoins)
+
             }
         
     

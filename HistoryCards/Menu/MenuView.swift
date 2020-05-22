@@ -16,42 +16,35 @@ struct MenuView: View {
     @State private var dismissView = false
     @State private var arrayDone = [[Bool]]()
     var body: some View {
-
-        NavigationView {
-            VStack{
-                    List {
-                        ForEach (name) { section in
-                            Section(header: SectionRow(name: section)) {
-                                ForEach(section.items) {item in
-                                    NavigationLink(destination: ContentView(item: item, section: section)){
-                                        
-                                        HStack {
-                                            ItemRowView(item: item)
-                                            //UserDefaults.standard.array(forKey: section.id.uuidString) as! [Bool]
-                                            
-                                        }
-                                        
-                                    }
-                                }.listRowBackground(ColorReference.specialGreen)
+        VStack{
+            List {
+                ForEach (name) { section in
+                    Section(header: SectionRow(name: section)) {
+                        ForEach(section.items) {item in
+                            NavigationLink(destination: ContentView(item: item, section: section)){
+                                HStack {
+                                    ItemRowView(item: item)
+                                    //UserDefaults.standard.array(forKey: section.id.uuidString) as! [Bool]
+                                    
+                                }
+                                
                             }
-
-                        }
+                        }.listRowBackground(ColorReference.specialGreen)
+                    }
                     
-                }
-                .navigationBarTitle("Choose a Time Line" , displayMode: .inline)
-
-                .onAppear{
-                    UserDefaults.standard.set(false, forKey: "dismissView")
-                    self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
-
                 }
                 
             }
-
+            .navigationBarTitle("Choose a Time Line" , displayMode: .inline)
+            .navigationBarBackButtonHidden(true)
+            .onAppear{
+                UserDefaults.standard.set(false, forKey: "dismissView")
+                self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
+            }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
         .onAppear{
-           // UserDefaults.standard.set(0, forKey: "points")
+            self.points = UserDefaults.standard.integer(forKey: "points")
+            IAPManager.shared.getProductsV5()
             if !(self.userAlreadyExist(coins: "coins")){
                 self.coins = 20
                 self.points = 0
@@ -60,20 +53,13 @@ struct MenuView: View {
                 UserDefaults.standard.set("Initital level", forKey: "level")
                 UserDefaults.standard.set("WW2-1", forKey: "eventName")
                 UserDefaults.standard.set("SequenceWW2-1", forKey: "sequenceName")
-                
                 UserDataInitialisation.initialValue()
             }
-
         }
-         
     }
     func userAlreadyExist(coins: String) -> Bool {
         return UserDefaults.standard.object(forKey: coins) != nil
     }
-
-    
-    
-    
 }
 
 struct MenuView_Previews: PreviewProvider {

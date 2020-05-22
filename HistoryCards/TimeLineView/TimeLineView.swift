@@ -44,8 +44,8 @@ struct TimeLineView: View {
     @State private var dismissView = UserDefaults.standard.bool(forKey: "dismissView")
     private let timer2 = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var timer0 = false
-    @State private var showUpLevel = false
-    @State private var showCreditManager = false
+    @State private var showSheet = false
+    @State private var activeSheet: ActiveSheet = .coinPurchase
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var questionForSeries = QuestionsForSeries()
     var item: NameItem
@@ -146,7 +146,8 @@ struct TimeLineView: View {
                                     self.xOffset2 = 0
                                     self.xOffset = 0
                                     self.numberToFinish = 0
-                                    self.showCreditManager = removeCoins(numberOfCoinsToRemove: 5)
+                                    self.showSheet = removeCoins(numberOfCoinsToRemove: 5)
+                                    self.activeSheet = .coinPurchase
                                 }){
                                     Image("5Coin").renderingMode(.original)
                                         .resizable()
@@ -440,7 +441,8 @@ struct TimeLineView: View {
                             Spacer()
                             VStack {
                                 Button(action: {
-                                    self.showCreditManager = true
+                                    self.showSheet = true
+                                    self.activeSheet = .coinPurchase
                                 }){
                                     Image("FinalCoin").renderingMode(.original)
                                         .resizable()
@@ -469,7 +471,8 @@ struct TimeLineView: View {
                 }.blur(radius: self.secondLevelFinished || (self.timer0 || self.secondLevelWrong)  ?  75 : 0.0)
                     .zIndex(-0.5)
             }.onAppear{
-                self.showUpLevel = achievement()
+                self.showSheet = achievement()
+                self.activeSheet = .upLevel
                 self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
                 if self.dismissView {
                     self.presentationMode.wrappedValue.dismiss()
@@ -500,11 +503,12 @@ struct TimeLineView: View {
         .background(ColorReference.specialGreen)
         .edgesIgnoringSafeArea(.all)
         .navigationBarBackButtonHidden(true)
-        .sheet(isPresented: self.$showUpLevel) {
-            LandMarkView()
-        }
-        .sheet(isPresented: self.$showCreditManager) {
-            CoinManagement()
+        .sheet(isPresented: self.$showSheet) {
+            if self.activeSheet == .upLevel {
+                LandMarkView()
+            }else{
+                CoinManagement()
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
@@ -513,7 +517,6 @@ struct TimeLineView: View {
             $0.contains(location)
             
         }) {
-            print("match: \(match)")
             self.cardWasDropped[match] = true
             switch match {
             case 0:
@@ -539,18 +542,17 @@ struct TimeLineView: View {
             }
             
             if self.cardGood[0] && self.cardGood[1] && self.cardGood[2] && self.allCardsDropped{
-
                 answerIsGood = true
                 addCoins(numberOfCoinsToAdd: 2)
                 addPoints(numberOfPointsToAdd: 2)
-                self.showUpLevel = achievement()
+                self.showSheet = achievement()
+                activeSheet = .upLevel
             }else if self.allCardsDropped{
                 answerIsGood = false
                 withAnimation(.linear(duration: 2.0)) {
                     secondLevelWrong = !answerIsGood && allCardsDropped
                 }
             }
-            
             cardAnimation()
         }
     }
@@ -660,9 +662,11 @@ struct TimeLineView: View {
             }
             switch numberToFinish {
             case 0:
-                showCreditManager = removeCoins(numberOfCoinsToRemove: 2)
+                showSheet = removeCoins(numberOfCoinsToRemove: 2)
+                activeSheet = .coinPurchase
             case 1:
-                showCreditManager = removeCoins(numberOfCoinsToRemove: 2)
+                showSheet = removeCoins(numberOfCoinsToRemove: 2)
+                activeSheet = .coinPurchase
             default:
                 print("default7")
             }

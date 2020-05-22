@@ -35,8 +35,7 @@ struct DataView: View {
                     .padding()
                     Text(self.info.description)
                         .lineLimit(100)
-                       // .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
-                        .font(.footnote)
+                       .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
                         .foregroundColor(.black)
                         .padding()
                         .frame(width: geo.size.width/1.0

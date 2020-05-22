@@ -22,7 +22,7 @@ struct QuizView: View {
     @State private var answerIsGood = false
     @State private var cardIsBeingMoved = [true, true, true]
     @State private var count = 0
-    private let timer2 = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var cardIndex = 0
     @State private var timeRemaining = 120
     @State private var quizStarted = false
@@ -41,8 +41,8 @@ struct QuizView: View {
     @State private var sectionIsDone = false
     @State private var sectionCount = Int()
     @State private var sectionDone = Int()
-    @State private var showUpLevel = false
-    @State private var showCreditManager = false
+    @State private var showSheet = false
+    @State private var activeSheet: ActiveSheet = .coinPurchase
     var item: NameItem
     var section: Names
     @State var progressValue: Float = 0.5
@@ -78,59 +78,46 @@ struct QuizView: View {
                                 .resizable()
                                 .frame(width: geo.size.height/12, height: geo.size.height/12)
                                 .opacity(self.sectionIsDone ? 1.0 : 0.0)
-//                            HStack {
-//                                 Text("+20:")
-//                                     .foregroundColor(.white)
-//                                     .bold()
-//                                    .font(.body)
-//                                     .padding()
-//                                 VStack {
-//                                     Image("GreenCoin")
-//                                         .resizable()
-//                                         .frame(width: geo.size.height/18
-//                                             , height: geo.size.height/18)
-//                                     Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
-//                                        .font(.footnote)
-//                                         .foregroundColor(.white)
-//                                 }
-//                                Spacer()
-//                                Text("+20:")
-//                                    .foregroundColor(.white)
-//                                    .bold()
-//                                    .font(.body)
-//                                    .padding()
-//                                VStack {
-//                                    Image("points2")
-//                                        .resizable()
-//                                        .frame(width: geo.size.height/19
-//                                            , height: geo.size.height/19)
-//                                        .padding(.trailing)
-//
-//                                    Text("\(UserDefaults.standard.integer(forKey: "points")) points")
-//                                        .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension )
-//                                        .foregroundColor(.white)
-//                                        .padding(.trailing)
-//                                }
-//                            }
                             .frame(width: geo.size.height/2.2, height: geo.size.height/10)
                             .padding(.top)
-                            Spacer()
-
-                            ProgressBar(value: self.progressValue).frame(height: geo.size.height * 0.02)
-                            HStack{
-                                Text("0 point")
+                            HStack {
+                                Text("+30: ")
                                     .foregroundColor(.white)
-                                    .font(.footnote)
-                                    .padding(.leading)
-                                Spacer()
-                                Text("100 points")
-                                .foregroundColor(.white)
-                                    .font(.footnote)
-                                .padding(.trailing)
+                                    .padding()
+                                VStack {
+                                    Image("FinalCoin").renderingMode(.original)
+                                        .resizable()
+                                        .frame(width: geo.size.height/20
+                                            , height: geo.size.height/20)
+                                        .padding(.top)
+                                        
+                                    Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
+                                        .frame(width: geo.size.width/4)
+                                        .font(.footnote)
+                                        .foregroundColor(.white)
+                                        
+                                }
                             }
-                            Text("Can you achieve next level?")
-                                .foregroundColor(.white)
-                                .padding()
+                            .padding()
+        
+                            HStack {
+                                Text("+30: ")
+                                    .foregroundColor(.white)
+                                    .padding()
+                                VStack{
+                                    Image("points2")
+                                        .resizable()
+                                        .frame(width: geo.size.height/22
+                                            , height: geo.size.height/22)
+                                        
+                                    Text("\(UserDefaults.standard.integer(forKey: "points")) points")
+                                        .frame(width: geo.size.width/4)
+                                        .font(.footnote)
+                                        .foregroundColor(.white)
+                                }
+                            }
+                            .padding()
+
                             Spacer()
                             HStack {
                                 Button(action: {
@@ -167,7 +154,7 @@ struct QuizView: View {
                                 
                             }
                             
-                        }.frame(width: geo.size.height/2.2, height: geo.size.height/1.2)
+                        }.frame(width: geo.size.height/2.2, height: geo.size.height/1.4)
                         
                         
                     }else{
@@ -184,23 +171,7 @@ struct QuizView: View {
                                 .padding()
                             Text("\(self.sectionDone)/\(self.sectionCount) of \(self.section.name)")
                                 .foregroundColor(ColorReference.specialOrange)
-                            Button(action: {
-                                self.showingQuizData.toggle()
-                            }){
-                                Text("See quiz Data")
-                                    .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension)
-                                    .padding()
-                                    .background(Color.clear)
-                                    .cornerRadius(40)
-                                    .foregroundColor(.white)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 40)
-                                            .stroke(Color.white, lineWidth: 2)
-                                )
-                            }
-                            .sheet(isPresented: self.$showingQuizData) {
-                                QUizDataView()
-                            }
+                                .multilineTextAlignment(.center)
                             .padding()
                             Button(action: {
                                 self.presentationMode.wrappedValue.dismiss()
@@ -258,7 +229,8 @@ struct QuizView: View {
                             Button(action: {
                                 self.quizData = QuizData()
                                 self.reset()
-                                self.showCreditManager  = removeCoins(numberOfCoinsToRemove: 10)
+                                self.showSheet  = removeCoins(numberOfCoinsToRemove: 10)
+                                self.activeSheet = .coinPurchase
                                 
                             }){
                                 Image("10Coin").renderingMode(.original)
@@ -446,7 +418,7 @@ struct QuizView: View {
                                                 , height: geo.size.height/12)
                                         
                                         Text("\(self.timeRemaining)")
-                                            .onReceive(self.timer2) { _ in
+                                            .onReceive(self.timer) { _ in
                                                 if self.timeRemaining  > 0 && self.quizStarted {
                                                     self.timeRemaining -= 1
                                                 }else if self.timeRemaining  == 0 && self.quizStarted {
@@ -462,7 +434,8 @@ struct QuizView: View {
                                 Spacer()
                                 VStack {
                                     Button(action: {
-                                        self.showCreditManager = true
+                                        self.showSheet = true
+                                        self.activeSheet = .coinPurchase
                                     }){
                                         Image("FinalCoin").renderingMode(.original)
                                             .resizable()
@@ -503,17 +476,16 @@ struct QuizView: View {
         .navigationBarHidden(answerIsGood || (allCardsDropped && !answerIsGood) || timer0)
         .navigationBarBackButtonHidden(true)
         .onAppear{
-            self.showUpLevel = achievement()
+            self.showSheet = achievement()
+            self.activeSheet = .upLevel
             self.cardText[0] = self.quizData.names[0]
             self.cardText[1] = self.quizData.names[1]
             self.cardText[2] = self.quizData.names[2]
         }
-        .sheet(isPresented: self.$showUpLevel) {
+        .sheet(isPresented: self.$showSheet) {
             LandMarkView()
         }
-        .sheet(isPresented: self.$showCreditManager) {
-            CoinManagement()
-        }
+
     }
     
     func cardDropped(location: CGPoint, trayIndex: Int, cardAnswer: String) {
@@ -549,7 +521,8 @@ struct QuizView: View {
             }
             if self.cardGood[0] && self.cardGood[1] && self.cardGood[2] {
                 self.answerIsGood = true
-                self.showUpLevel = achievement()
+                self.showSheet = achievement()
+                self.activeSheet = .upLevel
                 withAnimation (.linear(duration: 2)){
                     thirdLevelIsFinished = true
                     playSound(sound: "music_harp_gliss_up", type: "wav")
@@ -566,16 +539,20 @@ struct QuizView: View {
                     sectionIsDone = array.allSatisfy({
                         $0 == true
                     })
+                    if sectionIsDone {
+                        addCoins(numberOfCoinsToAdd: 10)
+                        addPoints(numberOfPointsToAdd: 10)
+                    }
                 }
             }else if allCardsDropped == true {
                 withAnimation (.linear(duration: 2)){
                     self.thirdLevelIsWrong = true
                 }
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                UserDefaults.standard.set(true, forKey: "dismissView")
-                self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
-            }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+//                UserDefaults.standard.set(true, forKey: "dismissView")
+//                self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
+//            }
         }
     }
     func cardMoved(location: CGPoint, letter: String) -> DragState {
@@ -593,7 +570,7 @@ struct QuizView: View {
         }
     }
     func cardPushed(location: CGPoint, trayIndex: Int){
-        
+        quizStarted = true
         if let match = trayCardsFrames.firstIndex(where: {
             $0.contains(location)
         }) {
@@ -620,7 +597,6 @@ struct QuizView: View {
             if cardText[n] == quizData.dates[2] {self.trayCardDropped[2] = true }
             cardIsBeingMoved[n] = false
             self.count = 0
-            
         }
     }
     func reset() {
