@@ -29,6 +29,7 @@ struct LandMarkView: View {
                                     .foregroundColor(.white)
                                 .padding()
                             }
+                        .padding()
                         }
                             Text("Congratulation!")
                                 .foregroundColor(.white)
@@ -90,6 +91,7 @@ struct LandMarkView: View {
         .edgesIgnoringSafeArea(.all)
         .onAppear{
                 addCoins(numberOfCoinsToAdd: self.level.addedCoins)
+                playSound(sound: "fanfare", type: "mp3")
 
             }
         

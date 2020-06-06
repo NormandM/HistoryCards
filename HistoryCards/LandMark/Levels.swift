@@ -46,12 +46,25 @@ struct Level {
             addedCoins = 300
             nextLevel = "History Master"
             nextLevelPoints = 3000
+        case 3000..<5000:
+            level = "History Master"
+            upLevelPoints = "5000"
+            addedCoins = 500
+            nextLevel = "This is the last level"
+            nextLevelPoints = 3000
+        case 5000..<10000000000000:
+            level = "History Master"
+            upLevelPoints = "5000"
+            addedCoins = 500
+            nextLevel = "History Guru"
+            nextLevelPoints = 5000
         default:
             level = "History Master"
             upLevelPoints = "5000"
             addedCoins = 500
             nextLevel = "History Guru"
             nextLevelPoints = 5000
+            
         }
     }
 }

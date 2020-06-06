@@ -8,24 +8,25 @@
 
 import SwiftUI
 
+
 struct TimeLineView: View {
     let fonts = FontsAndConstraintsOptions()
     @State private var cardFrames = [CGRect](repeating: .zero, count: 4)
     @State private var trayCardsFrames = [CGRect](repeating: .zero, count: 4)
-    @State private var cardGood = [false, false, false, false]
-    @State private var trayCardDropped = [false, false, false, false]
+    @State private var cardGood = [false, false, false]
+    @State private var trayCardDropped = [false, false, false]
     @State private var trayCardText = ""
-    @State private var cardWasDropped = [false, false, false, false]
+    @State private var cardWasDropped = [false, false, false]
     @State private var goQuizView = false
-    @State private var cardText = ["", "", "", "", ""]
-    @State private var cardIsBeingMoved = [false, false, false, false]
+    @State private var cardText = ["", "", "", ""]
+    @State private var cardIsBeingMoved = [false, false, false]
     @State private var allCardsDropped = false
     @State private var badAnsweOffset = CGFloat()
     @State private var messageAfterAnswer = ""
     @State private var count = 0
     @State private var tryAgain = false
     @State private var cardIndex = 0
-    @State private var timeRemaining = 120
+    @State private var timeRemaining = 90
     @State private var quizStarted = false
     @State private var cardDescription = ""
     @State private var serieNumbers = 0
@@ -42,12 +43,23 @@ struct TimeLineView: View {
     @State private var coins = UserDefaults.standard.integer(forKey: "coins")
     @State private var points = UserDefaults.standard.integer(forKey: "points")
     @State private var dismissView = UserDefaults.standard.bool(forKey: "dismissView")
-    private let timer2 = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State private var timer0 = false
     @State private var showSheet = false
     @State private var activeSheet: ActiveSheet = .coinPurchase
+    @State private var trayCard0 = ""
+    @State private var trayCard1 = ""
+    @State private var trayCard2 = ""
+    @State private var description0 = ""
+    @State private var description1 = ""
+    @State private var description2 = ""
+    @State private var cardDate0 = ""
+    @State private var cardDate1 = ""
+    @State private var cardDate2 = ""
+    @State private var timer0 = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var questionForSeries = QuestionsForSeries()
+    @State private var screenDimension: CGFloat = 0
+    @EnvironmentObject var vm: ClockDetailViewModel
+    @State private var seconds: Int = 0
     var item: NameItem
     var section: Names
     var body: some View {
@@ -56,111 +68,112 @@ struct TimeLineView: View {
                 NavigationLink(destination: QuizView( item: self.item, section: self.section), isActive: self.$goQuizView){
                     Text("")
                 }
-                if self.secondLevelFinished  && !self.timer0{
-                    ZStack() {
-                        Image("Pouce haut3")
-                            .resizable()
-                            .frame(width: geo.size.height/2.2, height: geo.size.height/2)
-                            .cornerRadius(25)
-                            .opacity(self.secondLevelFinished ? 1.0 : 0.0)
+                if self.secondLevelFinished {
+                Image("Pouce haut3")
+                    .resizable()
+                    .frame(width: geo.size.height/2.2, height: geo.size.height/2)
+                    .cornerRadius(25)
+                 //   .opacity(self.secondLevelFinished ? 1.0 : 0.0)
+                VStack {
+                    Spacer()
+                    HStack(alignment: .center) {
+                        Text("+15: ")
+                            .foregroundColor(.white)
                         VStack {
-                            Spacer()
-                            HStack(alignment: .center) {
-                                Text("+15: ")
-                                    .foregroundColor(.white)
-                                VStack {
-                                    Image("FinalCoin").renderingMode(.original)
-                                        .resizable()
-                                        .frame(width: geo.size.height/20
-                                            , height: geo.size.height/20)
-                                    Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
-                                        .font(.footnote)
-                                        .foregroundColor(.white)
-                                }
-                                Spacer()
-                                Text("+15: ")
-                                    .foregroundColor(.white)
-                                VStack{
-                                    Image("points2")
-                                        .resizable()
-                                        .frame(width: geo.size.height/22
-                                            , height: geo.size.height/22)
-                                    Text("\(UserDefaults.standard.integer(forKey: "points")) points")
-                                        .font(.footnote)
-                                        .foregroundColor(.white)
-                                }
+                            Image("FinalCoin").renderingMode(.original)
+                                .resizable()
+                                .frame(width: geo.size.height/20
+                                    , height: geo.size.height/20)
+                            Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
+                                .font(.footnote)
+                                .foregroundColor(.white)
+                        }
+                        Spacer()
+                        Text("+15: ")
+                            .foregroundColor(.white)
+                        VStack{
+                            Image("points2")
+                                .resizable()
+                                .frame(width: geo.size.height/22
+                                    , height: geo.size.height/22)
+                            Text("\(UserDefaults.standard.integer(forKey: "points")) points")
+                                .font(.footnote)
+                                .foregroundColor(.white)
+                        }
+                    }
+                }
+                .padding()
+                .frame(width: geo.size.height/2.2, height: geo.size.height/2)
+              //  .opacity(self.secondLevelFinished ? 1.0 : 0.0)
+                }else if self.timer0 || (self.allCardsDropped && !self.answerIsGood){
+//////////////////////////////////////////////
+                Image(self.timer0 ? "TimesUp" : "Pouce bas")
+                    .resizable()
+                    .cornerRadius(25)
+                  //  .opacity(self.timer0 || (self.allCardsDropped && !self.answerIsGood) ? 1.0 : 0)
+                    .frame(width: geo.size.height/2.2, height: geo.size.height/2.0)
+                VStack {
+                    Spacer()
+                    HStack {
+                        
+                        VStack {
+                            Text("Back to level 1")
+                                .foregroundColor(.white)
+                            Button(action: {
+                                self.presentationMode.wrappedValue.dismiss()
+                                UserDefaults.standard.set(false, forKey: "dismissView")
+                                
+                            }){
+                                Image("0Coin").renderingMode(.original)
+                                    .resizable()
+                                    .frame(width: geo.size.height/12
+                                        , height: geo.size.height/12)
                             }
+                            Text("coins")
+                                .foregroundColor(.white)
                         }
                         .padding()
-                        .frame(width: geo.size.height/2.2, height: geo.size.height/2)
-                        .opacity(self.secondLevelFinished ? 1.0 : 0.0)
-                    }
-                }else if self.timer0 || (self.allCardsDropped && !self.answerIsGood){
-                    Image("Pouce bas")
-                        .resizable()
-                        .cornerRadius(25)
-                        .opacity(self.timer0 || (self.allCardsDropped && !self.answerIsGood) ? 1.0 : 0)
-                        .frame(width: geo.size.height/2.2, height: geo.size.height/2.0)
-                    VStack {
                         Spacer()
-                        HStack {
-                            
-                            VStack {
-                                Text("Back to level 1")
-                                    .foregroundColor(.white)
-                                Button(action: {
-                                    self.presentationMode.wrappedValue.dismiss()
-                                    UserDefaults.standard.set(false, forKey: "dismissView")
-                                    
-                                }){
-                                    Image("0Coin").renderingMode(.original)
-                                        .resizable()
-                                        .frame(width: geo.size.height/12
-                                            , height: geo.size.height/12)
+                        VStack {
+                            Text("Stay on level 2")
+                                .foregroundColor(.white)
+                            Button(action: {
+                                self.vm.setup(timeRemaining: 90)
+                                self.secondLevelFinished = false
+                                self.timer0 = false
+                                self.secondLevelWrong = false
+                                self.serieNumbers = 0
+                                self.cardDescription = "Try again"
+                                self.messageAfterAnswer = ""
+                                self.allCardsDropped = false
+                                self.percentComplete = 0.0
+                                self.quizStarted = false
+                                self.timeRemaining = 90
+                                for n in 0...2{
+                                    self.cardWasDropped[n] = false
+                                    self.trayCardDropped[n] = false
+                                    self.cardIsBeingMoved[n] = false
+                                    self.cardText[n] = ""
                                 }
-                                Text("coins")
-                                    .foregroundColor(.white)
+                                self.xOffset2 = 0
+                                self.xOffset = 0
+                                self.numberToFinish = 0
+                                self.showSheet = removeCoins(numberOfCoinsToRemove: 5)
+                                self.activeSheet = .coinPurchase
+                            }){
+                                Image("5Coin").renderingMode(.original)
+                                    .resizable()
+                                    .frame(width: geo.size.height/12
+                                        , height: geo.size.height/12)
+                                
                             }
-                            .padding()
-                            Spacer()
-                            VStack {
-                                Text("Stay on level 2")
-                                    .foregroundColor(.white)
-                                Button(action: {
-                                    self.secondLevelFinished = false
-                                    self.timer0 = false
-                                    self.secondLevelWrong = false
-                                    self.serieNumbers = 0
-                                    self.cardDescription = "Try again"
-                                    self.messageAfterAnswer = ""
-                                    self.allCardsDropped = false
-                                    self.percentComplete = 0.0
-                                    self.quizStarted = false
-                                    self.timeRemaining = 120
-                                    for n in 0...2{
-                                        self.cardWasDropped[n] = false
-                                        self.trayCardDropped[n] = false
-                                        self.cardIsBeingMoved[n] = false
-                                        self.cardText[n] = ""
-                                    }
-                                    self.xOffset2 = 0
-                                    self.xOffset = 0
-                                    self.numberToFinish = 0
-                                    self.showSheet = removeCoins(numberOfCoinsToRemove: 5)
-                                    self.activeSheet = .coinPurchase
-                                }){
-                                    Image("5Coin").renderingMode(.original)
-                                        .resizable()
-                                        .frame(width: geo.size.height/12
-                                            , height: geo.size.height/12)
-                                    
-                                }
-                                Text("coins")
-                                    .foregroundColor(.white)
-                            }.padding()
-                        }
-                    }.frame(width: geo.size.height/2.2, height: geo.size.height/2.0)
-                    
+                            Text("coins")
+                                .foregroundColor(.white)
+                        }.padding()
+                    }
+                }
+                .frame(width: geo.size.height/2.2, height: geo.size.height/2.0)
+              //  .opacity(self.timer0 || (self.allCardsDropped && !self.answerIsGood) ? 1.0 : 0)
                 }
                 VStack {
                     Spacer()
@@ -181,7 +194,7 @@ struct TimeLineView: View {
                                     .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
                                     .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialGreen : .clear)
                                     .offset(x: -geo.size.width/3)
-
+                                
                                 Text(self.messageAfterAnswer)
                                     .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
                                     .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialGreen : .clear)
@@ -189,7 +202,7 @@ struct TimeLineView: View {
                                     .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
                                     .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialGreen : .clear)
                                     .offset(x: geo.size.width/3)
-
+                                
                                 Ellipse()
                                     .trim(from: 0, to: self.percentComplete)
                                     .stroke( ColorReference.specialGreen, style: StrokeStyle(lineWidth: 10, lineCap: .round))
@@ -236,9 +249,12 @@ struct TimeLineView: View {
                                                     self.cardFrames[0] = geo2.frame(in: .global)
                                             }
                                             .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                    self.cardFrames[0] = geo2.frame(in: .global)
+                                                if self.screenDimension > 700000 {
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                        self.cardFrames[0] = geo2.frame(in: .global)
+                                                    }
                                                 }
+
                                             }
                                             
                                         })
@@ -266,9 +282,12 @@ struct TimeLineView: View {
                                                     self.cardFrames[1] = geo2.frame(in: .global)
                                             }
                                             .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                    self.cardFrames[1] = geo2.frame(in: .global)
+                                                if self.screenDimension > 700000 {
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                        self.cardFrames[1] = geo2.frame(in: .global)
+                                                    }
                                                 }
+
                                             }
                                             
                                         })
@@ -296,9 +315,13 @@ struct TimeLineView: View {
                                                     self.cardFrames[2] = geo2.frame(in: .global)
                                             }
                                             .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                    self.cardFrames[2] = geo2.frame(in: .global)
+                                                if self.screenDimension > 700000 {
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                        self.cardFrames[2] = geo2.frame(in: .global)
+                                                    }
+
                                                 }
+
                                             }
                                         })
                                 })
@@ -321,7 +344,7 @@ struct TimeLineView: View {
                                 self.cardWasDropped[n] = false
                             }
                             self.trayCardText = ""
-                            self.cardText = ["", "", "", "", ""]
+                            self.cardText = ["", "", "", ""]
                             self.allCardsDropped = false
                             
                         }){
@@ -340,7 +363,7 @@ struct TimeLineView: View {
                     }
                     HStack {
                         Spacer()
-                        Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 0, text: self.questionForSeries.seriesInfo[self.serieNumbers].trayCardName[0])
+                        Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 0, text: self.trayCard0)
                             .frame(width: geo.size.height/4.2 * 0.6
                                 , height: geo.size.height/4.2)
                             .overlay(GeometryReader { geo2 in
@@ -351,9 +374,12 @@ struct TimeLineView: View {
                                                 self.trayCardsFrames[0] = geo2.frame(in: .global)
                                         }
                                         .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                self.trayCardsFrames[0] = geo2.frame(in: .global)
+                                            if self.screenDimension > 700000 {
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                    self.trayCardsFrames[0] = geo2.frame(in: .global)
+                                                }
                                             }
+
                                         }
                                     })
                             })
@@ -362,7 +388,7 @@ struct TimeLineView: View {
                             .offset(x: self.serieNumbers == 1 ? self.xOffset2 : 0)
                             .opacity(self.trayCardDropped[0] ? 0.0 : 1.0)
                         Spacer()
-                        Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 1, text: self.questionForSeries.seriesInfo[self.serieNumbers].trayCardName[1])
+                        Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 1, text: self.trayCard1)
                             .frame(width: geo.size.height/4.2 * 0.6
                                 , height: geo.size.height/4.2)
                             .overlay(GeometryReader { geo2 in
@@ -372,10 +398,14 @@ struct TimeLineView: View {
                                             .onAppear{
                                                 self.trayCardsFrames[1] = geo2.frame(in: .global)
                                         }
-                                        .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                self.trayCardsFrames[1] = geo2.frame(in: .global)
-                                            }
+                                        .onReceive(NotificationCenter.Publisher(center: .default, name:
+                                            UIDevice.orientationDidChangeNotification)) { _ in
+                                                if self.screenDimension > 700000 {
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                        self.trayCardsFrames[1] = geo2.frame(in: .global)
+                                                    }
+                                                }
+
                                         }
                                         
                                     })
@@ -385,7 +415,7 @@ struct TimeLineView: View {
                             .offset(x: self.serieNumbers == 1 ? self.xOffset2 : 0)
                             .opacity(self.trayCardDropped[1] ? 0.0 : 1.0)
                         Spacer()
-                        Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 2, text: self.questionForSeries.seriesInfo[self.serieNumbers].trayCardName[2])
+                        Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 2, text: self.trayCard2)
                             .frame(width: geo.size.height/4.2 * 0.6
                                 , height: geo.size.height/4.2)
 
@@ -397,9 +427,12 @@ struct TimeLineView: View {
                                                 self.trayCardsFrames[2] = geo2.frame(in: .global)
                                         }
                                         .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                self.trayCardsFrames[2] = geo2.frame(in: .global)
+                                            if self.screenDimension > 700000 {
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                    self.trayCardsFrames[2] = geo2.frame(in: .global)
+                                                }
                                             }
+
                                         }
                                     })
                             })
@@ -423,17 +456,17 @@ struct TimeLineView: View {
                                         .foregroundColor(ColorReference.specialOrange)
                                         .frame(width: geo.size.height/12
                                             , height: geo.size.height/12)
-                                    
-                                    Text("\(self.timeRemaining)")
-                                        .onReceive(self.timer2) { _ in
-                                            if self.timeRemaining  > 0 && self.quizStarted {
-                                                self.timeRemaining -= 1
-                                            }else if self.timeRemaining  == 0 && self.quizStarted {
-                                                self.timer0 = true
-                                            }
-                                    }
-                                    .background(ColorReference.specialOrange)
+                                        .padding(.top)
+                                    Text("\(self.timeRemaining - self.vm.seconds)")
+                                        .font(.subheadline)
+                                        .fontWeight(.heavy)
+                                        .padding(.top)
+                                        .background(ColorReference.specialOrange)
                                         .font(.title)
+                                        .onAppear{
+                                            self.vm.setup(timeRemaining: 90)
+                                        }
+
                                 }
                                 Text("Time left")
                                     .font(.footnote)
@@ -468,7 +501,8 @@ struct TimeLineView: View {
                         }
                         
                     }
-                }.blur(radius: self.secondLevelFinished || (self.timer0 || self.secondLevelWrong)  ?  75 : 0.0)
+                }
+                .blur(radius: self.secondLevelFinished || (self.timer0 || self.secondLevelWrong)  ?  75 : 0.0)
                     .zIndex(-0.5)
             }.onAppear{
                 self.showSheet = achievement()
@@ -486,7 +520,7 @@ struct TimeLineView: View {
                 self.allCardsDropped = false
                 self.percentComplete = 0.0
                 self.quizStarted = false
-                self.timeRemaining = 120
+                self.timeRemaining = 90
                 for n in 0...2{
                     self.cardWasDropped[n] = false
                     self.trayCardDropped[n] = false
@@ -496,7 +530,22 @@ struct TimeLineView: View {
                 self.xOffset2 = 0
                 self.xOffset = 0
                 self.numberToFinish = 0
+                self.upDateCardInfo(serieNumbers: self.serieNumbers)
             }
+            .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
+                let screen = FontsAndConstraintsOptions()
+                self.screenDimension = screen.screenSurface
+                
+            }
+            .onReceive(self.vm.objectWillChange, perform: {
+                if self.vm.time0 && !self.timer0 && self.vm.seconds == 90{
+                    self.timer0 = true
+                    self.tryAgain = true
+                    self.cardAnimation()
+                    print(self.timer0)
+                }
+               
+            })
         }
         .navigationBarTitle("What is the right order?", displayMode: .inline)
         .navigationBarHidden(secondLevelFinished)
@@ -518,6 +567,7 @@ struct TimeLineView: View {
             
         }) {
             self.cardWasDropped[match] = true
+            print(trayCardDate)
             switch match {
             case 0:
                 cardText[0] = trayCardText
@@ -577,9 +627,22 @@ struct TimeLineView: View {
             self.serieNumberDisplayed = true
             self.count = self.count + 1
             if self.count == 1 {cardIndex = match}
-            trayCardText = questionForSeries.seriesInfo[serieNumbers].trayCardName[cardIndex]
-            cardDescription = questionForSeries.seriesInfo[serieNumbers].cardDescription[cardIndex]
-            trayCardDate = questionForSeries.seriesInfo[serieNumbers].cardDate[cardIndex]
+            if cardIndex == 0 {
+                cardDescription = description0
+                trayCardText = trayCard0
+                trayCardDate = cardDate0
+            }
+            if cardIndex == 1 {
+                cardDescription = description1
+                trayCardText = trayCard1
+                trayCardDate = cardDate1
+            }
+            if cardIndex == 2 {
+                cardDescription = description2
+                trayCardText = trayCard2
+                trayCardDate = cardDate2
+            }
+            print(trayCardDate)
             switch cardIndex {
             case 0:
                 cardIsBeingMoved[0] = true
@@ -591,7 +654,6 @@ struct TimeLineView: View {
                 print("default3")
             }
         }
-        self.timer0 = false
         quizStarted = true
         tryAgain = false
         self.serieNumberDisplayed = false
@@ -603,9 +665,9 @@ struct TimeLineView: View {
             cardDescription = "Serie 2 of 2"
         }
         for n in 0...2 {
-            if cardText[n] == questionForSeries.seriesInfo[serieNumbers].trayCardName[0] {self.trayCardDropped[0] = true }
-            if cardText[n] == questionForSeries.seriesInfo[serieNumbers].trayCardName[1] {self.trayCardDropped[1] = true }
-            if cardText[n] == questionForSeries.seriesInfo[serieNumbers].trayCardName[2] {self.trayCardDropped[2] = true }
+            if cardText[n] == trayCard0 {self.trayCardDropped[0] = true }
+            if cardText[n] == trayCard1 {self.trayCardDropped[1] = true }
+            if cardText[n] == trayCard2 {self.trayCardDropped[2] = true }
             cardIsBeingMoved[n] = false
             self.count = 0
         }
@@ -613,13 +675,13 @@ struct TimeLineView: View {
         tryAgain = true
     }
     func cardAnimation () {
-        if answerIsGood  && !timer0 {
+        if answerIsGood  && !self.vm.time0 {
             self.messageAfterAnswer = "Great!"
             playSound(sound: "chime_clickbell_octave_up", type: "mp3")
             withAnimation(Animation.linear(duration: 3.0).delay(2.0)) {
                 self.xOffset = 1000
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 self.tryAgain = true
                 if self.serieNumbers < 1 {self.serieNumbers = self.serieNumbers + 1}
                 self.numberToFinish += 1
@@ -632,16 +694,14 @@ struct TimeLineView: View {
                     self.trayCardDropped[n] = false
                     self.cardGood[n] = false
                     self.cardText[n] = ""
-                    self.timer0 = false
                 }
                 if self.numberToFinish == 2 {
                     addCoins(numberOfCoinsToAdd: 15)
                     addPoints(numberOfPointsToAdd: 15)
-                    withAnimation(.linear(duration: 2)){
+                    playSound(sound: "music_harp_gliss_up", type: "wav")
+                 //   withAnimation(.linear(duration: 1)){
                         self.secondLevelFinished  = true
-                        playSound(sound: "music_harp_gliss_up", type: "wav")
-                    }
-                    self.timer2.upstream.connect().cancel()
+                 //   }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                         self.goQuizView  = true
                         self.secondLevelFinished = false
@@ -651,11 +711,14 @@ struct TimeLineView: View {
                         self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
                     }
                 }
+                self.upDateCardInfo(serieNumbers: self.serieNumbers)
             }
-        }else if timer0 || allCardsDropped{
-            self.timer2.upstream.connect().cancel()
+        }else if self.vm.time0 || allCardsDropped{
             self.answerIsGood = false
-            self.messageAfterAnswer = "Sorry..."
+            if !self.goQuizView{vm.setup(timeRemaining: 90)}
+            serieNumbers = 0
+            self.upDateCardInfo(serieNumbers: self.serieNumbers)
+            self.cardDescription  = "Sorry...Try again!"
             playSound(sound: "Error Warning", type: "wav")
             withAnimation(.linear(duration: 2)) {
                 self.badAnsweOffset = 500
@@ -683,10 +746,22 @@ struct TimeLineView: View {
             return fonts.smallFontDimension
         }
     }
+    func upDateCardInfo(serieNumbers: Int) {
+        self.trayCard0 = self.questionForSeries.seriesInfo[serieNumbers].trayCardName[0]
+        self.trayCard1 = self.questionForSeries.seriesInfo[serieNumbers].trayCardName[1]
+        self.trayCard2 = self.questionForSeries.seriesInfo[serieNumbers].trayCardName[2]
+        self.description0 = self.questionForSeries.seriesInfo[serieNumbers].cardDescription[0]
+        self.description1 = self.questionForSeries.seriesInfo[serieNumbers].cardDescription[1]
+        self.description2 = self.questionForSeries.seriesInfo[serieNumbers].cardDescription[2]
+        self.cardDate0 = questionForSeries.seriesInfo[serieNumbers].cardDate[0]
+        self.cardDate1 = questionForSeries.seriesInfo[serieNumbers].cardDate[1]
+        self.cardDate2 = questionForSeries.seriesInfo[serieNumbers].cardDate[2]
+    }
+    
 }
 
-struct TimeLineView_Previews: PreviewProvider {
-    static var previews: some View {
-        TimeLineView(item: NameItem.example, section: Names.example)
-    }
-}
+//struct TimeLineView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TimeLineView(item: NameItem.example, section: Names.example)
+//    }
+//}

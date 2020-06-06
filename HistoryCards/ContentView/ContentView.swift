@@ -37,19 +37,21 @@ struct ContentView: View {
     @State private var messageAfterAnswer = ""
     @State private var firstLevelFinished = false
     @State private var numberCardsDisplayed = false
-    @State private var timer0 = false
     @State private var coins = UserDefaults.standard.integer(forKey: "coins")
     @State private var points = UserDefaults.standard.integer(forKey: "points")
     @State private var eventName = UserDefaults.standard.string(forKey: "eventName")
     @State private var sequenceName = UserDefaults.standard.string(forKey: "sequenceName")
     @State private var dismissView = UserDefaults.standard.bool(forKey: "dismissView")
-    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @EnvironmentObject var vm: ClockDetailViewModel
     @State private var startUp = true
     @State private var seeQuizData = false
     @State private var eventTiming = EventTiming()
     @State var cardInfo = CardInfo()
+    @State var timer0 = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var sequence = Sequence()
+    @State private var sequence = Sequence()
+    @State private var screenDimension: CGFloat = 0
+    @State private var seconds: Int = 0
     var item: NameItem
     var section: Names
     var body: some View {
@@ -58,7 +60,7 @@ struct ContentView: View {
                 NavigationLink(destination: TimeLineView(item: self.item, section: self.section), isActive: self.$nextViewPresent){
                     Text("")
                 }
-                NavigationLink(destination: DataView(item: self.item, section: self.section), isActive: self.$seeQuizData){
+                NavigationLink(destination: DataView(item: self.item, section: self.section, vm: self.vm), isActive: self.$seeQuizData){
                     Text("")
                 }
                 
@@ -87,11 +89,11 @@ struct ContentView: View {
                                         .stroke(Color.white, lineWidth: 2)
                             )
                         }
-                            
                         .padding()
                         Button(action: {
                             self.seeQuizData = false
                             self.startUp = false
+                            self.vm.setup(timeRemaining: 120)
                         }){
                             Text("No, I am ready!")
                                 .font(.headline)
@@ -108,8 +110,6 @@ struct ContentView: View {
                         Spacer()
                         Spacer()
                     }
-                    
-                    
                 }else{
                     ZStack() {
                         Image("Pouce haut2")
@@ -133,10 +133,8 @@ struct ContentView: View {
                                 }
                                 
                                 Spacer()
-                                
                                 Text("+5: ")
                                     .foregroundColor(.white)
-                                
                                 VStack{
                                     Image("points2")
                                         .resizable()
@@ -145,7 +143,6 @@ struct ContentView: View {
                                     Text("\(UserDefaults.standard.integer(forKey: "points")) points")
                                         .font(.footnote)
                                         .foregroundColor(.white)
-                                    
                                 }
                             }
                         }
@@ -185,16 +182,15 @@ struct ContentView: View {
                                     .stroke( ColorReference.specialGreen, style: StrokeStyle(lineWidth: 10, lineCap: .round))
                                     .frame(width: geo.size.height/8.0, height:  geo.size.height/8.0)
                                     .animation(.easeOut(duration: 2.0))
-                                    
                                     .onAppear {
-                                        self.percentComplete = 1.0
-                                        self.cardDescription = ""
-                                        self.numberCardsDisplayed = true
+                                            self.percentComplete = 1.0
+                                            self.cardDescription = ""
+                                            self.numberCardsDisplayed = true
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                                            self.cardDescription = "Cards left: \(self.cardInfo.info.count - self.questionNumber)"
+                                            self.cardDescription = "Cards left: \((self.cardInfo.info.count - 1) - self.questionNumber)"
                                         }
                                 }
-                            }else if !self.answerIsGood && self.cardDropped{
+                            }else if (!self.answerIsGood && self.cardDropped) || self.vm.time0{
                                 Text("- 1 coin")
                                     .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
                                     .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialRed : .clear)
@@ -232,17 +228,20 @@ struct ContentView: View {
                                     }
                                         
                                     .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                            self.cardFrames[0] = geo2.frame(in: .global)
-                                            self.rightCardPosition = geo2.frame(in: .named("RightCard")).midX
+                                        if self.screenDimension > 700000 {
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                self.cardFrames[0] = geo2.frame(in: .global)
+                                                self.rightCardPosition = geo2.frame(in: .named("RightCard")).midX
+                                            }
                                         }
+                                        
                                     }
                                 })
                                 
                                 .opacity(self.answerIsGood && self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
                                 .offset(x: self.answerIsGood && self.cardSelected   ? self.xOffset0 : -self.badAnsweOffset)
                                 .addBorder(!self.answerIsGood ? Color.white : Color.clear, cornerRadius: 10)
-                            Text(self.cardInfo.info[self.questionNumber].card0Date)
+                                Text(self.cardInfo.info[self.questionNumber].card0Date)
                                 .font(.footnote)
                                 .foregroundColor(.white)
                                 .opacity(self.answerIsGood && self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
@@ -263,11 +262,12 @@ struct ContentView: View {
                                             self.centerCardPosition = geo2.frame(in: .named("CenterCard")).midX
                                     }
                                     .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                            self.cardFrames[1] = geo2.frame(in: .global)
-                                            self.centerCardPosition = geo2.frame(in: .named("CenterCard")).midX
+                                        if self.screenDimension > 700000 {
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                self.cardFrames[1] = geo2.frame(in: .global)
+                                                self.centerCardPosition = geo2.frame(in: .named("CenterCard")).midX
+                                            }
                                         }
-                                        
                                     }
                                 })
                                 .offset(x: self.answerIsGood && self.cardSelected   ? 0 : self.badAnsweOffset)
@@ -275,8 +275,7 @@ struct ContentView: View {
                             Text(self.cardInfo.info[self.questionNumber].card1Date)
                                 .font(.footnote)
                                 .foregroundColor(.white)
-                        }
-                        
+                        }                        
                         Spacer()
                         VStack{
                             Card(onEnded: self.cardDropped, index: 2, text:  self.cardInfo.info[self.questionNumber].card2Name)
@@ -292,10 +291,14 @@ struct ContentView: View {
                                             
                                     }
                                     .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                            self.cardFrames[2] = geo2.frame(in: .global)
-                                            self.leftCardPosition = geo2.frame(in: .named("LeftCard")).midX
+                                        if self.screenDimension > 700000 {
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                self.cardFrames[2] = geo2.frame(in: .global)
+                                                self.leftCardPosition = geo2.frame(in: .named("LeftCard")).midX
+                                                
+                                            }
                                         }
+
                                     }
                                 })
                                 .opacity(self.answerIsGood && !self.self.eventTiming.timing[self.questionNumber].eventIsEarlier ? 1.0 : 0.0)
@@ -334,19 +337,15 @@ struct ContentView: View {
                                         .frame(width: geo.size.height/12
                                             , height: geo.size.height/12)
                                         .padding(.top)
-                                    
-                                    Text("\(self.timeRemaining)")
+                                    Text("\(self.timeRemaining - self.vm.seconds)")
+                                        .font(.subheadline)
+                                        .fontWeight(.heavy)
                                         .padding(.top)
-                                        .onReceive(self.timer) { _ in
-                                            if self.timeRemaining  > 0 && self.quizStarted {
-                                                self.timeRemaining -= 1
-                                            }else if self.timeRemaining  == 0 && self.quizStarted {
-                                                self.cardAnimation()
-                                                self.timer0 = true
-                                            }
+                                        .background(ColorReference.specialOrange)
+                                        .font(.title)
+                                        .onAppear{
+                                            self.vm.setup(timeRemaining: 120)
                                     }
-                                    .background(ColorReference.specialOrange)
-                                    .font(.title)
                                 }
                                 Text("Time left")
                                     .font(.footnote)
@@ -401,11 +400,34 @@ struct ContentView: View {
                 self.presentationMode.wrappedValue.dismiss()
             }
         }
+        .onReceive(vm.objectWillChange, perform: {
+            if self.vm.seconds == 120 && !self.timer0 && self.vm.time0{
+                self.timer0 = true
+                self.cardAnimation()
+                self.messageAfterAnswer = "Time's\nUp!"
+                _ = removeCoins(numberOfCoinsToRemove: 1)
+            }
+        })
+        .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
+            let screen = FontsAndConstraintsOptions()
+            self.screenDimension = screen.screenSurface
+        }
         .background(ColorReference.specialGreen)
         .edgesIgnoringSafeArea(.all)
         .navigationBarTitle("Earlier or Later", displayMode: .inline)
         .navigationBarHidden(self.firstLevelFinished)
         .navigationBarBackButtonHidden(true)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+            Button(action: goBack) {
+                HStack {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.white)
+                    Text("Menu")
+                    .foregroundColor(.white)
+                    
+                }
+            })
         .sheet(isPresented: self.$showSheet) {
             if self.activeSheet == .upLevel {
                 LandMarkView()
@@ -438,7 +460,9 @@ struct ContentView: View {
                     activeSheet = .coinPurchase
                     answerIsGood = false
                     playSound(sound: "Error Warning", type: "wav")
+                    
                 }
+                self.tryAgain = true
                 cardAnimation()
             case 2:
                 if !self.eventTiming.timing[self.questionNumber].eventIsEarlier {
@@ -454,15 +478,14 @@ struct ContentView: View {
                     activeSheet = .coinPurchase
                     answerIsGood = false
                     playSound(sound: "Error Warning", type: "wav")
+                    
                 }
-
+                self.tryAgain = true
                 cardAnimation()
             default:
                 print("default")
             }
-
         }
-        
     }
     func cardMoved(location: CGPoint, letter: String) -> DragState {
         if let match = cardFrames.firstIndex(where: {
@@ -481,7 +504,6 @@ struct ContentView: View {
     }
     func cardPushed(location: CGPoint, trayIndex: Int){
         self.numberCardsDisplayed = false
-        self.timer0 = false
         quizStarted = true
         tryAgain = false
         cardSelected = true
@@ -489,12 +511,17 @@ struct ContentView: View {
     }
     func cardUnpushed(location: CGPoint, trayIndex: Int) {
         self.numberCardsDisplayed = true
-        self.cardDescription = "Cards left: \(9 - self.questionNumber)"
+        
     }
     func cardAnimation () {
-        self.tryAgain = true
-        if answerIsGood && !timer0{
-            self.messageAfterAnswer = "Great!"
+        
+        if answerIsGood && !vm.time0{
+            if vm.time0 {
+                self.messageAfterAnswer = "Time's Up!"
+            }else{
+                self.messageAfterAnswer = "Great!"
+            }
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 self.questionNumber = self.questionNumber + 1
                 self.answerIsGood = false
@@ -518,14 +545,19 @@ struct ContentView: View {
                         self.cardSelected = false
                         self.firstLevelFinished = false
                         self.questionNumber = 0
-                        self.cardDescription = "Cards left: \(9 - self.questionNumber)"
-                        self.timer.upstream.connect().cancel()
+                        
                     }
                 }
             }
         }else{
             self.answerIsGood = false
-            self.messageAfterAnswer = "Sorry..."
+            self.timer0 = false
+            if vm.time0 {
+                self.messageAfterAnswer = "Time's\nUp!"
+            }else{
+                self.messageAfterAnswer = "Sorry..."
+            }
+            
             withAnimation(.linear(duration: 2)) {
                 self.badAnsweOffset = 500
             }
@@ -539,24 +571,25 @@ struct ContentView: View {
                 self.xOffset2 = 0
                 self.quizStarted = false
                 self.timeRemaining = 120
-                if self.timer0 {
-                    self.cardDescription = "Time out. Try again!"
-                }else{
-                    self.cardDescription  = "Try again!"
-                }
+                self.tryAgain = true
+                self.cardDescription = "Try again!"
+                self.vm.setup(timeRemaining: 120)
             }
         }
     }
     func getFont(tryAgain: Bool) -> CGFloat {
-        if tryAgain {
+        if tryAgain || vm.time0 {
             return fonts.finalBigFont
         }else{
             return fonts.smallFontDimension
         }
     }
-}
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView( item: NameItem.example, section: Names.example)
+    func goBack(){
+        self.presentationMode.wrappedValue.dismiss()
     }
 }
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView( item: NameItem.example, section: Names.example)
+//    }
+//}

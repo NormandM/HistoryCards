@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+    <array>
+          <string>50,000 YA</string>
+          <string>Great leap forward</string>
+          <string>“Great leap forward”: human culture starts to change much more rapidly than before; people begin burying their dead ritually; create clothes from animal hides; and develop complex hunting techniques, such as pit-traps. Colonisation of Australia by modern humans</string>
+    </array>
+    <array>
+          <string>33,000 YA</string>
+          <string>Oldest cave art</string>
+          <string>Oldest cave art. Later, Stone Age artisans create the spectacular murals at Lascaux and Chauvet in France. Homo erectus dies out in Asia – replaced by modern man</string>
+    </array>
+    <array>
+          <string>18,000 YA</string>
+          <string>Homo Floresiensis,</string>
+          <string>Homo Floresiensis, “Hobbit” people, found on the Indonesian island of Flores. They stand just over 1 metre tall, and have brains similar in size to chimpanzees, yet have advanced stone tools</string>
+    </array>
+    <array>
+          <string>12,000 YA</string>
+          <string>People reach America</string>
+          <string>Modern people reach the Americas</string>
+    </array>
+    <array>
+          <string>10,000 YA</string>
+          <string>Agriculture</string>
+          <string>Agriculture develops and spread. First villages. Possible domestication of dogs</string>
+    </array>
+    <array>
+          <string>3,500 BC</string>
+          <string>First civilisation</string>
+          <string>The Sumerians of Mesopotamia develop the world’s first civilisation</string>
+    </array>
+</array>
+</plist>

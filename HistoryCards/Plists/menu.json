@@ -1,30 +1,63 @@
 [
 	{
         "id": "EF1CC5BB-4785-4D8E-AB98-5FA4E00B6A66",
-		"name": "Eras of the Universe and Man",
+		"name": "Important Events and  Eras",
         "photo": "planet-earth",
         "photoHD": "earth",
 		"items": [
 			{
                 "id": "EDCD038C-036F-4C40-826F-61C88CD84DDD",
-				"name": "Eras1",
+				"name": "14000-60 MYA",
 				"sequence": "SequenceEras1",
                 "isDone": false
 			},
 			{
                 "id": "36A7CC40-18C1-48E5-BCD8-3B42D43BEAEE",
-				"name": "Eras2",
+				"name": "5 MYA-323 B.C.",
 				"sequence": "SequenceEras2",
                 "isDone": false
 			},
             {
                 "id": "313952E9-84EB-4198-A74F-95827E1F7476",
-                "name": "Eras3",
+                "name": "31 B.C.-1750",
                 "sequence": "SequenceEras3",
                 "isDone": false
             }
 		]
 	},
+    {
+        "id": "94179694-9E99-4AF9-976C-30DAD9E8995D",
+        "name": "Human Evolution",
+        "photo": "Evolution",
+        "photoHD": "skulls",
+        "items": [
+            {
+                "id": "332A351A-DE69-49A3-B2CD-E9CC6830E5A6",
+                "name": "55 - 3.2 MYA",
+                "sequence": "SequenceAncientCivilisation4",
+                "isDone": false
+            },
+            {
+                "id": "806F2922-E476-4691-AB8A-5DD12D7ACD6F",
+                "name": "2.7 - 0.6 MYA",
+                "sequence": "SequenceAncientCivilisation2",
+                "isDone": false
+            },
+            {
+                "id": "26795B4F-EF52-4DE6-9E17-F53E78930531",
+                "name": "500,000 - 150,000 YA",
+                "sequence": "SequenceAncientCivilisation1",
+                "isDone": false
+            },
+            {
+                "id": "B7D3362E-20B0-4E51-A736-5059E77DBB51",
+                "name": "50,000 YA - 3500 BC",
+                "sequence": "SequenceAncientCivilisation3",
+                "isDone": false
+            }
+        ]
+    },
+    
 	{
         "id": "3D97FAB4-50AC-40FC-9BF0-3F46BB6A92F5",
 		"name": "Ancient Civilisations",
@@ -33,25 +66,25 @@
 		"items": [
 			{
                 "id": "D44AAEBC-BF4F-42CD-8C37-0FEF772A5B69",
-				"name": "AncientCivilisation1",
+				"name": "3200-900 B.C.",
 				"sequence": "SequenceAncientCivilisation1",
                 "isDone": false
 			},
 			{
                 "id": "2BAD20C5-D007-4BBE-B074-8CF0F256A42F",
-				"name": "AncientCivilisation2",
+				"name": "900-500 B.C.",
 				"sequence": "SequenceAncientCivilisation2",
                 "isDone": false
 			},
 			{
                 "id": "759527CB-1064-4082-A527-F04698F9D18F",
-                "name": "AncientCivilisation3",
+                "name": "500-40 B.C.",
                 "sequence": "SequenceAncientCivilisation3",
                 "isDone": false
 			},
             {
                 "id": "D3268150-2DB8-40B4-B504-0FB81EBF7EE5",
-                "name": "AncientCivilisation4",
+                "name": "70-476",
                 "sequence": "SequenceAncientCivilisation4",
                 "isDone": false
             }
@@ -59,25 +92,25 @@
 	},
 	{
         "id": "1C89DAFD-7653-4EF2-BF20-C51A159BAC43",
-		"name": "Revolutions that changed humanity",
+		"name": "Revolutions",
         "photo": "che-guevara copy",
         "photoHD": "revolution",
 		"items": [
 			{
                 "id": "AB7E38EA-05A7-426A-AFF3-B3A32B3E86BF",
-                "name": "Revolutions1",
+                "name": "16th-19th century",
                 "sequence": "SequenceRevolutions1",
                 "isDone": false
 			},
 			{
                 "id": "758ABBE3-F338-4F7C-BAC7-8D61BC1FB329",
-                "name": "Revolutions2",
+                "name": "19th-20th century ",
                 "sequence": "SequenceRevolutions2",
                 "isDone": false
 			},
 			{
                 "id": "A73E2D2D-D53A-46D4-8829-62011EEF7DA4",
-                "name": "Revolutions3",
+                "name": "20th century",
                 "sequence": "SequenceRevolutions3",
                 "isDone": false
 			}
@@ -91,19 +124,19 @@
 		"items": [
 			{
                 "id": "A4D89AF9-190E-4409-B924-AABD13DBB6A4",
-				"name": "Americain Revolution1",
+				"name": "1764-1775",
                 "sequence": "SequenceAmericainRevolution1",
                 "isDone": false
 			},
 			{
                 "id": "FC201614-1418-4152-9469-087B27485D13",
-                "name": "Americain Revolution2",
+                "name": "1775-1778",
                 "sequence": "SequenceAmericainRevolution2",
                 "isDone": false
             },
             {
                 "id": "7A2A79EB-5816-4815-B1DD-1D250FB85419",
-                "name": "Americain Revolution3",
+                "name": "1778-1783",
                 "sequence": "SequenceAmericainRevolution3",
                 "isDone": false
             }
@@ -117,19 +150,19 @@
         "items": [
             {
                 "id": "72A68104-7CF8-11EA-BC55-0242AC130003",
-                "name": "FrenchRevolution1",
+                "name": "1789-1792",
                 "sequence": "SequenceFrenchRevolution1",
                 "isDone": false
             },
             {
                 "id": "CC1538E8-81B2-11EA-BC55-0242AC130003",
-                "name": "FrenchRevolution2",
+                "name": "1792-1793",
                 "sequence": "SequenceFrenchRevolution2",
                 "isDone": false
             },
             {
                 "id": "2ECE6909-1295-4AED-AF72-AE875A1DE033",
-                "name": "FrenchRevolution3",
+                "name": "1793-1799",
                 "sequence": "SequenceFrenchRevolution3",
                 "isDone": false
             }
@@ -137,37 +170,37 @@
     },
     {
         "id": "6F2D0E08-7B4A-11EA-BC55-0242AC130003",
-        "name": "Main wars of history",
+        "name": "Main wars of History",
         "photo": "sword",
         "photoHD": "Wars",
         "items": [
             {
                 "id": "6F2D0B7E-7B4A-11EA-BC55-0242AC130003",
-                "name": "Wars1",
+                "name": "1300 B.C.-1st century",
                 "sequence": "SequenceWars1",
                 "isDone": false
             },
             {
                 "id": "6F2D0F0C-7B4A-11EA-BC55-0242AC130003",
-                "name": "Wars2",
+                "name": "1st-17th century",
                 "sequence": "SequenceWars2",
                 "isDone": false
             },
             {
                 "id": "6F2D0FF2-7B4A-11EA-BC55-0242AC130003",
-                "name": "Wars3",
+                "name": "17th-19th century",
                 "sequence": "SequenceWars3",
                 "isDone": false
             },
             {
                 "id": "6F2D13C6-7B4A-11EA-BC55-0242AC130003",
-                "name": "Wars4",
+                "name": "19th-20th century",
                 "sequence": "SequenceWars4",
                 "isDone": false
             },
             {
                 "id": "EEAE44EC-4A8B-4A56-A1F8-8F0F784DF143",
-                "name": "Wars5",
+                "name": "20th-21st century",
                 "sequence": "SequenceWars5",
                 "isDone": false
             }
@@ -181,19 +214,19 @@
         "items": [
             {
                 "id": "ECBDF0A4-7D9C-11EA-BC55-0242AC130003",
-                "name": "Napoleon's rise to power",
+                "name": "1796-1805",
                 "sequence": "SequenceNapoleon1",
                 "isDone": false
             },
             {
                 "id": "ECBDF342-7D9C-11EA-BC55-0242AC130003",
-                "name": "Napoleon's conquests",
+                "name": "1810-1814",
                 "sequence": "SequenceNapoleon2",
                 "isDone": false
             },
             {
                 "id": "ECBE47DE-7D9C-11EA-BC55-0242AC130003",
-                "name": "Napoleon 100 days war",
+                "name": "1814-1921",
                 "sequence": "SequenceNapoleon3",
                 "isDone": false
             }
@@ -207,19 +240,19 @@
         "items": [
             {
                 "id": "6F2D15C4-7B4A-11EA-BC55-0242AC130003",
-                "name": "AmericanCivilWar1",
+                "name": "1860-1862",
                 "sequence": "SequenceAmericainCivilWar1",
                 "isDone": false
             },
             {
                 "id": "6F2D1696-7B4A-11EA-BC55-0242AC130003",
-                "name": "AmericanCivilWar2",
+                "name": "1862-1865",
                 "sequence": "SequenceAmericainCivilWar2",
                 "isDone": false
             },
             {
                 "id": "4A779C76-9A47-41EE-BAE3-2D0CC472F569",
-                "name": "AmericanCivilWar3",
+                "name": "1865-1866",
                 "sequence": "SequenceAmericainCivilWar3",
                 "isDone": false
             }
@@ -233,13 +266,13 @@
         "items": [
             {
                 "id": "7AC5D9FA-81B4-11EA-BC55-0242AC130003",
-                "name": "WW1-1",
+                "name": "1914-1916",
                 "sequence": "SequenceWW1-1",
                 "isDone": false
             },
             {
                 "id": "73DC7840-A0C9-47E5-9CE9-18B3662DABDE",
-                "name": "WW1-2",
+                "name": "1916-1918",
                 "sequence": "SequenceWW1-2",
                 "isDone": false
             }
@@ -253,19 +286,19 @@
         "items": [
             {
                 "id": "6F2D1C68-7B4A-11EA-BC55-0242AC130003",
-                "name": "WW2-1",
+                "name": "1939-1940",
                 "sequence": "SequenceWW2-1",
                 "isDone": false
             },
             {
                 "id": "6F2D1D44-7B4A-11EA-BC55-0242AC130003",
-                "name": "WW2-2",
+                "name": "1941-1944",
                 "sequence": "SequenceWW2-2",
                 "isDone": false
             },
             {
                 "id": "4C8622A4-3FA3-4C4E-BBE9-5A3CC1DD46F8",
-                "name": "WW2-3",
+                "name": "1945",
                 "sequence": "SequenceWW2-3",
                 "isDone": false
             }
@@ -279,25 +312,25 @@
         "items": [
             {
                 "id": "6F2D1F9C-7B4A-11EA-BC55-0242AC130003",
-                "name": "SpacePioneers1",
+                "name": "1942-1962",
                 "sequence": "SequenceSpacePioneers1",
                 "isDone": false
             },
             {
                 "id": "6F2D2186-7B4A-11EA-BC55-0242AC130003",
-                "name": "SpacePioneers2",
+                "name": "1963-1971",
                 "sequence": "SequenceSpacePioneers2",
                "isDone": false
             },
             {
                 "id": "6F2D2258-7B4A-11EA-BC55-0242AC130003",
-                "name": "SpacePioneers3",
+                "name": "1971-1983",
                 "sequence": "SequenceSpacePioneers3",
                 "isDone": false
             },
             {
                 "id": "8231498C-24CA-4CD7-94B5-AF3F1D22A8FD",
-                "name": "SpacePioneers4",
+                "name": "1986-2015",
                 "sequence": "SequenceSpacePioneers4",
                 "isDone": false
             }

@@ -17,11 +17,14 @@ struct ProgressBar: View {
                 Rectangle().frame(width: geometry.size.width * 0.8 , height: geometry.size.height)
                     .opacity(0.3)
                     .foregroundColor(Color(UIColorReference.specialGray))
+                    .opacity(self.value >= 3000 ? 0 : 1)
                 
                 Rectangle().frame(width: min(CGFloat(self.value)*geometry.size.width * 0.8, geometry.size.width), height: geometry.size.height)
                     .foregroundColor(Color(UIColorReference.specialOrange))
                     .animation(.linear)
+                    .opacity(self.value >= 3000.0 ? 0 : 1)
             }.cornerRadius(45.0)
+                .opacity(self.value >= 3000.0 ? 0 : 1)
         }
         .onAppear{
             self.value = Float(UserDefaults.standard.integer(forKey: "points"))/Float(self.level.nextLevelPoints)

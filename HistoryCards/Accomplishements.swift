@@ -9,6 +9,7 @@
 import Foundation
 struct Accomplishements {
     var eras = UserDefaults.standard.array(forKey: "EF1CC5BB-4785-4D8E-AB98-5FA4E00B6A66") as! [Bool]
+    var he = UserDefaults.standard.array(forKey: "94179694-9E99-4AF9-976C-30DAD9E8995D") as! [Bool]
     var ancientCivilisations = UserDefaults.standard.array(forKey: "3D97FAB4-50AC-40FC-9BF0-3F46BB6A92F5") as! [Bool]
     var revolutions = UserDefaults.standard.array(forKey: "1C89DAFD-7653-4EF2-BF20-C51A159BAC43") as! [Bool]
     var americainRevolution = UserDefaults.standard.array(forKey: "CE3C67F9-79E3-46E3-B134-362A52ABFE3C") as! [Bool]
@@ -33,6 +34,22 @@ struct Accomplishements {
             eras[2] = true
             UserDefaults.standard.set(true, forKey: "313952E9-84EB-4198-A74F-95827E1F7476")
             UserDefaults.standard.set(eras, forKey: "EF1CC5BB-4785-4D8E-AB98-5FA4E00B6A66")
+        case "332A351A-DE69-49A3-B2CD-E9CC6830E5A6":
+            he[0] = true
+            UserDefaults.standard.set(true, forKey: "332A351A-DE69-49A3-B2CD-E9CC6830E5A6")
+            UserDefaults.standard.set(he, forKey: "94179694-9E99-4AF9-976C-30DAD9E8995D")
+        case "806F2922-E476-4691-AB8A-5DD12D7ACD6F":
+            he[1] = true
+            UserDefaults.standard.set(true, forKey: "806F2922-E476-4691-AB8A-5DD12D7ACD6F")
+            UserDefaults.standard.set(he, forKey: "94179694-9E99-4AF9-976C-30DAD9E8995D")
+        case "26795B4F-EF52-4DE6-9E17-F53E78930531":
+            he[2] = true
+            UserDefaults.standard.set(true, forKey: "26795B4F-EF52-4DE6-9E17-F53E78930531")
+            UserDefaults.standard.set(he, forKey: "94179694-9E99-4AF9-976C-30DAD9E8995D")
+        case "B7D3362E-20B0-4E51-A736-5059E77DBB51":
+            he[3] = true
+            UserDefaults.standard.set(true, forKey: "B7D3362E-20B0-4E51-A736-5059E77DBB51")
+            UserDefaults.standard.set(he, forKey: "94179694-9E99-4AF9-976C-30DAD9E8995D")
         case "D44AAEBC-BF4F-42CD-8C37-0FEF772A5B69":
             ancientCivilisations[0] = true
             UserDefaults.standard.set(true, forKey: "D44AAEBC-BF4F-42CD-8C37-0FEF772A5B69")

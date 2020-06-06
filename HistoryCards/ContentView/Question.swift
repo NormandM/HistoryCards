@@ -62,7 +62,7 @@ class Timing: Identifiable {
     }
 }
 
-class CardInfo: ObservableObject {
+class CardInfo {
     var info : [Info]
     
     init() {
@@ -75,8 +75,8 @@ class CardInfo: ObservableObject {
         self.info = arrayOfquestions
     }
 }
-class EventTiming: ObservableObject {
-    @Published var timing : [Timing]
+class EventTiming  {
+    var timing : [Timing]
     init() {
         var arrayTiming = [Timing]()
         let sequence = Sequences()

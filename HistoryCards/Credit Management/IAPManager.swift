@@ -30,7 +30,6 @@ class IAPManager: NSObject{
     }
     
     func getPriceFormatted(for product: SKProduct) -> String? {
-        print("format")
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.locale = product.priceLocale
@@ -104,36 +103,7 @@ extension IAPManager: SKProductsRequestDelegate, SKRequestDelegate {
         print("badProducts ",badProducts)
     }
 }
-//extension IAPManager: SKPaymentTransactionObserver {
-//  func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-//    print(transactions)
-//     transactions.forEach { (transaction) in
-//      switch transaction.transactionState {
-//      case .purchased:
-//        SKPaymentQueue.default().finishTransaction(transaction)
-//        purchasePublisher.send(("Purchased ",true))
-//      case .restored:
-//        totalRestoredPurchases += 1
-//        SKPaymentQueue.default().finishTransaction(transaction)
-//        purchasePublisher.send(("Restored ",true))
-//      case .failed:
-//        if let error = transaction.error as? SKError {
-//          purchasePublisher.send(("Payment Error \(error.code) ",false))
-//          print("Payment Failed \(error.code)")
-//        }
-//        SKPaymentQueue.default().finishTransaction(transaction)
-//      case .deferred:
-//        print("Ask Mom ...")
-//        purchasePublisher.send(("Payment Diferred ",false))
-//      case .purchasing:
-//        print("working on it...")
-//        purchasePublisher.send(("Payment in Process ",false))
-//      default:
-//        break
-//      }
-//    }
-//  }
-//
+
 extension IAPManager: SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction:AnyObject in transactions {

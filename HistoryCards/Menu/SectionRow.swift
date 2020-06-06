@@ -28,12 +28,12 @@ struct SectionRow: View {
     }
 }
 
-struct SectionRow_Previews: PreviewProvider {
-    var name: Names
-    static var previews: some View {
-        SectionRow(name: Names.example)
-    }
-}
+//struct SectionRow_Previews: PreviewProvider {
+//    var name: Names
+//    static var previews: some View {
+//        SectionRow(name: Names.example)
+//    }
+//}
 
 struct FillAll: View {
     let color: Color

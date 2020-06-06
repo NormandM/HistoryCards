@@ -12,6 +12,7 @@ struct FontsAndConstraintsOptions {
     let multiplierConstraint: CGFloat
     let fontDimension: CGFloat
     let smallFontDimension: CGFloat
+    let screenSurface: CGFloat
     let finalBigFont: CGFloat
     let titalFont: CGFloat
     init() {
@@ -24,27 +25,27 @@ struct FontsAndConstraintsOptions {
         var titalFonts: CGFloat = 0
         var smallLocalFont: CGFloat = 0
         if surfaceScreen < 200000 {
-            smallLocalFont = 11
+            smallLocalFont = 10
             localFont = 10
             bigFont = 14
             titalFonts = 30
             multiplier = 0.52
         }else if surfaceScreen > 200000 && surfaceScreen < 304600 {
             screenType = .iPhone6
-             smallLocalFont = 13
+             smallLocalFont = 11
             localFont = 11
             bigFont = 16
             titalFonts = 32
             multiplier = 0.55
         }else if surfaceScreen > 304600 && surfaceScreen < 350000 {
             screenType = .iPhone8Plus
-            smallLocalFont = 14
+            smallLocalFont = 12
             localFont = 14
             bigFont = 18
             titalFonts = 34
              multiplier = 0.55
         }else if surfaceScreen > 350000 && surfaceScreen < 700000 {
-            smallLocalFont = 13
+            smallLocalFont = 12
             localFont = 16
             bigFont = 20
             titalFonts = 36
@@ -76,6 +77,7 @@ struct FontsAndConstraintsOptions {
         screenDeviceDimension = screenType
         multiplierConstraint = multiplier
         titalFont = titalFonts
+        screenSurface = surfaceScreen
     }
 }
 extension FontsAndConstraintsOptions {

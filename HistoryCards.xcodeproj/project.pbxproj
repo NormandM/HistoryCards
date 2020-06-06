@@ -16,31 +16,31 @@
 		8E10DDAF2465D7390018FC53 /* SequenceEras1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E10DDAE2465D7390018FC53 /* SequenceEras1.plist */; };
 		8E10DDB12465D7410018FC53 /* SequenceEras2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E10DDB02465D7410018FC53 /* SequenceEras2.plist */; };
 		8E10DDB32465D7490018FC53 /* SequenceEras3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E10DDB22465D7490018FC53 /* SequenceEras3.plist */; };
-		8E1439E42443AA49003B8D34 /* FrenchRevolution3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E1439E32443AA49003B8D34 /* FrenchRevolution3.plist */; };
-		8E1439EF2444BAF0003B8D34 /* Napoleon's rise to power.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E1439EE2444BAF0003B8D34 /* Napoleon's rise to power.plist */; };
-		8E1439F12444BAFA003B8D34 /* Napoleon's conquests.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E1439F02444BAFA003B8D34 /* Napoleon's conquests.plist */; };
-		8E1439F32444BB05003B8D34 /* Napoleon 100 days war.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E1439F22444BB05003B8D34 /* Napoleon 100 days war.plist */; };
-		8E2572C5243A312B00F52B99 /* Revolutions1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2572BE243A312A00F52B99 /* Revolutions1.plist */; };
-		8E2572C6243A312B00F52B99 /* Revolutions3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2572BF243A312A00F52B99 /* Revolutions3.plist */; };
-		8E2572C8243A312B00F52B99 /* Revolutions2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2572C1243A312A00F52B99 /* Revolutions2.plist */; };
-		8E2572D4243BB99800F52B99 /* Wars4.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2572D0243BB99800F52B99 /* Wars4.plist */; };
-		8E2572D5243BB99800F52B99 /* Wars3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2572D1243BB99800F52B99 /* Wars3.plist */; };
-		8E2572D6243BB99800F52B99 /* Wars5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2572D2243BB99800F52B99 /* Wars5.plist */; };
-		8E25732B243BD04100F52B99 /* AmericanCivilWar3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E25732A243BD04100F52B99 /* AmericanCivilWar3.plist */; };
-		8E257346243E429C00F52B99 /* Americain Revolution3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E257345243E429C00F52B99 /* Americain Revolution3.plist */; };
-		8E257356243E733500F52B99 /* WW2-3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E257355243E733500F52B99 /* WW2-3.plist */; };
+		8E1439E42443AA49003B8D34 /* 1793-1799.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E1439E32443AA49003B8D34 /* 1793-1799.plist */; };
+		8E1439EF2444BAF0003B8D34 /* 1796-1805.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E1439EE2444BAF0003B8D34 /* 1796-1805.plist */; };
+		8E1439F12444BAFA003B8D34 /* 1810-1814.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E1439F02444BAFA003B8D34 /* 1810-1814.plist */; };
+		8E1439F32444BB05003B8D34 /* 1814-1921.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E1439F22444BB05003B8D34 /* 1814-1921.plist */; };
+		8E2572C5243A312B00F52B99 /* 16th-19th century.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2572BE243A312A00F52B99 /* 16th-19th century.plist */; };
+		8E2572C6243A312B00F52B99 /* 20th century.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2572BF243A312A00F52B99 /* 20th century.plist */; };
+		8E2572C8243A312B00F52B99 /* 19th-20th century .plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2572C1243A312A00F52B99 /* 19th-20th century .plist */; };
+		8E2572D4243BB99800F52B99 /* 19th-20th century.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2572D0243BB99800F52B99 /* 19th-20th century.plist */; };
+		8E2572D5243BB99800F52B99 /* 17th-19th century.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2572D1243BB99800F52B99 /* 17th-19th century.plist */; };
+		8E2572D6243BB99800F52B99 /* 20th-21st century.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E2572D2243BB99800F52B99 /* 20th-21st century.plist */; };
+		8E25732B243BD04100F52B99 /* 1865-1866.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E25732A243BD04100F52B99 /* 1865-1866.plist */; };
+		8E257346243E429C00F52B99 /* 1778-1783.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E257345243E429C00F52B99 /* 1778-1783.plist */; };
+		8E257356243E733500F52B99 /* 1945.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E257355243E733500F52B99 /* 1945.plist */; };
 		8E2EA07C245C7D1900E826C8 /* CoinAndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2EA07B245C7D1900E826C8 /* CoinAndPoints.swift */; };
 		8E2EA07E245DF5EA00E826C8 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2EA07D245DF5EA00E826C8 /* ProgressBar.swift */; };
 		8E33752A2448C9300049467C /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3375292448C9300049467C /* DataView.swift */; };
-		8E674E3A244F858C001212B4 /* Eras1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E39244F858C001212B4 /* Eras1.plist */; };
-		8E674E3C244F8591001212B4 /* Eras2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E3B244F8591001212B4 /* Eras2.plist */; };
-		8E674E48244F8923001212B4 /* Eras3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E47244F8923001212B4 /* Eras3.plist */; };
-		8E674E4C244F98D4001212B4 /* AncientCivilisation1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E4B244F98D4001212B4 /* AncientCivilisation1.plist */; };
-		8E674E4E244F98DA001212B4 /* AncientCivilisation2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E4D244F98DA001212B4 /* AncientCivilisation2.plist */; };
-		8E674E50244F98E5001212B4 /* AncientCivilisation3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E4F244F98E5001212B4 /* AncientCivilisation3.plist */; };
-		8E674E52244F98EA001212B4 /* AncientCivilisation4.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E51244F98EA001212B4 /* AncientCivilisation4.plist */; };
-		8E674E5E2450B769001212B4 /* Americain Revolution1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E5D2450B769001212B4 /* Americain Revolution1.plist */; };
-		8E674E602450B80E001212B4 /* Americain Revolution2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E5F2450B80E001212B4 /* Americain Revolution2.plist */; };
+		8E674E3A244F858C001212B4 /* 14000-60 MYA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E39244F858C001212B4 /* 14000-60 MYA.plist */; };
+		8E674E3C244F8591001212B4 /* 5 MYA-323 B.C..plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E3B244F8591001212B4 /* 5 MYA-323 B.C..plist */; };
+		8E674E48244F8923001212B4 /* 31 B.C.-1750.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E47244F8923001212B4 /* 31 B.C.-1750.plist */; };
+		8E674E4C244F98D4001212B4 /* 3200-900 B.C..plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E4B244F98D4001212B4 /* 3200-900 B.C..plist */; };
+		8E674E4E244F98DA001212B4 /* 900-500 B.C..plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E4D244F98DA001212B4 /* 900-500 B.C..plist */; };
+		8E674E50244F98E5001212B4 /* 500-40 B.C..plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E4F244F98E5001212B4 /* 500-40 B.C..plist */; };
+		8E674E52244F98EA001212B4 /* 70-476.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E51244F98EA001212B4 /* 70-476.plist */; };
+		8E674E5E2450B769001212B4 /* 1764-1775.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E5D2450B769001212B4 /* 1764-1775.plist */; };
+		8E674E602450B80E001212B4 /* 1775-1778.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E5F2450B80E001212B4 /* 1775-1778.plist */; };
 		8E674E642450BE51001212B4 /* SequenceAncientCivilisation1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E632450BE51001212B4 /* SequenceAncientCivilisation1.plist */; };
 		8E674E662450BE89001212B4 /* SequenceAncientCivilisation2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E652450BE89001212B4 /* SequenceAncientCivilisation2.plist */; };
 		8E674E682450BEAC001212B4 /* SequenceAncientCivilisation3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E672450BEAC001212B4 /* SequenceAncientCivilisation3.plist */; };
@@ -51,34 +51,34 @@
 		8E674E722450C2A1001212B4 /* SequenceAmericainRevolution1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E712450C2A1001212B4 /* SequenceAmericainRevolution1.plist */; };
 		8E674E742450C2CA001212B4 /* SequenceAmericainRevolution2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E732450C2C9001212B4 /* SequenceAmericainRevolution2.plist */; };
 		8E674E762450C2FD001212B4 /* SequenceAmericainRevolution3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E752450C2FD001212B4 /* SequenceAmericainRevolution3.plist */; };
-		8E674E7A2450CDF7001212B4 /* FrenchRevolution1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E792450CDF7001212B4 /* FrenchRevolution1.plist */; };
-		8E674E7C2450CDFD001212B4 /* FrenchRevolution2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E7B2450CDFD001212B4 /* FrenchRevolution2.plist */; };
+		8E674E7A2450CDF7001212B4 /* 1789-1792.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E792450CDF7001212B4 /* 1789-1792.plist */; };
+		8E674E7C2450CDFD001212B4 /* 1792-1793.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E7B2450CDFD001212B4 /* 1792-1793.plist */; };
 		8E674E7E2450CE0E001212B4 /* SequenceFrenchRevolution1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E7D2450CE0E001212B4 /* SequenceFrenchRevolution1.plist */; };
 		8E674E802450CE3D001212B4 /* SequenceFrenchRevolution2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E7F2450CE3D001212B4 /* SequenceFrenchRevolution2.plist */; };
 		8E674E822450CE5F001212B4 /* SequenceFrenchRevolution3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E812450CE5F001212B4 /* SequenceFrenchRevolution3.plist */; };
-		8E674E862450DF01001212B4 /* Wars1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E852450DF00001212B4 /* Wars1.plist */; };
-		8E674E882450DF08001212B4 /* Wars2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E872450DF08001212B4 /* Wars2.plist */; };
+		8E674E862450DF01001212B4 /* 1300 B.C.-1st century.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E852450DF00001212B4 /* 1300 B.C.-1st century.plist */; };
+		8E674E882450DF08001212B4 /* 1st-17th century.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E872450DF08001212B4 /* 1st-17th century.plist */; };
 		8E674E8A2450DF2F001212B4 /* SequenceWars1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E892450DF2F001212B4 /* SequenceWars1.plist */; };
 		8E674E8C2450DF4C001212B4 /* SequenceWars2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E8B2450DF4C001212B4 /* SequenceWars2.plist */; };
 		8E674E8E2450DF5C001212B4 /* SequenceWars3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E8D2450DF5B001212B4 /* SequenceWars3.plist */; };
 		8E674E902450DF6D001212B4 /* SequenceWars4.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E8F2450DF6D001212B4 /* SequenceWars4.plist */; };
 		8E674E922450DF7E001212B4 /* SequenceWars5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E912450DF7E001212B4 /* SequenceWars5.plist */; };
-		8E674E962450EB80001212B4 /* AmericanCivilWar1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E952450EB80001212B4 /* AmericanCivilWar1.plist */; };
-		8E674E982450EB86001212B4 /* AmericanCivilWar2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E972450EB86001212B4 /* AmericanCivilWar2.plist */; };
+		8E674E962450EB80001212B4 /* 1860-1862.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E952450EB80001212B4 /* 1860-1862.plist */; };
+		8E674E982450EB86001212B4 /* 1862-1865.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E972450EB86001212B4 /* 1862-1865.plist */; };
 		8E674E9A2450EB9F001212B4 /* SequenceAmericainCivilWar1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E992450EB9F001212B4 /* SequenceAmericainCivilWar1.plist */; };
 		8E674E9C2450EBB8001212B4 /* SequenceAmericainCivilWar2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E9B2450EBB8001212B4 /* SequenceAmericainCivilWar2.plist */; };
 		8E674E9E2450EBC5001212B4 /* SequenceAmericainCivilWar3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674E9D2450EBC5001212B4 /* SequenceAmericainCivilWar3.plist */; };
-		8E674EA22451F790001212B4 /* WW1-1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EA12451F790001212B4 /* WW1-1.plist */; };
-		8E674EA42451F797001212B4 /* WW1-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EA32451F797001212B4 /* WW1-2.plist */; };
+		8E674EA22451F790001212B4 /* 1914-1916.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EA12451F790001212B4 /* 1914-1916.plist */; };
+		8E674EA42451F797001212B4 /* 1916-1918.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EA32451F797001212B4 /* 1916-1918.plist */; };
 		8E674EA82451F7F0001212B4 /* SequenceWW1-1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EA72451F7F0001212B4 /* SequenceWW1-1.plist */; };
 		8E674EAA2451F80B001212B4 /* SequenceWW1-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EA92451F80B001212B4 /* SequenceWW1-2.plist */; };
-		8E674EAE24521DE2001212B4 /* WW2-1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EAD24521DE2001212B4 /* WW2-1.plist */; };
-		8E674EB024521DEB001212B4 /* WW2-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EAF24521DEB001212B4 /* WW2-2.plist */; };
+		8E674EAE24521DE2001212B4 /* 1939-1940.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EAD24521DE2001212B4 /* 1939-1940.plist */; };
+		8E674EB024521DEB001212B4 /* 1941-1944.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EAF24521DEB001212B4 /* 1941-1944.plist */; };
 		8E674EB224521E09001212B4 /* SequenceWW2-1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EB124521E09001212B4 /* SequenceWW2-1.plist */; };
 		8E674EB424521E2F001212B4 /* SequenceWW2-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EB324521E2F001212B4 /* SequenceWW2-2.plist */; };
 		8E674EB624521E45001212B4 /* SequenceWW2-3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EB524521E45001212B4 /* SequenceWW2-3.plist */; };
-		8E674EBA245237C2001212B4 /* SpacePioneers1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EB9245237C2001212B4 /* SpacePioneers1.plist */; };
-		8E674EBC245237CB001212B4 /* SpacePioneers2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EBB245237CA001212B4 /* SpacePioneers2.plist */; };
+		8E674EBA245237C2001212B4 /* 1942-1962.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EB9245237C2001212B4 /* 1942-1962.plist */; };
+		8E674EBC245237CB001212B4 /* 1963-1971.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EBB245237CA001212B4 /* 1963-1971.plist */; };
 		8E674EBE245237E3001212B4 /* SequenceSpacePioneers1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EBD245237E3001212B4 /* SequenceSpacePioneers1.plist */; };
 		8E674EC02452380E001212B4 /* SequenceSpacePioneers2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EBF2452380E001212B4 /* SequenceSpacePioneers2.plist */; };
 		8E674EC22452382D001212B4 /* SequenceSpacePioneers3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EC12452382D001212B4 /* SequenceSpacePioneers3.plist */; };
@@ -90,6 +90,14 @@
 		8E6C3FD42472D9E200C4C805 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6C3FD32472D9E200C4C805 /* StoreKit.framework */; };
 		8E6C3FD72472FDD200C4C805 /* ConnectionReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C3FD62472FDD200C4C805 /* ConnectionReachable.swift */; };
 		8E6C3FE124742C0000C4C805 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C3FE024742C0000C4C805 /* IAPManager.swift */; };
+		8E7774BF248C102E00BB449C /* 50,000 YA - 3500 BC.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E7774BB248C102E00BB449C /* 50,000 YA - 3500 BC.plist */; };
+		8E7774C0248C102E00BB449C /* 55 - 3.2 MYA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E7774BC248C102E00BB449C /* 55 - 3.2 MYA.plist */; };
+		8E7774C1248C102E00BB449C /* 500,000 - 150,000 YA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E7774BD248C102E00BB449C /* 500,000 - 150,000 YA.plist */; };
+		8E7774C2248C102E00BB449C /* 2.7 - 0.6 MYA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E7774BE248C102E00BB449C /* 2.7 - 0.6 MYA.plist */; };
+		8E7774C4248C109F00BB449C /* HESequence4.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E7774C3248C109F00BB449C /* HESequence4.plist */; };
+		8E7774C6248C10BF00BB449C /* HESequence1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E7774C5248C10BF00BB449C /* HESequence1.plist */; };
+		8E7774C8248C10DC00BB449C /* HESequence2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E7774C7248C10DC00BB449C /* HESequence2.plist */; };
+		8E7774CA248C10F200BB449C /* HESequence3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E7774C9248C10F200BB449C /* HESequence3.plist */; };
 		8ED0AAA024688D30009CB168 /* LandMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED0AA9F24688D30009CB168 /* LandMarkView.swift */; };
 		8ED0AAA324699B42009CB168 /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED0AAA224699B42009CB168 /* Levels.swift */; };
 		8EDB865B244A409500C95E5E /* Accomplishements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDB865A244A409500C95E5E /* Accomplishements.swift */; };
@@ -127,8 +135,11 @@
 		8EDE2F392431432800588FCA /* InventionsQuiz.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EDE2F342431432800588FCA /* InventionsQuiz.plist */; };
 		8EDE2F3A2431432800588FCA /* InventionsCardData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EDE2F352431432800588FCA /* InventionsCardData.plist */; };
 		8EDE2F502433CF5200588FCA /* NameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE2F4F2433CF5200588FCA /* NameModel.swift */; };
-		8EF6BAB3243FA06200E36EE0 /* SpacePioneers3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EF6BAB0243FA06200E36EE0 /* SpacePioneers3.plist */; };
-		8EF6BAB5243FA06200E36EE0 /* SpacePioneers4.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EF6BAB2243FA06200E36EE0 /* SpacePioneers4.plist */; };
+		8EEB2D1B24802359008168FD /* ClockDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEB2D1A24802359008168FD /* ClockDetailViewModel.swift */; };
+		8EEB2D1F24859E74008168FD /* ApStoreFeedBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEB2D1E24859E74008168FD /* ApStoreFeedBack.swift */; };
+		8EEB2D232486E521008168FD /* fanfare.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8EEB2D222486E520008168FD /* fanfare.mp3 */; };
+		8EF6BAB3243FA06200E36EE0 /* 1971-1983.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EF6BAB0243FA06200E36EE0 /* 1971-1983.plist */; };
+		8EF6BAB5243FA06200E36EE0 /* 1986-2015.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EF6BAB2243FA06200E36EE0 /* 1986-2015.plist */; };
 		8EF6BAC12440CD3100E36EE0 /* menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EF6BAC02440CD3100E36EE0 /* menu.json */; };
 		8EF6BAC32440E25E00E36EE0 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF6BAC22440E25E00E36EE0 /* Helper.swift */; };
 		8EF6BAC62441088D00E36EE0 /* ItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF6BAC52441088D00E36EE0 /* ItemRowView.swift */; };
@@ -162,31 +173,31 @@
 		8E10DDAE2465D7390018FC53 /* SequenceEras1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceEras1.plist; sourceTree = "<group>"; };
 		8E10DDB02465D7410018FC53 /* SequenceEras2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceEras2.plist; sourceTree = "<group>"; };
 		8E10DDB22465D7490018FC53 /* SequenceEras3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceEras3.plist; sourceTree = "<group>"; };
-		8E1439E32443AA49003B8D34 /* FrenchRevolution3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FrenchRevolution3.plist; sourceTree = "<group>"; };
-		8E1439EE2444BAF0003B8D34 /* Napoleon's rise to power.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Napoleon's rise to power.plist"; sourceTree = "<group>"; };
-		8E1439F02444BAFA003B8D34 /* Napoleon's conquests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Napoleon's conquests.plist"; sourceTree = "<group>"; };
-		8E1439F22444BB05003B8D34 /* Napoleon 100 days war.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Napoleon 100 days war.plist"; sourceTree = "<group>"; };
-		8E2572BE243A312A00F52B99 /* Revolutions1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Revolutions1.plist; sourceTree = "<group>"; };
-		8E2572BF243A312A00F52B99 /* Revolutions3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Revolutions3.plist; sourceTree = "<group>"; };
-		8E2572C1243A312A00F52B99 /* Revolutions2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Revolutions2.plist; sourceTree = "<group>"; };
-		8E2572D0243BB99800F52B99 /* Wars4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Wars4.plist; sourceTree = "<group>"; };
-		8E2572D1243BB99800F52B99 /* Wars3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Wars3.plist; sourceTree = "<group>"; };
-		8E2572D2243BB99800F52B99 /* Wars5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Wars5.plist; sourceTree = "<group>"; };
-		8E25732A243BD04100F52B99 /* AmericanCivilWar3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AmericanCivilWar3.plist; sourceTree = "<group>"; };
-		8E257345243E429C00F52B99 /* Americain Revolution3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Americain Revolution3.plist"; sourceTree = "<group>"; };
-		8E257355243E733500F52B99 /* WW2-3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WW2-3.plist"; sourceTree = "<group>"; };
+		8E1439E32443AA49003B8D34 /* 1793-1799.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1793-1799.plist"; sourceTree = "<group>"; };
+		8E1439EE2444BAF0003B8D34 /* 1796-1805.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1796-1805.plist"; sourceTree = "<group>"; };
+		8E1439F02444BAFA003B8D34 /* 1810-1814.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1810-1814.plist"; sourceTree = "<group>"; };
+		8E1439F22444BB05003B8D34 /* 1814-1921.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1814-1921.plist"; sourceTree = "<group>"; };
+		8E2572BE243A312A00F52B99 /* 16th-19th century.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "16th-19th century.plist"; sourceTree = "<group>"; };
+		8E2572BF243A312A00F52B99 /* 20th century.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "20th century.plist"; sourceTree = "<group>"; };
+		8E2572C1243A312A00F52B99 /* 19th-20th century .plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "19th-20th century .plist"; sourceTree = "<group>"; };
+		8E2572D0243BB99800F52B99 /* 19th-20th century.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "19th-20th century.plist"; sourceTree = "<group>"; };
+		8E2572D1243BB99800F52B99 /* 17th-19th century.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "17th-19th century.plist"; sourceTree = "<group>"; };
+		8E2572D2243BB99800F52B99 /* 20th-21st century.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "20th-21st century.plist"; sourceTree = "<group>"; };
+		8E25732A243BD04100F52B99 /* 1865-1866.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1865-1866.plist"; sourceTree = "<group>"; };
+		8E257345243E429C00F52B99 /* 1778-1783.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1778-1783.plist"; sourceTree = "<group>"; };
+		8E257355243E733500F52B99 /* 1945.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 1945.plist; sourceTree = "<group>"; };
 		8E2EA07B245C7D1900E826C8 /* CoinAndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinAndPoints.swift; sourceTree = "<group>"; };
 		8E2EA07D245DF5EA00E826C8 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		8E3375292448C9300049467C /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
-		8E674E39244F858C001212B4 /* Eras1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Eras1.plist; sourceTree = "<group>"; };
-		8E674E3B244F8591001212B4 /* Eras2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Eras2.plist; sourceTree = "<group>"; };
-		8E674E47244F8923001212B4 /* Eras3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Eras3.plist; sourceTree = "<group>"; };
-		8E674E4B244F98D4001212B4 /* AncientCivilisation1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AncientCivilisation1.plist; sourceTree = "<group>"; };
-		8E674E4D244F98DA001212B4 /* AncientCivilisation2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AncientCivilisation2.plist; sourceTree = "<group>"; };
-		8E674E4F244F98E5001212B4 /* AncientCivilisation3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AncientCivilisation3.plist; sourceTree = "<group>"; };
-		8E674E51244F98EA001212B4 /* AncientCivilisation4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AncientCivilisation4.plist; sourceTree = "<group>"; };
-		8E674E5D2450B769001212B4 /* Americain Revolution1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Americain Revolution1.plist"; sourceTree = "<group>"; };
-		8E674E5F2450B80E001212B4 /* Americain Revolution2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Americain Revolution2.plist"; sourceTree = "<group>"; };
+		8E674E39244F858C001212B4 /* 14000-60 MYA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "14000-60 MYA.plist"; sourceTree = "<group>"; };
+		8E674E3B244F8591001212B4 /* 5 MYA-323 B.C..plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "5 MYA-323 B.C..plist"; sourceTree = "<group>"; };
+		8E674E47244F8923001212B4 /* 31 B.C.-1750.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "31 B.C.-1750.plist"; sourceTree = "<group>"; };
+		8E674E4B244F98D4001212B4 /* 3200-900 B.C..plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "3200-900 B.C..plist"; sourceTree = "<group>"; };
+		8E674E4D244F98DA001212B4 /* 900-500 B.C..plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "900-500 B.C..plist"; sourceTree = "<group>"; };
+		8E674E4F244F98E5001212B4 /* 500-40 B.C..plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "500-40 B.C..plist"; sourceTree = "<group>"; };
+		8E674E51244F98EA001212B4 /* 70-476.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "70-476.plist"; sourceTree = "<group>"; };
+		8E674E5D2450B769001212B4 /* 1764-1775.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1764-1775.plist"; sourceTree = "<group>"; };
+		8E674E5F2450B80E001212B4 /* 1775-1778.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1775-1778.plist"; sourceTree = "<group>"; };
 		8E674E632450BE51001212B4 /* SequenceAncientCivilisation1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceAncientCivilisation1.plist; sourceTree = "<group>"; };
 		8E674E652450BE89001212B4 /* SequenceAncientCivilisation2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceAncientCivilisation2.plist; sourceTree = "<group>"; };
 		8E674E672450BEAC001212B4 /* SequenceAncientCivilisation3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceAncientCivilisation3.plist; sourceTree = "<group>"; };
@@ -197,34 +208,34 @@
 		8E674E712450C2A1001212B4 /* SequenceAmericainRevolution1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceAmericainRevolution1.plist; sourceTree = "<group>"; };
 		8E674E732450C2C9001212B4 /* SequenceAmericainRevolution2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceAmericainRevolution2.plist; sourceTree = "<group>"; };
 		8E674E752450C2FD001212B4 /* SequenceAmericainRevolution3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceAmericainRevolution3.plist; sourceTree = "<group>"; };
-		8E674E792450CDF7001212B4 /* FrenchRevolution1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FrenchRevolution1.plist; sourceTree = "<group>"; };
-		8E674E7B2450CDFD001212B4 /* FrenchRevolution2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FrenchRevolution2.plist; sourceTree = "<group>"; };
+		8E674E792450CDF7001212B4 /* 1789-1792.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1789-1792.plist"; sourceTree = "<group>"; };
+		8E674E7B2450CDFD001212B4 /* 1792-1793.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1792-1793.plist"; sourceTree = "<group>"; };
 		8E674E7D2450CE0E001212B4 /* SequenceFrenchRevolution1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceFrenchRevolution1.plist; sourceTree = "<group>"; };
 		8E674E7F2450CE3D001212B4 /* SequenceFrenchRevolution2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceFrenchRevolution2.plist; sourceTree = "<group>"; };
 		8E674E812450CE5F001212B4 /* SequenceFrenchRevolution3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceFrenchRevolution3.plist; sourceTree = "<group>"; };
-		8E674E852450DF00001212B4 /* Wars1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Wars1.plist; sourceTree = "<group>"; };
-		8E674E872450DF08001212B4 /* Wars2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Wars2.plist; sourceTree = "<group>"; };
+		8E674E852450DF00001212B4 /* 1300 B.C.-1st century.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1300 B.C.-1st century.plist"; sourceTree = "<group>"; };
+		8E674E872450DF08001212B4 /* 1st-17th century.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1st-17th century.plist"; sourceTree = "<group>"; };
 		8E674E892450DF2F001212B4 /* SequenceWars1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceWars1.plist; sourceTree = "<group>"; };
 		8E674E8B2450DF4C001212B4 /* SequenceWars2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceWars2.plist; sourceTree = "<group>"; };
 		8E674E8D2450DF5B001212B4 /* SequenceWars3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceWars3.plist; sourceTree = "<group>"; };
 		8E674E8F2450DF6D001212B4 /* SequenceWars4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceWars4.plist; sourceTree = "<group>"; };
 		8E674E912450DF7E001212B4 /* SequenceWars5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceWars5.plist; sourceTree = "<group>"; };
-		8E674E952450EB80001212B4 /* AmericanCivilWar1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AmericanCivilWar1.plist; sourceTree = "<group>"; };
-		8E674E972450EB86001212B4 /* AmericanCivilWar2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AmericanCivilWar2.plist; sourceTree = "<group>"; };
+		8E674E952450EB80001212B4 /* 1860-1862.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1860-1862.plist"; sourceTree = "<group>"; };
+		8E674E972450EB86001212B4 /* 1862-1865.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1862-1865.plist"; sourceTree = "<group>"; };
 		8E674E992450EB9F001212B4 /* SequenceAmericainCivilWar1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceAmericainCivilWar1.plist; sourceTree = "<group>"; };
 		8E674E9B2450EBB8001212B4 /* SequenceAmericainCivilWar2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceAmericainCivilWar2.plist; sourceTree = "<group>"; };
 		8E674E9D2450EBC5001212B4 /* SequenceAmericainCivilWar3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceAmericainCivilWar3.plist; sourceTree = "<group>"; };
-		8E674EA12451F790001212B4 /* WW1-1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WW1-1.plist"; sourceTree = "<group>"; };
-		8E674EA32451F797001212B4 /* WW1-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WW1-2.plist"; sourceTree = "<group>"; };
+		8E674EA12451F790001212B4 /* 1914-1916.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1914-1916.plist"; sourceTree = "<group>"; };
+		8E674EA32451F797001212B4 /* 1916-1918.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1916-1918.plist"; sourceTree = "<group>"; };
 		8E674EA72451F7F0001212B4 /* SequenceWW1-1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SequenceWW1-1.plist"; sourceTree = "<group>"; };
 		8E674EA92451F80B001212B4 /* SequenceWW1-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SequenceWW1-2.plist"; sourceTree = "<group>"; };
-		8E674EAD24521DE2001212B4 /* WW2-1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WW2-1.plist"; sourceTree = "<group>"; };
-		8E674EAF24521DEB001212B4 /* WW2-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WW2-2.plist"; sourceTree = "<group>"; };
+		8E674EAD24521DE2001212B4 /* 1939-1940.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1939-1940.plist"; sourceTree = "<group>"; };
+		8E674EAF24521DEB001212B4 /* 1941-1944.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1941-1944.plist"; sourceTree = "<group>"; };
 		8E674EB124521E09001212B4 /* SequenceWW2-1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SequenceWW2-1.plist"; sourceTree = "<group>"; };
 		8E674EB324521E2F001212B4 /* SequenceWW2-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SequenceWW2-2.plist"; sourceTree = "<group>"; };
 		8E674EB524521E45001212B4 /* SequenceWW2-3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SequenceWW2-3.plist"; sourceTree = "<group>"; };
-		8E674EB9245237C2001212B4 /* SpacePioneers1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SpacePioneers1.plist; sourceTree = "<group>"; };
-		8E674EBB245237CA001212B4 /* SpacePioneers2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SpacePioneers2.plist; sourceTree = "<group>"; };
+		8E674EB9245237C2001212B4 /* 1942-1962.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1942-1962.plist"; sourceTree = "<group>"; };
+		8E674EBB245237CA001212B4 /* 1963-1971.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1963-1971.plist"; sourceTree = "<group>"; };
 		8E674EBD245237E3001212B4 /* SequenceSpacePioneers1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceSpacePioneers1.plist; sourceTree = "<group>"; };
 		8E674EBF2452380E001212B4 /* SequenceSpacePioneers2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceSpacePioneers2.plist; sourceTree = "<group>"; };
 		8E674EC12452382D001212B4 /* SequenceSpacePioneers3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceSpacePioneers3.plist; sourceTree = "<group>"; };
@@ -236,6 +247,14 @@
 		8E6C3FD32472D9E200C4C805 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8E6C3FD62472FDD200C4C805 /* ConnectionReachable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionReachable.swift; sourceTree = "<group>"; };
 		8E6C3FE024742C0000C4C805 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
+		8E7774BB248C102E00BB449C /* 50,000 YA - 3500 BC.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "50,000 YA - 3500 BC.plist"; sourceTree = "<group>"; };
+		8E7774BC248C102E00BB449C /* 55 - 3.2 MYA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "55 - 3.2 MYA.plist"; sourceTree = "<group>"; };
+		8E7774BD248C102E00BB449C /* 500,000 - 150,000 YA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "500,000 - 150,000 YA.plist"; sourceTree = "<group>"; };
+		8E7774BE248C102E00BB449C /* 2.7 - 0.6 MYA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "2.7 - 0.6 MYA.plist"; sourceTree = "<group>"; };
+		8E7774C3248C109F00BB449C /* HESequence4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HESequence4.plist; sourceTree = "<group>"; };
+		8E7774C5248C10BF00BB449C /* HESequence1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HESequence1.plist; sourceTree = "<group>"; };
+		8E7774C7248C10DC00BB449C /* HESequence2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HESequence2.plist; sourceTree = "<group>"; };
+		8E7774C9248C10F200BB449C /* HESequence3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HESequence3.plist; sourceTree = "<group>"; };
 		8ED0AA9F24688D30009CB168 /* LandMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandMarkView.swift; sourceTree = "<group>"; };
 		8ED0AAA224699B42009CB168 /* Levels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
 		8EDB865A244A409500C95E5E /* Accomplishements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accomplishements.swift; sourceTree = "<group>"; };
@@ -279,8 +298,11 @@
 		8EDE2F342431432800588FCA /* InventionsQuiz.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InventionsQuiz.plist; sourceTree = "<group>"; };
 		8EDE2F352431432800588FCA /* InventionsCardData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InventionsCardData.plist; sourceTree = "<group>"; };
 		8EDE2F4F2433CF5200588FCA /* NameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameModel.swift; sourceTree = "<group>"; };
-		8EF6BAB0243FA06200E36EE0 /* SpacePioneers3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SpacePioneers3.plist; sourceTree = "<group>"; };
-		8EF6BAB2243FA06200E36EE0 /* SpacePioneers4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SpacePioneers4.plist; sourceTree = "<group>"; };
+		8EEB2D1A24802359008168FD /* ClockDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockDetailViewModel.swift; sourceTree = "<group>"; };
+		8EEB2D1E24859E74008168FD /* ApStoreFeedBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApStoreFeedBack.swift; sourceTree = "<group>"; };
+		8EEB2D222486E520008168FD /* fanfare.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fanfare.mp3; sourceTree = "<group>"; };
+		8EF6BAB0243FA06200E36EE0 /* 1971-1983.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1971-1983.plist"; sourceTree = "<group>"; };
+		8EF6BAB2243FA06200E36EE0 /* 1986-2015.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "1986-2015.plist"; sourceTree = "<group>"; };
 		8EF6BAC02440CD3100E36EE0 /* menu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menu.json; sourceTree = "<group>"; };
 		8EF6BAC22440E25E00E36EE0 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		8EF6BAC52441088D00E36EE0 /* ItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowView.swift; sourceTree = "<group>"; };
@@ -317,9 +339,9 @@
 		8E1439E02443AA33003B8D34 /* FrenchRevolution */ = {
 			isa = PBXGroup;
 			children = (
-				8E674E792450CDF7001212B4 /* FrenchRevolution1.plist */,
-				8E674E7B2450CDFD001212B4 /* FrenchRevolution2.plist */,
-				8E1439E32443AA49003B8D34 /* FrenchRevolution3.plist */,
+				8E674E792450CDF7001212B4 /* 1789-1792.plist */,
+				8E674E7B2450CDFD001212B4 /* 1792-1793.plist */,
+				8E1439E32443AA49003B8D34 /* 1793-1799.plist */,
 				8E674E7D2450CE0E001212B4 /* SequenceFrenchRevolution1.plist */,
 				8E674E7F2450CE3D001212B4 /* SequenceFrenchRevolution2.plist */,
 				8E674E812450CE5F001212B4 /* SequenceFrenchRevolution3.plist */,
@@ -330,9 +352,9 @@
 		8E1439ED2444BADA003B8D34 /* Napoleon */ = {
 			isa = PBXGroup;
 			children = (
-				8E1439EE2444BAF0003B8D34 /* Napoleon's rise to power.plist */,
-				8E1439F02444BAFA003B8D34 /* Napoleon's conquests.plist */,
-				8E1439F22444BB05003B8D34 /* Napoleon 100 days war.plist */,
+				8E1439EE2444BAF0003B8D34 /* 1796-1805.plist */,
+				8E1439F02444BAFA003B8D34 /* 1810-1814.plist */,
+				8E1439F22444BB05003B8D34 /* 1814-1921.plist */,
 				8E10DDA82465D5BA0018FC53 /* SequenceNapoleon1.plist */,
 				8E10DDAA2465D5C70018FC53 /* SequenceNapoleon2.plist */,
 				8E10DDAC2465D5CF0018FC53 /* SequenceNapoleon3.plist */,
@@ -343,9 +365,9 @@
 		8E2572BC243A311400F52B99 /* Revolutions */ = {
 			isa = PBXGroup;
 			children = (
-				8E2572BF243A312A00F52B99 /* Revolutions3.plist */,
-				8E2572BE243A312A00F52B99 /* Revolutions1.plist */,
-				8E2572C1243A312A00F52B99 /* Revolutions2.plist */,
+				8E2572BF243A312A00F52B99 /* 20th century.plist */,
+				8E2572BE243A312A00F52B99 /* 16th-19th century.plist */,
+				8E2572C1243A312A00F52B99 /* 19th-20th century .plist */,
 				8E674E6D2450BFA3001212B4 /* SequenceRevolutions1.plist */,
 				8E674E6F2450BFB5001212B4 /* SequenceRevolutions2.plist */,
 				8E674E6B2450BF95001212B4 /* SequenceRevolutions3.plist */,
@@ -356,9 +378,9 @@
 		8E2572CD243B86AF00F52B99 /* Erass */ = {
 			isa = PBXGroup;
 			children = (
-				8E674E39244F858C001212B4 /* Eras1.plist */,
-				8E674E3B244F8591001212B4 /* Eras2.plist */,
-				8E674E47244F8923001212B4 /* Eras3.plist */,
+				8E674E39244F858C001212B4 /* 14000-60 MYA.plist */,
+				8E674E3B244F8591001212B4 /* 5 MYA-323 B.C..plist */,
+				8E674E47244F8923001212B4 /* 31 B.C.-1750.plist */,
 				8E10DDAE2465D7390018FC53 /* SequenceEras1.plist */,
 				8E10DDB02465D7410018FC53 /* SequenceEras2.plist */,
 				8E10DDB22465D7490018FC53 /* SequenceEras3.plist */,
@@ -369,11 +391,11 @@
 		8E2572CE243BB98200F52B99 /* Wars */ = {
 			isa = PBXGroup;
 			children = (
-				8E674E852450DF00001212B4 /* Wars1.plist */,
-				8E674E872450DF08001212B4 /* Wars2.plist */,
-				8E2572D1243BB99800F52B99 /* Wars3.plist */,
-				8E2572D0243BB99800F52B99 /* Wars4.plist */,
-				8E2572D2243BB99800F52B99 /* Wars5.plist */,
+				8E674E852450DF00001212B4 /* 1300 B.C.-1st century.plist */,
+				8E674E872450DF08001212B4 /* 1st-17th century.plist */,
+				8E2572D1243BB99800F52B99 /* 17th-19th century.plist */,
+				8E2572D0243BB99800F52B99 /* 19th-20th century.plist */,
+				8E2572D2243BB99800F52B99 /* 20th-21st century.plist */,
 				8E674E892450DF2F001212B4 /* SequenceWars1.plist */,
 				8E674E8B2450DF4C001212B4 /* SequenceWars2.plist */,
 				8E674E8D2450DF5B001212B4 /* SequenceWars3.plist */,
@@ -386,10 +408,10 @@
 		8E257334243CD3C100F52B99 /* Ancient Civilisations */ = {
 			isa = PBXGroup;
 			children = (
-				8E674E4B244F98D4001212B4 /* AncientCivilisation1.plist */,
-				8E674E4D244F98DA001212B4 /* AncientCivilisation2.plist */,
-				8E674E4F244F98E5001212B4 /* AncientCivilisation3.plist */,
-				8E674E51244F98EA001212B4 /* AncientCivilisation4.plist */,
+				8E674E4B244F98D4001212B4 /* 3200-900 B.C..plist */,
+				8E674E4D244F98DA001212B4 /* 900-500 B.C..plist */,
+				8E674E4F244F98E5001212B4 /* 500-40 B.C..plist */,
+				8E674E51244F98EA001212B4 /* 70-476.plist */,
 				8E674E692450BEC1001212B4 /* SequenceAncientCivilisation4.plist */,
 				8E674E672450BEAC001212B4 /* SequenceAncientCivilisation3.plist */,
 				8E674E652450BE89001212B4 /* SequenceAncientCivilisation2.plist */,
@@ -418,6 +440,21 @@
 			path = "Credit Management";
 			sourceTree = "<group>";
 		};
+		8E7774BA248C0F8A00BB449C /* Human Evolution */ = {
+			isa = PBXGroup;
+			children = (
+				8E7774BE248C102E00BB449C /* 2.7 - 0.6 MYA.plist */,
+				8E7774BB248C102E00BB449C /* 50,000 YA - 3500 BC.plist */,
+				8E7774BC248C102E00BB449C /* 55 - 3.2 MYA.plist */,
+				8E7774BD248C102E00BB449C /* 500,000 - 150,000 YA.plist */,
+				8E7774C5248C10BF00BB449C /* HESequence1.plist */,
+				8E7774C7248C10DC00BB449C /* HESequence2.plist */,
+				8E7774C9248C10F200BB449C /* HESequence3.plist */,
+				8E7774C3248C109F00BB449C /* HESequence4.plist */,
+			);
+			path = "Human Evolution";
+			sourceTree = "<group>";
+		};
 		8ED0AAA1246895B9009CB168 /* LandMark */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,9 +468,9 @@
 		8EDB865C244B72AB00C95E5E /* AmericainRevolution */ = {
 			isa = PBXGroup;
 			children = (
-				8E257345243E429C00F52B99 /* Americain Revolution3.plist */,
-				8E674E5D2450B769001212B4 /* Americain Revolution1.plist */,
-				8E674E5F2450B80E001212B4 /* Americain Revolution2.plist */,
+				8E257345243E429C00F52B99 /* 1778-1783.plist */,
+				8E674E5D2450B769001212B4 /* 1764-1775.plist */,
+				8E674E5F2450B80E001212B4 /* 1775-1778.plist */,
 				8E674E732450C2C9001212B4 /* SequenceAmericainRevolution2.plist */,
 				8E674E712450C2A1001212B4 /* SequenceAmericainRevolution1.plist */,
 				8E674E752450C2FD001212B4 /* SequenceAmericainRevolution3.plist */,
@@ -470,8 +507,10 @@
 				8E0B07C4246C92320089CC13 /* NMLogo.swift */,
 				8E6C3FCB246F1B9C00C4C805 /* HCLogoView.swift */,
 				8EDE2F4F2433CF5200588FCA /* NameModel.swift */,
+				8EEB2D1E24859E74008168FD /* ApStoreFeedBack.swift */,
 				8EDB865A244A409500C95E5E /* Accomplishements.swift */,
 				8EDB865D244B8CD400C95E5E /* UserDataInitialisation.swift */,
+				8EEB2D1A24802359008168FD /* ClockDetailViewModel.swift */,
 				8E6C3FD52472FC6600C4C805 /* Credit Management */,
 				8ED0AAA1246895B9009CB168 /* LandMark */,
 				8EF6BAC42441086A00E36EE0 /* Menu */,
@@ -565,6 +604,7 @@
 			children = (
 				8EDE2F242431431F00588FCA /* Error Warning.wav */,
 				8EDE2F252431431F00588FCA /* Incoming Text 01.wav */,
+				8EEB2D222486E520008168FD /* fanfare.mp3 */,
 				8EDE2F262431431F00588FCA /* music_harp_gliss_up.wav */,
 				8E0B07C6246C9FD70089CC13 /* Acoustic Trio.wav */,
 				8EDE2F272431431F00588FCA /* PlaySound.swift */,
@@ -580,6 +620,7 @@
 			children = (
 				8EF6BAC02440CD3100E36EE0 /* menu.json */,
 				8EF6BAC22440E25E00E36EE0 /* Helper.swift */,
+				8E7774BA248C0F8A00BB449C /* Human Evolution */,
 				8E2572CD243B86AF00F52B99 /* Erass */,
 				8E257334243CD3C100F52B99 /* Ancient Civilisations */,
 				8E2572BC243A311400F52B99 /* Revolutions */,
@@ -601,9 +642,9 @@
 		8EF6BABC243FAB5500E36EE0 /* WW-2 */ = {
 			isa = PBXGroup;
 			children = (
-				8E674EAD24521DE2001212B4 /* WW2-1.plist */,
-				8E674EAF24521DEB001212B4 /* WW2-2.plist */,
-				8E257355243E733500F52B99 /* WW2-3.plist */,
+				8E674EAD24521DE2001212B4 /* 1939-1940.plist */,
+				8E674EAF24521DEB001212B4 /* 1941-1944.plist */,
+				8E257355243E733500F52B99 /* 1945.plist */,
 				8E674EB124521E09001212B4 /* SequenceWW2-1.plist */,
 				8E674EB324521E2F001212B4 /* SequenceWW2-2.plist */,
 				8E674EB524521E45001212B4 /* SequenceWW2-3.plist */,
@@ -614,8 +655,8 @@
 		8EF6BABD243FAB6900E36EE0 /* WW-1 */ = {
 			isa = PBXGroup;
 			children = (
-				8E674EA12451F790001212B4 /* WW1-1.plist */,
-				8E674EA32451F797001212B4 /* WW1-2.plist */,
+				8E674EA12451F790001212B4 /* 1914-1916.plist */,
+				8E674EA32451F797001212B4 /* 1916-1918.plist */,
 				8E674EA72451F7F0001212B4 /* SequenceWW1-1.plist */,
 				8E674EA92451F80B001212B4 /* SequenceWW1-2.plist */,
 			);
@@ -625,9 +666,9 @@
 		8EF6BABE243FABA100E36EE0 /* AmericainCivilwar */ = {
 			isa = PBXGroup;
 			children = (
-				8E674E952450EB80001212B4 /* AmericanCivilWar1.plist */,
-				8E674E972450EB86001212B4 /* AmericanCivilWar2.plist */,
-				8E25732A243BD04100F52B99 /* AmericanCivilWar3.plist */,
+				8E674E952450EB80001212B4 /* 1860-1862.plist */,
+				8E674E972450EB86001212B4 /* 1862-1865.plist */,
+				8E25732A243BD04100F52B99 /* 1865-1866.plist */,
 				8E674E992450EB9F001212B4 /* SequenceAmericainCivilWar1.plist */,
 				8E674E9B2450EBB8001212B4 /* SequenceAmericainCivilWar2.plist */,
 				8E674E9D2450EBC5001212B4 /* SequenceAmericainCivilWar3.plist */,
@@ -638,10 +679,10 @@
 		8EF6BABF243FAF7A00E36EE0 /* SpacePioneers */ = {
 			isa = PBXGroup;
 			children = (
-				8E674EB9245237C2001212B4 /* SpacePioneers1.plist */,
-				8E674EBB245237CA001212B4 /* SpacePioneers2.plist */,
-				8EF6BAB0243FA06200E36EE0 /* SpacePioneers3.plist */,
-				8EF6BAB2243FA06200E36EE0 /* SpacePioneers4.plist */,
+				8E674EB9245237C2001212B4 /* 1942-1962.plist */,
+				8E674EBB245237CA001212B4 /* 1963-1971.plist */,
+				8EF6BAB0243FA06200E36EE0 /* 1971-1983.plist */,
+				8EF6BAB2243FA06200E36EE0 /* 1986-2015.plist */,
 				8E674EBD245237E3001212B4 /* SequenceSpacePioneers1.plist */,
 				8E674EBF2452380E001212B4 /* SequenceSpacePioneers2.plist */,
 				8E674EC12452382D001212B4 /* SequenceSpacePioneers3.plist */,
@@ -765,26 +806,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E674EB424521E2F001212B4 /* SequenceWW2-2.plist in Resources */,
-				8E1439EF2444BAF0003B8D34 /* Napoleon's rise to power.plist in Resources */,
-				8E1439F32444BB05003B8D34 /* Napoleon 100 days war.plist in Resources */,
+				8E1439EF2444BAF0003B8D34 /* 1796-1805.plist in Resources */,
+				8E1439F32444BB05003B8D34 /* 1814-1921.plist in Resources */,
 				8E674EB224521E09001212B4 /* SequenceWW2-1.plist in Resources */,
-				8E25732B243BD04100F52B99 /* AmericanCivilWar3.plist in Resources */,
+				8E25732B243BD04100F52B99 /* 1865-1866.plist in Resources */,
 				8E674EC624560E51001212B4 /* Pine_Apple_Rag.ogg.mp3 in Resources */,
-				8EF6BAB5243FA06200E36EE0 /* SpacePioneers4.plist in Resources */,
+				8EF6BAB5243FA06200E36EE0 /* 1986-2015.plist in Resources */,
 				8E10DDA92465D5BA0018FC53 /* SequenceNapoleon1.plist in Resources */,
-				8E674E3A244F858C001212B4 /* Eras1.plist in Resources */,
+				8E674E3A244F858C001212B4 /* 14000-60 MYA.plist in Resources */,
 				8E674EBE245237E3001212B4 /* SequenceSpacePioneers1.plist in Resources */,
-				8E674E4E244F98DA001212B4 /* AncientCivilisation2.plist in Resources */,
-				8E674EBA245237C2001212B4 /* SpacePioneers1.plist in Resources */,
-				8E2572C6243A312B00F52B99 /* Revolutions3.plist in Resources */,
-				8E2572C8243A312B00F52B99 /* Revolutions2.plist in Resources */,
-				8E674E50244F98E5001212B4 /* AncientCivilisation3.plist in Resources */,
-				8E674E7C2450CDFD001212B4 /* FrenchRevolution2.plist in Resources */,
+				8E674E4E244F98DA001212B4 /* 900-500 B.C..plist in Resources */,
+				8E674EBA245237C2001212B4 /* 1942-1962.plist in Resources */,
+				8E2572C6243A312B00F52B99 /* 20th century.plist in Resources */,
+				8E2572C8243A312B00F52B99 /* 19th-20th century .plist in Resources */,
+				8E674E50244F98E5001212B4 /* 500-40 B.C..plist in Resources */,
+				8E674E7C2450CDFD001212B4 /* 1792-1793.plist in Resources */,
 				8E674EAA2451F80B001212B4 /* SequenceWW1-2.plist in Resources */,
 				8E674EB624521E45001212B4 /* SequenceWW2-3.plist in Resources */,
+				8E7774C6248C10BF00BB449C /* HESequence1.plist in Resources */,
 				8EDE2F392431432800588FCA /* InventionsQuiz.plist in Resources */,
-				8E2572D6243BB99800F52B99 /* Wars5.plist in Resources */,
-				8E1439E42443AA49003B8D34 /* FrenchRevolution3.plist in Resources */,
+				8E2572D6243BB99800F52B99 /* 20th-21st century.plist in Resources */,
+				8E7774C1248C102E00BB449C /* 500,000 - 150,000 YA.plist in Resources */,
+				8E1439E42443AA49003B8D34 /* 1793-1799.plist in Resources */,
 				8E10DDAD2465D5CF0018FC53 /* SequenceNapoleon3.plist in Resources */,
 				8E674E9C2450EBB8001212B4 /* SequenceAmericainCivilWar2.plist in Resources */,
 				8EF6BAC12440CD3100E36EE0 /* menu.json in Resources */,
@@ -794,9 +837,9 @@
 				8E674E7E2450CE0E001212B4 /* SequenceFrenchRevolution1.plist in Resources */,
 				8E674E6E2450BFA3001212B4 /* SequenceRevolutions1.plist in Resources */,
 				8E674E802450CE3D001212B4 /* SequenceFrenchRevolution2.plist in Resources */,
-				8E674EAE24521DE2001212B4 /* WW2-1.plist in Resources */,
-				8E674EA22451F790001212B4 /* WW1-1.plist in Resources */,
-				8E257356243E733500F52B99 /* WW2-3.plist in Resources */,
+				8E674EAE24521DE2001212B4 /* 1939-1940.plist in Resources */,
+				8E674EA22451F790001212B4 /* 1914-1916.plist in Resources */,
+				8E257356243E733500F52B99 /* 1945.plist in Resources */,
 				8E674E8E2450DF5C001212B4 /* SequenceWars3.plist in Resources */,
 				8E674EC22452382D001212B4 /* SequenceSpacePioneers3.plist in Resources */,
 				8E674EA82451F7F0001212B4 /* SequenceWW1-1.plist in Resources */,
@@ -805,51 +848,58 @@
 				8EDE2F2F2431431F00588FCA /* chime_clickbell_octave_up.mp3 in Resources */,
 				8EDE2F2A2431431F00588FCA /* Error Warning.wav in Resources */,
 				8E674E902450DF6D001212B4 /* SequenceWars4.plist in Resources */,
-				8EF6BAB3243FA06200E36EE0 /* SpacePioneers3.plist in Resources */,
-				8E674E7A2450CDF7001212B4 /* FrenchRevolution1.plist in Resources */,
-				8E674E4C244F98D4001212B4 /* AncientCivilisation1.plist in Resources */,
+				8EF6BAB3243FA06200E36EE0 /* 1971-1983.plist in Resources */,
+				8E674E7A2450CDF7001212B4 /* 1789-1792.plist in Resources */,
+				8E674E4C244F98D4001212B4 /* 3200-900 B.C..plist in Resources */,
 				8E674E822450CE5F001212B4 /* SequenceFrenchRevolution3.plist in Resources */,
-				8E674E3C244F8591001212B4 /* Eras2.plist in Resources */,
+				8E674E3C244F8591001212B4 /* 5 MYA-323 B.C..plist in Resources */,
 				8EDE2ED8243141F700588FCA /* Preview Assets.xcassets in Resources */,
-				8E674EBC245237CB001212B4 /* SpacePioneers2.plist in Resources */,
-				8E674E882450DF08001212B4 /* Wars2.plist in Resources */,
+				8E674EBC245237CB001212B4 /* 1963-1971.plist in Resources */,
+				8E674E882450DF08001212B4 /* 1st-17th century.plist in Resources */,
 				8E674EC02452380E001212B4 /* SequenceSpacePioneers2.plist in Resources */,
 				8E0B07C7246C9FD70089CC13 /* Acoustic Trio.wav in Resources */,
-				8E674E52244F98EA001212B4 /* AncientCivilisation4.plist in Resources */,
+				8E674E52244F98EA001212B4 /* 70-476.plist in Resources */,
 				8E10DDB12465D7410018FC53 /* SequenceEras2.plist in Resources */,
-				8E1439F12444BAFA003B8D34 /* Napoleon's conquests.plist in Resources */,
-				8E2572D4243BB99800F52B99 /* Wars4.plist in Resources */,
+				8E1439F12444BAFA003B8D34 /* 1810-1814.plist in Resources */,
+				8E2572D4243BB99800F52B99 /* 19th-20th century.plist in Resources */,
 				8E674E702450BFB5001212B4 /* SequenceRevolutions2.plist in Resources */,
-				8E674E602450B80E001212B4 /* Americain Revolution2.plist in Resources */,
-				8E674EA42451F797001212B4 /* WW1-2.plist in Resources */,
+				8E674E602450B80E001212B4 /* 1775-1778.plist in Resources */,
+				8E674EA42451F797001212B4 /* 1916-1918.plist in Resources */,
 				8E674E742450C2CA001212B4 /* SequenceAmericainRevolution2.plist in Resources */,
 				8E10DDAF2465D7390018FC53 /* SequenceEras1.plist in Resources */,
-				8E674E962450EB80001212B4 /* AmericanCivilWar1.plist in Resources */,
+				8E7774CA248C10F200BB449C /* HESequence3.plist in Resources */,
+				8E674E962450EB80001212B4 /* 1860-1862.plist in Resources */,
 				8EDE2F2B2431431F00588FCA /* Incoming Text 01.wav in Resources */,
-				8E674EB024521DEB001212B4 /* WW2-2.plist in Resources */,
+				8E7774C0248C102E00BB449C /* 55 - 3.2 MYA.plist in Resources */,
+				8E674EB024521DEB001212B4 /* 1941-1944.plist in Resources */,
 				8E674E762450C2FD001212B4 /* SequenceAmericainRevolution3.plist in Resources */,
-				8E2572D5243BB99800F52B99 /* Wars3.plist in Resources */,
+				8E2572D5243BB99800F52B99 /* 17th-19th century.plist in Resources */,
 				8EDE2F382431432800588FCA /* InventionsSequence.plist in Resources */,
-				8E674E982450EB86001212B4 /* AmericanCivilWar2.plist in Resources */,
+				8E674E982450EB86001212B4 /* 1862-1865.plist in Resources */,
 				8E674E9E2450EBC5001212B4 /* SequenceAmericainCivilWar3.plist in Resources */,
-				8E674E862450DF01001212B4 /* Wars1.plist in Resources */,
-				8E674E5E2450B769001212B4 /* Americain Revolution1.plist in Resources */,
+				8E674E862450DF01001212B4 /* 1300 B.C.-1st century.plist in Resources */,
+				8E674E5E2450B769001212B4 /* 1764-1775.plist in Resources */,
 				8E674E8A2450DF2F001212B4 /* SequenceWars1.plist in Resources */,
-				8E2572C5243A312B00F52B99 /* Revolutions1.plist in Resources */,
+				8E2572C5243A312B00F52B99 /* 16th-19th century.plist in Resources */,
+				8E7774BF248C102E00BB449C /* 50,000 YA - 3500 BC.plist in Resources */,
 				8EDE2ED5243141F700588FCA /* Assets.xcassets in Resources */,
 				8E674E9A2450EB9F001212B4 /* SequenceAmericainCivilWar1.plist in Resources */,
 				8E674E922450DF7E001212B4 /* SequenceWars5.plist in Resources */,
+				8E7774C2248C102E00BB449C /* 2.7 - 0.6 MYA.plist in Resources */,
 				8E674EC424523845001212B4 /* SequenceSpacePioneers4.plist in Resources */,
 				8E674E722450C2A1001212B4 /* SequenceAmericainRevolution1.plist in Resources */,
 				8EDE2F2C2431431F00588FCA /* music_harp_gliss_up.wav in Resources */,
 				8E674E8C2450DF4C001212B4 /* SequenceWars2.plist in Resources */,
 				8E10DDB32465D7490018FC53 /* SequenceEras3.plist in Resources */,
-				8E257346243E429C00F52B99 /* Americain Revolution3.plist in Resources */,
+				8E257346243E429C00F52B99 /* 1778-1783.plist in Resources */,
 				8E674E6A2450BEC1001212B4 /* SequenceAncientCivilisation4.plist in Resources */,
 				8EDE2F3A2431432800588FCA /* InventionsCardData.plist in Resources */,
+				8E7774C8248C10DC00BB449C /* HESequence2.plist in Resources */,
+				8EEB2D232486E521008168FD /* fanfare.mp3 in Resources */,
 				8E674E662450BE89001212B4 /* SequenceAncientCivilisation2.plist in Resources */,
 				8E674E6C2450BF95001212B4 /* SequenceRevolutions3.plist in Resources */,
-				8E674E48244F8923001212B4 /* Eras3.plist in Resources */,
+				8E7774C4248C109F00BB449C /* HESequence4.plist in Resources */,
+				8E674E48244F8923001212B4 /* 31 B.C.-1750.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -891,7 +941,9 @@
 				8E0B07C3246C61B20089CC13 /* CoinManagement.swift in Sources */,
 				8EDE2F212431431800588FCA /* Extensions.swift in Sources */,
 				8EDE2F112431430700588FCA /* QuizView.swift in Sources */,
+				8EEB2D1B24802359008168FD /* ClockDetailViewModel.swift in Sources */,
 				8EDE2ED1243141F400588FCA /* HistoryCards.xcdatamodeld in Sources */,
+				8EEB2D1F24859E74008168FD /* ApStoreFeedBack.swift in Sources */,
 				8EDE2F122431430700588FCA /* QuizData.swift in Sources */,
 				8EDE2ED3243141F400588FCA /* MenuView.swift in Sources */,
 				8ED0AAA324699B42009CB168 /* Levels.swift in Sources */,
@@ -1075,6 +1127,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_ASSET_PATHS = "\"HistoryCards/Preview Content\"";
 				DEVELOPMENT_TEAM = X6D769Z7F4;
 				ENABLE_PREVIEWS = YES;
@@ -1084,6 +1137,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = NM.HistoryCards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1096,6 +1150,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_ASSET_PATHS = "\"HistoryCards/Preview Content\"";
 				DEVELOPMENT_TEAM = X6D769Z7F4;
 				ENABLE_PREVIEWS = YES;
@@ -1105,6 +1160,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = NM.HistoryCards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

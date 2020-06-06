@@ -24,6 +24,7 @@ struct Event {
         }
         self.eventIndex = eventIndex
         name = allEvents[eventIndex][1]
+       
         description = allEvents[eventIndex][2]
         date = allEvents[eventIndex][0]
     }

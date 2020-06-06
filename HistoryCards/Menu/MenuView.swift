@@ -15,6 +15,7 @@ struct MenuView: View {
     @State private var showContentView = false
     @State private var dismissView = false
     @State private var arrayDone = [[Bool]]()
+    @State private var turned = false
     var body: some View {
         VStack{
             List {
@@ -43,6 +44,7 @@ struct MenuView: View {
             }
         }
         .onAppear{
+         //   UserDefaults.standard.set(111, forKey: "points")
             self.points = UserDefaults.standard.integer(forKey: "points")
             IAPManager.shared.getProductsV5()
             if !(self.userAlreadyExist(coins: "coins")){
@@ -51,11 +53,13 @@ struct MenuView: View {
                 UserDefaults.standard.set(self.coins, forKey: "coins")
                 UserDefaults.standard.set(self.points, forKey: "points")
                 UserDefaults.standard.set("Initital level", forKey: "level")
-                UserDefaults.standard.set("WW2-1", forKey: "eventName")
+                UserDefaults.standard.set("1939-1940", forKey: "eventName")
                 UserDefaults.standard.set("SequenceWW2-1", forKey: "sequenceName")
                 UserDataInitialisation.initialValue()
             }
+            AppStoreFeedBack.askForFeedback()
         }
+        
     }
     func userAlreadyExist(coins: String) -> Bool {
         return UserDefaults.standard.object(forKey: coins) != nil

@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import GameKit
+import UIKit
 
 struct QuizView: View {
     let fonts = FontsAndConstraintsOptions()
@@ -24,7 +26,7 @@ struct QuizView: View {
     @State private var count = 0
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var cardIndex = 0
-    @State private var timeRemaining = 120
+    @State private var timeRemaining = 60
     @State private var quizStarted = false
     @State var quizData = QuizData()
     @State private var timer0 = false
@@ -43,21 +45,20 @@ struct QuizView: View {
     @State private var sectionDone = Int()
     @State private var showSheet = false
     @State private var activeSheet: ActiveSheet = .coinPurchase
+    @State private var screenDimension: CGFloat = 0
+    @EnvironmentObject private var vm: ClockDetailViewModel
+    @State private var seconds: Int = 0
     var item: NameItem
     var section: Names
     @State var progressValue: Float = 0.5
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                if self.answerIsGood  && !self.timer0{
-                    if self.sectionIsDone{
                         Image("fond")
                             .resizable()
-                            .frame(width: geo.size.height/2.0, height: geo.size.height/1.2
-                        )
+                            .frame(width: geo.size.height/2.0, height: geo.size.height/1.2)
                             .cornerRadius(25)
                             .opacity(self.sectionIsDone ? 1.0 : 0.0)
-                        
                         VStack {
                             Text("Great!\nYou have mastered:")
                                 .foregroundColor(.white)
@@ -72,8 +73,8 @@ struct QuizView: View {
                                 .bold()
                             .lineLimit(nil)
                                 .multilineTextAlignment(.center)
-                                .font(.title)
-                                .padding()
+                                .font(.headline)
+                                .padding(.bottom)
                             Image(self.section.photo)
                                 .resizable()
                                 .frame(width: geo.size.height/12, height: geo.size.height/12)
@@ -91,7 +92,7 @@ struct QuizView: View {
                                             , height: geo.size.height/20)
                                         .padding(.top)
                                         
-                                    Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
+                                   Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
                                         .frame(width: geo.size.width/4)
                                         .font(.footnote)
                                         .foregroundColor(.white)
@@ -110,7 +111,7 @@ struct QuizView: View {
                                         .frame(width: geo.size.height/22
                                             , height: geo.size.height/22)
                                         
-                                    Text("\(UserDefaults.standard.integer(forKey: "points")) points")
+                                   Text("\(UserDefaults.standard.integer(forKey: "points")) points")
                                         .frame(width: geo.size.width/4)
                                         .font(.footnote)
                                         .foregroundColor(.white)
@@ -120,21 +121,6 @@ struct QuizView: View {
 
                             Spacer()
                             HStack {
-                                Button(action: {
-                                    
-                                }){
-                                    Text("Leader Board")
-                                        .font(.footnote)
-                                        .padding()
-                                        .background(Color.clear)
-                                        .cornerRadius(40)
-                                        .foregroundColor(.white)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 40)
-                                                .stroke(Color.white, lineWidth: 2)
-                                    )
-                                }
-                                .padding()
                                 Button(action: {
                                     self.presentationMode.wrappedValue.dismiss()
                                     UserDefaults.standard.set(true, forKey: "dismissView")
@@ -151,28 +137,28 @@ struct QuizView: View {
                                     )
                                 }
                                 .padding()
-                                
                             }
-                            
-                        }.frame(width: geo.size.height/2.2, height: geo.size.height/1.4)
-                        
-                        
-                    }else{
+                        }
+                        .frame(width: geo.size.height/2.2, height: geo.size.height/1.4)
+                        .opacity(self.sectionIsDone ? 1.0 : 0.0)
+/////////////////////////////////////////////
                         Image("FinishedThirdLevel")
                             .resizable()
                             .frame(width: geo.size.height/2.5, height: geo.size.height/2.0)
                             .cornerRadius(25)
                             .opacity(self.thirdLevelIsFinished && !self.sectionIsDone ? 1.0 : 0.0)
                         VStack {
-                            Text("You have completed:\n\(self.item.name!)" )
+                            Text("You have completed:" )
                                 .multilineTextAlignment(.center)
                                 .foregroundColor(.white)
                                 .scaledFont(name: "Helvetica Neue", size: self.fonts.finalBigFont)
                                 .padding()
-                            Text("\(self.sectionDone)/\(self.sectionCount) of \(self.section.name)")
+                            Text("\(self.sectionDone)/\(self.sectionCount) of \(self.section.name): \(self.item.name ?? "")")
                                 .foregroundColor(ColorReference.specialOrange)
                                 .multilineTextAlignment(.center)
-                            .padding()
+                                .padding(.bottom)
+                                .padding(.leading)
+                                .padding(.trailing)
                             Button(action: {
                                 self.presentationMode.wrappedValue.dismiss()
                                 UserDefaults.standard.set(true, forKey: "dismissView")
@@ -189,14 +175,13 @@ struct QuizView: View {
                                             .stroke(Color.white, lineWidth: 2)
                                 )
                             }
+                            .padding()
                             Spacer()
-
-                        
                         }
                         .frame(width: geo.size.height/2.5, height: geo.size.height/2.0)
-                    }
-                }else if self.timer0 || (self.allCardsDropped && !self.answerIsGood){
-                    Image("Pouce bas")
+                        .opacity(self.thirdLevelIsFinished && !self.sectionIsDone ? 1.0 : 0.0)
+/////////////////////////////////////////
+                    Image(self.timer0 ? "TimesUp" : "Pouce bas")
                         .resizable()
                         .cornerRadius(25)
                         .opacity(self.timer0 || (self.thirdLevelIsWrong) ? 1.0 : 0)
@@ -228,6 +213,7 @@ struct QuizView: View {
                                 .padding(.trailing)
                             Button(action: {
                                 self.quizData = QuizData()
+                                self.vm.setup(timeRemaining: 60)
                                 self.reset()
                                 self.showSheet  = removeCoins(numberOfCoinsToRemove: 10)
                                 self.activeSheet = .coinPurchase
@@ -245,8 +231,8 @@ struct QuizView: View {
                         }
                     }
                     .frame(width: geo.size.height/2.5, height: geo.size.height/2.0)
-                }
-                
+                    .opacity(self.timer0 || (self.thirdLevelIsWrong) ? 1.0 : 0)
+    ///////////////////////////////////////////
                 VStack {
                     Spacer()
                     HStack {
@@ -264,13 +250,16 @@ struct QuizView: View {
                                                 self.cardFrames[0] = geo2.frame(in: .global)
                                         }
                                         .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                self.cardFrames[0] = geo2.frame(in: .global)
+                                            if self.screenDimension > 700000 {
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                    self.cardFrames[0] = geo2.frame(in: .global)
+                                                }
                                             }
+
                                         }
                                     })
                             })
-                            .addBorder(Color.white, cornerRadius: 10)
+                            .addBorder(self.cardWasDropped[0] ? Color.clear : Color.white, cornerRadius: 10)
                         Spacer()
                         Card(gradient: self.gradient[1], onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed ,index: 1, text: self.cardText[1], fontColorIsWhite: self.fontColorIsWhite[1])
                             .frame(width: geo.size.height/4.3 * 0.6
@@ -284,14 +273,17 @@ struct QuizView: View {
                                                 self.cardFrames[1] = geo2.frame(in: .global)
                                         }
                                         .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                self.cardFrames[1] = geo2.frame(in: .global)
+                                            if self.screenDimension > 700000 {
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                    self.cardFrames[1] = geo2.frame(in: .global)
+                                                }
                                             }
+
                                         }
                                         
                                     })
                             })
-                            .addBorder(Color.white, cornerRadius: 10)
+                            .addBorder(self.cardWasDropped[1] ? Color.clear : Color.white, cornerRadius: 10)
                         
                         Spacer()
                         Card(gradient: self.gradient[2], onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed ,index: 2, text: self.cardText[2],  fontColorIsWhite: self.fontColorIsWhite[2])
@@ -306,13 +298,16 @@ struct QuizView: View {
                                                 self.cardFrames[2] = geo2.frame(in: .global)
                                         }
                                         .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                self.cardFrames[2] = geo2.frame(in: .global)
+                                            if self.screenDimension > 700000 {
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                    self.cardFrames[2] = geo2.frame(in: .global)
+                                                }
                                             }
+
                                         }
                                     })
                             })
-                            .addBorder(Color.white, cornerRadius: 10)
+                            .addBorder(self.cardWasDropped[2] ? Color.clear : Color.white, cornerRadius: 10)
                         Spacer()
                     }
                     .padding()
@@ -322,7 +317,6 @@ struct QuizView: View {
                             
                         }){
                             Text("Start Over")
-                             //   .scaledFont(name: "Helvetica Neue", size: self.fonts.fontDimension)
                                 .font(.body)
                                 .padding()
                                 .background(ColorReference.specialGreen)
@@ -349,9 +343,12 @@ struct QuizView: View {
                                                 self.trayCardsFrames[0] = geo2.frame(in: .global)
                                         }
                                         .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                self.trayCardsFrames[0] = geo2.frame(in: .global)
+                                            if self.screenDimension > 700000 {
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                    self.trayCardsFrames[0] = geo2.frame(in: .global)
+                                                }
                                             }
+
                                         }
                                         
                                     })
@@ -370,9 +367,12 @@ struct QuizView: View {
                                                 self.trayCardsFrames[1] = geo2.frame(in: .global)
                                         }
                                         .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                self.trayCardsFrames[1] = geo2.frame(in: .global)
+                                           if self.screenDimension > 700000 {
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                    self.trayCardsFrames[1] = geo2.frame(in: .global)
+                                                }
                                             }
+
                                         }
                                     })
                             })
@@ -389,10 +389,15 @@ struct QuizView: View {
                                             .onAppear{
                                                 self.trayCardsFrames[2] = geo2.frame(in: .global)
                                         }
-                                        .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                self.trayCardsFrames[2] = geo2.frame(in: .global)
-                                            }
+                                        .onReceive(NotificationCenter.Publisher(center: .default, name:
+                                            UIDevice.orientationDidChangeNotification)) { _ in
+                                               if self.screenDimension > 700000 {
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                        self.trayCardsFrames[2] = geo2.frame(in: .global)
+                                            
+                                                    }
+                                                }
+
                                         }
                                     })
                             })
@@ -416,17 +421,17 @@ struct QuizView: View {
                                             .foregroundColor(ColorReference.specialOrange)
                                             .frame(width: geo.size.height/12
                                                 , height: geo.size.height/12)
-                                        
-                                        Text("\(self.timeRemaining)")
-                                            .onReceive(self.timer) { _ in
-                                                if self.timeRemaining  > 0 && self.quizStarted {
-                                                    self.timeRemaining -= 1
-                                                }else if self.timeRemaining  == 0 && self.quizStarted {
-                                                    self.timer0 = true
-                                                }
-                                        }
-                                        .background(ColorReference.specialOrange)
+                                            .padding(.top)
+                                        Text("\(self.timeRemaining - self.vm.seconds)")
+                                            .font(.subheadline)
+                                            .fontWeight(.heavy)
+                                            .padding(.top)
+                                            .background(ColorReference.specialOrange)
                                             .font(.title)
+                                            .onAppear{
+                                                self.vm.setup(timeRemaining: 60)
+                                                self.timer0 = false
+                                        }
                                     }
                                     Text("Time left")
                                         .font(.footnote)
@@ -470,6 +475,17 @@ struct QuizView: View {
 
             }
         }
+        .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
+            let screen = FontsAndConstraintsOptions()
+            self.screenDimension = screen.screenSurface
+            
+        }
+        .onReceive(vm.objectWillChange, perform: {
+            if self.vm.time0 && !self.timer0 {
+                self.timer0 = true
+                playSound(sound: "Error Warning", type: "wav")
+            }
+        })
         .background(ColorReference.specialGreen)
         .edgesIgnoringSafeArea(.all)
         .navigationBarTitle("What are the right dates?", displayMode: .inline)
@@ -483,11 +499,13 @@ struct QuizView: View {
             self.cardText[2] = self.quizData.names[2]
         }
         .sheet(isPresented: self.$showSheet) {
-            LandMarkView()
+            if self.activeSheet == .upLevel {
+                LandMarkView()
+            }else{
+                CoinManagement()
+            }
         }
-
     }
-    
     func cardDropped(location: CGPoint, trayIndex: Int, cardAnswer: String) {
         if let match = cardFrames.firstIndex(where: {
             $0.contains(location)
@@ -523,36 +541,36 @@ struct QuizView: View {
                 self.answerIsGood = true
                 self.showSheet = achievement()
                 self.activeSheet = .upLevel
-                withAnimation (.linear(duration: 2)){
-                    thirdLevelIsFinished = true
-                    playSound(sound: "music_harp_gliss_up", type: "wav")
-                    addCoins(numberOfCoinsToAdd: 20)
-                    addPoints(numberOfPointsToAdd: 20)
-                    var accomplishement = Accomplishements()
-                    accomplishement.quizCompletion(uuid: item.id.uuidString)
-                    let array = UserDefaults.standard.array(forKey: section.id.uuidString) as! [Bool]
-                    sectionCount = array.count
-                    sectionDone = 0
-                    for section in array {
-                        if section {sectionDone += 1}
-                    }
-                    sectionIsDone = array.allSatisfy({
-                        $0 == true
-                    })
-                    if sectionIsDone {
-                        addCoins(numberOfCoinsToAdd: 10)
-                        addPoints(numberOfPointsToAdd: 10)
-                    }
+                playSound(sound: "music_harp_gliss_up", type: "wav")
+                addCoins(numberOfCoinsToAdd: 20)
+                addPoints(numberOfPointsToAdd: 20)
+                var accomplishement = Accomplishements()
+                accomplishement.quizCompletion(uuid: item.id.uuidString)
+                let array = UserDefaults.standard.array(forKey: section.id.uuidString) as! [Bool]
+                sectionCount = array.count
+                sectionDone = 0
+                for section in array {
+                    if section {sectionDone += 1}
                 }
+                sectionIsDone = array.allSatisfy({
+                    $0 == true
+                })
+                if sectionIsDone {
+                    playSound(sound: "fanfare", type: "mp3")
+                    addCoins(numberOfCoinsToAdd: 10)
+                    addPoints(numberOfPointsToAdd: 10)
+                }
+               // withAnimation (.linear(duration: 2)){
+                    thirdLevelIsFinished = true
+
+               // }
             }else if allCardsDropped == true {
+                playSound(sound: "Error Warning", type: "wav")
+                vm.setup(timeRemaining: 60)
                 withAnimation (.linear(duration: 2)){
                     self.thirdLevelIsWrong = true
                 }
             }
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-//                UserDefaults.standard.set(true, forKey: "dismissView")
-//                self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
-//            }
         }
     }
     func cardMoved(location: CGPoint, letter: String) -> DragState {
@@ -606,7 +624,7 @@ struct QuizView: View {
         self.thirdLevelIsFinished = false
         self.thirdLevelIsWrong = false
         self.quizStarted = false
-        self.timeRemaining = 120
+        self.timeRemaining = 60
         self.gradient = [Gradient(colors: [Color.clear, Color.clear]), Gradient(colors: [Color.clear, Color.clear]),  Gradient(colors: [Color.clear, Color.clear])]
         for n in 0...2{
             self.cardWasDropped[n] = false
@@ -623,10 +641,10 @@ struct QuizView: View {
     
     
 }
-struct QuizView_Previews: PreviewProvider {
-    static var previews: some View {
-         
-        QuizView( item: NameItem.example, section: Names.example)
-    }
-}
+//struct QuizView_Previews: PreviewProvider {
+//    static var previews: some View {
+//         
+//        QuizView( item: NameItem.example, section: Names.example)
+//    }
+//}
 
