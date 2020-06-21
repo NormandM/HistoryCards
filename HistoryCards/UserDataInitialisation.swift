@@ -20,6 +20,7 @@ struct UserDataInitialisation {
     static let ww1 = UserDefaults.standard.array(forKey: "6F2D192A-7B4A-11EA-BC55-0242AC130003") as! [Bool]
     static let ww2 = UserDefaults.standard.array(forKey: "6F2D1B82-7B4A-11EA-BC55-0242AC130003") as! [Bool]
     static let space = UserDefaults.standard.array(forKey: "6F2D1EAC-7B4A-11EA-BC55-0242AC130003") as! [Bool]
+//    static let sectionIsDone = UserDefaults.standard.array(forKey: "6F2D1EAC-7B4A-11EA-BC55-0242AC130003") as! [Bool]
     
     static func initialValue () {
         UserDefaults.standard.set([false, false, false], forKey: "EF1CC5BB-4785-4D8E-AB98-5FA4E00B6A66")
@@ -34,5 +35,6 @@ struct UserDataInitialisation {
         UserDefaults.standard.set([false, false], forKey: "6F2D192A-7B4A-11EA-BC55-0242AC130003")
         UserDefaults.standard.set([false, false, false], forKey: "6F2D1B82-7B4A-11EA-BC55-0242AC130003")
         UserDefaults.standard.set([false, false, false, false], forKey: "6F2D1EAC-7B4A-11EA-BC55-0242AC130003")
+        
     }
 }

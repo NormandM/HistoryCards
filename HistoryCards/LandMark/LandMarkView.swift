@@ -90,9 +90,9 @@ struct LandMarkView: View {
         .background(ColorReference.specialRed)
         .edgesIgnoringSafeArea(.all)
         .onAppear{
-                addCoins(numberOfCoinsToAdd: self.level.addedCoins)
+                _ = addCoins(numberOfCoinsToAdd: self.level.addedCoins)
                 playSound(sound: "fanfare", type: "mp3")
-
+                
             }
         
     

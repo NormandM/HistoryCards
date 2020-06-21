@@ -2,35 +2,35 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-    <array>
-          <string>2.7 MYA</string>
-          <string>Paranthropus</string>
-          <string>Paranthropus, lives in woods and grasslands, has massive jaws for chewing on roots and vegetation. Becomes extinct 1.2 MYA</string>
-    </array>
-    <array>
-          <string>2.5 MYA</string>
-          <string>Homo habilis</string>
-          <string>Homo habilis appears. Its face protrudes less than earlier hominids, but still retains many ape features. Has a brain volume of around 600 cm3</string>
-    </array>
-    <array>
-          <string>2 MYA</string>
-          <string>Homo ergaste</string>
-          <string>Evidence of Homo ergaster, with a brain volume of up to 850 cm3, in Africa</string>
-    </array>
-    <array>
-          <string>1.8 – 1.5 MYA</string>
-          <string>Homo erectus </string>
-          <string>Homo erectus is found in Asia. First true hunter-gatherer ancestor, and also first to have migrated out of Africa in large numbers. It attains a brain size of around 1000 cm3</string>
-    </array>
-    <array>
-          <string>1.6 MYA</string>
-          <string>Use of fire</string>
-          <string>Possible first sporadic use of fire suggested by discoloured sediments in Koobi Fora, Kenya. More convincing evidence of charred wood and stone tools is found in Israel and dated to 780,000 years ago</string>
-    </array>
-    <array>
-          <string>600,000 YA</string>
-          <string>Homo Heidelbergensis</string>
-          <string>Homo Heidelbergensis lives in Africa and Europe. Similar brain capacity to modern humans</string>
-    </array>
+	<array>
+		<string>2.7 MYA</string>
+		<string>Paranthropus</string>
+		<string>Paranthropus, lives in woods and grasslands, has massive jaws for chewing on roots and vegetation. Becomes extinct 1.2 MYA</string>
+	</array>
+	<array>
+		<string>2.5 MYA</string>
+		<string>Homo habilis</string>
+		<string>Homo habilis appears. Its face protrudes less than earlier hominids, but still retains many ape features. Has a brain volume of around 600 cm3</string>
+	</array>
+	<array>
+		<string>2 MYA</string>
+		<string>Homo ergaste</string>
+		<string>The name Homo ergaster roughly translates to &quot;working man&quot;, referencing the more advanced tools used by the species in comparison to those of their ancestors.</string>
+	</array>
+	<array>
+		<string>1.8 – 1.5 MYA</string>
+		<string>Homo erectus </string>
+		<string>Homo erectus is found in Asia. First true hunter-gatherer ancestor, and also first to have migrated out of Africa in large numbers. It attains a brain size of around 1000 cm3</string>
+	</array>
+	<array>
+		<string>1.6 MYA</string>
+		<string>Use of fire</string>
+		<string>Possible first sporadic use of fire suggested by discoloured sediments in Koobi Fora, Kenya. More convincing evidence of charred wood and stone tools is found in Israel and dated to 780,000 years ago</string>
+	</array>
+	<array>
+		<string>600,000 YA</string>
+		<string>Homo Heidelbergensis</string>
+		<string>Homo Heidelbergensis lives in Africa and Europe. Similar brain capacity to modern humans</string>
+	</array>
 </array>
 </plist>

@@ -183,13 +183,17 @@ struct ContentView: View {
                                     .frame(width: geo.size.height/8.0, height:  geo.size.height/8.0)
                                     .animation(.easeOut(duration: 2.0))
                                     .onAppear {
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                                             self.percentComplete = 1.0
                                             self.cardDescription = ""
                                             self.numberCardsDisplayed = true
+                                        }
+                                        
+                                        
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                             self.cardDescription = "Cards left: \((self.cardInfo.info.count - 1) - self.questionNumber)"
                                         }
-                                }
+                                    }
                             }else if (!self.answerIsGood && self.cardDropped) || self.vm.time0{
                                 Text("- 1 coin")
                                     .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
@@ -198,15 +202,18 @@ struct ContentView: View {
                                 Text(self.messageAfterAnswer)
                                     .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
                                     .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialRed : .clear)
+                                    .onAppear {
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                                            self.percentComplete = 1.0
+                                            self.cardDescription = ""
+                                        }
+                                    }
                                 Ellipse()
                                     .trim(from: 0, to: self.percentComplete)
                                     .stroke( ColorReference.specialRed, style: StrokeStyle(lineWidth: 10, lineCap: .round))
                                     .frame(width: geo.size.height/8, height:  geo.size.height/8)
                                     .animation(.easeOut(duration: 2.0))
-                                    .onAppear {
-                                        self.percentComplete = 1.0
-                                        self.cardDescription = ""
-                                }
+
                             }
                         }
                     }
@@ -450,7 +457,7 @@ struct ContentView: View {
                     answerIsGood = true
                     playSound(sound: "chime_clickbell_octave_up", type: "mp3")
                     addPoints(numberOfPointsToAdd: 1)
-                    addCoins(numberOfCoinsToAdd: 1)
+                    _ = addCoins(numberOfCoinsToAdd: 1)
                     withAnimation(Animation.easeInOut(duration: 2).delay(1)) {
                         self.xOffset0 = centerCardPosition - rightCardPosition
                     }
@@ -469,7 +476,7 @@ struct ContentView: View {
                     answerIsGood = true
                     playSound(sound: "chime_clickbell_octave_up", type: "mp3")
                     addPoints(numberOfPointsToAdd: 1)
-                    addCoins(numberOfCoinsToAdd: 1)
+                    _ = addCoins(numberOfCoinsToAdd: 1)
                     withAnimation(Animation.easeInOut(duration: 2.0).delay(1.0)) {
                         self.xOffset2 = centerCardPosition - leftCardPosition
                     }
@@ -508,6 +515,10 @@ struct ContentView: View {
         tryAgain = false
         cardSelected = true
         cardDescription = self.cardInfo.info[self.questionNumber].trayCardDescription1
+        self.coins = UserDefaults.standard.integer(forKey: "coins")
+        if coins < 0 {
+            self.showSheet = true
+        }
     }
     func cardUnpushed(location: CGPoint, trayIndex: Int) {
         self.numberCardsDisplayed = true
@@ -537,8 +548,8 @@ struct ContentView: View {
                         self.firstLevelFinished = true
                     }
                     self.quizStarted = false
-                    addCoins(numberOfCoinsToAdd: 5)
-                    addPoints(numberOfPointsToAdd: 5)
+                    _ = addCoins(numberOfCoinsToAdd: 5)
+                    _ = addPoints(numberOfPointsToAdd: 5)
                     playSound(sound: "music_harp_gliss_up", type: "wav")
                     DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                         self.nextViewPresent = true
@@ -579,7 +590,7 @@ struct ContentView: View {
     }
     func getFont(tryAgain: Bool) -> CGFloat {
         if tryAgain || vm.time0 {
-            return fonts.finalBigFont
+            return fonts.fontDimension
         }else{
             return fonts.smallFontDimension
         }

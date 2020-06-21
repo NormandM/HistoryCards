@@ -37,7 +37,6 @@ struct SectionRow: View {
 
 struct FillAll: View {
     let color: Color
-
     var body: some View {
         GeometryReader { proxy in
             self.color.frame(width: proxy.size.width * 1.3, height: proxy.size.height * 1.4).fixedSize()

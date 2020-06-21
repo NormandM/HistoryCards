@@ -2,35 +2,35 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-    <array>
-          <string>55 million years ago (MYA)</string>
-          <string>First Primate evolve</string>
-          <string>First primitive primates evolve</string>
-    </array>
-    <array>
-          <string>8 – 6 MYA</string>
-          <string>First gorillas </string>
-          <string>First gorillas evolve. Later, chimp and human lineages diverge</string>
-    </array>
-    <array>
-          <string>5.8 MYA</string>
-          <string>Orrorin tugenensis</string>
-          <string>Orrorin tugenensis, oldest human ancestor thought to have walked on two legs</string>
-    </array>
-    <array>
-          <string>5.5 MYA</string>
-          <string>Ardipithecus</string>
-          <string>Ardipithecus, early “proto-human” shares traits with chimps and gorillas, and is forest-dwelling</string>
-    </array>
-    <array>
-          <string>4 MYA</string>
-          <string>Australopithecines appear</string>
-          <string>Australopithecines appear. They have brains no larger than a chimpanzee’s – with a volume around 400 – 500 cm3 -, but walk upright on two legs. First human ancestors to live on the savannah</string>
-    </array>
-    <array>
-          <string>3.2 MYA</string>
-          <string>Lucy</string>
-          <string>Lucy, famous specimen of Australopithecus afarensis, lives near what is now Hadar, Ethiopia</string>
-    </array>
+	<array>
+		<string>55 MYA</string>
+		<string>First Primate evolve</string>
+		<string>The first true primates  near the beginning of the Eocene Epoch. Their fossils have been found in North America, Europe, and Asia. They looked different from the primates today.</string>
+	</array>
+	<array>
+		<string>8 – 6 MYA</string>
+		<string>First gorillas </string>
+		<string>The gorillas were separated from the other hominids. With the extinction of other great apes, gorillas became the largest primates in the world.</string>
+	</array>
+	<array>
+		<string>5.8 MYA</string>
+		<string>Orrorin tugenensis</string>
+		<string>Orrorin tugenensis, oldest human ancestor thought to have walked on two legs</string>
+	</array>
+	<array>
+		<string>5.5 MYA</string>
+		<string>Ardipithecus</string>
+		<string>Ardipithecus, early “proto-human” shares traits with chimps and gorillas, and is forest-dwelling</string>
+	</array>
+	<array>
+		<string>4 MYA</string>
+		<string>Australopithecines appear</string>
+		<string>Australopithecines appear. They have brains no larger than a chimpanzee’s – with a volume around 400 – 500 cm3 -, but walk upright on two legs. First human ancestors to live on the savannah</string>
+	</array>
+	<array>
+		<string>3.2 MYA</string>
+		<string>Lucy</string>
+		<string>Lucy, famous specimen of Australopithecus afarensis, lived near what is now Hadar, Ethiopia</string>
+	</array>
 </array>
 </plist>

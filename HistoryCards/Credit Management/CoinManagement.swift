@@ -15,10 +15,14 @@ struct CoinManagement: View {
     var iapManager = IAPManager()
     @State private var isNotConnectedNoReason = false
     @State private var showingAlertNoConnection = false
+    @State private var showNoCoinsPurchased = false
     @State private var price = ""
     @ObservedObject var products = productsDB.shared
     @State private var stringCoin = String(UserDefaults.standard.integer(forKey: "coins"))
     @State private var showAlertPurchased = false
+    @State private var coins = UserDefaults.standard.integer(forKey: "coins")
+    var coinsPurchased = UserDefaults.standard.bool(forKey: "coinsPurchased")
+    var sixHundredCoinsReached = UserDefaults.standard.bool(forKey: "sixHundredCoinsReached")
     let publisher = IAPManager.shared.purchasePublisher
     var body: some View {
         GeometryReader { geo in
@@ -27,8 +31,12 @@ struct CoinManagement: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                            
+                            self.coins =  UserDefaults.standard.integer(forKey: "coins")
+                            if self.coins > 0 {
+                                self.presentationMode.wrappedValue.dismiss()
+                            }else{
+                                self.showNoCoinsPurchased = true
+                            }
                         }){
                             Text("Done")
                                 .font(.footnote)
@@ -37,12 +45,18 @@ struct CoinManagement: View {
                         }
                     }
                     .padding()
-                    Text("Manage your Credits")
+                    Text("Before you go on...")
+                    .foregroundColor(.white)
+                    .font(.title)
+                    .fontWeight(.heavy)
+                        .opacity(!self.coinsPurchased && self.sixHundredCoinsReached ? 1.0 : 0.0)
+                    Text(!self.coinsPurchased && self.sixHundredCoinsReached ? "Do you think this App is worth \(self.price)?\nIf you do, please buy some coins" : "Out of coins?")
                         .foregroundColor(.white)
-                        .font(.title)
+                        .font(!self.coinsPurchased && self.sixHundredCoinsReached ? .headline : .title)
                         .fontWeight(.heavy)
+                        .padding()
                         .padding(.bottom)
-                        .padding(.bottom)
+                        .multilineTextAlignment(.center)
                     
                     HStack {
                         VStack {
@@ -92,8 +106,14 @@ struct CoinManagement: View {
             }
             .alert(isPresented: self.$showAlertPurchased) {
                 Alert(title: Text("200 coins were added to your credit"), message: Text("Back to the quiz!"), dismissButton: .default(Text("OK")){
+                    UserDefaults.standard.set(true, forKey: "coinsPurchased")
                     })
             }
+            .alert(isPresented: self.$showNoCoinsPurchased) {
+                Alert(title: Text("Please Purchase Coins to continue"), message: Text("200 coins should last you for ever"), dismissButton: .default(Text("OK")){
+                })
+            }
+            
             .onAppear{
                 self.price = IAPManager.shared.getPriceFormatted(for: self.products.items[0]) ?? ""
                 let reachability = Reachability()
@@ -113,6 +133,7 @@ struct CoinManagement: View {
             .background(ColorReference.specialGreen)
             .edgesIgnoringSafeArea(.all)
     }
+    
 }
 
 struct CoinManagement_Previews: PreviewProvider {

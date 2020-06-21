@@ -15,6 +15,7 @@ struct MenuView: View {
     @State private var showContentView = false
     @State private var dismissView = false
     @State private var arrayDone = [[Bool]]()
+    @State private var sectionIsDone = false
     @State private var turned = false
     var body: some View {
         VStack{
@@ -25,8 +26,6 @@ struct MenuView: View {
                             NavigationLink(destination: ContentView(item: item, section: section)){
                                 HStack {
                                     ItemRowView(item: item)
-                                    //UserDefaults.standard.array(forKey: section.id.uuidString) as! [Bool]
-                                    
                                 }
                                 
                             }
@@ -44,7 +43,6 @@ struct MenuView: View {
             }
         }
         .onAppear{
-         //   UserDefaults.standard.set(111, forKey: "points")
             self.points = UserDefaults.standard.integer(forKey: "points")
             IAPManager.shared.getProductsV5()
             if !(self.userAlreadyExist(coins: "coins")){

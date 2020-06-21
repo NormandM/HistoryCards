@@ -209,10 +209,11 @@ struct TimeLineView: View {
                                     .frame(width: geo.size.height/8.0, height:  geo.size.height/8.0)
                                     .animation(.easeOut(duration: 2.0))
                                     .onAppear {
-                                        
-                                        self.percentComplete = 1.0
-                                        self.cardDescription = ""
-                                }
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                                            self.percentComplete = 1.0
+                                            self.cardDescription = ""
+                                        }
+                                    }
                             }else if !self.answerIsGood && self.allCardsDropped{
                                 Text(self.messageAfterAnswer)
                                     .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
@@ -223,8 +224,10 @@ struct TimeLineView: View {
                                     .frame(width: geo.size.height/8, height:  geo.size.height/8)
                                     .animation(.easeOut(duration: 2.0))
                                     .onAppear {
-                                        self.percentComplete = 1.0
-                                        self.cardDescription = ""
+                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                                            self.percentComplete = 1.0
+                                            self.cardDescription = ""
+                                        }
                                         self.serieNumberDisplayed = true
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
                                             self.cardDescription = "Serie 2 of 2"
@@ -505,8 +508,16 @@ struct TimeLineView: View {
                 .blur(radius: self.secondLevelFinished || (self.timer0 || self.secondLevelWrong)  ?  75 : 0.0)
                     .zIndex(-0.5)
             }.onAppear{
-                self.showSheet = achievement()
-                self.activeSheet = .upLevel
+                if achievement() || addCoins(numberOfCoinsToAdd: 0) {
+                    if addCoins(numberOfCoinsToAdd: 0) {
+                        self.activeSheet = .coinPurchase
+                    }else{
+                        self.activeSheet = .upLevel
+                    }
+                    UserDefaults.standard.set(true, forKey: "sixHundredCoinsReached")
+                     self.showSheet = true
+                }
+    
                 self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
                 if self.dismissView {
                     self.presentationMode.wrappedValue.dismiss()
@@ -593,7 +604,7 @@ struct TimeLineView: View {
             
             if self.cardGood[0] && self.cardGood[1] && self.cardGood[2] && self.allCardsDropped{
                 answerIsGood = true
-                addCoins(numberOfCoinsToAdd: 2)
+                _ = addCoins(numberOfCoinsToAdd: 2)
                 addPoints(numberOfPointsToAdd: 2)
                 self.showSheet = achievement()
                 activeSheet = .upLevel
@@ -657,6 +668,10 @@ struct TimeLineView: View {
         quizStarted = true
         tryAgain = false
         self.serieNumberDisplayed = false
+        self.coins = UserDefaults.standard.integer(forKey: "coins")
+        if coins < 0 {
+            self.showSheet = true
+        }
     }
     func cardUnpushed(location: CGPoint, trayIndex: Int) {
         if serieNumbers == 0 {
@@ -696,7 +711,7 @@ struct TimeLineView: View {
                     self.cardText[n] = ""
                 }
                 if self.numberToFinish == 2 {
-                    addCoins(numberOfCoinsToAdd: 15)
+                    _ = addCoins(numberOfCoinsToAdd: 15)
                     addPoints(numberOfPointsToAdd: 15)
                     playSound(sound: "music_harp_gliss_up", type: "wav")
                  //   withAnimation(.linear(duration: 1)){
@@ -741,7 +756,7 @@ struct TimeLineView: View {
     }
     func getFont(tryAgain: Bool) -> CGFloat {
         if tryAgain {
-            return fonts.finalBigFont
+            return fonts.fontDimension
         }else{
             return fonts.smallFontDimension
         }

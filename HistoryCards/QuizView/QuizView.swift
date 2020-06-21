@@ -79,7 +79,7 @@ struct QuizView: View {
                                 .resizable()
                                 .frame(width: geo.size.height/12, height: geo.size.height/12)
                                 .opacity(self.sectionIsDone ? 1.0 : 0.0)
-                            .frame(width: geo.size.height/2.2, height: geo.size.height/10)
+                            .frame(width: geo.size.height/2.3, height: geo.size.height/10)
                             .padding(.top)
                             HStack {
                                 Text("+30: ")
@@ -139,7 +139,7 @@ struct QuizView: View {
                                 .padding()
                             }
                         }
-                        .frame(width: geo.size.height/2.2, height: geo.size.height/1.4)
+                        .frame(width: geo.size.height/2.3, height: geo.size.height/1.4)
                         .opacity(self.sectionIsDone ? 1.0 : 0.0)
 /////////////////////////////////////////////
                         Image("FinishedThirdLevel")
@@ -542,36 +542,39 @@ struct QuizView: View {
                 self.showSheet = achievement()
                 self.activeSheet = .upLevel
                 playSound(sound: "music_harp_gliss_up", type: "wav")
-                addCoins(numberOfCoinsToAdd: 20)
+                _ = addCoins(numberOfCoinsToAdd: 20)
                 addPoints(numberOfPointsToAdd: 20)
-                var accomplishement = Accomplishements()
-                accomplishement.quizCompletion(uuid: item.id.uuidString)
-                let array = UserDefaults.standard.array(forKey: section.id.uuidString) as! [Bool]
-                sectionCount = array.count
-                sectionDone = 0
-                for section in array {
-                    if section {sectionDone += 1}
+                if !isSectionDone() {
+                    var accomplishement = Accomplishements()
+                    accomplishement.quizCompletion(uuid: item.id.uuidString)
+                    sectionIsDone = isSectionDone()
+                    if sectionIsDone {
+                        playSound(sound: "fanfare", type: "mp3")
+                        _ = addCoins(numberOfCoinsToAdd: 10)
+                        addPoints(numberOfPointsToAdd: 10)
+                    }
+                        
                 }
-                sectionIsDone = array.allSatisfy({
-                    $0 == true
-                })
-                if sectionIsDone {
-                    playSound(sound: "fanfare", type: "mp3")
-                    addCoins(numberOfCoinsToAdd: 10)
-                    addPoints(numberOfPointsToAdd: 10)
-                }
-               // withAnimation (.linear(duration: 2)){
-                    thirdLevelIsFinished = true
-
-               // }
+                thirdLevelIsFinished = true
             }else if allCardsDropped == true {
                 playSound(sound: "Error Warning", type: "wav")
                 vm.setup(timeRemaining: 60)
-                withAnimation (.linear(duration: 2)){
                     self.thirdLevelIsWrong = true
-                }
             }
         }
+    }
+    func isSectionDone() -> Bool{
+        let array = UserDefaults.standard.array(forKey: section.id.uuidString) as! [Bool]
+        var testIfSectionIsDone = false
+        sectionCount = array.count
+        sectionDone = 0
+        for section in array {
+            if section {sectionDone += 1}
+        }
+        testIfSectionIsDone = array.allSatisfy({
+            $0 == true
+        })
+        return testIfSectionIsDone
     }
     func cardMoved(location: CGPoint, letter: String) -> DragState {
         if let match = cardFrames.firstIndex(where: {
@@ -605,6 +608,10 @@ struct QuizView: View {
             default:
                 print("default5")
             }
+        }
+        self.coins = UserDefaults.standard.integer(forKey: "coins")
+        if coins < 0 {
+            self.showSheet = true
         }
         
     }

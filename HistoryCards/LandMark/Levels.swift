@@ -70,7 +70,7 @@ struct Level {
 }
 func achievement() -> Bool {
     let level = Level()
-    if level.level != UserDefaults.standard.string(forKey: "level") && level.level != "Initital level"{
+    if (level.level != UserDefaults.standard.string(forKey: "level") && level.level != "Initital level"){
         UserDefaults.standard.set(level.level, forKey: "level")
         return true
     }else{

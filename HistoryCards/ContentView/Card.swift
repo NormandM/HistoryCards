@@ -37,7 +37,7 @@ struct Card: View {
                     .padding(5)
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0)
                     .foregroundColor(self.fontColorIsWhite! ? .white : .black)
-                    .font(.footnote)
+                    .font(.caption)
                     .lineLimit(nil)
                     .layoutPriority(1)
                     .multilineTextAlignment(.center)

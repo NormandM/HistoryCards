@@ -2,35 +2,35 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-    <array>
-          <string>500,000 YA</string>
-          <string>First built shelters</string>
-          <string>Earliest evidence of purpose-built shelters – wooden huts – are known from sites near Chichibu, Japan</string>
-    </array>
-    <array>
-          <string>325,000 YA</string>
-          <string>Oldest footprint</string>
-          <string>Oldest surviving early human footprints are left by three people who scrambled down the slopes of a volcano in Italy</string>
-    </array>
-    <array>
-          <string>230,000 YA</string>
-          <string>Neanderthals</string>
-          <string>Neanderthals appear and are found across Europe, from Britain in the west to Iran in the east, until they become extinct with the advent of modern humans 28,000 years ago</string>
-    </array>
-    <array>
-          <string>195,000 YA</string>
-          <string>Homo sapiens</string>
-          <string>Our own species Homo sapiens appears on the scene – and shortly after begins to migrate across Asia and Europe. Oldest modern human remains are two skulls found in Ethiopia that date to this period. Average human brain volume is 1350 cm3</string>
-    </array>
-    <array>
-          <string>170,000 YA</string>
-          <string>Mitochondrial Eve</string>
-          <string>Mitochondrial Eve, the direct ancestor to all living people today, may have been living in Africa</string>
-    </array>
-    <array>
-          <string>150,000 YA</string>
-          <string>Speech</string>
-          <string>Humans possibly capable of speech. 100,000-year-old shell jewellery suggests that that people develop complex speech and symbolism</string>
-    </array>
+	<array>
+		<string>500,000 YA</string>
+		<string>First built shelters</string>
+		<string>Earliest evidence of purpose-built shelters – wooden huts – are known from sites near Chichibu, Japan</string>
+	</array>
+	<array>
+		<string>325,000 YA</string>
+		<string>Oldest footprint</string>
+		<string>Oldest surviving early human footprints are left by three people who scrambled down the slopes of a volcano in Italy</string>
+	</array>
+	<array>
+		<string>230,000 YA</string>
+		<string>Neanderthals</string>
+		<string>Neanderthals appear and are found across Europe, from Britain in the west to Iran in the east, until they become extinct with the advent of modern humans 28,000 years ago</string>
+	</array>
+	<array>
+		<string>195,000 YA</string>
+		<string>Homo sapiens</string>
+		<string>Our own species Homo sapiens appears on the scene – and shortly after begins to migrate across Asia and Europe. Oldest modern human remains are two skulls found in Ethiopia that date to this period. Average human brain volume is 1350 cm3</string>
+	</array>
+	<array>
+		<string>170,000 YA</string>
+		<string>Mitochondrial Eve</string>
+		<string>In human genetics, the Mitochondrial Eve is the matrilineal most recent common ancestor of all living humans. In other words, she is defined as the most recent woman from whom all living humans descend</string>
+	</array>
+	<array>
+		<string>150,000 YA</string>
+		<string>Speech</string>
+		<string>Humans possibly capable of speech. 100,000-year-old shell jewellery suggests that that people develop complex speech and symbolism</string>
+	</array>
 </array>
 </plist>

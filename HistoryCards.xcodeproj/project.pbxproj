@@ -620,8 +620,8 @@
 			children = (
 				8EF6BAC02440CD3100E36EE0 /* menu.json */,
 				8EF6BAC22440E25E00E36EE0 /* Helper.swift */,
-				8E7774BA248C0F8A00BB449C /* Human Evolution */,
 				8E2572CD243B86AF00F52B99 /* Erass */,
+				8E7774BA248C0F8A00BB449C /* Human Evolution */,
 				8E257334243CD3C100F52B99 /* Ancient Civilisations */,
 				8E2572BC243A311400F52B99 /* Revolutions */,
 				8EDB865C244B72AB00C95E5E /* AmericainRevolution */,

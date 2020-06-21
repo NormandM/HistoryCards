@@ -24,7 +24,6 @@ struct DataView: View {
             ZStack {
                 VStack {
                     Spacer()
-                    Spacer()
                     HStack{
                         Text(self.info.name)
                             .foregroundColor(.white)
@@ -42,16 +41,16 @@ struct DataView: View {
                     )
                         .background(ColorReference.specialGray)
                         .cornerRadius(20)
-                        .padding()
+                        
                     Text(self.info.date)
-                        .font(.largeTitle)
+                        .font(.title)
                         .foregroundColor(.white)
-                    Spacer()
+                     //   .padding()
                     Image(self.section.photoHD)
                         .resizable()
                         .frame(width: geo.size.height/2.5, height: geo.size.height/2.5)
                         .cornerRadius(25)
-                    Spacer()
+                   // Spacer()
                     ZStack{
                         Rectangle()
                             .fill(ColorReference.specialGray)
@@ -105,8 +104,8 @@ struct DataView: View {
     }
 }
 
-//struct DataView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DataView( item: NameItem.example, section: Names.example)
-//    }
-//}
+struct DataView_Previews: PreviewProvider {
+    static var previews: some View {
+        DataView( item: NameItem.example, section: Names.example, vm: ClockDetailViewModel())
+    }
+}
