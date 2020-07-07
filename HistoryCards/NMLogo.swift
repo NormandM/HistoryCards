@@ -39,9 +39,6 @@ struct NMLogo:  View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                     self.nextViewPresent = true
                 }
-            //    UserDefaults.standard.set(false, forKey: "sixHundredCoinsReached")
-             //   UserDefaults.standard.set(598, forKey: "coins")
-                
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

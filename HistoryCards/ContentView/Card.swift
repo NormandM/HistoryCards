@@ -29,57 +29,57 @@ struct Card: View {
     var fontColorIsWhite: Bool? = false
     var body: some View {
         GeometryReader { geo in
-        ZStack {
-            LinearGradient(gradient: self.gradient!, startPoint: .topLeading, endPoint: .bottomTrailing)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-            VStack(alignment: .center) {
-                Text(self.text)
-                    .padding(5)
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0)
-                    .foregroundColor(self.fontColorIsWhite! ? .white : .black)
-                    .font(.caption)
-                    .lineLimit(nil)
-                    .layoutPriority(1)
-                    .multilineTextAlignment(.center)
+            ZStack {
+                LinearGradient(gradient: self.gradient!, startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                VStack(alignment: .center) {
+                    Text(self.text)
+                        .padding(5)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0)
+                        .foregroundColor(self.fontColorIsWhite! ? .white : .black)
+                        .font(.caption)
+                        .lineLimit(nil)
+                        .layoutPriority(1)
+                        .multilineTextAlignment(.center)
                 }
             }
-        .aspectRatio(0.6, contentMode: .fit)
-        .offset(self.dragAmount)
-        .shadow(radius: self.dragAmount == .zero ? 0 : 10)
-        .shadow(radius: self.dragAmount == .zero ? 0 : 10)
-        .gesture(
-            DragGesture(minimumDistance: 0, coordinateSpace: .global)
-                .onChanged({
-                    self.onChangedP?($0.location, self.index)
-                })
-                .onEnded({
-                    self.onEndedP?($0.location, self.index)
-                })
-        )
-            .simultaneousGesture(
-                (
-                    DragGesture(coordinateSpace: .global)
-                        .onChanged {
-                            self.dragAmount = $0.translation
-                            self.dragState = self.onChanged?($0.location, self.text) ?? .unknown
-                            self.touching = true
-                    }
-                    .onEnded {
-                        if self.dragState == .good {
-                            self.touching = false
-                            self.onEnded?($0.location, self.index, self.text)
-                            self.dragAmount = .zero
-                        }else{
-                            withAnimation(.spring()){
+            .aspectRatio(0.6, contentMode: .fit)
+            .offset(self.dragAmount)
+            .shadow(radius: self.dragAmount == .zero ? 0 : 10)
+            .shadow(radius: self.dragAmount == .zero ? 0 : 10)
+            .gesture(
+                DragGesture(minimumDistance: 0, coordinateSpace: .global)
+                    .onChanged({
+                        self.onChangedP?($0.location, self.index)
+                    })
+                    .onEnded({
+                        self.onEndedP?($0.location, self.index)
+                    })
+            )
+                .simultaneousGesture(
+                    (
+                        DragGesture(coordinateSpace: .global)
+                            .onChanged {
+                                self.dragAmount = $0.translation
+                                self.dragState = self.onChanged?($0.location, self.text) ?? .unknown
+                                self.touching = true
+                        }
+                        .onEnded {
+                            if self.dragState == .good {
+                                self.touching = false
+                                self.onEnded?($0.location, self.index, self.text)
                                 self.dragAmount = .zero
+                            }else{
+                                withAnimation(.spring()){
+                                    self.dragAmount = .zero
+                                }
                             }
                         }
-                    }
-                    
-                )
-        )
+                        
+                    )
+            )
             .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-    }
+        }
     }
 }
 

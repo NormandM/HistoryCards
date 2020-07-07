@@ -32,7 +32,7 @@ struct ContentView: View {
     @State private var activeSheet: ActiveSheet = .coinPurchase
     @State private var percentComplete: CGFloat = 0.0
     @State private var tryAgain = false
-    @State private var timeRemaining = 120
+    @State private var timeRemaining = 90
     @State private var quizStarted = false
     @State private var messageAfterAnswer = ""
     @State private var firstLevelFinished = false
@@ -63,7 +63,6 @@ struct ContentView: View {
                 NavigationLink(destination: DataView(item: self.item, section: self.section, vm: self.vm), isActive: self.$seeQuizData){
                     Text("")
                 }
-                
                 if self.startUp{
                     VStack {
                         Spacer()
@@ -93,7 +92,7 @@ struct ContentView: View {
                         Button(action: {
                             self.seeQuizData = false
                             self.startUp = false
-                            self.vm.setup(timeRemaining: 120)
+                            self.vm.setup(timeRemaining: 90)
                         }){
                             Text("No, I am ready!")
                                 .font(.headline)
@@ -120,7 +119,7 @@ struct ContentView: View {
                         VStack {
                             Spacer()
                             HStack(alignment: .center) {
-                                Text("+5: ")
+                                Text("+2: ")
                                     .foregroundColor(.white)
                                 VStack {
                                     Image("FinalCoin").renderingMode(.original)
@@ -173,6 +172,9 @@ struct ContentView: View {
                                 Text(self.messageAfterAnswer)
                                     .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
                                     .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialGreen : .clear)
+                                    .onAppear{
+                                      //  self.cardDescription = ""
+                                    }
                                 Text("+ 1 point")
                                     .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
                                     .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialGreen : .clear)
@@ -185,11 +187,8 @@ struct ContentView: View {
                                     .onAppear {
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                                             self.percentComplete = 1.0
-                                            self.cardDescription = ""
                                             self.numberCardsDisplayed = true
                                         }
-                                        
-                                        
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                             self.cardDescription = "Cards left: \((self.cardInfo.info.count - 1) - self.questionNumber)"
                                         }
@@ -205,7 +204,6 @@ struct ContentView: View {
                                     .onAppear {
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                                             self.percentComplete = 1.0
-                                            self.cardDescription = ""
                                         }
                                     }
                                 Ellipse()
@@ -351,7 +349,7 @@ struct ContentView: View {
                                         .background(ColorReference.specialOrange)
                                         .font(.title)
                                         .onAppear{
-                                            self.vm.setup(timeRemaining: 120)
+                                            self.vm.setup(timeRemaining: 90)
                                     }
                                 }
                                 Text("Time left")
@@ -408,7 +406,7 @@ struct ContentView: View {
             }
         }
         .onReceive(vm.objectWillChange, perform: {
-            if self.vm.seconds == 120 && !self.timer0 && self.vm.time0{
+            if self.vm.seconds == 90 && !self.timer0 && self.vm.time0{
                 self.timer0 = true
                 self.cardAnimation()
                 self.messageAfterAnswer = "Time's\nUp!"
@@ -446,6 +444,7 @@ struct ContentView: View {
     }
     // Functions
     func cardDropped(location: CGPoint, trayIndex: Int, cardAnswer: String){
+        self.cardDescription = ""
         if let match = cardFrames.firstIndex(where: {
             $0.contains(location)
         }) {
@@ -548,8 +547,9 @@ struct ContentView: View {
                         self.firstLevelFinished = true
                     }
                     self.quizStarted = false
-                    _ = addCoins(numberOfCoinsToAdd: 5)
+                    _ = addCoins(numberOfCoinsToAdd: 2)
                     _ = addPoints(numberOfPointsToAdd: 5)
+                    self.vm.cleanup()
                     playSound(sound: "music_harp_gliss_up", type: "wav")
                     DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                         self.nextViewPresent = true
@@ -581,16 +581,16 @@ struct ContentView: View {
                 self.xOffset0 = 0
                 self.xOffset2 = 0
                 self.quizStarted = false
-                self.timeRemaining = 120
+                self.timeRemaining = 90
                 self.tryAgain = true
                 self.cardDescription = "Try again!"
-                self.vm.setup(timeRemaining: 120)
+                self.vm.setup(timeRemaining: 90)
             }
         }
     }
     func getFont(tryAgain: Bool) -> CGFloat {
         if tryAgain || vm.time0 {
-            return fonts.fontDimension
+            return fonts.finalBigFont
         }else{
             return fonts.smallFontDimension
         }
@@ -599,8 +599,8 @@ struct ContentView: View {
         self.presentationMode.wrappedValue.dismiss()
     }
 }
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView( item: NameItem.example, section: Names.example)
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView( item: NameItem.example, section: Names.example)
+    }
+}

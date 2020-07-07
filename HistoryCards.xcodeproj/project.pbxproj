@@ -90,6 +90,7 @@
 		8E6C3FD42472D9E200C4C805 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6C3FD32472D9E200C4C805 /* StoreKit.framework */; };
 		8E6C3FD72472FDD200C4C805 /* ConnectionReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C3FD62472FDD200C4C805 /* ConnectionReachable.swift */; };
 		8E6C3FE124742C0000C4C805 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C3FE024742C0000C4C805 /* IAPManager.swift */; };
+		8E74709424B2590A002D945A /* ProgressValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E74709324B2590A002D945A /* ProgressValue.swift */; };
 		8E7774BF248C102E00BB449C /* 50,000 YA - 3500 BC.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E7774BB248C102E00BB449C /* 50,000 YA - 3500 BC.plist */; };
 		8E7774C0248C102E00BB449C /* 55 - 3.2 MYA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E7774BC248C102E00BB449C /* 55 - 3.2 MYA.plist */; };
 		8E7774C1248C102E00BB449C /* 500,000 - 150,000 YA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E7774BD248C102E00BB449C /* 500,000 - 150,000 YA.plist */; };
@@ -247,6 +248,7 @@
 		8E6C3FD32472D9E200C4C805 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8E6C3FD62472FDD200C4C805 /* ConnectionReachable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionReachable.swift; sourceTree = "<group>"; };
 		8E6C3FE024742C0000C4C805 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
+		8E74709324B2590A002D945A /* ProgressValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressValue.swift; sourceTree = "<group>"; };
 		8E7774BB248C102E00BB449C /* 50,000 YA - 3500 BC.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "50,000 YA - 3500 BC.plist"; sourceTree = "<group>"; };
 		8E7774BC248C102E00BB449C /* 55 - 3.2 MYA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "55 - 3.2 MYA.plist"; sourceTree = "<group>"; };
 		8E7774BD248C102E00BB449C /* 500,000 - 150,000 YA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "500,000 - 150,000 YA.plist"; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 				8ED0AA9F24688D30009CB168 /* LandMarkView.swift */,
 				8E2EA07D245DF5EA00E826C8 /* ProgressBar.swift */,
 				8ED0AAA224699B42009CB168 /* Levels.swift */,
+				8E74709324B2590A002D945A /* ProgressValue.swift */,
 			);
 			path = LandMark;
 			sourceTree = "<group>";
@@ -932,6 +935,7 @@
 				8E6C3FCF247069FD00C4C805 /* ActiveSheet.swift in Sources */,
 				8EDE2F07243142EC00588FCA /* Seuquence.swift in Sources */,
 				8E2EA07C245C7D1900E826C8 /* CoinAndPoints.swift in Sources */,
+				8E74709424B2590A002D945A /* ProgressValue.swift in Sources */,
 				8EDE2F1F2431431800588FCA /* FontsAndConstraintsOptions.swift in Sources */,
 				8EDE2ECC243141F400588FCA /* AppDelegate.swift in Sources */,
 				8EDB865E244B8CD400C95E5E /* UserDataInitialisation.swift in Sources */,

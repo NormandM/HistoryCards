@@ -21,12 +21,11 @@ struct TimeLineView: View {
     @State private var cardText = ["", "", "", ""]
     @State private var cardIsBeingMoved = [false, false, false]
     @State private var allCardsDropped = false
-    @State private var badAnsweOffset = CGFloat()
     @State private var messageAfterAnswer = ""
     @State private var count = 0
     @State private var tryAgain = false
     @State private var cardIndex = 0
-    @State private var timeRemaining = 90
+    @State private var timeRemaining = 60
     @State private var quizStarted = false
     @State private var cardDescription = ""
     @State private var serieNumbers = 0
@@ -65,7 +64,7 @@ struct TimeLineView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                NavigationLink(destination: QuizView( item: self.item, section: self.section), isActive: self.$goQuizView){
+                NavigationLink(destination: QuizView( item: self.item, section: self.section, value: ProgressValue()), isActive: self.$goQuizView){
                     Text("")
                 }
                 if self.secondLevelFinished {
@@ -73,11 +72,11 @@ struct TimeLineView: View {
                     .resizable()
                     .frame(width: geo.size.height/2.2, height: geo.size.height/2)
                     .cornerRadius(25)
-                 //   .opacity(self.secondLevelFinished ? 1.0 : 0.0)
+                    .opacity(self.secondLevelFinished ? 1.0 : 0.0)
                 VStack {
                     Spacer()
                     HStack(alignment: .center) {
-                        Text("+15: ")
+                        Text("+5: ")
                             .foregroundColor(.white)
                         VStack {
                             Image("FinalCoin").renderingMode(.original)
@@ -104,13 +103,13 @@ struct TimeLineView: View {
                 }
                 .padding()
                 .frame(width: geo.size.height/2.2, height: geo.size.height/2)
-              //  .opacity(self.secondLevelFinished ? 1.0 : 0.0)
+                .opacity(self.secondLevelFinished ? 1.0 : 0.0)
                 }else if self.timer0 || (self.allCardsDropped && !self.answerIsGood){
 //////////////////////////////////////////////
                 Image(self.timer0 ? "TimesUp" : "Pouce bas")
                     .resizable()
                     .cornerRadius(25)
-                  //  .opacity(self.timer0 || (self.allCardsDropped && !self.answerIsGood) ? 1.0 : 0)
+                    .opacity(self.timer0 || (self.secondLevelWrong) ? 1.0 : 0)
                     .frame(width: geo.size.height/2.2, height: geo.size.height/2.0)
                 VStack {
                     Spacer()
@@ -138,7 +137,7 @@ struct TimeLineView: View {
                             Text("Stay on level 2")
                                 .foregroundColor(.white)
                             Button(action: {
-                                self.vm.setup(timeRemaining: 90)
+                                self.vm.setup(timeRemaining: 60)
                                 self.secondLevelFinished = false
                                 self.timer0 = false
                                 self.secondLevelWrong = false
@@ -148,7 +147,7 @@ struct TimeLineView: View {
                                 self.allCardsDropped = false
                                 self.percentComplete = 0.0
                                 self.quizStarted = false
-                                self.timeRemaining = 90
+                                self.timeRemaining = 60
                                 for n in 0...2{
                                     self.cardWasDropped[n] = false
                                     self.trayCardDropped[n] = false
@@ -173,7 +172,7 @@ struct TimeLineView: View {
                     }
                 }
                 .frame(width: geo.size.height/2.2, height: geo.size.height/2.0)
-              //  .opacity(self.timer0 || (self.allCardsDropped && !self.answerIsGood) ? 1.0 : 0)
+                .opacity(self.timer0 || (self.allCardsDropped && !self.answerIsGood) ? 1.0 : 0)
                 }
                 VStack {
                     Spacer()
@@ -467,7 +466,7 @@ struct TimeLineView: View {
                                         .background(ColorReference.specialOrange)
                                         .font(.title)
                                         .onAppear{
-                                            self.vm.setup(timeRemaining: 90)
+                                            self.vm.setup(timeRemaining: 60)
                                         }
 
                                 }
@@ -508,13 +507,8 @@ struct TimeLineView: View {
                 .blur(radius: self.secondLevelFinished || (self.timer0 || self.secondLevelWrong)  ?  75 : 0.0)
                     .zIndex(-0.5)
             }.onAppear{
-                if achievement() || addCoins(numberOfCoinsToAdd: 0) {
-                    if addCoins(numberOfCoinsToAdd: 0) {
-                        self.activeSheet = .coinPurchase
-                    }else{
-                        self.activeSheet = .upLevel
-                    }
-                    UserDefaults.standard.set(true, forKey: "sixHundredCoinsReached")
+                if achievement() {
+                    self.activeSheet = .upLevel
                      self.showSheet = true
                 }
     
@@ -531,7 +525,7 @@ struct TimeLineView: View {
                 self.allCardsDropped = false
                 self.percentComplete = 0.0
                 self.quizStarted = false
-                self.timeRemaining = 90
+                self.timeRemaining = 60
                 for n in 0...2{
                     self.cardWasDropped[n] = false
                     self.trayCardDropped[n] = false
@@ -549,11 +543,13 @@ struct TimeLineView: View {
                 
             }
             .onReceive(self.vm.objectWillChange, perform: {
-                if self.vm.time0 && !self.timer0 && self.vm.seconds == 90{
-                    self.timer0 = true
+                if self.vm.time0 && !self.timer0 && self.vm.seconds == 60{
+                    withAnimation(.linear(duration: 3.0)) {
+                        self.timer0 = true
+                    }
                     self.tryAgain = true
+                    self.vm.cleanup()
                     self.cardAnimation()
-                    print(self.timer0)
                 }
                
             })
@@ -578,7 +574,6 @@ struct TimeLineView: View {
             
         }) {
             self.cardWasDropped[match] = true
-            print(trayCardDate)
             switch match {
             case 0:
                 cardText[0] = trayCardText
@@ -610,7 +605,8 @@ struct TimeLineView: View {
                 activeSheet = .upLevel
             }else if self.allCardsDropped{
                 answerIsGood = false
-                withAnimation(.linear(duration: 2.0)) {
+                self.vm.cleanup()
+                withAnimation(.linear(duration: 3.0)) {
                     secondLevelWrong = !answerIsGood && allCardsDropped
                 }
             }
@@ -653,7 +649,6 @@ struct TimeLineView: View {
                 trayCardText = trayCard2
                 trayCardDate = cardDate2
             }
-            print(trayCardDate)
             switch cardIndex {
             case 0:
                 cardIsBeingMoved[0] = true
@@ -711,12 +706,13 @@ struct TimeLineView: View {
                     self.cardText[n] = ""
                 }
                 if self.numberToFinish == 2 {
-                    _ = addCoins(numberOfCoinsToAdd: 15)
+                    self.vm.cleanup()
+                    _ = addCoins(numberOfCoinsToAdd: 5)
                     addPoints(numberOfPointsToAdd: 15)
                     playSound(sound: "music_harp_gliss_up", type: "wav")
-                 //   withAnimation(.linear(duration: 1)){
+                    withAnimation(.linear(duration: 3)){
                         self.secondLevelFinished  = true
-                 //   }
+                    }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                         self.goQuizView  = true
                         self.secondLevelFinished = false
@@ -730,14 +726,11 @@ struct TimeLineView: View {
             }
         }else if self.vm.time0 || allCardsDropped{
             self.answerIsGood = false
-            if !self.goQuizView{vm.setup(timeRemaining: 90)}
+            if !self.goQuizView{vm.setup(timeRemaining: 60)}
             serieNumbers = 0
             self.upDateCardInfo(serieNumbers: self.serieNumbers)
             self.cardDescription  = "Sorry...Try again!"
             playSound(sound: "Error Warning", type: "wav")
-            withAnimation(.linear(duration: 2)) {
-                self.badAnsweOffset = 500
-            }
             switch numberToFinish {
             case 0:
                 showSheet = removeCoins(numberOfCoinsToRemove: 2)
@@ -756,7 +749,7 @@ struct TimeLineView: View {
     }
     func getFont(tryAgain: Bool) -> CGFloat {
         if tryAgain {
-            return fonts.fontDimension
+            return fonts.finalBigFont
         }else{
             return fonts.smallFontDimension
         }
@@ -775,8 +768,8 @@ struct TimeLineView: View {
     
 }
 
-//struct TimeLineView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TimeLineView(item: NameItem.example, section: Names.example)
-//    }
-//}
+struct TimeLineView_Previews: PreviewProvider {
+    static var previews: some View {
+        TimeLineView(item: NameItem.example, section: Names.example)
+    }
+}

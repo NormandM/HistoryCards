@@ -7,12 +7,12 @@
 //
 
 import Foundation
-struct Level {
-    let level: String
+class Level: ObservableObject {
+    @Published var level: String
     let upLevelPoints: String
     let addedCoins: Int
-    let nextLevel: String
-    let nextLevelPoints: Int
+    @Published var nextLevel: String
+    @Published var nextLevelPoints: Int
     let points = UserDefaults.standard.integer(forKey: "points")
     init() {
         switch points {
@@ -20,44 +20,44 @@ struct Level {
             level = "Initital level"
             upLevelPoints = "0"
             addedCoins = 0
-            nextLevel = "History Amateur"
+            nextLevel = "History Neophyte"
             nextLevelPoints = 100
-        case 100..<500:
-            level = "History Amateur"
+        case 100..<200:
+            level = "History Neophyte"
             upLevelPoints = "3"
-            addedCoins = 50
+            addedCoins = 20
+            nextLevel = "History Amateur"
+            nextLevelPoints = 200
+        case 200..<500:
+            level = "History Amateur"
+            upLevelPoints = "500"
+            addedCoins = 30
             nextLevel = "History Conoisseur"
             nextLevelPoints = 500
         case 500..<1000:
             level = "History Conoisseur"
             upLevelPoints = "1000"
-            addedCoins = 100
+            addedCoins = 40
             nextLevel = "History Expert"
             nextLevelPoints = 1000
-        case 1000..<2000:
+        case 1000..<1500:
             level = "History Expert"
-            upLevelPoints = "2000"
-            addedCoins = 200
+            upLevelPoints = "1500"
+            addedCoins = 50
             nextLevel = "History Scholar"
-            nextLevelPoints = 2000
-        case 2000..<3000:
+            nextLevelPoints = 1500
+        case 1500..<2000:
             level = "History Scholar"
-            upLevelPoints = "3000"
-            addedCoins = 300
+            upLevelPoints = "2000"
+            addedCoins = 60
             nextLevel = "History Master"
-            nextLevelPoints = 3000
-        case 3000..<5000:
+            nextLevelPoints = 2000
+        case 2000..<10000000000000:
             level = "History Master"
-            upLevelPoints = "5000"
-            addedCoins = 500
-            nextLevel = "This is the last level"
-            nextLevelPoints = 3000
-        case 5000..<10000000000000:
-            level = "History Master"
-            upLevelPoints = "5000"
-            addedCoins = 500
-            nextLevel = "History Guru"
-            nextLevelPoints = 5000
+            upLevelPoints = "2000"
+            addedCoins = 100
+            nextLevel = ""
+            nextLevelPoints = 2000
         default:
             level = "History Master"
             upLevelPoints = "5000"

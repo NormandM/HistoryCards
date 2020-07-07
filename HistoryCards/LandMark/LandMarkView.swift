@@ -12,6 +12,7 @@ struct LandMarkView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var progressValue: Float = 0.5
     @State var level = Level()
+    @State private var points = UserDefaults.standard.integer(forKey: "points")
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -21,22 +22,20 @@ struct LandMarkView: View {
                             Spacer()
                             Button(action: {
                                 self.presentationMode.wrappedValue.dismiss()
-                             //   UserDefaults.standard.set(true, forKey: "dismissView")
+                                
                                 
                             }){
                                 Text("Done")
                                     .font(.footnote)
                                     .foregroundColor(.white)
-                                .padding()
+                                    .padding()
+                                    .padding()
                             }
-                        .padding()
+                            .padding()
                         }
-                            Text("Congratulation!")
-                                .foregroundColor(.white)
-                                .font(.title)
-
-                        
-                        .padding()
+                        Text("Congratulation!")
+                            .foregroundColor(.white)
+                            .font(.title)
                         Text("You have achieved the level:")
                             .foregroundColor(.white)
                             .font(.headline)
@@ -50,8 +49,8 @@ struct LandMarkView: View {
                         .frame(width: geo.size.height/3.0, height: geo.size.height/3.0)
                     HStack{
                         Text("+ \(String(self.level.addedCoins)) coins")
-                            .font(.title)
-                            .foregroundColor(ColorReference.specialOrange)
+                            .font(.body)
+                            .foregroundColor(.white)
                             .padding()
                         VStack {
                             Image("FinalCoin").renderingMode(.original)
@@ -62,40 +61,23 @@ struct LandMarkView: View {
                                 .foregroundColor(.white)
                                 .font(.footnote)
                         }
-                    .padding()
                     }
-                    
-                    Group {
-                        Text("Can you reach the next Level?")
+                    HStack{
+                        ProgressBar().frame(width: geo.size.height/3.4, height: geo.size.height * 0.01)
                             .foregroundColor(.white)
-                        Text(self.level.nextLevel)
-                            .foregroundColor(.white)
-                            .font(.title)
-                        ProgressBar(value: self.progressValue).frame(height: geo.size.height * 0.02)
-                        
-                        HStack{
-                            Text("0")
-                                .foregroundColor(.white)
-                                .offset(x: -geo.size.height/5)
-                            Text(String(self.level.nextLevelPoints))
-                                .foregroundColor(.white)
-                                .offset(x: geo.size.height/5)
-                        }
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
                     }
+                    Spacer()
                 }
             }
-
-
         }
         .background(ColorReference.specialRed)
         .edgesIgnoringSafeArea(.all)
         .onAppear{
-                _ = addCoins(numberOfCoinsToAdd: self.level.addedCoins)
-                playSound(sound: "fanfare", type: "mp3")
-                
-            }
-        
-    
+            _ = addCoins(numberOfCoinsToAdd: self.level.addedCoins)
+            playSound(sound: "fanfare", type: "mp3")
+        }
     }
     
     struct LandMarkView_Previews: PreviewProvider {

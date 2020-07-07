@@ -9,31 +9,54 @@
 import SwiftUI
 
 struct ProgressBar: View {
-    @State var value: Float
-    let level = Level()
+    @ObservedObject var progressValue = ProgressValue()
+    @ObservedObject var level = Level()
     var body: some View {
         GeometryReader { geometry in
-            ZStack(alignment: .leading) {
-                Rectangle().frame(width: geometry.size.width * 0.8 , height: geometry.size.height)
-                    .opacity(0.3)
-                    .foregroundColor(Color(UIColorReference.specialGray))
-                    .opacity(self.value >= 3000 ? 0 : 1)
+            VStack {
+                Text(self.level.points < 2000 ? "Can you reach the next Level?" : "You have reached the highest level!")
+                    .foregroundColor(ColorReference.specialOrange)
+                    .font(.subheadline)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    .padding(.top)
+                    .padding(.top)
+                Text(self.level.nextLevel)
+                    .foregroundColor(ColorReference.specialOrange)
+                    .font(.subheadline)
+                HStack {
+                    Text("0")
+                        .foregroundColor(.white)
+                        .font(.footnote)
+                    ZStack(alignment: .leading) {
+                        Rectangle().frame(width: geometry.size.width * 0.6
+                            , height: geometry.size.height * 0.8)
+                            .opacity(0.3)
+                            .foregroundColor(Color(UIColorReference.specialGray))
+                            .opacity(self.progressValue.value >= 3000 ? 0 : 1)
+                        
+                        Rectangle().frame(width: min(CGFloat(self.progressValue.value)*geometry.size.width * 0.6, geometry.size.width), height: geometry.size.height)
+                            .foregroundColor(Color(UIColorReference.specialOrange))
+                            .animation(.linear)
+                            .opacity(self.progressValue.value >= 3000.0 ? 0 : 1)
+                    }
+                    .cornerRadius(45.0)
+                    .opacity(self.progressValue.value >= 3000.0 ? 0 : 1)
+                    
+                    Text(String(self.progressValue.nextLevelPoint))
+                        .foregroundColor(.white)
+                        .font(.footnote)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                }
                 
-                Rectangle().frame(width: min(CGFloat(self.value)*geometry.size.width * 0.8, geometry.size.width), height: geometry.size.height)
-                    .foregroundColor(Color(UIColorReference.specialOrange))
-                    .animation(.linear)
-                    .opacity(self.value >= 3000.0 ? 0 : 1)
-            }.cornerRadius(45.0)
-                .opacity(self.value >= 3000.0 ? 0 : 1)
-        }
-        .onAppear{
-            self.value = Float(UserDefaults.standard.integer(forKey: "points"))/Float(self.level.nextLevelPoints)
+            }
         }
     }
 }
 
 struct ProgressBar_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressBar(value: 0.5)
+        ProgressBar()
     }
 }

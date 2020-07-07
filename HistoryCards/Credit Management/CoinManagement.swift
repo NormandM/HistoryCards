@@ -21,7 +21,7 @@ struct CoinManagement: View {
     @State private var stringCoin = String(UserDefaults.standard.integer(forKey: "coins"))
     @State private var showAlertPurchased = false
     @State private var coins = UserDefaults.standard.integer(forKey: "coins")
-    var coinsPurchased = UserDefaults.standard.bool(forKey: "coinsPurchased")
+    @State private var coinsPurchased = UserDefaults.standard.bool(forKey: "coinsPurchased")
     var sixHundredCoinsReached = UserDefaults.standard.bool(forKey: "sixHundredCoinsReached")
     let publisher = IAPManager.shared.purchasePublisher
     var body: some View {
@@ -50,7 +50,7 @@ struct CoinManagement: View {
                     .font(.title)
                     .fontWeight(.heavy)
                         .opacity(!self.coinsPurchased && self.sixHundredCoinsReached ? 1.0 : 0.0)
-                    Text(!self.coinsPurchased && self.sixHundredCoinsReached ? "Do you think this App is worth \(self.price)?\nIf you do, please buy some coins" : "Out of coins?")
+                    Text(!self.coinsPurchased && self.sixHundredCoinsReached ? "Do you think this App is worth \(self.price)?\nIf you do, please buy some coins" : "Need some coins?")
                         .foregroundColor(.white)
                         .font(!self.coinsPurchased && self.sixHundredCoinsReached ? .headline : .title)
                         .fontWeight(.heavy)
@@ -107,6 +107,7 @@ struct CoinManagement: View {
             .alert(isPresented: self.$showAlertPurchased) {
                 Alert(title: Text("200 coins were added to your credit"), message: Text("Back to the quiz!"), dismissButton: .default(Text("OK")){
                     UserDefaults.standard.set(true, forKey: "coinsPurchased")
+                    self.coinsPurchased =  UserDefaults.standard.bool(forKey: "coinsPurchased")
                     })
             }
             .alert(isPresented: self.$showNoCoinsPurchased) {
@@ -129,6 +130,8 @@ struct CoinManagement: View {
         .onReceive(publisher, perform: {value in
             self.stringCoin = value.0
             self.showAlertPurchased = true
+            UserDefaults.standard.set(true, forKey: "coinsPurchased")
+            self.coinsPurchased =  UserDefaults.standard.bool(forKey: "coinsPurchased")
         })
             .background(ColorReference.specialGreen)
             .edgesIgnoringSafeArea(.all)

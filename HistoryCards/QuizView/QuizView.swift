@@ -26,7 +26,7 @@ struct QuizView: View {
     @State private var count = 0
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var cardIndex = 0
-    @State private var timeRemaining = 60
+    @State private var timeRemaining = 30
     @State private var quizStarted = false
     @State var quizData = QuizData()
     @State private var timer0 = false
@@ -48,192 +48,257 @@ struct QuizView: View {
     @State private var screenDimension: CGFloat = 0
     @EnvironmentObject private var vm: ClockDetailViewModel
     @State private var seconds: Int = 0
+    @State private var bar = ProgressBar()
+    @State var level = Level()
     var item: NameItem
     var section: Names
     @State var progressValue: Float = 0.5
+    @ObservedObject var value: ProgressValue
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                        Image("fond")
-                            .resizable()
-                            .frame(width: geo.size.height/2.0, height: geo.size.height/1.2)
-                            .cornerRadius(25)
-                            .opacity(self.sectionIsDone ? 1.0 : 0.0)
-                        VStack {
-                            Text("Great!\nYou have mastered:")
-                                .foregroundColor(.white)
-                                .bold()
-                                .lineLimit(nil)
-                                .multilineTextAlignment(.center)
-                                .font(.headline)
-                                .padding()
-                            Text("\(self.section.name)")
-                                .foregroundColor(ColorReference.specialOrange)
-                                .italic()
-                                .bold()
-                            .lineLimit(nil)
-                                .multilineTextAlignment(.center)
-                                .font(.headline)
-                                .padding(.bottom)
-                            Image(self.section.photo)
-                                .resizable()
-                                .frame(width: geo.size.height/12, height: geo.size.height/12)
-                                .opacity(self.sectionIsDone ? 1.0 : 0.0)
-                            .frame(width: geo.size.height/2.3, height: geo.size.height/10)
-                            .padding(.top)
-                            HStack {
-                                Text("+30: ")
-                                    .foregroundColor(.white)
-                                    .padding()
-                                VStack {
-                                    Image("FinalCoin").renderingMode(.original)
-                                        .resizable()
-                                        .frame(width: geo.size.height/20
-                                            , height: geo.size.height/20)
-                                        .padding(.top)
-                                        
-                                   Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
-                                        .frame(width: geo.size.width/4)
-                                        .font(.footnote)
-                                        .foregroundColor(.white)
-                                        
-                                }
-                            }
-                            .padding()
-        
-                            HStack {
-                                Text("+30: ")
-                                    .foregroundColor(.white)
-                                    .padding()
-                                VStack{
-                                    Image("points2")
-                                        .resizable()
-                                        .frame(width: geo.size.height/22
-                                            , height: geo.size.height/22)
-                                        
-                                   Text("\(UserDefaults.standard.integer(forKey: "points")) points")
-                                        .frame(width: geo.size.width/4)
-                                        .font(.footnote)
-                                        .foregroundColor(.white)
-                                }
-                            }
-                            .padding()
-
-                            Spacer()
-                            HStack {
-                                Button(action: {
-                                    self.presentationMode.wrappedValue.dismiss()
-                                    UserDefaults.standard.set(true, forKey: "dismissView")
-                                }){
-                                    Text("Back to menu")
-                                        .font(.footnote)
-                                        .padding()
-                                        .background(Color.clear)
-                                        .cornerRadius(40)
-                                        .foregroundColor(.white)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 40)
-                                                .stroke(Color.white, lineWidth: 2)
-                                    )
-                                }
-                                .padding()
-                            }
-                        }
-                        .frame(width: geo.size.height/2.3, height: geo.size.height/1.4)
-                        .opacity(self.sectionIsDone ? 1.0 : 0.0)
-/////////////////////////////////////////////
-                        Image("FinishedThirdLevel")
-                            .resizable()
-                            .frame(width: geo.size.height/2.5, height: geo.size.height/2.0)
-                            .cornerRadius(25)
-                            .opacity(self.thirdLevelIsFinished && !self.sectionIsDone ? 1.0 : 0.0)
-                        VStack {
-                            Text("You have completed:" )
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(.white)
-                                .scaledFont(name: "Helvetica Neue", size: self.fonts.finalBigFont)
-                                .padding()
-                            Text("\(self.sectionDone)/\(self.sectionCount) of \(self.section.name): \(self.item.name ?? "")")
-                                .foregroundColor(ColorReference.specialOrange)
-                                .multilineTextAlignment(.center)
-                                .padding(.bottom)
-                                .padding(.leading)
-                                .padding(.trailing)
-                            Button(action: {
-                                self.presentationMode.wrappedValue.dismiss()
-                                UserDefaults.standard.set(true, forKey: "dismissView")
-                                
-                            }){
-                                Text("Back to Menu")
-                                    .font(.footnote)
-                                    .padding()
-                                    .background(Color.clear)
-                                    .cornerRadius(40)
-                                    .foregroundColor(.white)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 40)
-                                            .stroke(Color.white, lineWidth: 2)
-                                )
-                            }
-                            .padding()
-                            Spacer()
-                        }
-                        .frame(width: geo.size.height/2.5, height: geo.size.height/2.0)
-                        .opacity(self.thirdLevelIsFinished && !self.sectionIsDone ? 1.0 : 0.0)
-/////////////////////////////////////////
-                    Image(self.timer0 ? "TimesUp" : "Pouce bas")
+                Image("fond")
+                    .resizable()
+                    .frame(width: geo.size.height/2.0, height: geo.size.height/1.2)
+                    .cornerRadius(25)
+                    .opacity(self.sectionIsDone ? 1.0 : 0.0)
+                VStack {
+                    Text("Great!")
+                        .foregroundColor(.white)
+                        .bold()
+                        .lineLimit(nil)
+                        .multilineTextAlignment(.center)
+                        .font(.headline)
+                    Text("You have mastered:")
+                        .foregroundColor(.white)
+                        .bold()
+                        .lineLimit(nil)
+                        .multilineTextAlignment(.center)
+                        .font(.headline)
+                    Text("\(self.section.name)")
+                        .foregroundColor(ColorReference.specialOrange)
+                        .italic()
+                        .bold()
+                        .lineLimit(nil)
+                        .multilineTextAlignment(.center)
+                        .font(.headline)
+                        .padding(.bottom)
+                    Image(self.section.photo)
                         .resizable()
-                        .cornerRadius(25)
-                        .opacity(self.timer0 || (self.thirdLevelIsWrong) ? 1.0 : 0)
-                        .frame(width: geo.size.height/2.5, height: geo.size.height/2.0)
+                        .frame(width: geo.size.height/12, height: geo.size.height/12)
+                        .opacity(self.sectionIsDone ? 1.0 : 0.0)
+                        .frame(width: geo.size.height/2.3, height: geo.size.height/10)
                     HStack {
+                        Text("+10:")
+                            .foregroundColor(.white)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
+                        
                         VStack {
-                            Spacer()
-                            Text("Back to level 2")
+                            Image("FinalCoin").renderingMode(.original)
+                                .resizable()
+                                .frame(width: geo.size.height/20
+                                    , height: geo.size.height/20)
+                                .padding(.top)
+                            
+                            Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
+                                .frame(width: geo.size.width/4)
+                                .font(.footnote)
                                 .foregroundColor(.white)
-                                .padding(.leading)
-                            Button(action: {
-                                UserDefaults.standard.set(false, forKey: "dismissView")
-                                self.presentationMode.wrappedValue.dismiss()
-                            }){
-                                Image("0Coin").renderingMode(.original)
-                                    .resizable()
-                                    .frame(width: geo.size.height/12
-                                        , height: geo.size.height/12)
-                            }
-                            Text("coin")
-                                .foregroundColor(.white)
-                                .padding(.bottom)
-                        }
-                        Spacer()
-                        VStack {
-                            Spacer()
-                            Text("Stay on level 3")
-                                .foregroundColor(.white)
-                                .padding(.trailing)
-                            Button(action: {
-                                self.quizData = QuizData()
-                                self.vm.setup(timeRemaining: 60)
-                                self.reset()
-                                self.showSheet  = removeCoins(numberOfCoinsToRemove: 10)
-                                self.activeSheet = .coinPurchase
-                                
-                            }){
-                                Image("10Coin").renderingMode(.original)
-                                    .resizable()
-                                    .frame(width: geo.size.height/12
-                                        , height: geo.size.height/12)
-                                
-                            }
-                            Text("coins")
-                                .foregroundColor(.white)
-                                .padding(.bottom)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
+                            
                         }
                     }
-                    .frame(width: geo.size.height/2.5, height: geo.size.height/2.0)
-                    .opacity(self.timer0 || (self.thirdLevelIsWrong) ? 1.0 : 0)
-    ///////////////////////////////////////////
+                    .padding()
+                    
+                    HStack {
+                        Text("+20:")
+                            .foregroundColor(.white)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
+                        VStack{
+                            Image("points2")
+                                .resizable()
+                                .frame(width: geo.size.height/22
+                                    , height: geo.size.height/22)
+                            
+                            Text("\(UserDefaults.standard.integer(forKey: "points")) points")
+                                .frame(width: geo.size.width/4)
+                                .font(.footnote)
+                                .foregroundColor(.white)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
+                        }
+                    }
+                    .padding()
+                    HStack{
+                        self.bar.frame(width: geo.size.height/3.4 ,height: geo.size.height * 0.005)
+                    }
+                    .padding()
+                    .padding()
+                    HStack {
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                            UserDefaults.standard.set(true, forKey: "dismissView")
+                        }){
+                            Text("Back to menu")
+                                .font(.footnote)
+                                .padding()
+                                .background(Color.clear)
+                                .cornerRadius(40)
+                                .foregroundColor(.white)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 40)
+                                        .stroke(Color.white, lineWidth: 2)
+                            )
+                        }
+                        .padding()
+                    }
+                    
+                }
+                .frame(width: geo.size.height/2.5, height: geo.size.height/1.4)
+                .opacity(self.sectionIsDone ? 1.0 : 0.0)
+                /////////////////////////////////////////////
+                Image("FinishedThirdLevel")
+                    .resizable()
+                    .frame(width: geo.size.height/2.3, height: geo.size.height/1.3)
+                    .cornerRadius(25)
+                    .opacity(self.thirdLevelIsFinished && !self.sectionIsDone ? 1.0 : 0.0)
                 VStack {
+                    Text("You have completed:" )
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.white)
+                        .scaledFont(name: "Helvetica Neue", size: self.fonts.finalBigFont)
+                        .padding()
+                    Text("\(self.sectionDone)/\(self.sectionCount) of \(self.section.name): \(self.item.name ?? "")")
+                        .foregroundColor(ColorReference.specialOrange)
+                        .multilineTextAlignment(.center)
+                        .padding(.leading)
+                        .padding(.trailing)
+                        .padding(.bottom)
+                    HStack {
+                        Text("+10:")
+                            .foregroundColor(.white)
+                            .font(.caption)
+                        VStack {
+                            Image("FinalCoin").renderingMode(.original)
+                                .resizable()
+                                .frame(width: geo.size.height/25
+                                    , height: geo.size.height/25)
+                            Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
+                                .font(.caption)
+                                .foregroundColor(.white)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
+                            
+                        }
+                        Spacer()
+                        Text("+20:")
+                            .foregroundColor(.white)
+                            .font(.footnote)
+                        VStack{
+                            Image("points2")
+                                .resizable()
+                                .frame(width: geo.size.height/25
+                                    , height: geo.size.height/25)
+                            
+                            Text("\(UserDefaults.standard.integer(forKey: "points")) points")
+                                .font(.caption)
+                                .foregroundColor(.white)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
+                        }
+                        
+                    }
+                    .frame(width: geo.size.height/2.7)
+                    Spacer()
+                        .frame(height: geo.size.height/20)
+                    HStack{
+                        self.bar.frame(width: geo.size.height/3.5 ,height: geo.size.height * 0.005)
+                            .padding()
+                    }
+                    .padding()
+                    HStack {
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                            UserDefaults.standard.set(true, forKey: "dismissView")
+                            
+                        }){
+                            Text("Back to Menu")
+                                .font(.footnote)
+                                .padding()
+                                .background(Color.clear)
+                                .cornerRadius(40)
+                                .foregroundColor(.white)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 40)
+                                        .stroke(Color.white, lineWidth: 2)
+                            )
+                        }
+                        .padding()
+                    }
+                    Spacer()
+                    
+                }
+                .frame(width: geo.size.height/2.3, height: geo.size.height/1.3)
+                .opacity(self.thirdLevelIsFinished && !self.sectionIsDone ? 1.0 : 0.0)
+                
+                /////////////////////////////////////////
+                Image(self.timer0 ? "TimesUp" : "Pouce bas")
+                    .resizable()
+                    .cornerRadius(25)
+                    .opacity(self.timer0 || (self.thirdLevelIsWrong) ? 1.0 : 0)
+                    .frame(width: geo.size.height/2.5, height: geo.size.height/2.0)
+                HStack {
+                    VStack {
+                        Spacer()
+                        Text("Back to level 2")
+                            .foregroundColor(.white)
+                            .padding(.leading)
+                        Button(action: {
+                            UserDefaults.standard.set(false, forKey: "dismissView")
+                            self.presentationMode.wrappedValue.dismiss()
+                        }){
+                            Image("0Coin").renderingMode(.original)
+                                .resizable()
+                                .frame(width: geo.size.height/12
+                                    , height: geo.size.height/12)
+                        }
+                        Text("coin")
+                            .foregroundColor(.white)
+                            .padding(.bottom)
+                    }
+                    Spacer()
+                    VStack {
+                        Spacer()
+                        Text("Stay on level 3")
+                            .foregroundColor(.white)
+                            .padding(.trailing)
+                        Button(action: {
+                            self.quizData = QuizData()
+                            self.vm.setup(timeRemaining: 30)
+                            self.reset()
+                            self.showSheet  = removeCoins(numberOfCoinsToRemove: 10)
+                            self.activeSheet = .coinPurchase
+                            
+                        }){
+                            Image("10Coin").renderingMode(.original)
+                                .resizable()
+                                .frame(width: geo.size.height/12
+                                    , height: geo.size.height/12)
+                            
+                        }
+                        Text("coins")
+                            .foregroundColor(.white)
+                            .padding(.bottom)
+                    }
+                }
+                .frame(width: geo.size.height/2.5, height: geo.size.height/2.0)
+                .opacity(self.timer0 || (self.thirdLevelIsWrong) ? 1.0 : 0)
+                ///////////////////////////////////////////
+                VStack {
+                    Spacer()
                     Spacer()
                     HStack {
                         Spacer()
@@ -255,7 +320,7 @@ struct QuizView: View {
                                                     self.cardFrames[0] = geo2.frame(in: .global)
                                                 }
                                             }
-
+                                            
                                         }
                                     })
                             })
@@ -278,7 +343,7 @@ struct QuizView: View {
                                                     self.cardFrames[1] = geo2.frame(in: .global)
                                                 }
                                             }
-
+                                            
                                         }
                                         
                                     })
@@ -303,7 +368,7 @@ struct QuizView: View {
                                                     self.cardFrames[2] = geo2.frame(in: .global)
                                                 }
                                             }
-
+                                            
                                         }
                                     })
                             })
@@ -311,6 +376,9 @@ struct QuizView: View {
                         Spacer()
                     }
                     .padding()
+                    .padding(.leading)
+                    .padding(.trailing)
+                    
                     HStack {
                         Button(action: {
                             self.reset()
@@ -348,7 +416,7 @@ struct QuizView: View {
                                                     self.trayCardsFrames[0] = geo2.frame(in: .global)
                                                 }
                                             }
-
+                                            
                                         }
                                         
                                     })
@@ -367,12 +435,12 @@ struct QuizView: View {
                                                 self.trayCardsFrames[1] = geo2.frame(in: .global)
                                         }
                                         .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                           if self.screenDimension > 700000 {
+                                            if self.screenDimension > 700000 {
                                                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                                     self.trayCardsFrames[1] = geo2.frame(in: .global)
                                                 }
                                             }
-
+                                            
                                         }
                                     })
                             })
@@ -391,13 +459,12 @@ struct QuizView: View {
                                         }
                                         .onReceive(NotificationCenter.Publisher(center: .default, name:
                                             UIDevice.orientationDidChangeNotification)) { _ in
-                                               if self.screenDimension > 700000 {
+                                                if self.screenDimension > 700000 {
                                                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                                         self.trayCardsFrames[2] = geo2.frame(in: .global)
-                                            
+                                                        
                                                     }
                                                 }
-
                                         }
                                     })
                             })
@@ -406,6 +473,8 @@ struct QuizView: View {
                         Spacer()
                     }
                     .padding()
+                    .padding(.leading)
+                    .padding(.trailing)
                     Spacer()
                     HStack {
                         ZStack(){
@@ -422,14 +491,14 @@ struct QuizView: View {
                                             .frame(width: geo.size.height/12
                                                 , height: geo.size.height/12)
                                             .padding(.top)
-                                        Text("\(self.timeRemaining - self.vm.seconds)")
+                                        Text(self.thirdLevelIsFinished ? "0" : "\(self.timeRemaining - self.vm.seconds)")
                                             .font(.subheadline)
                                             .fontWeight(.heavy)
                                             .padding(.top)
                                             .background(ColorReference.specialOrange)
                                             .font(.title)
                                             .onAppear{
-                                                self.vm.setup(timeRemaining: 60)
+                                                self.vm.setup(timeRemaining: 30)
                                                 self.timer0 = false
                                         }
                                     }
@@ -469,11 +538,6 @@ struct QuizView: View {
                 .blur(radius: self.thirdLevelIsFinished || (self.timer0 || self.thirdLevelIsWrong)  ?  75 : 0.0)
                 .zIndex(-0.5)
             }
-            .onAppear{
-                self.progressValue = Float(Double(UserDefaults.standard.integer(forKey: "points"))/200.0)
-                if self.progressValue > 1.0 {self.progressValue = 1.0}
-
-            }
         }
         .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
             let screen = FontsAndConstraintsOptions()
@@ -482,21 +546,27 @@ struct QuizView: View {
         }
         .onReceive(vm.objectWillChange, perform: {
             if self.vm.time0 && !self.timer0 {
-                self.timer0 = true
+                withAnimation(.linear(duration: 3)){
+                    self.timer0 = true
+                }
+                self.vm.cleanup()
                 playSound(sound: "Error Warning", type: "wav")
             }
+            
+            
+            
         })
-        .background(ColorReference.specialGreen)
-        .edgesIgnoringSafeArea(.all)
-        .navigationBarTitle("What are the right dates?", displayMode: .inline)
-        .navigationBarHidden(answerIsGood || (allCardsDropped && !answerIsGood) || timer0)
-        .navigationBarBackButtonHidden(true)
-        .onAppear{
-            self.showSheet = achievement()
-            self.activeSheet = .upLevel
-            self.cardText[0] = self.quizData.names[0]
-            self.cardText[1] = self.quizData.names[1]
-            self.cardText[2] = self.quizData.names[2]
+            .background(ColorReference.specialGreen)
+            .edgesIgnoringSafeArea(.all)
+            .navigationBarTitle("What are the right dates?", displayMode: .inline)
+            .navigationBarHidden(answerIsGood || (allCardsDropped && !answerIsGood) || timer0)
+            .navigationBarBackButtonHidden(true)
+            .onAppear{
+                self.showSheet = achievement()
+                self.activeSheet = .upLevel
+                self.cardText[0] = self.quizData.names[0]
+                self.cardText[1] = self.quizData.names[1]
+                self.cardText[2] = self.quizData.names[2]
         }
         .sheet(isPresented: self.$showSheet) {
             if self.activeSheet == .upLevel {
@@ -538,28 +608,40 @@ struct QuizView: View {
                 allCardsDropped = true
             }
             if self.cardGood[0] && self.cardGood[1] && self.cardGood[2] {
-                self.answerIsGood = true
-                self.showSheet = achievement()
-                self.activeSheet = .upLevel
-                playSound(sound: "music_harp_gliss_up", type: "wav")
-                _ = addCoins(numberOfCoinsToAdd: 20)
-                addPoints(numberOfPointsToAdd: 20)
+                
                 if !isSectionDone() {
-                    var accomplishement = Accomplishements()
-                    accomplishement.quizCompletion(uuid: item.id.uuidString)
-                    sectionIsDone = isSectionDone()
+                    _ = addCoins(numberOfCoinsToAdd: 10)
+                    addPoints(numberOfPointsToAdd: 20)
                     if sectionIsDone {
                         playSound(sound: "fanfare", type: "mp3")
                         _ = addCoins(numberOfCoinsToAdd: 10)
                         addPoints(numberOfPointsToAdd: 10)
                     }
-                        
+                    var accomplishement = Accomplishements()
+                    accomplishement.quizCompletion(uuid: item.id.uuidString)
+                    self.showSheet = achievement()
+                    self.activeSheet = .upLevel
+                    self.answerIsGood = true
+                    playSound(sound: "music_harp_gliss_up", type: "wav")
+                    withAnimation(.linear(duration: 3)){
+                        sectionIsDone = isSectionDone()
+                    }
+                    
                 }
-                thirdLevelIsFinished = true
+                self.progressValue = Float(Double(UserDefaults.standard.integer(forKey: "points"))/Double(self.level.nextLevelPoints))
+                bar = ProgressBar()
+                if self.progressValue > 1.0 {self.progressValue = 1.0}
+                withAnimation(.linear(duration: 3)){
+                    self.thirdLevelIsFinished  = true
+                }
+                
+                vm.cleanup()
             }else if allCardsDropped == true {
                 playSound(sound: "Error Warning", type: "wav")
-                vm.setup(timeRemaining: 60)
+                self.vm.cleanup()
+                withAnimation(.linear(duration: 3)){
                     self.thirdLevelIsWrong = true
+                }
             }
         }
     }
@@ -613,7 +695,6 @@ struct QuizView: View {
         if coins < 0 {
             self.showSheet = true
         }
-        
     }
     func cardUnpushed(location: CGPoint, trayIndex: Int) {
         for n in 0...2 {
@@ -631,7 +712,7 @@ struct QuizView: View {
         self.thirdLevelIsFinished = false
         self.thirdLevelIsWrong = false
         self.quizStarted = false
-        self.timeRemaining = 60
+        self.timeRemaining = 30
         self.gradient = [Gradient(colors: [Color.clear, Color.clear]), Gradient(colors: [Color.clear, Color.clear]),  Gradient(colors: [Color.clear, Color.clear])]
         for n in 0...2{
             self.cardWasDropped[n] = false
@@ -641,17 +722,12 @@ struct QuizView: View {
             self.cardText[n] = self.quizData.names[n]
             self.cardSlotAnswered[n] = false
             self.fontColorIsWhite[n] = true
-            
         }
-        
     }
-    
-    
 }
-//struct QuizView_Previews: PreviewProvider {
-//    static var previews: some View {
-//         
-//        QuizView( item: NameItem.example, section: Names.example)
-//    }
-//}
+struct QuizView_Previews: PreviewProvider {
+    static var previews: some View {
+        QuizView( item: NameItem.example, section: Names.example, value: ProgressValue())
+    }
+}
 

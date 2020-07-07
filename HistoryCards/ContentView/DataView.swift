@@ -45,12 +45,11 @@ struct DataView: View {
                     Text(self.info.date)
                         .font(.title)
                         .foregroundColor(.white)
-                     //   .padding()
                     Image(self.section.photoHD)
                         .resizable()
                         .frame(width: geo.size.height/2.5, height: geo.size.height/2.5)
                         .cornerRadius(25)
-                   // Spacer()
+                    Spacer()
                     ZStack{
                         Rectangle()
                             .fill(ColorReference.specialGray)

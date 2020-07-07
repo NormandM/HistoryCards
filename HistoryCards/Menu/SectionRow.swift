@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-
 struct SectionRow: View {
     var name: Names
     var body: some View {
@@ -20,21 +19,10 @@ struct SectionRow: View {
                     Text(self.name.name)
                     Spacer()
                 }.padding(0).background(FillAll(color: ColorReference.specialOrange))
-                
             }
-
         }
-        
     }
 }
-
-//struct SectionRow_Previews: PreviewProvider {
-//    var name: Names
-//    static var previews: some View {
-//        SectionRow(name: Names.example)
-//    }
-//}
-
 struct FillAll: View {
     let color: Color
     var body: some View {

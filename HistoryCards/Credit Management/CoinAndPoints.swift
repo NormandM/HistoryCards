@@ -11,7 +11,7 @@ func addCoins(numberOfCoinsToAdd: Int) -> Bool{
     var coins = UserDefaults.standard.integer(forKey: "coins")
     UserDefaults.standard.set(coins + numberOfCoinsToAdd, forKey: "coins")
     coins =  UserDefaults.standard.integer(forKey: "coins")
-    if coins > 600 && !UserDefaults.standard.bool(forKey: "sixHundredCoinsReached") {
+    if coins > 400 && !UserDefaults.standard.bool(forKey: "sixHundredCoinsReached") {
         return true
     }else{
         return false
