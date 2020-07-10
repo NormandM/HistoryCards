@@ -361,7 +361,7 @@ struct TimeLineView: View {
                                         .stroke(Color.white, lineWidth: 2)
                             )
                             
-                        }
+                        }.disabled(self.allCardsDropped)
                     }
                     HStack {
                         Spacer()
