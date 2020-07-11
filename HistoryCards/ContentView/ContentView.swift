@@ -172,9 +172,6 @@ struct ContentView: View {
                                 Text(self.messageAfterAnswer)
                                     .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
                                     .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialGreen : .clear)
-                                    .onAppear{
-                                      //  self.cardDescription = ""
-                                    }
                                 Text("+ 1 point")
                                     .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain))
                                     .foregroundColor(self.percentComplete == 1.0 ? ColorReference.specialGreen : .clear)
@@ -521,6 +518,7 @@ struct ContentView: View {
     }
     func cardUnpushed(location: CGPoint, trayIndex: Int) {
         self.numberCardsDisplayed = true
+        self.cardDescription = ""
         
     }
     func cardAnimation () {
