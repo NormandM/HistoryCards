@@ -725,9 +725,9 @@ struct QuizView: View {
         }
     }
 }
-struct QuizView_Previews: PreviewProvider {
-    static var previews: some View {
-        QuizView( item: NameItem.example, section: Names.example, value: ProgressValue())
-    }
-}
+//struct QuizView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        QuizView( item: NameItem.example, section: Names.example, value: ProgressValue())
+//    }
+//}
 

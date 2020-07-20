@@ -240,8 +240,8 @@ struct TimeLineView: View {
                         Spacer()
                         VStack{
                             Card(onEnded: self.cardDropped, index: 0, text: self.cardText[0])
-                                .frame(width: geo.size.height/4.2 * 0.6
-                                    , height: geo.size.height/4.2)
+                                .frame(width: geo.size.height/4.3 * 0.6
+                                    , height: geo.size.height/4.3)
                                 .allowsHitTesting(false)
                                 .overlay(GeometryReader { geo2 in
                                     Color.clear
@@ -273,8 +273,8 @@ struct TimeLineView: View {
                         Spacer()
                         VStack{
                             Card(onEnded: self.cardDropped, index: 1, text: self.cardText[1])
-                                .frame(width: geo.size.height/4.2 * 0.6
-                                    , height: geo.size.height/4.2)
+                                .frame(width: geo.size.height/4.3 * 0.6
+                                    , height: geo.size.height/4.3)
                                 .allowsHitTesting(false)
                                 .overlay(GeometryReader { geo2 in
                                     Color.clear
@@ -306,8 +306,8 @@ struct TimeLineView: View {
                         Spacer()
                         VStack {
                             Card(onEnded: self.cardDropped, index: 2, text: self.cardText[2])
-                                .frame(width: geo.size.height/4.2 * 0.6
-                                    , height: geo.size.height/4.2)
+                                .frame(width: geo.size.height/4.3 * 0.6
+                                    , height: geo.size.height/4.3)
                                 .allowsHitTesting(false)
                                 .overlay(GeometryReader { geo2 in
                                     Color.clear
@@ -366,8 +366,8 @@ struct TimeLineView: View {
                     HStack {
                         Spacer()
                         Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 0, text: self.trayCard0)
-                            .frame(width: geo.size.height/4.2 * 0.6
-                                , height: geo.size.height/4.2)
+                            .frame(width: geo.size.height/4.3 * 0.6
+                                , height: geo.size.height/4.3)
                             .overlay(GeometryReader { geo2 in
                                 Color.clear
                                     .overlay(GeometryReader { geo2 in
@@ -391,8 +391,8 @@ struct TimeLineView: View {
                             .opacity(self.trayCardDropped[0] ? 0.0 : 1.0)
                         Spacer()
                         Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 1, text: self.trayCard1)
-                            .frame(width: geo.size.height/4.2 * 0.6
-                                , height: geo.size.height/4.2)
+                            .frame(width: geo.size.height/4.3 * 0.6
+                                , height: geo.size.height/4.3)
                             .overlay(GeometryReader { geo2 in
                                 Color.clear
                                     .overlay(GeometryReader { geo2 in
@@ -418,8 +418,8 @@ struct TimeLineView: View {
                             .opacity(self.trayCardDropped[1] ? 0.0 : 1.0)
                         Spacer()
                         Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 2, text: self.trayCard2)
-                            .frame(width: geo.size.height/4.2 * 0.6
-                                , height: geo.size.height/4.2)
+                            .frame(width: geo.size.height/4.3 * 0.6
+                                , height: geo.size.height/4.3)
 
                             .overlay(GeometryReader { geo2 in
                                 Color.clear
@@ -768,8 +768,8 @@ struct TimeLineView: View {
     
 }
 
-struct TimeLineView_Previews: PreviewProvider {
-    static var previews: some View {
-        TimeLineView(item: NameItem.example, section: Names.example)
-    }
-}
+//struct TimeLineView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TimeLineView(item: NameItem.example, section: Names.example)
+//    }
+//}

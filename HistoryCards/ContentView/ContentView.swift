@@ -66,7 +66,7 @@ struct ContentView: View {
                 if self.startUp{
                     VStack {
                         Spacer()
-                        Text("See the time line before the Quiz?")
+                        Text("See the Timeline before the Quiz?")
                             .padding()
                             .lineLimit(nil)
                             .multilineTextAlignment(.center)
@@ -518,7 +518,7 @@ struct ContentView: View {
     }
     func cardUnpushed(location: CGPoint, trayIndex: Int) {
         self.numberCardsDisplayed = true
-        self.cardDescription = ""
+      //  self.cardDescription = ""
         
     }
     func cardAnimation () {
@@ -597,8 +597,8 @@ struct ContentView: View {
         self.presentationMode.wrappedValue.dismiss()
     }
 }
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView( item: NameItem.example, section: Names.example)
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView( item: NameItem.example, section: Names.example)
+//    }
+//}

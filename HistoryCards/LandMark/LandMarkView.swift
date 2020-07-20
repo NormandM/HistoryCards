@@ -79,10 +79,11 @@ struct LandMarkView: View {
             playSound(sound: "fanfare", type: "mp3")
         }
     }
-    
-    struct LandMarkView_Previews: PreviewProvider {
-        static var previews: some View {
-            LandMarkView()
-        }
-    }
 }
+    
+//    struct LandMarkView_Previews: PreviewProvider {
+//        static var previews: some View {
+//            LandMarkView()
+//        }
+//    }
+

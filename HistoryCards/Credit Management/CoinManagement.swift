@@ -139,9 +139,9 @@ struct CoinManagement: View {
     
 }
 
-struct CoinManagement_Previews: PreviewProvider {
-    static var previews: some View {
-        CoinManagement()
-    }
-}
+//struct CoinManagement_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CoinManagement()
+//    }
+//}
 

@@ -103,8 +103,8 @@ struct DataView: View {
     }
 }
 
-struct DataView_Previews: PreviewProvider {
-    static var previews: some View {
-        DataView( item: NameItem.example, section: Names.example, vm: ClockDetailViewModel())
-    }
-}
+//struct DataView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DataView( item: NameItem.example, section: Names.example, vm: ClockDetailViewModel())
+//    }
+//}
