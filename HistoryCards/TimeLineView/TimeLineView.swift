@@ -479,7 +479,7 @@ struct TimeLineView: View {
                                     self.showSheet = true
                                     self.activeSheet = .coinPurchase
                                 }){
-                                    Image("FinalCoin").renderingMode(.original)
+                                    Image("FinalCoinBuy").renderingMode(.original)
                                         .resizable()
                                         .frame(width: geo.size.height/12
                                             , height: geo.size.height/12)
