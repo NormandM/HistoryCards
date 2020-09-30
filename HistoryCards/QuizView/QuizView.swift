@@ -39,7 +39,7 @@ struct QuizView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var fontColorIsWhite = [true, true, true]
     @State private var cardSlotAnswered = [false, false, false]
-    @State private var gradient = [Gradient(colors: [Color.clear, Color.clear]), Gradient(colors: [Color.clear, Color.clear]),  Gradient(colors: [Color.clear, Color.clear])]
+    @State private var gradient = [Gradient(colors: [ColorReference.specialOrange.opacity(0.0), ColorReference.specialGray.opacity(0.0)]), Gradient(colors: [ColorReference.specialOrange.opacity(0.0), ColorReference.specialGray.opacity(0.0)]),  Gradient(colors: [ColorReference.specialOrange.opacity(0.0), ColorReference.specialGray.opacity(0.0)])]
     @State private var sectionIsDone = false
     @State private var sectionCount = Int()
     @State private var sectionDone = Int()
@@ -98,7 +98,7 @@ struct QuizView: View {
                             Image("FinalCoin").renderingMode(.original)
                                 .resizable()
                                 .frame(width: geo.size.height/20
-                                    , height: geo.size.height/20)
+                                       , height: geo.size.height/20)
                                 .padding(.top)
                             
                             Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
@@ -121,7 +121,7 @@ struct QuizView: View {
                             Image("points2")
                                 .resizable()
                                 .frame(width: geo.size.height/22
-                                    , height: geo.size.height/22)
+                                       , height: geo.size.height/22)
                             
                             Text("\(UserDefaults.standard.integer(forKey: "points")) points")
                                 .frame(width: geo.size.width/4)
@@ -151,15 +151,17 @@ struct QuizView: View {
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 40)
                                         .stroke(Color.white, lineWidth: 2)
-                            )
+                                )
                         }
                         .padding()
                     }
+                    .padding()
                     
                 }
                 .frame(width: geo.size.height/2.5, height: geo.size.height/1.4)
                 .opacity(self.sectionIsDone ? 1.0 : 0.0)
                 /////////////////////////////////////////////
+            
                 Image("FinishedThirdLevel")
                     .resizable()
                     .frame(width: geo.size.height/2.3, height: geo.size.height/1.3)
@@ -185,7 +187,7 @@ struct QuizView: View {
                             Image("FinalCoin").renderingMode(.original)
                                 .resizable()
                                 .frame(width: geo.size.height/25
-                                    , height: geo.size.height/25)
+                                       , height: geo.size.height/25)
                             Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
                                 .font(.caption)
                                 .foregroundColor(.white)
@@ -201,7 +203,7 @@ struct QuizView: View {
                             Image("points2")
                                 .resizable()
                                 .frame(width: geo.size.height/25
-                                    , height: geo.size.height/25)
+                                       , height: geo.size.height/25)
                             
                             Text("\(UserDefaults.standard.integer(forKey: "points")) points")
                                 .font(.caption)
@@ -212,13 +214,9 @@ struct QuizView: View {
                         
                     }
                     .frame(width: geo.size.height/2.7)
+                    self.bar.frame(width: geo.size.height/3.5 ,height: geo.size.height * 0.005)
                     Spacer()
-                        .frame(height: geo.size.height/20)
-                    HStack{
-                        self.bar.frame(width: geo.size.height/3.5 ,height: geo.size.height * 0.005)
-                            .padding()
-                    }
-                    .padding()
+                        .frame(height: geo.size.height * 0.06)
                     HStack {
                         Button(action: {
                             self.presentationMode.wrappedValue.dismiss()
@@ -234,7 +232,7 @@ struct QuizView: View {
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 40)
                                         .stroke(Color.white, lineWidth: 2)
-                            )
+                                )
                         }
                         .padding()
                     }
@@ -249,7 +247,7 @@ struct QuizView: View {
                     .resizable()
                     .cornerRadius(25)
                     .opacity(self.timer0 || (self.thirdLevelIsWrong) ? 1.0 : 0)
-                    .frame(width: geo.size.height/2.5, height: geo.size.height/2.0)
+                    .frame(width: geo.size.height/2.2, height: geo.size.height/2.0)
                 HStack {
                     VStack {
                         Spacer()
@@ -263,7 +261,7 @@ struct QuizView: View {
                             Image("0Coin").renderingMode(.original)
                                 .resizable()
                                 .frame(width: geo.size.height/12
-                                    , height: geo.size.height/12)
+                                       , height: geo.size.height/12)
                         }
                         Text("coin")
                             .foregroundColor(.white)
@@ -286,7 +284,7 @@ struct QuizView: View {
                             Image("10Coin").renderingMode(.original)
                                 .resizable()
                                 .frame(width: geo.size.height/12
-                                    , height: geo.size.height/12)
+                                       , height: geo.size.height/12)
                             
                         }
                         Text("coins")
@@ -296,16 +294,16 @@ struct QuizView: View {
                 }
                 .frame(width: geo.size.height/2.5, height: geo.size.height/2.0)
                 .opacity(self.timer0 || (self.thirdLevelIsWrong) ? 1.0 : 0)
+            
                 ///////////////////////////////////////////
                 VStack {
-                    Spacer()
                     Spacer()
                     HStack {
                         Spacer()
                         Card(gradient: self.gradient[0] , onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed ,index: 0, text: self.cardText[0], fontColorIsWhite: self.fontColorIsWhite[0])
-                            .frame(width: geo.size.height/4.3
-                                * 0.6
-                                , height: geo.size.height/4.3)
+                            .frame(width: geo.size.height/3.9
+                                    * 0.65
+                                   , height: geo.size.height/3.9)
                             .allowsHitTesting(false)
                             .overlay(GeometryReader { geo2 in
                                 Color.clear
@@ -313,22 +311,22 @@ struct QuizView: View {
                                         Color.clear
                                             .onAppear{
                                                 self.cardFrames[0] = geo2.frame(in: .global)
-                                        }
-                                        .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                            if self.screenDimension > 700000 {
-                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                    self.cardFrames[0] = geo2.frame(in: .global)
-                                                }
                                             }
-                                            
-                                        }
+                                            .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
+                                                if self.screenDimension > 700000 {
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                        self.cardFrames[0] = geo2.frame(in: .global)
+                                                    }
+                                                }
+                                                
+                                            }
                                     })
                             })
                             .addBorder(self.cardWasDropped[0] ? Color.clear : Color.white, cornerRadius: 10)
                         Spacer()
                         Card(gradient: self.gradient[1], onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed ,index: 1, text: self.cardText[1], fontColorIsWhite: self.fontColorIsWhite[1])
-                            .frame(width: geo.size.height/4.3 * 0.6
-                                , height: geo.size.height/4.3)
+                            .frame(width: geo.size.height/3.9 * 0.65
+                                   , height: geo.size.height/3.9)
                             .allowsHitTesting(false)
                             .overlay(GeometryReader { geo2 in
                                 Color.clear
@@ -336,15 +334,15 @@ struct QuizView: View {
                                         Color.clear
                                             .onAppear{
                                                 self.cardFrames[1] = geo2.frame(in: .global)
-                                        }
-                                        .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                            if self.screenDimension > 700000 {
-                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                    self.cardFrames[1] = geo2.frame(in: .global)
-                                                }
                                             }
-                                            
-                                        }
+                                            .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
+                                                if self.screenDimension > 700000 {
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                        self.cardFrames[1] = geo2.frame(in: .global)
+                                                    }
+                                                }
+                                                
+                                            }
                                         
                                     })
                             })
@@ -352,8 +350,8 @@ struct QuizView: View {
                         
                         Spacer()
                         Card(gradient: self.gradient[2], onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed ,index: 2, text: self.cardText[2],  fontColorIsWhite: self.fontColorIsWhite[2])
-                            .frame(width: geo.size.height/4.3 * 0.6
-                                , height: geo.size.height/4.3)
+                            .frame(width: geo.size.height/3.9 * 0.65
+                                   , height: geo.size.height/3.9)
                             .allowsHitTesting(false)
                             .overlay(GeometryReader { geo2 in
                                 Color.clear
@@ -361,24 +359,22 @@ struct QuizView: View {
                                         Color.clear
                                             .onAppear{
                                                 self.cardFrames[2] = geo2.frame(in: .global)
-                                        }
-                                        .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                            if self.screenDimension > 700000 {
-                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                    self.cardFrames[2] = geo2.frame(in: .global)
+                                            }
+                                            .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
+                                                if self.screenDimension > 700000 {
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                        self.cardFrames[2] = geo2.frame(in: .global)
+                                                    }
                                                 }
+                                                
                                             }
                                             
-                                        }
                                     })
                             })
                             .addBorder(self.cardWasDropped[2] ? Color.clear : Color.white, cornerRadius: 10)
                         Spacer()
                     }
-                    .padding()
-                    .padding(.leading)
-                    .padding(.trailing)
-                    
+                    Spacer()
                     HStack {
                         Button(action: {
                             self.reset()
@@ -393,31 +389,31 @@ struct QuizView: View {
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 40)
                                         .stroke(Color.white, lineWidth: 2)
-                            )
+                                )
                         }
                     }
-                    .padding()
+                    Spacer()
                     
                     HStack {
                         Spacer()
                         Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 0, text: self.quizData.dates[0])
-                            .frame(width: geo.size.height/4.3 * 0.6
-                                , height: geo.size.height/4.3)
+                            .frame(width: geo.size.height/3.9 * 0.65
+                                   , height: geo.size.height/3.9)
                             .overlay(GeometryReader { geo2 in
                                 Color.clear
                                     .overlay(GeometryReader { geo2 in
                                         Color.clear
                                             .onAppear{
                                                 self.trayCardsFrames[0] = geo2.frame(in: .global)
-                                        }
-                                        .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                            if self.screenDimension > 700000 {
-                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                    self.trayCardsFrames[0] = geo2.frame(in: .global)
-                                                }
                                             }
-                                            
-                                        }
+                                            .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
+                                                if self.screenDimension > 700000 {
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                        self.trayCardsFrames[0] = geo2.frame(in: .global)
+                                                    }
+                                                }
+                                                
+                                            }
                                         
                                     })
                             })
@@ -425,71 +421,68 @@ struct QuizView: View {
                             .opacity(self.trayCardDropped[0] ? 0.0 : 1.0)
                         Spacer()
                         Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 1, text: self.quizData.dates[1])
-                            .frame(width: geo.size.height/4.3 * 0.6
-                                , height: geo.size.height/4.3)
+                            .frame(width: geo.size.height/3.9 * 0.65
+                                   , height: geo.size.height/3.9)
                             .overlay(GeometryReader { geo2 in
                                 Color.clear
                                     .overlay(GeometryReader { geo2 in
                                         Color.clear
                                             .onAppear{
                                                 self.trayCardsFrames[1] = geo2.frame(in: .global)
-                                        }
-                                        .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-                                            if self.screenDimension > 700000 {
-                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                    self.trayCardsFrames[1] = geo2.frame(in: .global)
-                                                }
                                             }
-                                            
-                                        }
+                                            .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
+                                                if self.screenDimension > 700000 {
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                        self.trayCardsFrames[1] = geo2.frame(in: .global)
+                                                    }
+                                                }
+                                                
+                                            }
                                     })
                             })
                             .zIndex(self.cardIsBeingMoved[1] ? 1.0 : 0.5)
                             .opacity(self.trayCardDropped[1] ? 0.0 : 1.0)
                         Spacer()
                         Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 2, text: self.quizData.dates[2])
-                            .frame(width: geo.size.height/4.3 * 0.6
-                                , height: geo.size.height/4.3)
+                            .frame(width: geo.size.height/3.9 * 0.65
+                                   , height: geo.size.height/3.9)
                             .overlay(GeometryReader { geo2 in
                                 Color.clear
                                     .overlay(GeometryReader { geo2 in
                                         Color.clear
                                             .onAppear{
                                                 self.trayCardsFrames[2] = geo2.frame(in: .global)
-                                        }
-                                        .onReceive(NotificationCenter.Publisher(center: .default, name:
-                                            UIDevice.orientationDidChangeNotification)) { _ in
+                                            }
+                                            .onReceive(NotificationCenter.Publisher(center: .default, name:
+                                                                                        UIDevice.orientationDidChangeNotification)) { _ in
                                                 if self.screenDimension > 700000 {
                                                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                                         self.trayCardsFrames[2] = geo2.frame(in: .global)
                                                         
                                                     }
                                                 }
-                                        }
+                                            }
                                     })
                             })
                             .zIndex(self.cardIsBeingMoved[2] ? 1.0 : 0.5)
                             .opacity(self.trayCardDropped[2] ? 0.0 : 1.0)
-                        Spacer()
+                            Spacer()
                     }
-                    .padding()
-                    .padding(.leading)
-                    .padding(.trailing)
                     Spacer()
-                    HStack {
+                    HStack(alignment: .top) {
                         ZStack(){
                             Rectangle()
                                 .fill(ColorReference.specialGray)
-                                .frame(width: geo.size.width, height: geo.size.height/7
-                            )
-                            HStack(alignment: .bottom){
+                                .frame(width: geo.size.width, height: geo.size.height/6.5
+                                )
+                            HStack{
                                 Spacer()
                                 VStack{
                                     ZStack{
                                         Circle()
                                             .foregroundColor(ColorReference.specialOrange)
                                             .frame(width: geo.size.height/12
-                                                , height: geo.size.height/12)
+                                                   , height: geo.size.height/12)
                                             .padding(.top)
                                         Text(self.thirdLevelIsFinished ? "0" : "\(self.timeRemaining - self.vm.seconds)")
                                             .font(.subheadline)
@@ -500,7 +493,7 @@ struct QuizView: View {
                                             .onAppear{
                                                 self.vm.setup(timeRemaining: 30)
                                                 self.timer0 = false
-                                        }
+                                            }
                                     }
                                     Text("Time left")
                                         .font(.footnote)
@@ -514,50 +507,56 @@ struct QuizView: View {
                                         Image("FinalCoinBuy").renderingMode(.original)
                                             .resizable()
                                             .frame(width: geo.size.height/12
-                                                , height: geo.size.height/12)
+                                                   , height: geo.size.height/12)
                                     }
+                                    .padding(.top)
                                     
                                     Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
                                         .font(.footnote)
                                 }
+                                .padding(.top)
                                 Spacer()
                                 VStack{
                                     Image("points2")
                                         .resizable()
                                         .frame(width: geo.size.height/12
-                                            , height: geo.size.height/12)
+                                               , height: geo.size.height/12)
+                                        .padding(.top)
                                     Text("\(UserDefaults.standard.integer(forKey: "points")) points")
                                         .font(.footnote)
                                         .foregroundColor(.black)
                                 }
                                 Spacer()
+                                
                             }
+                            .padding(.leading)
+                            .padding(.trailing)
                         }
                     }
+                    
                 }
                 .blur(radius: self.thirdLevelIsFinished || (self.timer0 || self.thirdLevelIsWrong)  ?  75 : 0.0)
                 .zIndex(-0.5)
             }
-        }
-        .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
-            let screen = FontsAndConstraintsOptions()
-            self.screenDimension = screen.screenSurface
-            
-        }
-        .onReceive(vm.objectWillChange, perform: {
-            if self.vm.time0 && !self.timer0 {
-                withAnimation(.linear(duration: 3)){
-                    self.timer0 = true
-                }
-                self.vm.cleanup()
-                playSound(sound: "Error Warning", type: "wav")
+            .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
+                let screen = FontsAndConstraintsOptions()
+                self.screenDimension = screen.screenSurface
+                
             }
-            
-            
-            
-        })
+            .onReceive(vm.objectWillChange, perform: {
+                if self.vm.time0 && !self.timer0 {
+                    withAnimation(.linear(duration: 3)){
+                        self.timer0 = true
+                    }
+                    self.vm.cleanup()
+                    playSound(sound: "Error Warning", type: "wav")
+                }
+                
+                
+                
+            })
             .background(ColorReference.specialGreen)
-            .edgesIgnoringSafeArea(.all)
+            .edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle("What are the right dates?", displayMode: .inline)
             .navigationBarHidden(answerIsGood || (allCardsDropped && !answerIsGood) || timer0)
             .navigationBarBackButtonHidden(true)
@@ -567,14 +566,16 @@ struct QuizView: View {
                 self.cardText[0] = self.quizData.names[0]
                 self.cardText[1] = self.quizData.names[1]
                 self.cardText[2] = self.quizData.names[2]
-        }
-        .sheet(isPresented: self.$showSheet) {
-            if self.activeSheet == .upLevel {
-                LandMarkView()
-            }else{
-                CoinManagement()
+            }
+            .sheet(isPresented: self.$showSheet) {
+                if self.activeSheet == .upLevel {
+                    LandMarkView()
+                }else{
+                    CoinManagement()
+                }
             }
         }
+
     }
     func cardDropped(location: CGPoint, trayIndex: Int, cardAnswer: String) {
         if let match = cardFrames.firstIndex(where: {
@@ -713,7 +714,7 @@ struct QuizView: View {
         self.thirdLevelIsWrong = false
         self.quizStarted = false
         self.timeRemaining = 30
-        self.gradient = [Gradient(colors: [Color.clear, Color.clear]), Gradient(colors: [Color.clear, Color.clear]),  Gradient(colors: [Color.clear, Color.clear])]
+        self.gradient = [Gradient(colors: [ColorReference.specialOrange.opacity(0.0), ColorReference.specialGray.opacity(0.0)]), Gradient(colors: [ColorReference.specialOrange.opacity(0.0), ColorReference.specialGray.opacity(0.0)]),  Gradient(colors: [ColorReference.specialOrange.opacity(0.0), ColorReference.specialGray.opacity(0.0)])]
         for n in 0...2{
             self.cardWasDropped[n] = false
             self.cardGood[n] = false

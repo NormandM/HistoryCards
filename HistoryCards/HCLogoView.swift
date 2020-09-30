@@ -12,11 +12,12 @@ struct HCLogoView: View {
     @State private var nextViewPresent = false
     var body: some View {
         GeometryReader { geo in
-
+            ZStack {
             VStack{
                 NavigationLink(destination: MenuView() , isActive: self.$nextViewPresent){
                     Text("")
                 }
+                Spacer()
                 Text("HISTORY")
                     .font(.largeTitle)
                     .padding()
@@ -26,21 +27,31 @@ struct HCLogoView: View {
                 Text("CARDS")
                 .font(.largeTitle)
                 .padding()
+                Spacer()
             }
+            .background(ColorReference.specialGray)
+            .edgesIgnoringSafeArea(.all)
+            .navigationBarBackButtonHidden(true)
+            .onAppear{
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    self.nextViewPresent = true
+                }
+            }
+            .frame(width: geo.size.width, height: geo.size.height)
+        }
+        
+
+
+
         }
         .background(ColorReference.specialGray)
         .edgesIgnoringSafeArea(.all)
-        .navigationBarBackButtonHidden(true)
-        .onAppear{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                self.nextViewPresent = true
-            }
-        }
+        
     }
 }
 
-struct HCLogoView_Previews: PreviewProvider {
-    static var previews: some View {
-        HCLogoView()
-    }
-}
+//struct HCLogoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HCLogoView()
+//    }
+//}

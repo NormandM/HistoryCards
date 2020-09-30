@@ -11,8 +11,8 @@ import SwiftUI
 
 struct TimeLineView: View {
     let fonts = FontsAndConstraintsOptions()
-    @State private var cardFrames = [CGRect](repeating: .zero, count: 4)
-    @State private var trayCardsFrames = [CGRect](repeating: .zero, count: 4)
+    @State private var cardFrames = [CGRect](repeating: .zero, count: 3)
+    @State private var trayCardsFrames = [CGRect](repeating: .zero, count: 3)
     @State private var cardGood = [false, false, false]
     @State private var trayCardDropped = [false, false, false]
     @State private var trayCardText = ""
@@ -58,52 +58,19 @@ struct TimeLineView: View {
     @ObservedObject var questionForSeries = QuestionsForSeries()
     @State private var screenDimension: CGFloat = 0
     @EnvironmentObject var vm: ClockDetailViewModel
-    @State private var seconds: Int = 0
     var item: NameItem
     var section: Names
     var body: some View {
         GeometryReader { geo in
-            ZStack {
+            
                 NavigationLink(destination: QuizView( item: self.item, section: self.section, value: ProgressValue()), isActive: self.$goQuizView){
                     Text("")
                 }
+            ZStack {
+                Group{
                 if self.secondLevelFinished {
-                Image("Pouce haut3")
-                    .resizable()
-                    .frame(width: geo.size.height/2.2, height: geo.size.height/2)
-                    .cornerRadius(25)
-                    .opacity(self.secondLevelFinished ? 1.0 : 0.0)
-                VStack {
-                    Spacer()
-                    HStack(alignment: .center) {
-                        Text("+5: ")
-                            .foregroundColor(.white)
-                        VStack {
-                            Image("FinalCoin").renderingMode(.original)
-                                .resizable()
-                                .frame(width: geo.size.height/20
-                                    , height: geo.size.height/20)
-                            Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
-                                .font(.footnote)
-                                .foregroundColor(.white)
-                        }
-                        Spacer()
-                        Text("+15: ")
-                            .foregroundColor(.white)
-                        VStack{
-                            Image("points2")
-                                .resizable()
-                                .frame(width: geo.size.height/22
-                                    , height: geo.size.height/22)
-                            Text("\(UserDefaults.standard.integer(forKey: "points")) points")
-                                .font(.footnote)
-                                .foregroundColor(.white)
-                        }
-                    }
-                }
-                .padding()
-                .frame(width: geo.size.height/2.2, height: geo.size.height/2)
-                .opacity(self.secondLevelFinished ? 1.0 : 0.0)
+                SeondLevelFinishView(secondLevelFinished: $secondLevelFinished)
+                    
                 }else if self.timer0 || (self.allCardsDropped && !self.answerIsGood){
 //////////////////////////////////////////////
                 Image(self.timer0 ? "TimesUp" : "Pouce bas")
@@ -114,14 +81,14 @@ struct TimeLineView: View {
                 VStack {
                     Spacer()
                     HStack {
-                        
+
                         VStack {
                             Text("Back to level 1")
                                 .foregroundColor(.white)
                             Button(action: {
                                 self.presentationMode.wrappedValue.dismiss()
                                 UserDefaults.standard.set(false, forKey: "dismissView")
-                                
+
                             }){
                                 Image("0Coin").renderingMode(.original)
                                     .resizable()
@@ -131,7 +98,7 @@ struct TimeLineView: View {
                             Text("coins")
                                 .foregroundColor(.white)
                         }
-                        .padding()
+                        .padding(.leading)
                         Spacer()
                         VStack {
                             Text("Stay on level 2")
@@ -164,26 +131,27 @@ struct TimeLineView: View {
                                     .resizable()
                                     .frame(width: geo.size.height/12
                                         , height: geo.size.height/12)
-                                
+
                             }
                             Text("coins")
                                 .foregroundColor(.white)
-                        }.padding()
+                        }.padding(.trailing)
                     }
                 }
                 .frame(width: geo.size.height/2.2, height: geo.size.height/2.0)
                 .opacity(self.timer0 || (self.allCardsDropped && !self.answerIsGood) ? 1.0 : 0)
                 }
+                }
                 VStack {
-                    Spacer()
                     HStack {
                         ZStack {
                             Text(self.cardDescription)
                                 .lineLimit(100)
                                 .scaledFont(name: "Helvetica Neue", size: self.getFont(tryAgain: self.tryAgain || self.serieNumberDisplayed))
                                 .foregroundColor(.black)
-                                .padding()
-                                .frame(width: geo.size.width/1.0, height: geo.size.height/7
+                                .padding(.leading)
+                                .padding(.trailing)
+                                .frame(width: geo.size.width/1.0, height: geo.size.height/5
                             )
                                 .border(Color.white)
                                 .background(ColorReference.specialGray)
@@ -235,20 +203,20 @@ struct TimeLineView: View {
                             }
                         }
                     }
-                   
+                    Spacer()
                     HStack() {
                         Spacer()
                         VStack{
                             Card(onEnded: self.cardDropped, index: 0, text: self.cardText[0])
-                                .frame(width: geo.size.height/4.3 * 0.6
-                                    , height: geo.size.height/4.3)
+                                .frame(width: geo.size.height/3.9 * 0.65
+                                    , height: geo.size.height/3.9)
                                 .allowsHitTesting(false)
-                                .overlay(GeometryReader { geo2 in
-                                    Color.clear
                                         .overlay(GeometryReader { geo2 in
                                             Color.clear
                                                 .onAppear{
-                                                    self.cardFrames[0] = geo2.frame(in: .global)
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                                        self.cardFrames[0] = geo2.frame(in: .global)
+                                                    }
                                             }
                                             .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
                                                 if self.screenDimension > 700000 {
@@ -260,28 +228,29 @@ struct TimeLineView: View {
                                             }
                                             
                                         })
-                                })
+                                
                                 .opacity(self.cardWasDropped[0] ? 1.0 : 0.0)
                                 .offset(x: self.serieNumbers == 0 ? self.xOffset : 0.0)
                                 .addBorder(self.cardWasDropped[0] ? Color.clear : Color.white, cornerRadius: 10)
-                            Text(self.trayCardDates[0])
+                                Text(self.trayCardDates[0])
                                 .font(.footnote)
                                 .foregroundColor(.white)
                                 .opacity(self.allCardsDropped ? 1.0 : 0.0)
                             
                         }
+                        
                         Spacer()
                         VStack{
                             Card(onEnded: self.cardDropped, index: 1, text: self.cardText[1])
-                                .frame(width: geo.size.height/4.3 * 0.6
-                                    , height: geo.size.height/4.3)
+                                .frame(width: geo.size.height/3.9 * 0.65
+                                    , height: geo.size.height/3.9)
                                 .allowsHitTesting(false)
-                                .overlay(GeometryReader { geo2 in
-                                    Color.clear
                                         .overlay(GeometryReader { geo2 in
                                             Color.clear
                                                 .onAppear{
-                                                    self.cardFrames[1] = geo2.frame(in: .global)
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                                        self.cardFrames[1] = geo2.frame(in: .global)
+                                                    }
                                             }
                                             .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
                                                 if self.screenDimension > 700000 {
@@ -293,7 +262,7 @@ struct TimeLineView: View {
                                             }
                                             
                                         })
-                                })
+                                
                                 .opacity(self.cardWasDropped[1] ? 1.0 : 0.0)
                                 .offset(x: self.serieNumbers == 0 ? self.xOffset : 0.0)
                                 .addBorder(self.cardWasDropped[1] ? Color.clear : Color.white, cornerRadius: 10)
@@ -306,15 +275,15 @@ struct TimeLineView: View {
                         Spacer()
                         VStack {
                             Card(onEnded: self.cardDropped, index: 2, text: self.cardText[2])
-                                .frame(width: geo.size.height/4.3 * 0.6
-                                    , height: geo.size.height/4.3)
+                                .frame(width: geo.size.height/3.9 * 0.65
+                                    , height: geo.size.height/3.9)
                                 .allowsHitTesting(false)
-                                .overlay(GeometryReader { geo2 in
-                                    Color.clear
                                         .overlay(GeometryReader { geo2 in
                                             Color.clear
                                                 .onAppear{
-                                                    self.cardFrames[2] = geo2.frame(in: .global)
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                                        self.cardFrames[2] = geo2.frame(in: .global)
+                                                    }
                                             }
                                             .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
                                                 if self.screenDimension > 700000 {
@@ -326,7 +295,7 @@ struct TimeLineView: View {
 
                                             }
                                         })
-                                })
+                                
                                 .opacity(self.cardWasDropped[2] ? 1.0 : 0.0)
                                 .offset(x: self.serieNumbers == 0 ? self.xOffset : 0.0)
                                 .addBorder(self.cardWasDropped[2] ? Color.clear : Color.white, cornerRadius: 10)
@@ -336,7 +305,7 @@ struct TimeLineView: View {
                                 .opacity(self.allCardsDropped ? 1.0 : 0)
                            
                         }
-                         Spacer()
+                        Spacer()
                     }
                     HStack {
                         Button(action: {
@@ -363,17 +332,20 @@ struct TimeLineView: View {
                             
                         }.disabled(self.allCardsDropped)
                     }
+                    
                     HStack {
                         Spacer()
                         Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 0, text: self.trayCard0)
-                            .frame(width: geo.size.height/4.3 * 0.6
-                                , height: geo.size.height/4.3)
-                            .overlay(GeometryReader { geo2 in
-                                Color.clear
+                            .frame(width: geo.size.height/3.9 * 0.65
+                                , height: geo.size.height/3.9)
+                            
                                     .overlay(GeometryReader { geo2 in
                                         Color.clear
                                             .onAppear{
-                                                self.trayCardsFrames[0] = geo2.frame(in: .global)
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                                    self.trayCardsFrames[0] = geo2.frame(in: .global)
+                                                }
+                                                
                                         }
                                         .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
                                             if self.screenDimension > 700000 {
@@ -384,21 +356,22 @@ struct TimeLineView: View {
 
                                         }
                                     })
-                            })
+                           
                             .zIndex(self.cardIsBeingMoved[0] ? 1.0 : 0.5)
                             .offset(x: self.serieNumbers == 0 ? self.xOffset : 0)
                             .offset(x: self.serieNumbers == 1 ? self.xOffset2 : 0)
                             .opacity(self.trayCardDropped[0] ? 0.0 : 1.0)
                         Spacer()
                         Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 1, text: self.trayCard1)
-                            .frame(width: geo.size.height/4.3 * 0.6
-                                , height: geo.size.height/4.3)
-                            .overlay(GeometryReader { geo2 in
-                                Color.clear
+                            .frame(width: geo.size.height/3.9 * 0.65
+                                , height: geo.size.height/3.9)
+                           
                                     .overlay(GeometryReader { geo2 in
                                         Color.clear
                                             .onAppear{
-                                                self.trayCardsFrames[1] = geo2.frame(in: .global)
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                                    self.trayCardsFrames[1] = geo2.frame(in: .global)
+                                                }
                                         }
                                         .onReceive(NotificationCenter.Publisher(center: .default, name:
                                             UIDevice.orientationDidChangeNotification)) { _ in
@@ -411,46 +384,47 @@ struct TimeLineView: View {
                                         }
                                         
                                     })
-                            })
+                            
                             .zIndex(self.cardIsBeingMoved[1] ? 1.0 : 0.5)
                             .offset(x: self.serieNumbers == 0 ? self.xOffset : 0)
                             .offset(x: self.serieNumbers == 1 ? self.xOffset2 : 0)
                             .opacity(self.trayCardDropped[1] ? 0.0 : 1.0)
                         Spacer()
                         Card(onChanged: self.cardMoved, onEnded: self.cardDropped,onChangedP: self.cardPushed, onEndedP: self.cardUnpushed, index: 2, text: self.trayCard2)
-                            .frame(width: geo.size.height/4.3 * 0.6
-                                , height: geo.size.height/4.3)
-
-                            .overlay(GeometryReader { geo2 in
-                                Color.clear
+                            .frame(width: geo.size.height/3.9 * 0.65
+                                , height: geo.size.height/3.9)
+                            
                                     .overlay(GeometryReader { geo2 in
                                         Color.clear
                                             .onAppear{
-                                                self.trayCardsFrames[2] = geo2.frame(in: .global)
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                                    self.trayCardsFrames[2] = geo2.frame(in: .global)
+                                                }
+                                                
                                         }
                                         .onReceive(NotificationCenter.Publisher(center: .default, name: UIDevice.orientationDidChangeNotification)) { _ in
                                             if self.screenDimension > 700000 {
                                                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                                    self.trayCardsFrames[2] = geo2.frame(in: .global)
+                                                    self.trayCardsFrames[2] = geo2.frame(in: .named("Custom"))
                                                 }
                                             }
 
                                         }
                                     })
-                            })
+                            
                             .zIndex(self.cardIsBeingMoved[2] ? 1.0 : 0.5)
                             .offset(x: self.serieNumbers == 0 ? self.xOffset : 0)
                             .offset(x: self.serieNumbers == 1 ? self.xOffset2 : 0)
                             .opacity(self.trayCardDropped[2] ? 0.0 : 1.0)
                         Spacer()
                     }
-                   
-                    ZStack{
+               
+                    ZStack(alignment: .top){
                         Rectangle()
                             .fill(ColorReference.specialGray)
-                            .frame(width: geo.size.width, height: geo.size.height/7
+                            .frame(width: geo.size.width, height: geo.size.height/6.5
                         )
-                        HStack(alignment: .bottom){
+                        HStack(){
                             Spacer()
                             VStack{
                                 ZStack{
@@ -484,6 +458,7 @@ struct TimeLineView: View {
                                         .frame(width: geo.size.height/12
                                             , height: geo.size.height/12)
                                 }
+                                .padding(.top)
                                 
                                 Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
                                     .font(.footnote)
@@ -494,13 +469,17 @@ struct TimeLineView: View {
                                     .resizable()
                                     .frame(width: geo.size.height/12
                                         , height: geo.size.height/12)
+                                    .padding(.top)
                                 Text("\(UserDefaults.standard.integer(forKey: "points")) points")
                                     .scaledFont(name: "Helvetica Neue", size: self.fonts.smallFontDimension )
                                     .font(.footnote)
                                     .foregroundColor(.black)
                             }
                             Spacer()
+
                         }
+                        .padding(.leading)
+                        .padding(.trailing)
                         
                     }
                 }
@@ -516,6 +495,8 @@ struct TimeLineView: View {
                 if self.dismissView {
                     self.presentationMode.wrappedValue.dismiss()
                 }
+                trayCardsFrames = [CGRect](repeating: .zero, count: 3)
+                cardFrames = [CGRect](repeating: .zero, count: 3)
                 self.goQuizView = false
                 self.secondLevelFinished = false
                 self.timer0 = false
@@ -551,22 +532,23 @@ struct TimeLineView: View {
                     self.vm.cleanup()
                     self.cardAnimation()
                 }
-               
+                
             })
-        }
-        .navigationBarTitle("What is the right order?", displayMode: .inline)
-        .navigationBarHidden(secondLevelFinished)
-        .background(ColorReference.specialGreen)
-        .edgesIgnoringSafeArea(.all)
-        .navigationBarBackButtonHidden(true)
-        .sheet(isPresented: self.$showSheet) {
-            if self.activeSheet == .upLevel {
-                LandMarkView()
-            }else{
-                CoinManagement()
+            .navigationBarTitle("What is the right order?", displayMode: .inline)
+            .navigationBarHidden(secondLevelFinished)
+            .background(ColorReference.specialGreen)
+            .edgesIgnoringSafeArea(.bottom)
+            .navigationBarBackButtonHidden(true)
+            .sheet(isPresented: self.$showSheet) {
+                if self.activeSheet == .upLevel {
+                    LandMarkView()
+                }else{
+                    CoinManagement()
+                }
             }
+            .navigationViewStyle(StackNavigationViewStyle())
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+ 
     }
     func cardDropped(location: CGPoint, trayIndex: Int, cardAnswer: String) {
         if let match = cardFrames.firstIndex(where: {

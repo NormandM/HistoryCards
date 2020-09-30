@@ -15,29 +15,32 @@ struct NMLogo:  View {
         
         NavigationView {
             GeometryReader { geo in
-                VStack{
-                    NavigationLink(destination: HCLogoView() , isActive: self.$nextViewPresent){
-                        Text("")
+                ZStack {
+                    VStack{
+                        NavigationLink(destination: HCLogoView() , isActive: self.$nextViewPresent){
+                            Text("")
+                        }
+                        Spacer()
+                        Image("Normand martin Logo")
+                            .resizable()
+                            .frame(width: geo.size.height/2.3, height: geo.size.height/2.3)
+                        Text("Apps")
+                            .font(.title)
+                            .offset(x: self.xOffset)
+                        Spacer()
+                        Spacer()
+                        
                     }
-                    Spacer()
-                    Image("Normand martin Logo")
-                        .resizable()
-                        .frame(width: geo.size.height/2.3, height: geo.size.height/2.3)
-                    Text("Apps")
-                        .font(.title)
-                        .offset(x: self.xOffset)
-                    Spacer()
-                    Spacer()
-                    
                 }
-            }
-            .onAppear{
-                withAnimation(Animation.easeInOut(duration: 2.0).delay(1.0)) {
-                    self.xOffset = 0
-                }
-                playSound(sound: "Acoustic Trio", type: "wav")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                    self.nextViewPresent = true
+                .frame(width: geo.size.width, height: geo.size.height)
+                .onAppear{
+                    withAnimation(Animation.linear(duration: 2.0).delay(1.0)) {
+                        self.xOffset = 0
+                    }
+                    playSound(sound: "Acoustic Trio", type: "wav")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                        self.nextViewPresent = true
+                    }
                 }
             }
         }
@@ -46,8 +49,8 @@ struct NMLogo:  View {
     
 }
 
-struct NMLogo_Previews: PreviewProvider {
-    static var previews: some View {
-        NMLogo()
-    }
-}
+//struct NMLogo_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NMLogo()
+//    }
+//}

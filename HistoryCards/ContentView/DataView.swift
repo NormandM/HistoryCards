@@ -37,7 +37,7 @@ struct DataView: View {
                         .foregroundColor(.black)
                         .padding()
                         .frame(width: geo.size.width/1.0
-                            , height: geo.size.height/7.0
+                            , height: geo.size.height/6.0
                     )
                         .background(ColorReference.specialGray)
                         .cornerRadius(20)
@@ -82,7 +82,7 @@ struct DataView: View {
         )
             .navigationBarTitle("\(String(self.eventNumber + 1)) of 6")
             .background(ColorReference.specialGreen)
-            .edgesIgnoringSafeArea(.all)
+        .edgesIgnoringSafeArea(.bottom)
             .navigationViewStyle(StackNavigationViewStyle())
             .onReceive(self.vm.objectWillChange){_ in
                 self.count += 1

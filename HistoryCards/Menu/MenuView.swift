@@ -19,45 +19,45 @@ struct MenuView: View {
     @State private var turned = false
     @State private var showSheet = false
     var body: some View {
-        VStack{
-            List {
-                ForEach (name) { section in
-                    Section(header: SectionRow(name: section)) {
-                        ForEach(section.items) {item in
-                            NavigationLink(destination: ContentView(item: item, section: section)){
-                                HStack {
-                                    ItemRowView(item: item)
-                                }
-                                
+        //   VStack{
+        List {
+            ForEach (name) { section in
+                Section(header: SectionRow(name: section, color: ColorReference.specialOrange)) {
+                    ForEach(section.items) {item in
+                        NavigationLink(destination: ContentView(item: item, section: section)){
+                            HStack {
+                                ItemRowView(item: item)
                             }
-                        }.listRowBackground(ColorReference.specialGreen)
+                            
+                        }
                     }
-                    
+                    .listRowBackground(ColorReference.specialGreen)
                 }
-                
             }
-            .navigationBarTitle("Choose a Time Line" , displayMode: .inline)
-            .navigationBarBackButtonHidden(true)
-            .onAppear{
-                UserDefaults.standard.set(false, forKey: "dismissView")
-                self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
-                if addCoins(numberOfCoinsToAdd: 0) && !UserDefaults.standard.bool(forKey: "coinsPurchased") {
-                    self.showSheet = true
-                }
-                if self.showSheet {
-                    UserDefaults.standard.set(true, forKey: "sixHundredCoinsReached")
-                }
-                
-            }
-
         }
-            .sheet(isPresented: self.$showSheet) {
-                CoinManagement()
+        .navigationBarTitle("Choose a Time Line" , displayMode: .inline)
+        .navigationBarBackButtonHidden(true)
+        .edgesIgnoringSafeArea(.bottom)
+        .onAppear{
+            UserDefaults.standard.set(false, forKey: "dismissView")
+            self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
+            if addCoins(numberOfCoinsToAdd: 0) && !UserDefaults.standard.bool(forKey: "coinsPurchased") {
+                self.showSheet = true
             }
+            if self.showSheet {
+                UserDefaults.standard.set(true, forKey: "sixHundredCoinsReached")
+            }
+            
+        }
+        
+        //  }
+        .sheet(isPresented: self.$showSheet) {
+            CoinManagement()
+        }
         .onAppear{
             self.points = UserDefaults.standard.integer(forKey: "points")
             IAPManager.shared.getProductsV5()
-            if !(self.userAlreadyExist(coins: "coins")){
+            if !(self.userAlreadyExist(eventName: "eventName")){
                 self.coins = 30
                 self.points = 0
                 UserDefaults.standard.set(self.coins, forKey: "coins")
@@ -70,8 +70,8 @@ struct MenuView: View {
             AppStoreFeedBack.askForFeedback()
         }
     }
-    func userAlreadyExist(coins: String) -> Bool {
-        return UserDefaults.standard.object(forKey: coins) != nil
+    func userAlreadyExist(eventName: String) -> Bool {
+        return UserDefaults.standard.object(forKey: "eventName") != nil
     }
 }
 

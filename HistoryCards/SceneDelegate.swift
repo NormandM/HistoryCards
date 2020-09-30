@@ -37,8 +37,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         newAppearance.configureWithOpaqueBackground()
         newAppearance.backgroundColor = UIColorReference.specialGreen
         newAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-
         UINavigationBar.appearance().standardAppearance = newAppearance
+
 
         //Other code for displaying the first scree
     }

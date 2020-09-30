@@ -8,18 +8,24 @@
 
 import SwiftUI
 struct SectionRow: View {
-    var name: Names
+    let name: Names
+    let color: Color
     var body: some View {
         GeometryReader { geo in
-            VStack {
+            ZStack {
                 HStack {
                     Image(self.name.photo)
                         .resizable()
                         .frame(width: geo.size.height * 0.9, height: geo.size.height * 0.9, alignment: .leading)
+                    
                     Text(self.name.name)
                     Spacer()
-                }.padding(0).background(FillAll(color: ColorReference.specialOrange))
+                }
+                .padding(0).background(FillAll(color: ColorReference.specialOrange))
+
             }
+            .frame(width: geo.size.width, height: geo.size.height)
+            .background(ColorReference.specialOrange)
         }
     }
 }
@@ -27,7 +33,7 @@ struct FillAll: View {
     let color: Color
     var body: some View {
         GeometryReader { proxy in
-            self.color.frame(width: proxy.size.width * 1.3, height: proxy.size.height * 1.4).fixedSize()
+            self.color.frame(width: proxy.size.width * 1.3, height: proxy.size.height * 1.1).fixedSize()
         }
     }
 }

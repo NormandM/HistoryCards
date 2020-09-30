@@ -12,6 +12,7 @@ struct ItemRowView: View {
     var item: NameItem
     @State var isDone = false
     var body: some View {
+        GeometryReader { geo in
         ZStack {
             HStack {
                 Text(item.name!)
@@ -19,12 +20,18 @@ struct ItemRowView: View {
                 
                 Image(systemName: "checkmark")
                     .foregroundColor(isDone ? .white : .clear)
-                .padding()
+                    .padding()
             }
+            .frame(width: geo.size.width, height: geo.size.height, alignment: .leading)
             
-        }.background(ColorReference.specialGreen)
-            .onAppear{
-                self.isDone = UserDefaults.standard.bool(forKey: self.item.id.uuidString)
+            
+        }
+            
+        .background(ColorReference.specialGreen)
+        .edgesIgnoringSafeArea(.bottom)
+        .onAppear{
+            self.isDone = UserDefaults.standard.bool(forKey: self.item.id.uuidString)
+        }
         }
     }
 }
