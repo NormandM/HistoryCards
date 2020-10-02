@@ -42,7 +42,6 @@ struct TimeLineOrNo: View {
                 Button(action: {
                     self.seeQuizData = false
                     self.startUp = false
-                    
                     self.vm.setup(timeRemaining: 90)
                 }){
                     Text("No, I am ready!")

@@ -15,7 +15,7 @@ struct SeondLevelFinishView: View {
             ZStack{
                 Image("Pouce haut3")
                     .resizable()
-                    .frame(width: geo.size.height/2.2, height: geo.size.height/2)
+                    .frame(width: geo.size.height/2.4, height: geo.size.height/2.4)
                     .cornerRadius(25)
                     .opacity(self.secondLevelFinished ? 1.0 : 0.0)
                 VStack {
@@ -23,11 +23,12 @@ struct SeondLevelFinishView: View {
                     HStack(alignment: .center) {
                         Text("+5: ")
                             .foregroundColor(.white)
+                            .padding(.leading)
                         VStack {
                             Image("FinalCoin").renderingMode(.original)
                                 .resizable()
-                                .frame(width: geo.size.height/20
-                                       , height: geo.size.height/20)
+                                .frame(width: geo.size.height/22
+                                       , height: geo.size.height/22)
                             Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
                                 .font(.footnote)
                                 .foregroundColor(.white)
@@ -44,10 +45,11 @@ struct SeondLevelFinishView: View {
                                 .font(.footnote)
                                 .foregroundColor(.white)
                         }
+                        .padding(.trailing)
                     }
                 }
                 .padding()
-                .frame(width: geo.size.height/2.3, height: geo.size.height/2.3)
+                .frame(width: geo.size.height/2.2, height: geo.size.height/2.2)
                 .opacity(self.secondLevelFinished ? 1.0 : 0.0)
             }
             .frame(width: geo.size.width, height: geo.size.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)

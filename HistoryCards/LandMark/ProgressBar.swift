@@ -50,7 +50,7 @@ struct ProgressBar: View {
                         .opacity(self.progressValue.value >= 3000.0 ? 0 : 1)
                         
                         Text(String(self.progressValue.nextLevelPoint))
-                            .frame(width: geometry.size.width * 0.1, height: geometry.size.height * 0.1)
+                            .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.2)
                             .foregroundColor(.white)
                             .font(.footnote)
                             .lineLimit(1)

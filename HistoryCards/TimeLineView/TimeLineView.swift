@@ -43,7 +43,6 @@ struct TimeLineView: View {
     @State private var points = UserDefaults.standard.integer(forKey: "points")
     @State private var dismissView = UserDefaults.standard.bool(forKey: "dismissView")
     @State private var showSheet = false
-    @State private var activeSheet: ActiveSheet = .coinPurchase
     @State private var trayCard0 = ""
     @State private var trayCard1 = ""
     @State private var trayCard2 = ""
@@ -54,6 +53,7 @@ struct TimeLineView: View {
     @State private var cardDate1 = ""
     @State private var cardDate2 = ""
     @State private var timer0 = false
+    @State private var showLandMark = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var questionForSeries = QuestionsForSeries()
     @State private var screenDimension: CGFloat = 0
@@ -66,18 +66,20 @@ struct TimeLineView: View {
                 NavigationLink(destination: QuizView( item: self.item, section: self.section, value: ProgressValue()), isActive: self.$goQuizView){
                     Text("")
                 }
+                NavigationLink(destination: LandMarkView(), isActive: $showLandMark){
+                    Text("")
+                }
             ZStack {
                 Group{
                 if self.secondLevelFinished {
-                SeondLevelFinishView(secondLevelFinished: $secondLevelFinished)
-                    
+                    SeondLevelFinishView(secondLevelFinished: $secondLevelFinished)
                 }else if self.timer0 || (self.allCardsDropped && !self.answerIsGood){
 //////////////////////////////////////////////
                 Image(self.timer0 ? "TimesUp" : "Pouce bas")
                     .resizable()
                     .cornerRadius(25)
                     .opacity(self.timer0 || (self.secondLevelWrong) ? 1.0 : 0)
-                    .frame(width: geo.size.height/2.2, height: geo.size.height/2.0)
+                    .frame(width: geo.size.height/2.1, height: geo.size.height/2.0)
                 VStack {
                     Spacer()
                     HStack {
@@ -125,7 +127,6 @@ struct TimeLineView: View {
                                 self.xOffset = 0
                                 self.numberToFinish = 0
                                 self.showSheet = removeCoins(numberOfCoinsToRemove: 5)
-                                self.activeSheet = .coinPurchase
                             }){
                                 Image("5Coin").renderingMode(.original)
                                     .resizable()
@@ -138,7 +139,7 @@ struct TimeLineView: View {
                         }.padding(.trailing)
                     }
                 }
-                .frame(width: geo.size.height/2.2, height: geo.size.height/2.0)
+                .frame(width: geo.size.height/2.1, height: geo.size.height/2.0)
                 .opacity(self.timer0 || (self.allCardsDropped && !self.answerIsGood) ? 1.0 : 0)
                 }
                 }
@@ -451,7 +452,6 @@ struct TimeLineView: View {
                             VStack {
                                 Button(action: {
                                     self.showSheet = true
-                                    self.activeSheet = .coinPurchase
                                 }){
                                     Image("FinalCoinBuy").renderingMode(.original)
                                         .resizable()
@@ -486,11 +486,9 @@ struct TimeLineView: View {
                 .blur(radius: self.secondLevelFinished || (self.timer0 || self.secondLevelWrong)  ?  75 : 0.0)
                     .zIndex(-0.5)
             }.onAppear{
-                if achievement() {
-                    self.activeSheet = .upLevel
-                     self.showSheet = true
+                if achievement(){
+                    showLandMark = true
                 }
-    
                 self.dismissView = UserDefaults.standard.bool(forKey: "dismissView")
                 if self.dismissView {
                     self.presentationMode.wrappedValue.dismiss()
@@ -540,11 +538,7 @@ struct TimeLineView: View {
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarBackButtonHidden(true)
             .sheet(isPresented: self.$showSheet) {
-                if self.activeSheet == .upLevel {
-                    LandMarkView()
-                }else{
-                    CoinManagement()
-                }
+                CoinManagement()
             }
             .navigationViewStyle(StackNavigationViewStyle())
         }
@@ -583,8 +577,10 @@ struct TimeLineView: View {
                 answerIsGood = true
                 _ = addCoins(numberOfCoinsToAdd: 2)
                 addPoints(numberOfPointsToAdd: 2)
-                self.showSheet = achievement()
-                activeSheet = .upLevel
+                if achievement() {
+                    self.showLandMark = true
+                }
+                
             }else if self.allCardsDropped{
                 answerIsGood = false
                 self.vm.cleanup()
@@ -716,10 +712,8 @@ struct TimeLineView: View {
             switch numberToFinish {
             case 0:
                 showSheet = removeCoins(numberOfCoinsToRemove: 2)
-                activeSheet = .coinPurchase
             case 1:
                 showSheet = removeCoins(numberOfCoinsToRemove: 2)
-                activeSheet = .coinPurchase
             default:
                 print("default7")
             }

@@ -84,7 +84,6 @@
 		8E674EC424523845001212B4 /* SequenceSpacePioneers4.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EC324523845001212B4 /* SequenceSpacePioneers4.plist */; };
 		8E674EC624560E51001212B4 /* Pine_Apple_Rag.ogg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E674EC524560E51001212B4 /* Pine_Apple_Rag.ogg.mp3 */; };
 		8E6C3FCC246F1B9C00C4C805 /* HCLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C3FCB246F1B9C00C4C805 /* HCLogoView.swift */; };
-		8E6C3FCF247069FD00C4C805 /* ActiveSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C3FCE247069FD00C4C805 /* ActiveSheet.swift */; };
 		8E6C3FD22472D99200C4C805 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6C3FD12472D99200C4C805 /* GameKit.framework */; };
 		8E6C3FD42472D9E200C4C805 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6C3FD32472D9E200C4C805 /* StoreKit.framework */; };
 		8E6C3FD72472FDD200C4C805 /* ConnectionReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C3FD62472FDD200C4C805 /* ConnectionReachable.swift */; };
@@ -245,7 +244,6 @@
 		8E674EC324523845001212B4 /* SequenceSpacePioneers4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SequenceSpacePioneers4.plist; sourceTree = "<group>"; };
 		8E674EC524560E51001212B4 /* Pine_Apple_Rag.ogg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pine_Apple_Rag.ogg.mp3; sourceTree = "<group>"; };
 		8E6C3FCB246F1B9C00C4C805 /* HCLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HCLogoView.swift; path = /Users/normandmartin/Desktop/IOSProjects/HistoryCards/HistoryCards/HCLogoView.swift; sourceTree = "<absolute>"; };
-		8E6C3FCE247069FD00C4C805 /* ActiveSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSheet.swift; sourceTree = "<group>"; };
 		8E6C3FD12472D99200C4C805 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		8E6C3FD32472D9E200C4C805 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8E6C3FD62472FDD200C4C805 /* ConnectionReachable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionReachable.swift; sourceTree = "<group>"; };
@@ -571,9 +569,8 @@
 				8E3375292448C9300049467C /* DataView.swift */,
 				8E9EB307251BE7410003E53A /* Card.swift */,
 				8EDE2EFF243142EC00588FCA /* Event.swift */,
-				8EDE2F01243142EC00588FCA /* Question.swift */,
 				8EDE2F02243142EC00588FCA /* Seuquence.swift */,
-				8E6C3FCE247069FD00C4C805 /* ActiveSheet.swift */,
+				8EDE2F01243142EC00588FCA /* Question.swift */,
 				8E8848D1252131B4001FFEB0 /* TimeLineOrNo.swift */,
 				8E8848D6252131C0001FFEB0 /* TumbsUpMessage.swift */,
 			);
@@ -941,7 +938,6 @@
 				8EDB865B244A409500C95E5E /* Accomplishements.swift in Sources */,
 				8EDE2F0C243142FC00588FCA /* QuestionForSeries.swift in Sources */,
 				8EF6BAC824410EF100E36EE0 /* SectionRow.swift in Sources */,
-				8E6C3FCF247069FD00C4C805 /* ActiveSheet.swift in Sources */,
 				8EDE2F07243142EC00588FCA /* Seuquence.swift in Sources */,
 				8E2EA07C245C7D1900E826C8 /* CoinAndPoints.swift in Sources */,
 				8E9EB2AC251A90280003E53A /* SeondLevelFinishView.swift in Sources */,
@@ -1155,7 +1151,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = NM.HistoryCards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1178,7 +1174,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = NM.HistoryCards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -14,7 +14,7 @@ struct TumbsUpMessage: View {
             ZStack {
                 Image("Pouce haut2")
                     .resizable()
-                    .frame(width: geo.size.height/2.2, height: geo.size.height/2)
+                    .frame(width: geo.size.height/2.4, height: geo.size.height/2.4)
                     .cornerRadius(25)
                 VStack {
                     Spacer()
@@ -48,11 +48,14 @@ struct TumbsUpMessage: View {
                         
                         
                     }
+                    
                 }
-                .frame(width: geo.size.height/2.3, height: geo.size.height/2.3)
+                .frame(width: geo.size.height/2.4, height: geo.size.height/2.4)
             }
             .frame(width: geo.size.width, height: geo.size.height)
+            
         }
+        
         
     }
 }

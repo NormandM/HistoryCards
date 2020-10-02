@@ -29,11 +29,10 @@ struct ContentView: View {
     @State private var cardDescription = ""
     @State private var nextViewPresent = false
     @State private var showSheet = false
-    @State private var activeSheet: ActiveSheet = .coinPurchase
     @State private var percentComplete: CGFloat = 0.0
     @State private var tryAgain = false
     @State private var timeRemaining = 90
-    @State private var quizStarted = false
+    @State private var showLandMark = false
     @State private var messageAfterAnswer = ""
     @State private var firstLevelFinished = false
     @State private var numberCardsDisplayed = false
@@ -63,17 +62,17 @@ struct ContentView: View {
             NavigationLink(destination: DataView(item: self.item, section: self.section, vm: self.vm), isActive: self.$seeQuizData){
                 Text("")
             }
+            NavigationLink(destination: LandMarkView(), isActive: $showLandMark){
+                Text("")
+            }
+            
             ZStack{
-            if self.startUp{
+                
                 TimeLineOrNo(seeQuizData: $seeQuizData, startUp: $startUp)
+                    .opacity(startUp ? 1.0 : 0.0)
                     .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
-            }
-            else{
                 TumbsUpMessage()
-                    .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
                     .opacity(self.firstLevelFinished ? 1.0 : 0.0)
-
-            }
            
                 VStack() {
                     Spacer()
@@ -287,7 +286,6 @@ struct ContentView: View {
                             VStack {
                                 Button(action: {
                                     self.showSheet = true
-                                    self.activeSheet = .coinPurchase
                                     
                                 }){
                                     Image("FinalCoinBuy").renderingMode(.original)
@@ -324,6 +322,10 @@ struct ContentView: View {
                 .zIndex(-0.5)
             }
             .onAppear{
+                if achievement() {
+                    self.showLandMark = true
+                }
+                
                 self.coins = UserDefaults.standard.integer(forKey: "coins")
                 self.eventName = self.item.name
                 self.nextViewPresent = false
@@ -366,12 +368,7 @@ struct ContentView: View {
                                         }
                                     })
             .sheet(isPresented: self.$showSheet) {
-                if self.activeSheet == .upLevel {
-                    
-                    LandMarkView()
-                }else{
                     CoinManagement()
-                }
             }
             .navigationViewStyle(StackNavigationViewStyle())
         }
@@ -397,7 +394,6 @@ struct ContentView: View {
                     
                 }else{
                     showSheet = removeCoins(numberOfCoinsToRemove: 1)
-                    activeSheet = .coinPurchase
                     answerIsGood = false
                     playSound(sound: "Error Warning", type: "wav")
                     
@@ -415,7 +411,6 @@ struct ContentView: View {
                     }
                 }else{
                     showSheet = removeCoins(numberOfCoinsToRemove: 1)
-                    activeSheet = .coinPurchase
                     answerIsGood = false
                     playSound(sound: "Error Warning", type: "wav")
                     
@@ -444,7 +439,6 @@ struct ContentView: View {
     }
     func cardPushed(location: CGPoint, trayIndex: Int){
         self.numberCardsDisplayed = false
-        quizStarted = true
         tryAgain = false
         cardSelected = true
         cardDescription = self.cardInfo.info[self.questionNumber].trayCardDescription1
@@ -475,13 +469,14 @@ struct ContentView: View {
                 self.xOffset0 = 0
                 self.xOffset2 = 0
                 self.percentComplete = 0
-                self.showSheet = achievement()
-                self.activeSheet = .upLevel
+                if achievement() {
+                    self.showLandMark = true
+                }
+
                 if self.questionNumber == self.eventTiming.timing.count - 1{
                     withAnimation(.linear(duration: 3)){
                         self.firstLevelFinished = true
                     }
-                    self.quizStarted = false
                     _ = addCoins(numberOfCoinsToAdd: 2)
                     addPoints(numberOfPointsToAdd: 5)
                     self.vm.cleanup()
@@ -515,7 +510,6 @@ struct ContentView: View {
                 self.badAnsweOffset = 0
                 self.xOffset0 = 0
                 self.xOffset2 = 0
-                self.quizStarted = false
                 self.timeRemaining = 90
                 self.tryAgain = true
                 self.cardDescription = "Try again!"

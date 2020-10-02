@@ -51,9 +51,9 @@ struct FontsAndConstraintsOptions {
             titalFonts = 36
             screenType = .iPhoneX
         }else if surfaceScreen > 700000 && surfaceScreen < 800000{
-            smallLocalFont = 14
+            smallLocalFont = 12
             localFont = 14
-            bigFont = 18
+            bigFont = 16
             titalFonts = 38
             screenType = .iPad9
             multiplier = 0.6

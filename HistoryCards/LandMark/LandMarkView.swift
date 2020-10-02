@@ -22,8 +22,6 @@ struct LandMarkView: View {
                             Spacer()
                             Button(action: {
                                 self.presentationMode.wrappedValue.dismiss()
-                                
-                                
                             }){
                                 Text("Done")
                                     .font(.footnote)
@@ -71,13 +69,15 @@ struct LandMarkView: View {
                     Spacer()
                 }
             }
+            .background(ColorReference.specialRed)
+            .edgesIgnoringSafeArea(.all)
+            .navigationBarBackButtonHidden(true)
+            .onAppear{
+                _ = addCoins(numberOfCoinsToAdd: self.level.addedCoins)
+                playSound(sound: "fanfare", type: "mp3")
+            }
         }
-        .background(ColorReference.specialRed)
-        .edgesIgnoringSafeArea(.all)
-        .onAppear{
-            _ = addCoins(numberOfCoinsToAdd: self.level.addedCoins)
-            playSound(sound: "fanfare", type: "mp3")
-        }
+
     }
 }
     

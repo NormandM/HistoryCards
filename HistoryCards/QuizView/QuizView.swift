@@ -44,18 +44,22 @@ struct QuizView: View {
     @State private var sectionCount = Int()
     @State private var sectionDone = Int()
     @State private var showSheet = false
-    @State private var activeSheet: ActiveSheet = .coinPurchase
     @State private var screenDimension: CGFloat = 0
     @EnvironmentObject private var vm: ClockDetailViewModel
     @State private var seconds: Int = 0
     @State private var bar = ProgressBar()
     @State var level = Level()
+    @State private var showLandMark = false
     var item: NameItem
     var section: Names
     @State var progressValue: Float = 0.5
     @ObservedObject var value: ProgressValue
     var body: some View {
         GeometryReader { geo in
+            NavigationLink(destination: LandMarkView(), isActive: $showLandMark){
+                Text("")
+            }
+
             ZStack {
                 Image("fond")
                     .resizable()
@@ -90,6 +94,8 @@ struct QuizView: View {
                         .frame(width: geo.size.height/2.3, height: geo.size.height/10)
                     HStack {
                         Text("+10:")
+                            .frame(width: geo.size.height/25
+                                   , height: geo.size.height/25)
                             .foregroundColor(.white)
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
@@ -114,6 +120,8 @@ struct QuizView: View {
                     
                     HStack {
                         Text("+20:")
+                            .frame(width: geo.size.height/25
+                                   , height: geo.size.height/25)
                             .foregroundColor(.white)
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
@@ -247,11 +255,12 @@ struct QuizView: View {
                     .resizable()
                     .cornerRadius(25)
                     .opacity(self.timer0 || (self.thirdLevelIsWrong) ? 1.0 : 0)
-                    .frame(width: geo.size.height/2.2, height: geo.size.height/2.0)
+                    .frame(width: geo.size.height/2.0, height: geo.size.height/2.0)
                 HStack {
                     VStack {
                         Spacer()
                         Text("Back to level 2")
+                            .font(.caption)
                             .foregroundColor(.white)
                             .padding(.leading)
                         Button(action: {
@@ -271,6 +280,7 @@ struct QuizView: View {
                     VStack {
                         Spacer()
                         Text("Stay on level 3")
+                            .font(.caption)
                             .foregroundColor(.white)
                             .padding(.trailing)
                         Button(action: {
@@ -278,7 +288,6 @@ struct QuizView: View {
                             self.vm.setup(timeRemaining: 30)
                             self.reset()
                             self.showSheet  = removeCoins(numberOfCoinsToRemove: 10)
-                            self.activeSheet = .coinPurchase
                             
                         }){
                             Image("10Coin").renderingMode(.original)
@@ -502,7 +511,6 @@ struct QuizView: View {
                                 VStack {
                                     Button(action: {
                                         self.showSheet = true
-                                        self.activeSheet = .coinPurchase
                                     }){
                                         Image("FinalCoinBuy").renderingMode(.original)
                                             .resizable()
@@ -510,11 +518,11 @@ struct QuizView: View {
                                                    , height: geo.size.height/12)
                                     }
                                     .padding(.top)
-                                    
                                     Text("\(UserDefaults.standard.integer(forKey: "coins")) coins")
                                         .font(.footnote)
+                                    
                                 }
-                                .padding(.top)
+                                
                                 Spacer()
                                 VStack{
                                     Image("points2")
@@ -561,18 +569,16 @@ struct QuizView: View {
             .navigationBarHidden(answerIsGood || (allCardsDropped && !answerIsGood) || timer0)
             .navigationBarBackButtonHidden(true)
             .onAppear{
-                self.showSheet = achievement()
-                self.activeSheet = .upLevel
+                if achievement() {
+                    self.showLandMark = true
+                }
+                
                 self.cardText[0] = self.quizData.names[0]
                 self.cardText[1] = self.quizData.names[1]
                 self.cardText[2] = self.quizData.names[2]
             }
             .sheet(isPresented: self.$showSheet) {
-                if self.activeSheet == .upLevel {
-                    LandMarkView()
-                }else{
                     CoinManagement()
-                }
             }
         }
 
@@ -620,14 +626,16 @@ struct QuizView: View {
                     }
                     var accomplishement = Accomplishements()
                     accomplishement.quizCompletion(uuid: item.id.uuidString)
-                    self.showSheet = achievement()
-                    self.activeSheet = .upLevel
+                    if achievement(){
+                        showLandMark = true
+                    }
+                    
+                        
                     self.answerIsGood = true
                     playSound(sound: "music_harp_gliss_up", type: "wav")
                     withAnimation(.linear(duration: 3)){
                         sectionIsDone = isSectionDone()
                     }
-                    
                 }
                 self.progressValue = Float(Double(UserDefaults.standard.integer(forKey: "points"))/Double(self.level.nextLevelPoints))
                 bar = ProgressBar()

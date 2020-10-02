@@ -37,8 +37,7 @@ struct DataView: View {
                         .foregroundColor(.black)
                         .padding()
                         .frame(width: geo.size.width/1.0
-                            , height: geo.size.height/6.0
-                    )
+                               , height: geo.size.height/5.0)
                         .background(ColorReference.specialGray)
                         .cornerRadius(20)
                         
